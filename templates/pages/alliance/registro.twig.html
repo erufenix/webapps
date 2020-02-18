@@ -1,0 +1,69 @@
+{% extends (tpo == 'alliance') ? "layouts/alliance/allianceLayout_dis.twig.html" : "layouts/alliance/allianceLayout_asoc.twig.html" %}
+{% block content %}
+<section class="our-clients">
+  <div class="container">
+    <div class="custom-heading section-heading">
+      <h1>REGISTRO</h1>
+    </div>
+  	<div class="col-md-6 col-sm-6 col-lg-6 center-block no-float" id="cveReg">
+  		<form method="post" action="{{ url('alliance.valida') }}" id="frmClave">
+  			<div class="form-group row">
+  				<div class="col-sm-12 col-md-9">
+  					<input class="form-control" name="clave" value="" placeholder="Clave de registro" type="text" required>
+  				</div>
+  				<div class="col-sm-6 col-md-3">
+  					<button type="submit" class="btn btn-primary" id="valida"><span>Validar</span></button>
+  				</div>
+  			</div>
+  			<div class="form-group ocultos">
+  				<input type="hidden" name="gpo" id="gpo" value="">
+  			</div>
+  		</form>
+  	</div>
+  	<div class="col-md-12 col-sm-12 col-lg-12 hiddens" id="divGpo">
+      {% if tipo == 'dis' %}
+  		  {% include 'pages/alliance/frmGpo1.twig.html' %}
+      {% elseif tipo == 'asoc' %}
+        {% include 'pages/alliance/frmGpo2.twig.html' %}
+      {% endif %}
+  	</div>
+    <div class="col-md-12 col-sm-12 col-lg-12 row hidden" id="divErr">
+      <div class="col-md-10 col-sm-12">
+      	<div class="alert alert-warning">
+        	<span class="fas fa-exclamation-circle"></span> Esta clave no es validad o ya fue usada
+      	</div>
+    	</div>
+    	<div class="col-md-2 col-sm-12" align="center">
+      	<button class="btn btn-warning" id="return1" type="button"><span>Regresar</span></button>
+      </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-lg-12 row hidden" id="result">
+  		<section class="our-services service-icon-list">
+  		  <div class="container">
+  	      <div class="row">
+  	        <div class="col-lg-6 center-block no-float">
+  	          <div class="content">
+  	            <div class="row">
+  	              <div class="col-md-3">
+  	                <div class="type">
+  	                  <i class="fa fa-check"></i>
+  	                </div>
+  	              </div>
+  	              <div class="col-md-9">
+  	                <h3 class="info-mi">Registro exitoso</h3>
+  	                <p class="m-b-10">Se envio un correo a <span id="nmail"></span> con los detalles</p>
+  	                <h6 class="m-b-20">Gracias!</h6>
+  	              </div>
+  	            </div>
+  	          </div>
+  	          <div align="right">
+  							<a href="{{ (tpo == 'alliance') ? url("alliance.registro") : url("alliance.registro") ~ '/asociados' }}" class="btn btn-warning btn-block">Regresar</a>
+  	          </div>
+  	        </div>
+  	      </div>
+  		    </div>
+  		</section>
+    </div>
+  </div>
+</section>
+{% endblock %}

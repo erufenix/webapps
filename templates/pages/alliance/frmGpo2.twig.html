@@ -1,0 +1,244 @@
+<form action="{{ url('alliance.setRegistro') }}" method="post" id="frmg1">
+	<div class="from-group row">
+		<h3 class="text-md-center">Asociados</h3>
+		<hr>
+	</div>
+	<div class="from-group row m-b-20">
+		<div class="col-md-1 col-lg-1 col-sm-12" align="right">
+		</div>
+		<div class="col-md-3 col-lg-3 col-sm-12">
+			<div class="checkbox">
+			  <label>
+			    <input type="radio" value="personal" name="tpoNombre" required>
+			    	Razón social
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+			    <input type="radio" value="distribuidor" name="tpoNombre" required>
+			    	Nombre de la distribuidora
+			  </label>
+			</div>							
+		</div>
+		<div class="col-md-4 col-lg-4 col-sm-12">
+			<label for="distribuidor" class="material">Razón social / Distribuidor</label>
+			<input class="form-control" type="text" name="distribuidor" id="distribuidor" placeholder="Razón social / Distribuidor" required>
+		</div>
+		<div class="col-md-4 col-lg-4 col-sm-12">
+			<label for="nombre" class="material">Nombre del asistente</label>
+			<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre del asistente" required>
+		</div>								
+	</div>
+	<div class="from-group row m-b-20">
+		<div class="col-md-4 col-lg-4 col-sm-12">
+			<label for="correo" class="material">Correo</label>
+			<input class="form-control" type="mail" name="correo" id="correo" placeholder="Correo" required>
+		</div>			
+		<div class="col-md-4 col-lg-4 col-sm-12">
+			<label for="celular" class="material">Celular</label>
+			<input class="form-control" type="text" name="celular" id="celular" placeholder="Celular" required>
+		</div>		
+		<div class="col-md-4 col-lg-4 col-sm-12">
+			<label for="nombre" class="material">Contacto</label>
+			<input class="form-control" type="text" name="contacto" id="contacto" placeholder="Contacto" required>
+		</div>
+		<div class="col-md-4 col-lg-4 col-sm-12">
+			<!--<input class="form-control" type="text" name="distribuidor" id="distribuidor" placeholder="Distribuidor" required>-->
+		</div>		
+		<div class="col-sm-12 col-ms-12 col-lg-12">
+			<hr>
+		</div>						
+	</div>
+	<div class="from-group row m-b-20">
+		<div class="col-sm-12 col-ms-4 col-lg-4">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" id="aco"> <span class="info-mi"> <span class="fas fa-user-plus"></span> Acompañante?</span>
+				</label>
+			</div>			
+		</div>
+		<div class="col-sm-12 col-ms-4 col-lg-4 hidden" id="divaco">
+			<input class="form-control" type="text" name="aco_nombre" id="aco_nombre" placeholder="Nombre del acompañante">
+		</div>
+		<div class="col-sm-12 col-ms-12 col-lg-12">
+			<hr>
+		</div>
+	</div>
+	<div class="from-group row m-b-20">
+		<div class="col-md-4 col-lg-4 col-sm-12">
+			<label for="fecha_l">Fecha de llegada</label>
+			<input class="form-control dates" type="text" name="fecha_l" id="fecha_l" placeholder="" required>
+		</div>
+		<div class="col-md-4 col-lg-4 col-sm-12">
+			<label for="fecha_l">Fecha de salida</label>
+			<input class="form-control dates" type="text" name="fecha_s" id="fecha_s" placeholder="" required>
+		</div>
+		<div class="col-md-12 col-lg-12 col-sm-12 m-b-10">
+		</div>
+		<div class="col-sm-4 col-lg-4 col-sm-12">
+			<label for="habitacion">Habitación</label>
+			<select class="form-control" name="habitacion" id="habitacion" required>
+				<option value="">Habitación</option>
+				<option value="sencilla">Sencilla</option>
+				<option value="doble">Doble</option>
+			</select>
+			<div class="text-warning">
+				<p><span class="fas fa-info-circle"></span> Hotel solo para adultos. <a href="{{ url('alliance.sede') }}" class="info-mi" target="_blank">Más información</a></p>
+			</div>
+		</div>
+		<div class="col-sm-4 col-lg-4 col-sm-12 hidden" id="camas">
+			<label for="ncamas">No. de camas</label>
+			<input class="form-control" type="text" name="ncamas" id="ncamas" placeholder="No. de camas">
+		</div>		
+		<div class="col-sm-12 col-ms-12 col-lg-12">
+			<hr>
+		</div>						
+	</div>
+	<div class="from-group row m-b-20">
+		<div class="col-sm-12 col-ms-12 col-lg-12">
+			<p class="info-mi text-md-justify text-lg-justify text-sm-justify">Escoge solo 4 de las siguientes opciones de los workshops que te gustaría participar durante la convención</p>
+		</div>
+		<div class="col-sm-12 col-ms-12 col-lg-12">
+			<ul class="list-unstyled">
+				<li class="m-b-10">
+					<label class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" name="acts[]" value="¿Qué necesidades de capacitación tienes y cómo implementarlo acorde a tus necesidades?">
+					  <span class="custom-control-indicator"></span>
+					  <span class="custom-control-description">¿Qué necesidades de capacitación tienes y cómo implementarlo acorde a tus necesidades?</span>
+					</label>						
+				</li>
+				<li class="m-b-10">
+					<label class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" name="acts[]" value="¿Cómo implementar mejor las campañas nacionales?">
+					  <span class="custom-control-indicator"></span>
+					  <span class="custom-control-description">¿Cómo implementar mejor las campañas nacionales?</span>
+					</label>						
+				</li>
+				<li class="m-b-10">
+					<label class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" name="acts[]" value="¿Qué sabes y qué opinas de las plataformas digitales del Grupo Michelin?">
+					  <span class="custom-control-indicator"></span>
+					  <span class="custom-control-description">¿Qué sabes y qué opinas de las plataformas digitales del Grupo Michelin?</span>
+					</label>						
+				</li>
+				<li class="m-b-10">
+					<label class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" name="acts[]" value="¿Cómo vender productos y servicios no llanteros en tu tienda para incrementar el tráfico y rentabilidad?">
+					  <span class="custom-control-indicator"></span>
+					  <span class="custom-control-description">¿Cómo vender productos y servicios no llanteros en tu tienda para incrementar el tráfico y rentabilidad?</span>
+					</label>						
+				</li>
+				<li class="m-b-10">
+					<label class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" name="acts[]" value="¿Cómo utilizar mejor el fondo de negocio (FDN) para tu negocio?">
+					  <span class="custom-control-indicator"></span>
+					  <span class="custom-control-description">¿Cómo utilizar mejor el fondo de negocio (FDN) para tu negocio?</span>
+					</label>						
+				</li>
+				<li class="m-b-10">
+					<label class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" name="acts[]" value="¿Qué potencial ves para añadir camión petite a tu portafolio?">
+					  <span class="custom-control-indicator"></span>
+					  <span class="custom-control-description">¿Qué potencial ves para añadir camión petite a tu portafolio?</span>
+					</label>						
+				</li>
+				<li class="m-b-10">
+					<label class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" name="acts[]" value="¿Cuáles son las buenas reglas de uso de imágenes de las marcas del grupo Michelin para tu tienda?">
+					  <span class="custom-control-indicator"></span>
+					  <span class="custom-control-description">¿Cuáles son las buenas reglas de uso de imágenes de las marcas del grupo Michelin para tu tienda?</span>
+					</label>					
+				</li>																													
+			<ul>
+		</div>
+		<div class="col-sm-12 col-ms-12 col-lg-12">
+			<hr>
+		</div>			
+	</div>	
+	<div class="from-group row m-b-20">
+		<div class="col-sm-4 col-lg-4 col-sm-12">
+			<select class="form-control" name="transporte" id="transporte" required>
+				<option value="">Transporte</option>
+				<option value="terrestre">Terrestre</option>
+				<option value="aereo">Aéreo</option>
+			</select>
+		</div>
+		<div class="col-sm-8 col-lg-8 col-sm-12 hidden" id="vuelo">
+			<div class="col-sm-12 col-md-6 col-lg-6">
+				<h6 class="text-md-center text-lg-center text-sm-center info-mi"><span class="fas fa-plane" data-fa-transform="rotate-45"></span> Llegada a los Cabos</h6>
+				<div class="m-b-10">
+					<select class="form-control" name="aerolineal" id="aerolineal">
+						<option value="">Aerolínea</option>
+						<option value="Aeroméxico">Aeroméxico</option>
+						<option value="Volaris">Volaris</option>
+						<option value="VivaAeobus">VivaAeobus</option>
+						<option value="Calafia Airlines">Calafia Airlines</option>
+						<option value="Interjet">Interjet</option>
+					</select>					
+				</div>
+				<div class="row">
+					<div class="col-sm-5 col-lg-5 col-sm-12"> 
+						<label for="fecha_vuelol">Fecha</label>
+						<input class="form-control datesv" type="text" name="fecha_vuelol" id="fecha_vuelol" placeholder="">
+					</div>
+					<div class="col-sm-4 col-lg-4 col-sm-12"> 
+						<label for="hora_vuelol">Hora</label>
+						<input class="form-control horasv" type="text" name="hora_vuelol" id="fecha_hora_vuelol" placeholder="">
+					</div>					
+					<div class="col-sm-3 col-lg-3 col-sm-12">
+						<label for="nvuelol">No. vuelo</label>
+						<input class="form-control" type="text" name="nvuelol" id="nvuelol" placeholder="">
+					</div>												
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-6">
+				<h6 class="text-md-center text-lg-center text-sm-center info-mi"><span class="fas fa-plane" data-fa-transform="rotate--45"></span> Salida de los Cabos</h6>
+				<div class="m-b-10">
+					<select class="form-control" name="aerolineas" id="aerolineas">
+						<option value="">Aerolínea</option>
+						<option value="Aeroméxico">Aeroméxico</option>
+						<option value="Volaris">Volaris</option>
+						<option value="VivaAeobus">VivaAeobus</option>
+						<option value="Calafia Airlines">Calafia Airlines</option>
+						<option value="Interjet">Interjet</option>
+					</select>					
+				</div>
+				<div class="row">
+					<div class="col-sm-5 col-lg-5 col-sm-12"> 
+						<label for="fecha_hora_vuelos">Fecha</label>
+						<input class="form-control datesv" type="text" name="fecha_vuelos" id="fecha_hora_vuelos" placeholder="">
+					</div>
+					<div class="col-sm-4 col-lg-4 col-sm-12"> 
+						<label for="hora_vuelos">Hora</label>
+						<input class="form-control horasv" type="text" name="hora_vuelos" id="hora_vuelos" placeholder="">
+					</div>					
+					<div class="col-sm-3 col-lg-3 col-sm-12">
+						<label for="nvuelos">No. vuelo</label>
+						<input class="form-control" type="text" name="nvuelos" id="nvuelos" placeholder="">
+					</div>					
+				</div>				
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<label for="cmVuelo" class="info-mi"><strong>Comentario</strong></label>
+				<textarea name="cmVuelo" class="form-control no-resize" row="3"></textarea>
+			</div>			
+		</div>
+		<div class="col-sm-12 col-ms-12 col-lg-12">
+			<hr>
+		</div>					
+	</div>
+	<div class="from-group row m-b-20">
+		<div class="col-sm-4 col-lg-4 col-sm-12">
+			<div id="captchaContainer1">
+			</div>
+		</div>
+	</div>
+	<div class="from-group row ocultos">
+		<input class="form-control" type="hidden" name="grupo" id="grupo" value="2">
+		<input class="form-control" type="hidden" name="idClave" id="idClave" value="">
+		<input class="form-control" type="hidden" name="regDoble" id="regDoble" value="">
+	</div>
+	<div class="from-group row m-b-20" align="right">
+		<button type="submit" id="send" class="btn btn-primary float-right"><div>Enviar</div></button>
+	</div>
+</form>

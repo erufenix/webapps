@@ -1,0 +1,279 @@
+{% extends "layouts/michelin20/michelin__layout.twig" %}
+{% block content %}
+<section id="sreg">
+  <div class="container">
+    <div class="flat-spacer clearfix" data-desktop="40" data-mobile="20" data-smobile="20" ></div>
+    <div class="flat-title text-center v3">
+        <h5 class="heading text-uppercase">{{ title }}</h5>
+    </div>
+    <div id="valida">
+      <form action="{{ url('michelin20.valida') }}" id="fvalida" method="post">
+        <div class="row">
+          <div class="col-md-8 center-block no-float mx-auto form-row flat-border-bottom flat-border-top">
+            <div class="col-12 col-sm-12 col-md-12">
+               <div class="flat-spacer clearfix" data-desktop="30" data-mobile="20" data-smobile="20" ></div>
+            </div>
+            <div class="col-12 col-sm-8 col-md-8">
+              <input type="text" name="clave" id="clave" class="" placeholder="Clave" required>
+            </div>
+            <div class="col-12 col-sm-4 col-md-4">
+              <button type="submit" class="btn-effect vm btn-submit btn-block mi-yellow-bg mi-blue-text" id="bvalida"><div>Validar</div></button>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12">
+              <span id="err" class="text-danger invisible">Esta clave no es valida o ya fue utilizada</span>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12">
+               <div class="flat-spacer clearfix" data-desktop="30" data-mobile="20" data-smobile="20" ></div>
+            </div>
+            <div class="ocultos">
+              <input type="hidden" name="tipov" name="tipov" value="{{ tipo }}">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="registro" class="invisible">
+      <div class="flat-spacer clearfix" data-desktop="20" data-mobile="10" data-smobile="10" ></div>
+      <form action="{{ url('michelin20.setRegistro') }}" id="fregistro" method="post">
+        <div class="form-row">
+          <div class="col-12 col-sm-6 col-md-4">
+            <!--<div class="form-check">
+              <input class="form-check-input" type="radio" name="tpoNombre" id="exampleRadios1" value="razon social" required>
+              <label class="form-check-label" for="exampleRadios1">
+                Razon social
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="tpoNombre" id="exampleRadios2" value="distribuidor" required>
+              <label class="form-check-label" for="exampleRadios2">
+                Nombre de la distribuidora
+              </label>
+            </div>-->&nbsp;
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <input type="text" name="distribuidor" id="distribuidor" value="MICHELIN STAFF" readonly required>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre del asistente" required>
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-12 col-sm-6 col-md-4">
+            <input type="email" name="correo" id="correo" placeholder="Correo de la Persona que asistirá a la convención" required>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <input type="text" name="celular" id="celular" placeholder="Celular" required>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <input type="text" name="contacto" id="contacto" placeholder="Contacto" required>
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-sm-12 col-ms-4 col-lg-4">
+            <div class="preffered-time-wrap">
+              <div class="wrap-checked-all">
+                <div class="wrap-checked">
+                  <input type="checkbox" name="aco" id="aco">
+                  <label for="aco"><span class="fa fa-user-plus"></span> Acompañante</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-ms-4 col-lg-4 invisible" id="div_aco">
+            <input type="text" name="aco_nombre" id="aco_nombre" placeholder="Nombre del acompañante">
+          </div>
+          <div class="col-sm-12 col-ms-4 col-lg-4">
+            &nbsp;
+          </div>
+        </div>
+        <div class="row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-sm-12 col-md-12 pd-bottom-30 row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <select name="transporte" id="transporte" required>
+                <option value="">Transporte</option>
+                <option value="terrestre">Terrestre</option>
+                <option value="aereo">Aéreo</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 vuelo invisible">
+              <div class="flat-title v9 text-center">
+                <h5 class="text-danger"><i class="fas fa-plane-arrival"></i> Vuelo de Llegada a Puevo Vallarta</h5>
+              </div>
+            <div class="form-row">
+              <div class="col-sm-12 col-md-3 col-lg-3">
+                <input type="text" class="cvuelo" name="nvuelol" id="nvuelol" required placeholder="No. de vuelo">
+              </div>
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <!--<input type="text" class="" name="aerolineal" id="aerolineal" required placeholder="Aerolínea">-->
+                <select name="aerolineal" id="aerolineal" class="cvuelo">
+                  <option value="Aeroméxico">Aeroméxico</option>
+                  <option value="American Airlines">American Airlines</option>
+                  <option value="Delta">Delta</option>
+                  <option value="Calafia Airlines">Calafia Airlines</option>
+                  <option value="Tar">Tar</option>
+                  <option value="Interjet">Interjet</option>
+                  <option value="United">United</option>
+                  <option value="VivaAeobus">VivaAeobus</option>                  
+                  <option value="Volaris">Volaris</option>
+                </select>
+              </div>
+              <div class="col-sm-12 col-md-3 col-lg-3">
+                <input type="text" class="date cvuelo" name="llegada_fecha" id="llegada_fecha" required placeholder="Fecha">
+              </div>
+              <div class="col-sm-12 col-md-2 col-lg-2">
+                <input type="text" class="hour cvuelo" name="llegada_hora" id="llegada_hora" required placeholder="Hora">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 vuelo invisible">
+            <div class="flat-title v9 text-center">
+              <h5 class="text-danger"><i class="fas fa-plane-departure"></i> Vuelo de Salida de Puevo Vallarta</h5>
+            </div>
+            <div class="form-row">
+              <div class="col-sm-12 col-md-3 col-lg-3">
+                <input type="text" class="cvuelo" name="nvuelos" id="nvuelos" required placeholder="No. de vuelo">
+              </div>
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <!--<input type="text" class="" name="aerolineas" id="aerolineas" required placeholder="Aerolínea">-->
+                <select name="aerolineas" id="aerolineas" class="cvuelo">
+                  <option value="Aeroméxico">Aeroméxico</option>
+                  <option value="American Airlines">American Airlines</option>
+                  <option value="Delta">Delta</option>
+                  <option value="Calafia Airlines">Calafia Airlines</option>
+                  <option value="Tar">Tar</option>
+                  <option value="Interjet">Interjet</option>
+                  <option value="United">United</option>
+                  <option value="VivaAeobus">VivaAeobus</option>                  
+                  <option value="Volaris">Volaris</option>
+                </select>
+              </div>
+              <div class="col-sm-12 col-md-3 col-lg-3">
+                <input type="text" class="date cvuelo" name="salida_fecha" id="salida_fecha" required placeholder="Fecha">
+              </div>
+              <div class="col-sm-12 col-md-2 col-lg-2">
+                <input type="text" class="hour cvuelo" name="salida_hora" id="salida_hora" required placeholder="Hora">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-sm-12 col-ms-4 col-lg-4">
+              <select name="habitacion" id="habitacion" required>
+              <option value="">Habitación</option>
+              <option value="sencilla">Sencilla</option>
+              <option value="doble">Doble</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-ms-4 col-lg-4 invisible" id="div_hab">
+            <select name="ncamas" id="ncamas" required>
+              <option value="">No. de cama</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-ms-4 col-lg-4">
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-sm-12 col-ms-6 col-lg-6">
+             <textarea name="comentarios" id="mensaje" placeholder="Comentarios" cols="4" class="no-resize"></textarea>
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-sm-4 col-lg-4 col-sm-12">
+            <div id="captchaContainer1">
+            </div>
+          </div>
+        </div>
+        <div>
+          <input type="hidden" name="idClave" id="idClave" value="">
+          <input type="hidden" name="regDoble" id="regDoble" value="">
+          <input type="hidden" name="tipo" id="tipo" value="{{ tipo }}">
+          <input type="hidden" name="tpoNombre" id="tpoNombre" value="">
+        </div>
+        <div class="form-row mg-top-20 pd-bottom-30">
+          <div class="col-sm-12 col-ms-12 col-lg-12">
+            <button type="submit" class="btn-effect vm btn-submit mi-yellow-bg mi-blue-text float-right" id="send"><div>Enviar</div></button>
+          </div>
+        </div>
+      </form>
+      <div class="flat-spacer clearfix" data-desktop="40" data-mobile="20" data-smobile="20" ></div>
+    </div>
+    <div id="result" class="invisible">
+      <div class="flat-company-overviews">
+        <div class="flat-iconbox clearfix fix-float-box">
+          <div class="iconbox one-of-two style1 mx-auto">
+            <div class="iconbox-border">
+              <div class="iconbox-icon">
+                <span class="far fa-check-circle"></span>
+              </div>
+              <div class="iconbox-content">
+                <h5><a href="#">Registro completo</a></h5>
+                <p>Se envio un correo a <span id="mailr"></span> con lo detalles</p>
+              </div>
+            </div>
+          </div> <!-- /.iconbox -->
+        </div> <!-- /.flat-iconbox -->
+        <div class="clearfix fix-float-box">
+          <div class="iconbox one-of-two mx-auto">
+              <a class="btn-effect vm btn-submit btn-block mi-yellow-bg mi-blue-text" href="{{ url('michelin20.index') }}/{{ tipo }}/registro">Regresar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="modalCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Esta clave ya se registro</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="flat-title v5 text-left mg-bottom-20">
+              <h4>Estimado Staff:</h4>
+            </div>
+          </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="flat-textbox style1 flat-border-bottom mg-top-10">
+            <div class="testimonial style1 v2">
+              <blockquote>
+                <p align="justify" class="mg-bottom-10">
+                  Reciba un cordial saludo y nuestro agradecimiento por su contribución y esfuerzo en este año 2019. Al continuar trabajando en equipo estamos seguros de queseguiremos creciendo y logrando nuestros objetivos de manera exitosa.
+                </p>
+                <p align="justify" class="mg-bottom-20">
+                  Aprovechamos la presente para invitarlo al Simposio Alliance 2020.
+                </p>
+                <p align="justify" class="mg-bottom-20">
+                Lunes 10 al jueves 13 de febrero del 2020
+                <p class="mg-bottom-10 clearfix">
+                  <div class="wrap-btnt" align="right">
+                    <a href="https://webapps.tycgroup.com/assets/descargas/InvitacionSaveTheDateSimposioAlliance2020.pdf" target="_blank" class="flat-button bg-read-more v3">Leer más</a>
+                  </div>
+                </p>
+              </blockquote>
+              <div class="customer-info row">
+                <div class="col-sm-12 col-md-6 col-lg-6" alig="left">
+                  <h5 class="name"><a href="#" class="hover-text">Luis Magaña</a></h5>
+                  <p class="position">Director Ventas B2C</p>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6" align="right">
+                  <h5 class="name"><a href="#" class="hover-text">Máximo Mateos</a></h5>
+                  <p class="position">Director de Ventas B2B</p>
+                </div>                
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

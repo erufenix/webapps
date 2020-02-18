@@ -1,0 +1,86 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<div class="block-page">
+  <div class="container clearfix">
+    <h2 class="text-uppercase text-center color-orange">Contacto</h2>
+    <div class="devider">
+      <i class="ti-layout-accordion-list"></i>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-8 col-xs-12" id="contacto">
+        <form action="{{ url('sendContacto') }}" method="post" id="frmContacto">
+          <div class="form-group row">
+            <div class="col-md-4 col-sm-12">
+              <label>Nombre</label>
+              <input class="form-control form-flat" name="nombre" id="nombre" required="" type="text">
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <label>Correo</label>
+              <input class="form-control form-flat" name="correo" id="correo" required="" type="text">
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <label>Asunto</label>
+              <input class="form-control form-flat" name="asunto" id="asunto" required="" type="text">
+            </div>                         
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12 col-sm-12">
+              <label>Mensaje</label>
+              <textarea name="mensaje" id="mensaje" class="form-control form-flat no-size" rows="4" required></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6 col-sm-6">
+              <div id="captchaContainerC">
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <button type="submit" class="btn primary-btn btn-flat-solid pull-right" id="send"><div>Enviar</div></button>
+            </div>            
+          </div>
+        </form>
+        <div class="hidden" id="resultC">
+        <div class="bg-secondary">
+          <div class="container-medium">
+            <div class="block-page">
+              <h3 class="text-uppercase text-center color-dark"> <span class="ti-check fact"></span> Se envio tu mensaje</h3>
+              <h4 class="text-center color-primary">En breve recibiras una respuesta</h4>
+              <div class="white-space-20"></div>
+              <!--<h5 class="text-center">Don’t be afraid, we really hate spam.</h5>-->
+              <div class=""><a href="{{ url('contacto') }}" type="button" class="btn primary-btn btn-flat-solid center-block"><span>Enviar otro mensaje</span></a></div>
+            </div>
+          </div>
+        </div>           
+        </div>       
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <h5>Asociación International, A.C.</h5>
+        <ul class="fa-ul small">
+          <li><i class="fa-li fa fa-user"></i> Ángel A. Pujula Tiburcio</li>
+          <li><i class="fa-li fa fa-envelope"></i> apujula@asociacioninternational.com</li>
+          <li><i class="fa-li fa fa-phone"></i> 044 55 4525 0390, 8000 1768</li>
+        </ul>
+        <ul class="fa-ul small">
+          <li><i class="fa-li fa fa-user"></i> Salvador Flores</li>
+          <li><i class="fa-li fa fa-envelope"></i> sflores@asociacioninternational.com</li>
+          <li><i class="fa-li fa fa-phone"></i> 8000 1767</li>
+        </ul>
+        <ul class="fa-ul small">
+          <li><i class="fa-li fa fa-user"></i> Susana de la Fuente</li>
+          <li><i class="fa-li fa fa-envelope"></i> Susana.delafuente@navistar.com</li>
+          <li><i class="fa-li fa fa-phone"></i> 55 5263 6880, 55 9199 8255 </li>
+        </ul>
+        <h5>T&C</h5>
+        <ul class="fa-ul small">
+          <li><i class="fa-li fa fa-user"></i> Gerardo Terreros</li>
+          <li><i class="fa-li fa fa-envelope"></i> gterreros@tcevents.com</li>
+          <li><i class="fa-li fa fa-phone"></i> +52 55 5148 7500 ext. 7576</li>
+        </ul>                         
+      </div>
+    </div>
+  </div>
+</div>	
+{% endblock %}

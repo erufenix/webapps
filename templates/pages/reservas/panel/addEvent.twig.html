@@ -1,0 +1,74 @@
+{% set langs = {'es':'Español','en':'Inglés','pt':'Portugues'} %}
+<form action="{{ url('panel.setEvent') }}" method="post" id="addEvent">
+	<div class="form-group row">
+		<div class="col-md-6 text-left">
+			<label>Nombre del evento</label>
+			<!--<input type="text" class="form-control input-sm form-control-sm" name="nombreEvento" value="" placeholder="" required="">-->
+			<textarea name="nombreEvento" id="nombreEvento" class="form-control input-sm form-control-sm no-resize" required="" cols="2"></textarea>
+		</div>
+		<div class="col-md-6 text-left">
+			<label>Clave del evento</label>
+			<input type="text" class="form-control input-sm form-control-sm nsp" name="claveEvento" value="" placeholder="" required>
+		</div>		
+	</div>
+	<div class="form-group row">
+		<div class="col-md-6 text-left">
+			<label>Sede del evento</label>
+			<input type="text" class="form-control input-sm form-control-sm" name="sedeEvento" value="" placeholder="" required>
+		</div>
+		<div class="col-md-6 text-left">
+			<label>Fecha del evento</label>
+			<div class="row">
+				<div class="col-sm-12 col-md-5">
+					<input type="date" class="form-control input-sm form-control-sm dates" name="fechaEventoInicio" value="" placeholder=""  required readonly>
+				</div>
+				<div class="col-sm-12 col-md-2 text-center">
+					al
+				</div>
+				<div class="col-sm-12 col-md-5">
+					<input type="date" class="form-control input-sm form-control-sm dates" name="fechaEventoFin" value="" placeholder=""  required readonly>
+				</div>				
+			</div>
+		</div>			
+	</div>
+	<div class="form-group row">
+		<div class="col-md-6 text-left">
+			<label for="formaPago" >Forma de pago </label><small> (seleccione al menos uno)</small>
+			<div>
+				<label class="md-check">
+					<input type="checkbox" name="formaPago[]" id="formaPagoDB" value="DB" data-parsley-checkmin="1" required="">
+					<i class="blue"></i>
+					DB
+				</label>
+				<label class="md-check">
+					<input type="checkbox" name="formaPago[]" id="formaPagoTC" value="TC">
+					<i class="blue"></i>
+					TC
+				</label>				
+			</div>	
+		</div>
+		<div class="col-md-6 text-left">
+			<label for="idioma" >Idioma inicial</label>
+			<select class="form-control input-sm form-control-sm" name="idioma" id="idioma" required>
+				<option value="Seleccionar">Seleccionar</option>
+				{% for key in langs | keys %}
+				<option value="{{key}}">{{ langs[key] }}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-6 text-left">
+			<label for="idioma" >Operador</label>
+			<select class="form-control input-sm form-control-sm" name="idOperador" id="idOperador" required>
+				<option value="Seleccionar">Seleccionar</option>
+				{% for op in operadores %}
+				<option value="{{op.idOperador}}">{{ op.nombreOperador }}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	<div class="form-group row ocultos">
+		<input type="hidden" name="idUsuario" id="idUsuario" value="{{ user.idUsuario }}">
+	</div>
+</form>

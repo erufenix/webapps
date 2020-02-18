@@ -1,0 +1,175 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+  <html
+  class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>WMC 2020 TOURS</title>
+    <meta content="0" http-equiv="Expires">
+    <meta content="0" http-equiv="Last-Modified">
+    <meta content="no-cache, mustrevalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="Pragma">
+    <meta content="Quality Through  Innovation World Meat Congress 2020" name="description"/>
+    <meta content="WMC 2020, WMC Tours, World Meat Congress" name="keywords"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+    <meta
+    content="IE=edge" http-equiv="X-UA-Compatible"/>
+
+    <!-- Loading Bootstrap CSS -->
+    <link href="{{ asset('assets')}}/dione/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Loading Font Icons -->
+    <!--<link href="{{ asset('assets')}}/dione/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+    <!-- Include all css plugins (below), or include individual files as needed -->
+    <link href="{{ asset('assets')}}/dione/assets/css/flickity.min.css" rel="stylesheet" type="text/css"> <link
+    href="{{ asset('assets')}}/dione/assets/css/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- Main CSS -->
+    <link href="{{ asset('assets')}}/dione/assets/css/dione_main.min.css" rel="stylesheet" type="text/css">
+    <link
+    href="{{ asset('assets')}}/dione/assets/css/dione_style.css" rel="stylesheet" type="text/css">
+
+    <!-- Color Skins CSS -->
+    <link href="{{ asset('assets')}}/dione/assets/css/dione_color_blue.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets')}}/formvalidation/css/formValidation.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets')}}/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets')}}/date-time/css/datepicker.css" />
+    <link rel="stylesheet" href="{{ asset('assets')}}/holdjs/HoldOn.min.css" /> 
+    <link href="{{ asset('assets')}}/css/wmc.css" rel="stylesheet" type="text/css">
+
+  <!-- Modernizr JS for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 8]>
+        <script src="{{ asset('assets')}}/dione/assets/js/modernizr.min.js"></script>
+        <![endif]-->
+  </head>
+
+  <body id="page-top">
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Navigation Start -->
+      <div class="wrapper" id="wrapper">
+			<nav class="navbar navbar-fixed-top navbar-white shrink" id="navigation">
+        <div class="container">
+          <div class="row">
+            <div class="navbar-header col-md-3">
+              <button class="navbar-toggle collapsed" data-target="#navbar-dione" data-toggle="collapse" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand page-scroll font-family-alt letter-spacing-1 text-extra-large text-uppercase" href="#page-top">
+                <img class="logo-navbar-dark" src="{{ asset('assets')}}/img/logo_wmc_300.png" alt=""/>
+                <img class="logo-navbar-white" src="{{ asset('assets')}}/img/logo_wmc_300.png" alt=""/>
+              </a>
+            </div>
+            <!-- //.navbar-header -->
+
+            <div class="navbar-collapse collapse col-md-9 pull-right" id="navbar-dione">
+              <ul class="nav navbar-nav font-family-alt letter-spacing-1 text-small text-uppercase">
+                <li>
+                  <a class="page-scroll" href="javascript:;">Contact</a>
+                </li>
+                <li>
+                  <a class="page-scroll" href="javascript:;">Back</a>
+                </li>
+              </ul>
+            </div>
+            <!-- //.navbar-collapse -->
+          </div>
+          <!-- //.row -->
+        </div>
+        <!-- //.container -->
+      </nav>
+      <!-- //Navigation End -->
+      <!-- Section - About Start -->
+      <div class="main">
+				{% block content %}
+				{% endblock %}
+      </div>
+      <!-- //Section - About End -->
+
+      <!-- Footer Start -->
+      <footer class="footer bg-white">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="footer-logo xs-text-center">
+                <img src="{{ asset('assets')}}/img/logo-footer-gray.png" alt="" class="opacity-4">
+              </div>
+              <!-- //.footer-logo -->
+            </div>
+            <!-- //.col-sm-4 -->
+
+            <div class="col-sm-8">
+              <div class="footer-social text-right">
+              </div>
+              <!-- //.footer-social -->
+            </div>
+            <!-- //.col-sm-8 -->
+          </div>
+          <!-- //.row -->
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="footer-copyright text-center border-top border-gray-light">
+                <span class="font-family-alt letter-spacing-1 text-gray-dark text-small text-uppercase">&copy; T&C GROUP NUEVAS TECNOLOGÍAS ALL RIGHTS RESERVED. 2020 | WORLD MEAT CONGRESS</span>
+              </div>
+              <!-- //.footer-copyright -->
+            </div>
+            <!-- //.col-md-12 -->
+          </div>
+          <!-- //.row -->
+        </div>
+        <!-- //.container -->
+      </footer>
+      <!-- //Footer End -->
+      <a class="page-scroll scroll-to-top" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+      </a>
+    </div>
+    <!-- Scroll to top -->
+    <!-- Loading jQuery -->
+    <script src="{{ asset('assets')}}/dione/assets/js/jquery.min.js"></script>
+
+    <!-- Loading Bootstrap JS -->
+    <script src="{{ asset('assets')}}/dione/assets/js/bootstrap.min.js"></script>
+
+    <!-- Include all js plugins (below) -->
+    <script src="{{ asset('assets')}}/dione/assets/js/pace.min.js"></script>
+    <script src="{{ asset('assets')}}/dione/assets/js/debouncer.min.js"></script>
+    <script src="{{ asset('assets')}}/dione/assets/js/jquery.easing.min.js"></script>
+    <script src="{{ asset('assets')}}/dione/assets/js/jquery.inview.min.js"></script>
+    <script src="{{ asset('assets')}}/dione/assets/js/jquery.matchHeight.js"></script>
+    <script src="{{ asset('assets')}}/dione/assets/js/isotope.pkgd.min.js"></script>
+    <script src="{{ asset('assets')}}/dione/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="{{ asset('assets')}}/dione/assets/js/flickity.pkgd.min.js"></script>
+    <script src="{{ asset('assets')}}/dione/assets/js/jquery.countTo.js"></script>
+    <script src="{{ asset('assets')}}/dione/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('assets')}}/dione/assets/js/jquery.validate.min.js"></script>
+    <script src="{{ asset('assets')}}/js/axios.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/formValidation.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/framework/bootstrap.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/addons/reCaptcha2.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/language/es_ES.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/language/fr_FR.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/language/de_DE.js"></script>
+    <script src="{{ asset('assets')}}/moment-with-locales.js"></script>
+    <script src="{{ asset('assets')}}/holdjs/HoldOn.min.js"></script>
+    <script src="{{asset('assets')}}/js/jquery.redirect.js"></script>
+    <script src="{{ asset('assets')}}/numeral/numeral.min.js"></script>    
+    <script src="{{ asset('assets')}}/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>    
+    <script src="https://use.fontawesome.com/b90c145257.js"></script>
+    <script src="https://www.paypalobjects.com/webstatic/ppplusdcc/ppplusdcc.min.js" type="text/javascript"></script>
+
+    <!-- Loading Theme JS -->
+    <script src="{{ asset('assets')}}/dione/assets/js/main.js"></script>
+    <script src="{{ asset('assets')}}/js/wmc.js"></script>
+  </body>
+</html>

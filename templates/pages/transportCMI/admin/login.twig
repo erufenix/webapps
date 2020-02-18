@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>CMI Transportation | Acceso</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/font-awesome/5.0/css/fontawesome-all.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/animate/animate.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/css/default/style.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/css/default/style-responsive.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/css/default/theme/blue.css" rel="stylesheet" id="theme" />
+    <link href="{{asset('assets')}}/css/adminCMI.css" rel="stylesheet"/>
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{{asset('assets')}}/color/admin/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body class="pace-top bg-white">
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade show"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade">
+	    <!-- begin login -->
+        <div class="login login-with-news-feed">
+            <!-- begin news-feed -->
+            <div class="news-feed">
+                <div class="news-image" style="background-image: url({{asset('assets')}}/img/cmibk.jpg)"></div>
+            </div>
+            <!-- end news-feed -->
+            <!-- begin right-content -->
+            <div class="right-content">
+                <!-- begin login-header -->
+                <div class="login-header">
+                    <div class="brand" align="center">
+                        <img src="{{ asset('assets')}}/img/cmi_t_w200.png">
+                        <div>Transportation Administrador</div>
+                    </div>
+                </div>
+                <!-- end login-header -->
+                <!-- begin login-content -->
+                <div class="login-content">
+                    <form action="{{ path('transportCMI_panel_login_check') }}" method="post" class="margin-bottom-0">
+                        <div class="input-group m-b-15">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text align-middle" id="basic-addon1"><i class="fas fa-user"></i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario" id="user_correo" name="user_correo" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group m-b-15">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text align-middle" id="basic-addon1"><i class="fas fa-key"></i></span>
+                          </div>
+                          <input type="password" class="form-control" placeholder="Contraseña" id="user_password" name="user_password" aria-label="Contraseña" aria-describedby="basic-addon1">
+                        </div>
+                        {{ error }}                       
+                        <div class="login-buttons">
+                            <button type="submit" class="btn btn-info btn-block btn-lg">Entrar</button>
+                        </div>
+                        <hr />
+                        <p class="text-center text-grey-darker">
+                            <img src="{{ asset('assets')}}/img/TyC_18_132.png">
+                            <div>&copy;  Nuevas Tecnologías Todos los derechos reservados 2018</div> 
+                        </p>
+                    </form>
+                </div>
+                <!-- end login-content -->
+            </div>
+            <!-- end right-container -->
+        </div>
+        <!-- end login -->
+        
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{{asset('assets')}}/color/admin/plugins/jquery/jquery-3.2.1.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="{{asset('assets')}}/color/admin/crossbrowserjs/html5shiv.js"></script>
+		<script src="{{asset('assets')}}/color/admin/crossbrowserjs/respond.min.js"></script>
+		<script src="{{asset('assets')}}/color/admin/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="{{asset('assets')}}/color/admin/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/js-cookie/js.cookie.js"></script>
+	<script src="{{asset('assets')}}/color/admin/js/theme/default.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/js/apps.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+{% extends "layouts/commimsa/layout.twig" %}
+{% block content %}
+{% set treg = {'1':'Consulado','2':'Correos de México','3':'Embajada','4':'Ministerio','5':'Operador designado','6':'Regulador','7':'Secretaría General','8':'Uniones restringidad','9':'Otro'} %}
+<div class="row">
+	<div class="col-md-12 col-sm-12">
+			<section class="panel form-wizard" id="w4">
+				<header class="panel-heading panel-heading-transparent hidden">
+					<div class="panel-actions">
+					</div>
+				</header>
+				<div class="panel-body">
+					<div class="wizard-progress wizard-progress-lg">
+						<div class="steps-progress">
+							<div class="progress-indicator"></div>
+						</div>
+						<ul class="wizard-steps">
+							<li class="active">
+								<a href="#w4-datos" data-toggle="tab"><span>1</span>Personales</a>
+							</li>
+							<li>
+								<a href="#w4-hospedaje" data-toggle="tab"><span>2</span>Hospedaje</a>
+							</li>
+							<li>
+								<a href="#w4-confirmacion" data-toggle="tab"><span>3</span>Confirmación</a>
+							</li>
+						</ul>
+					</div>
+					<form class="form-horizontal" action="" method="post" id="frmmm">
+						<div class="tab-content">
+							<div id="w4-datos" class="tab-pane active">
+								<h4 class="text-info">Datos Personales</h4>
+								<blockquote class="warning">
+									<p>Por favor verifique que los datos sean correctos</p>
+									<p><span class="text-danger">*</span>Campos son requeridos</p>
+								</blockquote>
+							<div class="form-group row">
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> País de origen</label>
+									<select class="form-control paises" name="pais" id="pais" required>
+									</select>
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Tipo de registro</label>
+									<select class="form-control" name="tregistro" id="tregistro" required>
+										<option value="">Seleccionar</option>
+										{%  for tr in treg | keys %}
+										<option value="{{tr}}">{{treg[tr]}}</option>
+										{% endfor %}
+									</select>
+								</div>								
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Organización</label>
+									<input name="organizacion" id="organizacion" class="form-control" type="text" required="">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Cargo</label>
+									<input name="cargo" id="cargo" class="form-control" type="text" required="">
+								</div>								
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Nombre</label>
+									<input name="nombre" id="nombre" class="form-control" type="text" required="">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Apellido paterno</label>
+									<input name="apaterno" id="apaterno" class="form-control" type="text" required="">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Apellido materno</label>
+									<input name="amaterno" id="amaterno" class="form-control" type="text" required="">
+								</div>																	
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Correo electrónico</label>
+									<input name="correo" id="correo" class="form-control" type="text" required="">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Teléfono</label>
+									<input name="telefono" id="telefono" class="form-control" type="text" required="">
+								</div>								
+							</div>
+							<div class="form-group row">
+								<div class="col-md-4 col-sm-6">
+									<label class="control-label"> Acompañante</label>
+									<div class="switch switch-sm switch-info" id="aco">
+										<input type="checkbox" name="switch" value="1" data-plugin-ios-switch/>
+									</div>									
+								</div>
+							</div>
+							<div class="form-group row hidden" data-aco>
+								<div class="col-md-4 col-sm-12">
+									<label class="control-label"> Nombre completo</label>
+									<input name="aco_nombre" id="aco_nombre" class="form-control" type="text">
+								</div>
+								<div class="col-md-4 col-sm-12">
+									<label class="control-label"> Edad</label>
+									<input name="aco_edad" id="aco_edad" class="form-control" type="text">
+								</div>								
+							</div>								
+							</div>
+			        <ul class="pager wizard">
+			            <li class="previous"><a href="javascript: void(0);">Previous</a></li>
+			            <li class="next"><a href="javascript: void(0);">Next</a></li>
+			        </ul>																				
+						</div>						
+					</form>					
+				</div>
+				<div class="panel-footer">
+					<ul class="pager">
+						<li class="previous disabled">
+							<a><i class="fa fa-angle-left"></i> Anterior</a>
+						</li>
+						<li class="finish hidden pull-right">
+							<a>Fin</a>
+						</li>
+						<li class="next">
+							<a>Siguiente <i class="fa fa-angle-right"></i></a>
+						</li>
+					</ul>
+				</div>							
+			</section>
+	</div>
+</div>
+{% endblock %}

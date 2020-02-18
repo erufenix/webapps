@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/mdbootstrap/css/compiled-4.7.3.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/rail19.css') }}">
+    {% block css %}
+    {% endblock %}    
+  </head>
+  <body>
+    <header>
+      <nav class="navbar fixed-tope">
+        <div class="container-fluid">
+          <div id="cleft" class="col-md-4">
+          </div>
+          <div id="ccenter" class="col-12 col-sm-12 col-md-4">
+            <a class="navbar-brand logo-ex" href="#">
+              <img src="{{ asset('assets/img/citasRail150_20.png') }}" class="img-fluid">
+            </a>
+          </div>
+          <div id="cright" class="col-md-4">
+          </div>      
+        </div>
+      </nav>
+    </header>
+    <main class="mt-5">
+    {% block content %}
+    {% endblock %}
+    </main>
+    <script src="{{ asset('assets')}}/jquery/jquery.min.js"></script>
+    <script src="{{ asset('assets')}}/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets')}}/mdbootstrap/js/compiled.0.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/formValidation.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/framework/bootstrap4.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/addons/reCaptcha2.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/language/es_ES.js"></script>
+    <script src="{{ asset('assets')}}/js/axios.min.js"></script>
+    <script src="{{ asset('assets')}}/moment-with-locales.js"></script>
+    <script src="{{ asset('assets')}}/js/apprail.js"></script>
+    {% block scripts %}
+    {% endblock %}        
+  </body>
+
+</html>

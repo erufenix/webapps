@@ -1,0 +1,633 @@
+{% extends "layouts/reservacion/layout_universal.twig.html" %}
+{% block content %}
+	{% set paises = paises | sort %}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<h3 class="c-center c-font-uppercase c-font-bold">{{evento}}</h3>
+			</div>
+			<div class="col-sm-5 col-md-5">
+				<div class="from-group row">
+					<label class="col-md-4 control-label">Fecha</label>
+					<div class="col-md-8">
+						<p class="form-control-static">{{ ( fechas is defined and fechas[lang] is defined ) ? fechas[lang] : fechas }}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+			</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="from-group row">
+					<label class="col-md-4 control-label">Sede</label>
+					<div class="col-md-8">
+						<p class="form-control-static">{{ ( sede is defined and sede[lang] is defined ) ? sede[lang] : sede }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<form action="{{ urlReserva }}" method="post" id="frmRsv">
+			<div class="c-content-divider c-divider-sm c-left c-bg-red">
+				<i class="icon-dot c-bg-red c-square"></i>
+			</div>
+			<div class="row">
+				{% if links is empty %}
+					<div class="col-sm-12 col-md-12">
+						<h2 class="c-theme-font c-font-uppercase text-center">Datos de reservación</h2>
+						<hr>
+					</div>
+				{% else %}
+					<div class="col-sm-10 col-md-10">
+						<h2 class="c-theme-font c-font-uppercase text-center">Datos de reservación</h2>
+					</div>
+					<div class="col-sm-2 col-md-2 link-info">
+						{% if links is defined and links[lang] is defined  %}
+						<ul class="list-unstyled">
+							{% for l in links[lang] %}
+								{% if l is not empty %}
+									<li>
+										<a class="btn btn-primary btn-xs cbp-singlePage" href="{{ l.url }}/{{lang}}">
+											<i class="icon-book-open"></i> {{ l.name }}
+										</a>
+									</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+						{% endif%}
+						{% if flags is defined and flags[lang] is defined  %}
+						<ul class="list-unstyled list-inline">
+							{% for fl in flags[lang] %}
+							{% if fl is not empty %}
+							<li>
+								<a class="btn btn-xs btn-info c-btn-uppercase c-btn-bold" href="{{ fl.url }}">
+									<i class="fa fa-globe"></i> {{ fl.name }}
+								</a>
+							</li>
+							{% endif %}
+							{% endfor %}
+						</ul>
+						{% endif %}
+					</div>
+					<div class="col-sm-12 col-md-12"><hr></div>
+				{% endif %}
+        <div class="col-sm-12 col-md-12 c-margin-t-10 c-margin-b-10">
+        	<div class="row">
+						{% set all = hoteles[idHotel]['all'] %}
+						<div class="col-md-6 col-sm-12">
+						  <label class="control-label">Pagar por</label>
+							<div class="c-radio-inline">
+								<div class="c-radio {{ (all == true) ? 'hidden' : ''}}" id="rnight">
+									<input id="ppN" class="c-radio ppor" name="pagoPor" type="radio" value="N" required>
+									<label for="ppN" class="normal">
+										<span class="inc"></span>
+										<span class="check"></span>
+										<span class="box"></span>{{ noches }} {{ (noches > 1) ? ' noches' : 'noche'  }}
+									</label>
+								</div>
+								<div class="c-radio" id="rall">
+									<input id="ppC" class="c-radio ppor" name="pagoPor" type="radio" value="C" required {{(all == true) ? 'checked' : ''}}>
+									<label for="ppC" class="normal">
+										<span class="inc"></span>
+										<span class="check"></span>
+										<span class="box"></span> Toda la estancia <small class="c-font-red-3">(<i class="fa fa-info-circle"></i> Fechas seleccionadas en llegada y salida)</small>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12">
+							<label class="control-label">Forma de pago</label>
+							<div class="c-radio-inline">
+								<div class="c-radio">
+									<input id="pDB" class="c-radio tpago" name="pago" type="radio" value="DB" required>
+									<label for="pDB" class="normal">
+										<span class="inc"></span>
+										<span class="check"></span>
+										<span class="box"></span> Depósito Bancario
+									</label>
+								</div>
+								<div class="c-radio">
+									<input id="pPP" class="c-radio tpago" name="pago" type="radio" value="PP" required>
+									<label for="pPP" class="normal">
+										<span class="inc"></span>
+										<span class="check"></span>
+										<span class="box"></span> Tarjeta de crédito
+									</label>
+								</div>
+							</div>
+						</div>
+        	</div>
+        </div>				
+				<div class="col-sm-4 col-md-4">
+					<div class="from-group row allfechas">
+						<label class="col-md-5 control-label">Fecha de llegada</label>
+						<div class="col-sm-4 col-md-4">
+							<input class="form-control  c-square c-theme input-sm date" placeholder="" type="text" id="fechaLlegada" name="fechaLlegada" required readonly>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4">
+					<div class="from-group row allfechas">
+						<label class="col-md-5 control-label">Fecha de salida</label>
+						<div class="col-sm-4 col-md-4">
+							<input class="form-control  c-square c-theme input-sm date" placeholder="" type="text" id="fechaSalida" name="fechaSalida" required readonly>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4">
+					{% if dateMsg is defined and dateMsg[lang] is defined %}
+					<div class="c-content-title-3 c-title-sm c-border-red c-margin-t-15" id="notaf">
+						<p class="c-font-red-3" style="font-size:14px;">
+							{{ dateMsg[lang] }}
+						</p>
+					</div>
+					{% else %}
+						&nbsp;
+					{% endif %}
+				</div>
+        <div class="col-sm-12 col-md-12 allfechasmsg"></div>
+				<div class="col-sm-6 col-md-12 c-margin-b-15">
+					<hr>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="from-group">
+						<div class="row">
+							<label class="col-md-4 control-label">Hotel</label>
+							<div class="col-md-6">
+								<select class="form-control  c-square c-theme input-sm" id="idHotel" name="idHotel"required {{ (blkAll is defined and blkAll == true) ? 'disabled': ''  }}>
+									<option value="">Seleccionar</option>
+									{% for ht in hoteles %}
+										{% set hidden = (ht.hidden is defined and ht.hidden == true )  ? true :  false %}
+										{% if hidden is empty %}
+										{% set select = '' %}
+										{% if ht.index == idHotel %}
+											{% set select = 'selected' %}
+										{% endif %}
+										{% if noOne is defined and noOne == true %}
+											{% set select = (ht.index == idHotel) ? 'selected' : '' %}
+										{% endif %}
+										{% if first is defined and idHotel == 1 %}
+											{% set select = (ht.index == first) ? 'selected' : '' %}
+										{% endif %}																											
+										<option value="{{ ht.index }}" {{ select }} {{ (ht.agotado == true) ? 'disabled' : '' }}>{{ ht.nombre }} {{ (ht.agotado == true) ? '[AGOTADO]' : '' }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<label class="col-md-12 control-label">Habitaciones</label>
+							<div class="col-sm-12 col-md-12" id="habitaciones">
+								<div class="text-center"><span class="has-error">Seleccionar el hotel</span></div>
+							</div>
+							<div class="col-md-12" data-div-for="habitacionc">
+								<small style="display:none;" class="help-block" data-fv-validator="notEmpty" data-fv-for="habitacionc" data-fv-result="INVALID">Por favor introduce un valor</small>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-6">
+						<div class="item">
+							<div class="c-content-person-1 text-center">
+								<div class="c-caption c-content-overlay">
+									<div class="c-overlay-wrapper">
+										<div class="c-overlay-content text-center" align="center">
+											<a href="{{ asset('assets')}}/img/hotel/source.png" data-lightbox="fancybox" data-fancybox-group="gallery-1" id="htimg">
+												<i class="icon-magnifier"></i>
+											</a>
+										</div>
+									</div>
+									<img class="c-overlay-object img-responsive center-block" src="{{ asset('assets')}}/img/hotel/source.png" alt="" id="httumb" align="center">
+								</div>
+								<div class="c-body">
+									<div class="c-position text-center no-float" id="htnombre"><span class="has-error">Seleccionar el hotel</span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-12">
+						<div class="c-content-title-3 c-title-sm c-theme-border c-margin-t-15" id="msgs">
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<h2 class="c-theme-font c-font-uppercase text-center">Datos del huésped</h2>
+						<hr>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Nombre</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="nombre" name="nombre" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Apellido paterno</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="apaterno" name="apaterno" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Apellido materno</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="amaterno" name="amaterno" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row  c-margin-t-15">
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">País</label>
+								<div class="col-md-8">
+									<select class="form-control  c-square c-theme input-sm paisess" id="pais" name="pais" required>
+										<option value="">Seleccionar</option>
+										{% for pa in paises | keys %}
+										<option value="{{ pa }}">{{ paises[pa] }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Código postal</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="cp" name="cp" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Estado</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="estado" name="estado" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row c-margin-t-15">
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Colonia / Provincia</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="colProvi" name="colProvi" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Dirección</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm" placeholder="Calle y número" type="text" id="direccion" name="direccion" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Teléfono</label>
+								<div class="col-md-8">
+									<input class="form-control c-square c-theme input-sm mphone" placeholder="Incluir clave lada" type="text" id="telefono" name="telefono" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row c-margin-t-15">
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Celular</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm mphones" placeholder="" type="text" id="celular" name="celular">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Correo</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm" placeholder="" type="email" id="correo" name="correo" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row c-margin-t-15">
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Acompañantes</label>
+								<div class="col-md-8">
+									<textarea class="form-control  c-square c-theme" rows="3" id="acom" name="acom" placeholder="Por favor separa sus acompañantes con ',' (coma)"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Comentarios</label>
+								<div class="col-md-8">
+									<textarea class="form-control  c-square c-theme" rows="3" id="comentarios" name="comentarios" placeholder="Máximo 500 caracteres"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="row c-margin-t-20">
+					<div class="col-sm-12 col-md-12">
+						<h2 class="c-theme-font c-font-uppercase text-center">Datos de facturación</h2>
+						<hr>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-6">
+							<div class="from-group">
+								<label class="col-md-4 control-label">¿Va requerir factura?</label>
+								<div class="col-md-8">
+									<div class="c-radio-inline">
+										<div class="c-radio has-info">
+											<input id="sifac" class="c-radio rfactura" name="factura" type="radio" value="1">
+											<label for="sifac">
+												<span class="inc"></span>
+												<span class="check"></span>
+												<span class="box"></span> Si
+											</label>
+										</div>
+										<div class="c-radio has-info">
+											<input id="nofac" class="c-radio rfactura" name="factura" type="radio" value="0">
+											<label for="nofac">
+												<span class="inc"></span>
+												<span class="check"></span>
+												<span class="box"></span> No
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">R.F.C</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm factura" placeholder="Solo para México" type="text" id="rfc" name="rfc" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Razón Social</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm factura" placeholder="" type="text" id="rsFactura" name="razonSocial" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">País</label>
+								<div class="col-md-8">
+									<select class="form-control  c-square c-theme input-sm factura paisess" id="paisFactura" name="paisFactura">
+										<option value="">Seleccionar</option>
+										{% for paf in paises | keys %}
+										<option value="{{ paf }}">{{ paises[paf] }}</option>
+										{% endfor %}									
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row c-margin-t-15">
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Código Postal</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="cpFactura" name="cpFactura" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Estado</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm factura" placeholder="" type="text" id="estadoFactura" name="estadoFactura" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Delegación  / Municipio</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm factura" placeholder="Solo para México" type="text" id="delMunFactura" name="delMunFactura" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row c-margin-t-15">
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Colonia  / Provincia</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm factura" placeholder="" type="text" id="colProFactura" name="colProFactura" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Dirección</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm factura" placeholder="Calle y número" type="text" id="direccionFactura" name="direccionFactura" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Teléfono</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm ffhone" placeholder="" type="text" id="telefonoFactura" name="telefonoFactura" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row c-margin-t-15">
+						<div class="col-sm-12 col-md-4">
+							<div class="from-group">
+								<label class="col-md-4 control-label">Correo</label>
+								<div class="col-md-8">
+									<input class="form-control  c-square c-theme input-sm factura" placeholder="" type="text" id="correoFactura" name="correoFactura" required>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<h2 class="c-theme-font c-font-uppercase text-center">Términos y condiciones</h2>
+						<hr>
+					</div>
+					<div class="col-sm-12 col-md-6">
+						<div class="from-group">
+							<div class="c-checkbox-inline">
+								<div class="c-checkbox">
+									<input type="checkbox" id="acepto" name="acepto" class="c-check"  value="1" required>
+									<label for="acepto" class="c-font-thin c-font-17">
+										<span></span>
+										<span class="check"></span>
+										<span class="box"></span> Acepto Políticas de reservación y cancelación
+									</label>
+								</div>
+							</div>
+						</div>
+						<div>
+							{% if links is defined and links[lang] is defined  %}
+							<ul class="list-unstyled">
+								{% for l in links[lang] %}
+									{% if l is not empty %}
+										<li>
+											<a class="btn btn-primary btn-xs cbp-singlePage" href="{{ l.url }}/{{lang}}">
+												<i class="icon-book-open"></i> {{ l.name }}
+											</a>
+										</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+							{% endif%}							
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-6" id="captchaContainer">
+					</div>
+				</div>
+				<div class="row ocultos">
+					<input type="hidden" id="operador" name="operador" value="{{ (operador is empty) ?  'MA' : operador.sortName }}">
+					<input type="hidden" id="claveEvento" name="claveEvento" value="{{ claveEvento }}">
+					<input type="hidden" id="divisa" name="divisa" value="{{ currency | upper }}">
+					<input type="hidden" id="currency" name="currency" value="{{ currency }}">
+					<input type="hidden" id="evento" nombre="evento" value="{{ evento }}">
+					<input type="hidden" id="lang" name="lang" value="{{ lang }}">
+					<input type="hidden" id="hotel" name="hotel" value="">
+					<input type="hidden" id="fechaEvento" name="fechaEvento" value="{{ ( fechas is defined and fechas[lang] is defined ) ? fechas[lang] : fechas }}">
+					<input type="hidden" id="nombreEvento" name="nombreEvento" value="{{evento}}">
+					<input type="hidden" id="sedeEvento" name="sedeEvento" value="{{ ( sede is defined and sede[lang] is defined) ? sede[lang] : sede }}">
+					<input type="hidden" id="noches" name="noches" value="{{ noches }}">
+					<input type="hidden" id="imgHotel" name="imgHotel" value="">
+					<input type="hidden" id="fechaLleMin" name="fechaLleMin" value='{{ fechaLleMin }}'>
+					<input type="hidden" id="fechaLleMax" name="fechaLleMax" value='{{ fechaLleMax }}'>
+					<input type="hidden" id="fechaSalMin" name="fechaSalMin" value='{{ fechaSalMin }}'>
+					<input type="hidden" id="fechaSalMax" name="fechaSalMax" value='{{ fechaSalMax }}'>
+					<input type="hidden" id="urlReserva" name="urlReserva" value='{{ urlReserva }}'>
+					<input type="hidden" id="urlConfirma" name="urlConfirma" value='{{ urlConfirma }}'>
+					<input type="hidden" id="urlApplyPay" name="urlApplyPay" value='{{ urlApplyPay }}'>
+					<input type="hidden" id="urlChekout" name="urlChekout" value='{{ urlChekout }}'>
+					<input type="hidden" id="urlExecute" name="urlExecute" value='{{ urlExecute }}'>
+					<input type="hidden" id="urlPayReturn" name="urlPayReturn" value='{{ urlPayReturn is defined ? urlPayReturn : '' }}'>
+					<input type="hidden" id="rutaImg" name="urlReserva" value='{{ rutaImg }}'>
+					<input type="hidden" id="links" name="links" value='{{ linksJson }}'>
+					<input type="hidden" id="host" name="host" value='{{ host }}'>
+					<input type="hidden" id="hostFull" name="hostFull" value='{{ hostFull }}'>
+					<input type="hidden" id="assets" name="assets" value='{{ asset('assets')}}'>
+					<input type="hidden" id="protocol" name="protocol" value='{{ protocol }}'>
+					<input type="hidden" id="pmode" name="pmode" value='{{ (mode is defined) ? mode : 'live'  }}'>
+					<input type="hidden" id="blkAco" name="blkAco" value='{{ (blkAco is defined) ? blkAco : ''  }}'>
+				</div>
+				<div class="row c-margin-t-15">
+					<div class="col-sm-12 col-md-12" align="right">
+						<button type="button" class="btn btn-danger"><div>Cancelar</div></button>
+						<button type="submit" class="btn btn-primary disabled" disabled id="send"><div>Reservar</div></button>
+					</div>
+				</div>
+			</form>
+			<input type="hidden" id="hotelesJson" name="hotelesJson" value='{{ hotelesJson }}'>
+			<input type="hidden" id="paises" name="paises" value=''>
+			<input type="hidden" id="operador" name="operador" value='{{ operadorJson }}'>
+			<div id="result" class="row">
+				<div class="col-md-8 col-sm-10 center-block no-float">
+					<div class="c-content-feature-2 c-option-2 c-theme-bg-parent-hover">
+						<div id="mdb" class="hidden">
+							<div class="c-icon-wrapper c-theme-bg-on-parent-hover">
+								<div class="c-content-line-icon c-theme c-icon-8"></div>
+							</div>
+							<h3 class="c-font-uppercase c-title">Registro de reservación completado correctamente, Estará completa cuando recibamos la notificación de su pago</h3>
+							<p>Forma de pago: <strong>Depósito bancario</strong></p>
+							<p>Se envió un correo a <b><span id="nmail"></span></b> con los detalles</p>
+							<p class="c-border-red c-border">
+								Una vez que el departamento de reservaciones haya recibido la comprobación del pago se le hará llegar misma vía en un periodo no mayor a 48 horas su número de confirmación.
+							</p>
+							<div align="center" class="c-margin-t-20">
+								<a href="javascript::;" onclick="window.location.reload(true)" class="btn btn-success">Regresar</a>
+							</div>
+						</div>
+						<div id="mpp" class="hidden">
+							<div class="c-icon-wrapper c-theme-bg-on-parent-hover">
+								<div class="c-content-line-icon c-theme c-icon-8"></div>
+							</div>
+							<h3 class="c-font-uppercase c-title">Datos de reservación registrados correctamente, estará completa cuando recibamos la notificación de su pago</h3>
+							<p>Forma de pago: <strong>Tarjeta de crédito / PayPal</strong></p>
+							<p class="c-border-red c-border">
+								Una vez que el departamento de reservaciones haya recibido la comprobación del pago se le hará llegar vía correo elctrónico en un periodo no mayor a 48 horas su número de confirmación.
+							</p>
+							<div class="c-margin-t-20" align="center">
+								<!--<a href="javascript::;" class="btn btn-link" id="ppbutton" target="_black"><img src="{{ asset('assets')}}/img/F-1s-200px.svg" height="48" id="ppimg"></a>-->
+							</div>
+						</div>
+						<div id="ppplus">
+						</div>
+						<button type="submit" id="continueButton" class="btn btn-primary btn-block hidden"> Pagar </button>
+						<div id="aproved" class="c-content-box c-size-lg c-overflow-hide c-bg-white hidden">
+							<div class="c-shop-order-complete-1 c-content-bar-1 c-align-left c-bordereds c-theme-border c-shadow">
+	              <div class="c-theme-bg">
+	                  <p class="c-message c-center c-font-white c-font-20 c-font-sbold">
+	                      <i class="fa fa-check"></i> Gracias! Su pago ha sido aceptado</p>
+	              </div>
+                <div class="c-bank-details c-margin-t-30 c-margin-b-30">
+                    <!--<h3 class="c-border-bottom">Account Name : &nbsp;
+                        <span class="c-font-thin">Themehats</span>
+                    </h3>-->
+                    <ul class="c-list-inline list-inline order row">
+                        <li class="col-xs-12 col-sm-6 col-md-3">
+                            <h3 class="small">Orden</h3>
+                            <p id="c_order" class="small"></p>
+                        </li>
+                        <li class="col-xs-12 col-sm-6 col-md-3">
+                            <h3 class="small">Descripción</h3>
+                            <p id="c_description" class="small"></p>
+                        </li>
+                        <li class="col-xs-12 col-sm-6 col-md-3">
+                            <h3 class="small">Transacción</h3>
+                            <p id="c_id" class="small"></p>
+                        </li>
+                        <li class="col-xs-12 col-sm-6 col-md-2">
+                            <h3 class="small">Total</h3>
+                            <p id="c_total" class="small"></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="c-border-bottom c-row-item">
+                	<div class="row">
+                		<div class="col-md-7 col-sm-12 c-image">
+                			<img id="imgfinal" class="img-responsive">
+                		</div>
+                		<div class="col-md-5 col-sm-12">
+                			<h3 class="small" id="finalName"></h3>
+                			<h3 class="small" id="finalHotel">Hotel: <span class="grey56"></span> </h3>
+                			<h3 class="small" id="finalHabitacion">Habitación:  <span class="grey56"></span></h3>
+                		</div>
+                	</div>
+                </div>
+                <div class="c-border-bottom c-row-item">
+                	<div class="row">
+                		<div class="col-sm-12 col-md-12">
+                			<a href="{{ urlIndex }}" class="btn btn-block btn-info">Regresar</a>
+                		</div>
+                	</div>
+                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	{% endblock %}
+

@@ -1,0 +1,20 @@
+<h1 class="page-header">Transporte</h1>
+
+<table id="tablePar"></table>
+<script type="text/javascript">
+$('#tablePar').bootstrapTable({
+  url: '{{ url("adminCMI.getParticipantesCMI") }}',
+  pagination: true,
+  search: true,
+  columns: [{
+    field: 'USERID',
+    title: 'ID'
+  }, {
+    field: 'NAME',
+    title: 'Nombre'
+  }, {
+    field: 'EMAIL',
+    title: 'Correo'
+  }]
+})
+</script>

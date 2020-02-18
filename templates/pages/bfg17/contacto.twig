@@ -1,0 +1,74 @@
+{% extends "layouts/bfg17/layout.twig" %}
+
+{% block content %}
+<section class="section-wrap pb-20 pt-30">
+	<div class="container" id="formuc">
+		<div class="row">
+			<div class="col-md-8 col-sm-12">
+				<form action="{{ url('bfg17.sendContacto') }}" method="post" id="frmContacto">
+		      <div class="form-group row">
+		        <div class="col-md-6 col-sm-12">
+		          <label>Nombre</label>
+		          <input class="form-control form-flat" name="nombre" id="nombre" required type="text" value="">
+		        </div>
+		        <div class="col-md-6 col-sm-12">
+		          <label>Correo</label>
+		          <input class="form-control form-flat" name="correo" id="correo" required type="text" value="">
+		        </div>      	
+		      </div>
+		      <div class="form-group row">
+				    <div class="col-md-6 col-sm-12">
+				      <label>Asunto</label>
+				      <input class="form-control form-flat" name="asunto" id="asunto" required type="text" value="">
+				    </div>
+				    <div class="col-sm-12 col-md-12">
+				    	<label>Mensaje</label>
+				    	<textarea name="mensaje" id="mensaje" class="no-resize form-controls" rows="3" required></textarea>
+				    </div>	      	
+		      </div>
+		      <div class="form-group row">
+		        <div class="col-md-3 col-sm-6">
+		          <div id="captchaContainerC">
+		          </div>
+		        </div>
+		      </div>      
+		      <div class="form-group row">
+		        <button type="submit" class="btn btn-sm btn-color pull-right" id="send"><div>Enviar</div></button>
+		      </div>		      
+		    </form>
+			</div>
+			<div class="col-md-4 col-sm-12">
+				<hr>
+				<h6 class="text-info normal-weight">T&C</h6>
+				<ul class="list-unstyled mb-20">
+					<li><span class="fa-fw icon-profile-male"></span> Gerardo Terreros</li>
+					<li><span class="fa-fw icon-envelope"></span> gterreros@tcevents.com</li>
+					<li><span class="fa-fw icon-phone"></span> +52 55 5148 7500 ext. 7576</li>
+				</ul>
+				<ul class="list-unstyled">
+					<li><span class="fa-fw icon-profile-female"></span> Mónica Flores</li>
+					<li><span class="fa-fw icon-envelope"></span> mflores@tcevents.com</li>
+					<li><span class="fa-fw icon-phone"></span> +52 55 5148 7500 ext. 7513</li>
+				</ul>				
+				<hr>
+			</div>
+		</div>
+	</div>
+	<div class="container hidden" id="resultc">
+    <div class="row icon-boxes style-2">
+      <div class="col-md-12 mb-60">
+        <div class="service-item-box text-center">
+          <a href="#">
+            <i class="fa fa-check text-success-important"></i>
+          </a>
+          <h3>Mensaje enviado correctamente</h3>
+          <p class="mb-10">En breve recibiras una respuesta</p>
+          <div>
+            <a href="{{ url('bfg17.contacto') }}" class="btn btn-md btn-color">Regresar</a>
+          </div>   
+        </div>            
+        </div>      
+    </div>  		
+	</div>
+</section>
+{% endblock %}

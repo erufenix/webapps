@@ -1,0 +1,123 @@
+{% extends "layouts/bfg17/layout.twig" %}
+
+{% block content %}
+<section class="section-wrap pb-20 pt-20">
+  <div class="container" id="formu">
+    <form action="{{ url('setRegistro') }}" method="post" id="frmRegistro">
+      <div class="form-group row">
+        <div class="col-md-12 col-sm-12">
+          <legend class="text-info">Datos generales</legend>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label>Nombre</label>
+          <input class="form-control form-flat" name="nombre" id="nombre" required type="text" value="{{ (data.get('nombre') is null) ? '' : data.get('nombre')  }}">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label>Apellidos</label>
+          <input class="form-control form-flat" name="apellidos" id="apellidos" required type="text" value="{{ (data.get('apellidos') is null) ? '' : data.get('apellidos')  }}">
+        </div>                      
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6 col-sm-12">
+          <label>Correo</label>
+          <input class="form-control form-flat" name="correo" id="correo" required type="email" value="{{ (data.get('correo') is null) ? '' : data.get('correo')  }}">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label>Celular</label>
+          <input class="form-control form-flat" name="celular" id="celular" required type="text" value="{{ (data.get('celular') is null) ? '' : data.get('celular')  }}">
+        </div>                      
+      </div>
+      <div class="form-group row">
+      	<div class="col-md-6 col-sm-12">
+      		<label>Razón social</label>
+      		<input class="form-control form-flat" name="razonSocial" id="razonSocial" required type="text" value="{{ (data.get('razonSocial') is null) ? '' : data.get('razonSocial')  }}">
+      	</div>          
+      </div>
+      <hr>
+      <div class="form-group row">
+        <div class="col-md-12 col-sm-12">
+          <legend class="text-info">Código de vestimenta</legend>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="note note-info">
+            <span class="fa fa-info text-info"></span>
+            <span class="text-info">Casual Sport: Jeans cómodos;  polo, camisa; calzado cómodo (tennis o zapato cerrado bajo, en el caso de damas) y gorra.</span>
+          </div>          
+        </div>          
+      </div>
+      <div class="form-group row">
+        <!--<div class="col-md-3 col-sm-12">
+          <label>Fecha en que asiste a la Experiencia</label>
+          <input class="form-flat dates" name="fechaLlegada" id="fechaLlegada" type="text" value="{{ (data.get('fechaLlegada') is null) ? '' : data.get('fechaLlegada')  }}" readonly required>
+        </div>
+        <div class="col-md-5 col-sm-12">
+          <label>&nbsp;</label>
+          <div class="note note-danger" id="msgfecha">
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <label>Fecha de salida</label>
+          <input class="form-flat dates" name="fechaSalida" id="fechaSalida" type="text" value="{{ (data.get('fechaSalida') is null) ? '20/06/2017' : data.get('fechaSalida')  }}" readonly required>
+        </div>-->      
+      </div>
+      <div class="form-group row">
+          <div class="col-md-3 col-sm-12">
+            <label>¿Alguna alergia?</label>
+            <input class="form-control form-flat" name="alergia" id="alergia" type="text" value="{{ (data.get('alergia') is null) ? '' : data.get('alergia')  }}" required>
+          </div> 
+      </div>
+      <hr>
+      <div class="form-group row">
+        <div class="col-md-12 col-sm-12">         
+          <input type="checkbox" class="input-checkbox" name="licencia" id="licencia" value="1">
+          <label for="licencia" class="legend text-info" id="llicencia">Licencia</label>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="note note-danger">
+            <span class="fa fa-warning text-danger"></span> <span class="text-danger">Si no llevan la licencia vigente al evento, no podrán realizar las pruebas de manejo.</span>
+          </div>          
+        </div>          
+        <div class="col-md-4 col-sm-12 dlicencia hidden">
+          <label>Lugar de emisión</label>
+          <input class="form-control form-flat licencia" name="lugarLicencia" id="lugarLicencia" type="text" value="{{ (data.get('lugarLicencia') is null) ? '' : data.get('lugarLicencia')  }}">
+        </div>
+        <div class="col-md-4 col-sm-12 dlicencia hidden">
+          <label>4 ultimos dígitos</label>
+          <input class="form-control form-flat licencia" name="digitos" id="digitos" type="text" value="{{ (data.get('digitos') is null) ? '' : data.get('digitos')  }}" data-fv-regexp="true" data-fv-regexp-regexp="[1-9][0-9]*" data-fv-regexp-message="Introduce un valor diferente a cero" maxlength="4">
+        </div>
+        <div class="col-md-4 col-sm-12 dlicencia hidden">
+          <label>Valida hasta</label>
+          <input class="form-control form-flat licencia ldate" name="lvalida" id="lvalida" type="text" value="{{ (data.get('lvalida') is null) ? '' : data.get('lvalida')  }}" readonly>
+        </div>                
+      </div>
+      <hr>
+      <div class="form-group row">
+        <div class="col-md-3 col-sm-6">
+          <div id="captchaContainer">
+          </div>
+        </div>
+      </div>      
+      <div class="form-group row">
+        <button type="submit" class="btn btn-sm btn-color pull-right" id="send"><div>Enviar</div></button>
+      </div>
+    </form>
+  </div>
+  <div class="container hidden" id="result">
+    <div class="row icon-boxes style-2">
+      <div class="col-md-12 mb-60">
+        <div class="service-item-box text-center">
+          <a href="#">
+            <i class="fa fa-check text-success-important"></i>
+          </a>
+          <h3>Registro completado correctamente</h3>
+          <p class="mb-10">Se envió un correo a <b><span id="nmail"></span></b> con los detalles</p>
+          <!--<p class="mb-10">Si no vez el correo en tu <i>Bandeja de entrada</i>, por favor verifica tu bandeja de  <i>"No deseados"</i> o  <i>"Spam"</i></p>-->
+          <div>
+            <a href="{{ url('bfg17.registro') }}" class="btn btn-md btn-color">Agregar otro</a>
+          </div>   
+        </div>            
+        </div>      
+    </div>   
+  </div>
+</section>
+{% endblock %}

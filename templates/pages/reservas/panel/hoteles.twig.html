@@ -1,0 +1,35 @@
+<div id="toolbar" class="pull-right">
+ <button class="btn btn-sm btn-icon deep-orange-A400" data-src="{{ url('panel.addHotel') }}/{{ evento.0.eve_claveEvento }}/0" data-title="Agregar hotel" data-toggle="modal" data-target="#m-h" data-ui-toggle-class="fade-right-big" data-ui-target="#animate" data-cancel="Cancelar" data-accept="Agregar" data-id="addHotBtn" data-form="addHotel"><i class="fa fa-plus"></i></button>
+</div>
+<table  id="tblhotel" 
+        data-toggle="table" 
+        data-url="{{ url('panel.hoteles') }}/{{ evento.0.eve_idEvento }}" 
+        data-pagination="true" 
+        data-side-pagination="client" 
+        data-page-list="[5, 10, 20, 50, 100, 200]" 
+        data-search="true" 
+        data-show-refresh="true" 
+        data-show-toggle="false" 
+        data-show-columns="false" 
+        data-filter-control="true" 
+        data-classes="table table-hovers table-condensed table-no-bordered" 
+        data-unique-id="idHotel" 
+        data-toolbar="#toolbar"
+        data-cve="{{ evento.0.eve_claveEvento }}"
+        data-src-image="{{ asset('himg')}}"
+        data-assets="{{asset('assets')}}">
+  <thead>
+    <tr>
+      <th data-field="idHotel" data-sortable="false" data-align="center" data-width="20">ID</th>
+      <th data-field="nombreHotel" data-sortable="false" data-align="center">Hotel</th>
+      <th data-field="fotoHotel" data-sortable="false" data-align="center" data-formatter="formatImg">Foto</th>
+      <th data-sortable="false" data-align="center" data-formatter="formatTools"><i class="material-icons">settings</i></th>
+    </tr>
+  </thead>
+  <tbody>                              
+  </tbody>
+</table>
+
+
+
+

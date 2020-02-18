@@ -1,0 +1,133 @@
+{% extends 'pages/citas_exporail/layout/layOutExpoRail.twig' %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-10 mx-auto">
+      <form class="text-center needs-validation" style="color: #757575;" id="setcitas" method="post" action="{{ url('citaExporail.setCita') }}">
+        <div class="border border-light p-5" id="scita">
+          <p class="h5 mb-4 text-center"> {{ request.get('nombre') }}</p>
+          <p class="h6 mb-1 text-center border-bottom border-light p-1"> {{ request.get('correo') }}</p>
+            <div class="md-form form-group">
+              <select class="browser-default custom-select mdb-select md-form" id="otema" name="otema" required>
+                <option value="">Seleccionar Tema</option>
+                {% for te in onlyTemas %}
+                <option value="{{ te.noTema }}">{{ te.tema }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="md-form form-group">
+              <select class="browser-default custom-select mdb-select md-form" id="ostema" name="ostema" disabled required>
+                <option value="">Seleccionar Subtema</option>
+              </select>       
+            </div>
+            <div class="text-left invisible md-form form-group iday" align="left">
+              <span class="badge badge-success bg1" id="dia"></span>
+              <span class="badge badge-success bg1" id="mesa"></span>
+            </div>
+            <div class="md-form form-group">
+              <div class="text-left invisible iday">
+                <span class="badge badge-success bg1">Horarios:</span>
+              </div>
+              <div id="hcitas"></div>
+            </div>
+            <div class="md-form form-group ocultos">
+              <input type="hidden" value="{{ (request.get('nombre') is defined ) ? request.get('nombre') : '' }}" name="nombre" id="nombre">
+              <input type="hidden" value="{{ (request.get('correo') is defined ) ? request.get('correo') : '' }}" name="correo" id="correo">
+              <input type="hidden" value="{{ (request.get('empresa') is defined ) ? request.get('empresa') : '' }}" name="empresa" id="empresa">
+              <input type="hidden" value="" name="cita" id="cita">
+              <input type="hidden" value="" name="dia" id="vdia">
+              <input type="hidden" value="" name="mesa" id="vmesa">  
+            </div>
+            <div class="md-form form-group">       
+              <button class="btn red-rail text-white btn-block my-4 waves-effect z-depth-0" type="submit" id="sendc"><div>Continuar</div></button>
+            </div>          
+        </div>
+        <div class="border border-light p-5 invisible" id="ccita">
+          <div class="text-center m-3">
+            <span class="far fa-calendar-alt fa-5x text-info"></span>
+          </div>
+          <div class="text-center m-2 p-1">
+            <p class="h4" id="cempresa"></p>
+          </div>          
+          <div class="text-center m-2 p-1">
+            <p class="h5" id="cnombre"></p>
+          </div>
+          <div class="text-center m-2 p-1">
+            <ul class="list-unstyled">
+              <li class="rowi">
+                <span class=""><strong>Dia:</strong></span>
+                <span class="" id="cdia"></span>
+              </li>
+              <li class="rowi">
+                <span class=""><strong>Mesa:</strong></span>
+                <span class="" id="cmesa"></span>
+              </li>              
+              <li class="rowi">
+                <span class=""><strong>Hora:</strong></span>
+                <span class="" id="chora"></span>
+              </li> 
+              <li class="rowi">
+                <span class=""><strong>Tema:</strong></span>
+                <span class="" id="ctema"></span>
+              </li>                                   
+            </ul>
+          </div>
+          <div class="md-form form-group text-right" alig="right">
+            <button class="btn red-rail text-white my-4 waves-effect z-depth-0" type="button" id="return"><div>Regresar</div></button>
+            <button class="btn red-rail text-white my-4 waves-effect z-depth-0" type="button" id="confirm"><div>Confirmar</div></button>
+          </div>  
+        </div>
+        <div class="border border-light p-5 invisible" id="fcita">
+          <div class="text-center m-3">
+            <span class="far fa-calendar-check fa-5x text-success"></span>
+          </div>
+          <div class="text-center m-2 p-1">
+            <p class="h4" id="fempresa"></p>
+          </div>          
+          <div class="text-center m-2 p-1">
+            <p class="h5" id="fnombre"></p>
+          </div>
+          <div class="text-left m-2 p-1">
+            <ul class="list-unstyled">
+              <li class="rowi">
+                <span class=""><strong>Dia:</strong></span>
+                <span class="" id="fdia"></span>
+              </li>
+              <li class="rowi">
+                <span class=""><strong>Mesa:</strong></span>
+                <span class="" id="fmesa"></span>
+              </li>              
+              <li class="rowi">
+                <span class=""><strong>Hora:</strong></span>
+                <span class="" id="fhora"></span>
+              </li> 
+              <li class="rowi">
+                <span class=""><strong>Tema:</strong></span>
+                <span class="" id="ftema"></span>
+              </li>                                   
+            </ul>
+          </div>
+          <p class="note note-warning text-left">
+            - Es requerimiento obligatorio  llevar en una hoja los datos básicos de contacto de la empresa y una memoria USB con los productos y servicios<br>
+            - FONATUR tren Maya en terraza Emporio<br>
+            - Llegar 5 minutos antes dela cita.<br>
+          </p>                          
+          <div class="md-form form-group">       
+            <a class="btn red-rail text-white btn-block my-4 waves-effect z-depth-0" href="{{ index }}"><div>Regresar</div></a>
+          </div>                   
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$("#tema").val('');
+$("#cita").val('');
+$("#vdia").val('');
+$("#vmesa").val('');
+</script>
+{% endblock %}  

@@ -1,0 +1,36 @@
+{% extends "layouts/upFront/layout.twig" %}
+{% block content %} 
+  <div class="container">
+    <div class="row">
+      <div class="contact-content col-lg-12 col-md-12 col-sm-12">
+        <div class="contact-form">
+          <h2 class="text-xs-center montserrat text-uppercase">Confirmación de registro</h2>
+          <h4 class="text-xs-center">{{ rq.nombre }} {{ rq.apellidos }} </h4>
+          <hr>
+          <div>
+            <h6 class="text-xs-center text-uppercase">Agregar evento al calendario</h6>
+            <div class="social-menu">
+                <ul id="social-menu-footer" class="menu">
+                    <li class="menu-item">
+                        <a href="{{ asset('assets')}}/files/UpFront2020.ics"><img src="{{ asset('assets')}}/img/040-outlook.svg" width="32"></a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=MHM0cm0xM2I0YTNzbjBlcXNsNm5rdDRzbzIgM3J1OGpwY2kyajlsNGdyZGY0dGRrYWxsbWdAZw&tmsrc=3ru8jpci2j9l4grdf4tdkallmg%40group.calendar.google.com" target="_blank"><img src="{{ asset('assets')}}/img/gcalendar_32.png" width="32"></a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ asset('assets')}}/files/UpFront2020.ics"><img src="{{ asset('assets')}}/img/082-apple.svg" width="32"></a>
+                    </li>                     
+                </ul>
+            </div>
+            <p class="lead">
+              Esta invitación es personal e intransferible, días antes del evento recibirá en este mismo correo la invitación oficial al evento, si tiene cualquier duda o requiere ponerse en contacto con nosotros lo puede hacer al correo <a href="mailto:juliana.gil@fahorro.com.mx">juliana.gil@fahorro.com.mx</a>, Muchas gracias.
+            </p>
+            <div align="center" class="m-t-3">
+              <a class="btn btn-primary m-b-2" href="{{ url('upFront.index') }}"> Regresar </a>
+            </div>         
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

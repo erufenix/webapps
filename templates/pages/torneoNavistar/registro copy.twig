@@ -1,0 +1,130 @@
+{% extends "layouts/torneoNavistar/layout.twig" %}
+{% block content %}
+<div class="container">
+  <form action="#" method="post" id="ftorneo" class="sky-form">
+    <div class="row">
+      <div class="col col-6">
+        <label class="label font-weight-bolder">Nombre completo</label>
+        <label class="input"> <i class="icon-append far fa-user"></i>
+          <input type="text" name="nombre" id="nombre">
+        </label>
+      </div>
+      <div class="col col-3">
+        <label class="label font-weight-bolder">Correo</label>
+        <label class="input"> <i class="icon-append fas fa-at"></i>
+          <input type="email" name="correo" id="correo">
+        </label>
+      </div>
+      <div class="col col-3">
+        <label class="label font-weight-bolder">Teléfono</label>
+        <label class="input"> <i class="icon-append fas fa-mobile-alt"></i>
+          <input type="text" name="telefono" id="telefono">
+        </label>
+      </div>               
+    </div>
+    <div class="row mt-4">
+      <div class="col col-6">
+        <label class="label font-weight-bolder">Empresa</label>
+        <label class="input"> <i class="icon-append far fa-building"></i>
+          <input type="text" name="empresa" id="empresa">
+        </label>
+      </div>   
+    </div>
+    <div class="row mt-4">
+      <hr>
+    </div>
+    <div class="row mt-4">
+      <div class="col col-4">
+        <label class="select">
+          <select name="transporte" id="transporte">
+            <option value="" disabled="">Trasporte</option>
+            <option value="Terrestre">Terrestre</option>
+            <option value="Aereo">Aereo</option>
+          </select>
+          <i></i>
+        </label>    
+      </div>
+    </div>
+    <div class="row mt-4">
+      <hr>
+    </div>
+    <div class="row mt-4">
+      <div class="col col-4">
+        <label class="select">
+          <select name="habitacion" id="habitacion">
+            <option value="" disabled="">Habitación</option>
+            <option value="Sencilla">Sencilla</option>
+            <option value="Doble">Doble</option>
+          </select>
+          <i></i>
+        </label>    
+      </div>
+    </div>
+    <div class="row mt-4">
+      <hr>
+    </div>
+    <div class="row mt-4">
+      <div class="col col-6">
+        <div class="inline-group">
+          <label class="radio"><input type="radio" name="radio-inline" value="Jugador" name="tipo" class="tipo"><i></i>Jugador</label>
+          <label class="radio"><input type="radio" name="radio-inline" value="Patrocinador" name="tipo" class="tipo"><i></i>Patrocinador</label>
+        </div>    
+      </div>
+    </div>
+    <div class="row mt-4 djugador hidden">
+      <div class="col col-2">
+        <label class="label font-weight-bolder">Handicap</label>
+        <label class="input"> <i class="icon-append fas fa-sort-numeric-up-alt"></i>
+          <input type="text" name="empresa" id="empresa">
+        </label>    
+      </div>
+      <div class="col col-2">
+        <label class="label font-weight-bolder">&nbsp;</label>
+        <label class="select">
+          <select name="equipo" id="equipo">
+            <option value="" disabled="">¿Renta de equipo?</option>
+            <option value="Sencilla">Si</option>
+            <option value="Doble">No</option>
+          </select>
+          <i></i>
+        </label>    
+      </div>
+      <div class="col col-2">
+        <label class="label font-weight-bolder">&nbsp;</label>
+        <label class="select">
+          <select name="lado" id="lado">
+            <option value="" disabled="">Lado</option>
+            <option value="Sencilla">Izquierdo</option>
+            <option value="Doble">Derecho</option>
+          </select>
+          <i></i>
+        </label>    
+      </div>
+      <div class="col col-2">
+        <label class="label font-weight-bolder">&nbsp;</label>
+        <label class="select">
+          <select name="alergiasi" id="alergiasi">
+            <option value="" disabled="">¿Alergias?</option>
+            <option value="Sencilla">Si</option>
+            <option value="Doble">No</option>
+          </select>
+          <i></i>
+        </label>      
+      </div>
+      <div class="col col-4">
+        <label class="label">Alergia</label>
+        <label class="textarea">
+          <i class="icon-append far fa-comment"></i>
+          <textarea rows="4" name="alergia" id="alergia"></textarea>
+        </label>    
+      </div>      
+    </div>
+    <div class="row mt-5">
+      <div>
+        <button type="submit" class="button" id="send">Enviar</button>
+      </div>
+    </div>
+  </form>   
+</div>
+
+{% endblock %}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>5º Torneo de Golft Navistar</title>
+		<meta name="keywords" content="themeforest template"/>
+		<meta name="description" content="5º Torneo de Golft Navistar">
+		<meta name="author" content="erufenix">
+
+		<!-- Mobile view -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/arma/c6/js/bootstrap/bootstrap.min.css">
+
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+		<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700" rel="stylesheet">
+		<link href="//fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
+
+		<link rel="stylesheet" href="{{ asset('assets')}}/arma/c6/js/megamenu/stylesheets/screen.css">
+		<link rel="stylesheet" href="{{ asset('assets')}}/arma/c6/css/theme-default.css" type="text/css">
+		<link rel="stylesheet" href="{{ asset('assets')}}/arma/c6/js/loaders/stylesheets/screen.css">
+		<link rel="stylesheet" href="{{ asset('assets')}}/arma/c6/css/style6.css" type="text/css">
+		<link rel="stylesheet" href="{{ asset('assets')}}/arma/c6/js/datepicker/bootstrap-datetimepicker.css" type="text/css">
+		<!--<link rel="stylesheet" href="{{ asset('assets')}}/arma/c6/fonts/font-awesome/css/font-awesome.min.css" type="text/css">-->
+	 	<link rel="stylesheet" href="{{ asset('assets')}}/fontawesome/css/all.css" /> 	
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/arma/c6/fonts/Simple-Line-Icons-Webfont/simple-line-icons.css" media="screen"/>
+		<link rel="stylesheet" href="{{ asset('assets')}}/arma/c6/fonts/et-line-font/et-line-font.css">
+		<link rel="stylesheet" href="{{ asset('assets')}}/arma/c6/js/form/css/sky-forms.css" type="text/css" media="all">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/arma/c6/js/cubeportfolio/cubeportfolio.min.css">
+    <link rel="stylesheet" href="{{ asset('assets')}}/holdjs/HoldOn.min.css" />
+		<link href="{{ asset('assets')}}/css/bootstrap-4-utilities.css" rel="stylesheet">
+		<link href="{{ asset('assets')}}/css/torneo.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+	</head>
+	<body>
+		<div class="wrapper-boxed">
+			<div class="over-loader loader-live">
+				<div class="loader">
+					<div class="loader-item style1">
+						<div class="double-bounce1"></div>
+						<div class="double-bounce2"></div>
+					</div>
+				</div>
+			</div>		
+			<div class="site-wrapper">
+				<div class="col-md-12 nopadding">
+
+					<div class="header-section style4 pin-style">
+						<div class="container">
+							<div class="mod-menu">
+								<div class="row">
+									<div class="col-sm-4 col-md-4">
+										<a href="index.html" title="" class="logo mar-4">
+											<img src="{{ asset('assets')}}/img/navig_150_2.png" alt="">
+										</a>
+									</div>
+									<div class="col-sm-8 col-md-8">
+										<div class="main-nav">
+											<div id="menu" class="collapse">
+												<ul class="nav navbar-nav">
+													<li class="{{ (title == 'Inicio') ? 'active' : '' }}">
+														<a href="{{ url('torneoNavistar.index') }}">Inicio</a>
+													</li>
+														<li class="{{ (title == 'Sede') ? 'active' : '' }}">
+														<a href="{{ url('torneoNavistar.sede') }}">Sede</a>
+													</li>
+													<li>
+														<a href="https://www.clubcorp.com/Clubs/Vista-Vallarta-Club-de-Golf" target="_blank">Campo de Golf</a>
+													</li>																									
+													<li class="{{ (title == 'Registro') ? 'active' : '' }}">
+														<a href="{{ url('torneoNavistar.registro') }}">Registro</a>
+													</li>
+													<li class="{{ (title == 'Contacto') ? 'active' : '' }}">
+														<a href="javascript:;">Contacto</a>
+													</li>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+					
+					<div class="header-inner-tmargin">
+						<section class="section-side-image clearfix">
+							<div class="img-holder col-md-12 col-sm-12 col-xs-12">
+								<div class="background-imgholder" style="background:url({{ asset('assets')}}/img/golf2.png);"><img class="nodisplay-image" src="{{ asset('assets')}}/img/golf2.png" alt=""/>
+								</div>
+							</div>
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-md-12 col-sm-12 col-xs-12 clearfix nopadding">
+										<div class="header-inner">
+											<div class="overlay">
+												<div class="text text-center">
+													<h3 class="uppercase text-white less-mar-1 title">{{ title }}</h3>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class=" clearfix"></div>
+					</div>
+
+					<div class="clearfix"></div>
+
+					<!--<section class="sec-padding">-->
+					{% block content %}
+					{% endblock %}
+					<!--</section>-->
+					<div class="clearfix"></div>
+
+					<section class="sec-moreless-padding section-grey">
+						<div class="container">
+							<div class="row">
+								<div class="fo-copyright-holder text-center">Desarrollado por Nuevas Tecnologías
+									<a href="https://tycgroup.com/" target="_blank" class="text-info">T&C Group</a>
+									© 2017-2020</div>
+							</div>
+						</div>
+					</section>
+
+					<div class="clearfix"></div>
+
+					<a href="#" class="scrollup"></a>																		
+
+				</div>
+			</div>
+		</div>
+		<!-- Scripts -->
+		<script src="{{ asset('assets')}}/arma/c6/js/jquery/jquery.js"></script>
+		<script src="{{ asset('assets')}}/arma/c6/js/bootstrap/bootstrap.min.js"></script>
+
+		<!-- Scripts END -->
+
+		<!-- Template scripts -->
+		<script src="{{ asset('assets')}}/arma/c6/js/megamenu/js/main.js"></script>
+		<script type="text/javascript" src="{{ asset('assets')}}/arma/c6/js/cubeportfolio/jquery.cubeportfolio.min.js"></script>
+		<script type="text/javascript" src="{{ asset('assets')}}/arma/c6/js/cubeportfolio/main-mosaic3.js"></script>
+
+		<script>
+			$(window).load(function () {
+				setTimeout(function () {
+					$('.loader-live').fadeOut();
+					}, 1000);
+				}
+			)
+		</script>
+		<script src="{{ asset('assets')}}/arma/c6/js/parallax/jquery.parallax-1.1.3.js"></script>
+		<script src="{{ asset('assets')}}/arma/c6/js/functions/functions.js"></script>
+		<script src="{{ asset('assets')}}/arma/c6/js/form/jquery.form.min.js"></script>
+		<script src="{{ asset('assets')}}/arma/c6/js/form/jquery.validate.min.js"></script>
+    <script src="{{ asset('assets')}}/arma/c6/js/datepicker/moment.js"></script>		
+		<script src="{{ asset('assets')}}/arma/c6/js/datepicker/bootstrap-datetimepicker.js"></script>
+    <script src="{{ asset('assets')}}/js/axios.min.js"></script>
+    <script src="{{ asset('assets')}}/moment-with-locales.js"></script>
+    <script src="{{ asset('assets')}}/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="{{ asset('assets')}}/holdjs/HoldOn.min.js"></script>
+		{% block scripts %}
+		{% endblock %}
+		<script src="{{ asset('assets')}}/js/torneo.js"></script>
+		</body>
+	</body>
+</html>

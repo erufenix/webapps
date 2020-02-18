@@ -1,0 +1,66 @@
+{% extends "layouts/michelin20/michelin__layout.twig" %}
+{% block content %}
+<section id="ssede">
+  <div class="container">
+    <div class="flat-spacer clearfix" data-desktop="40" data-mobile="20" data-smobile="20" ></div>
+    <div class="flat-title text-center v3">
+        <h5 class="heading text-uppercase">{{ title }}</h5>
+    </div>
+    <div id="sede">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="flat-title v5 text-center">
+            <h3>NUEVO VALLARTA, RIVIERA NAYARIT</h3>
+          </div>        
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="flat-imgbox isotope-project clearfix">
+          <div class="imgbox style1">
+            <div class="imgbox-img">
+              <a href="#"><img src="{{ asset('assets')}}/img/grand-velas.jpg" alt="Grand Velas Riviera Nayarit"></a>
+              <div class="overlay"></div>
+              <div class="imgbox-content text-center bg-v1">
+                  <h4 class="heading"><a href="#" class="hover-text2">Grand Velas Riviera Nayarit</a></h4>
+              </div>
+            </div>
+          </div> <!-- /.imgbox -->
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="flat-textbox style1 flat-border-bottom mg-top-10">
+            <div class="textbox style1">
+                <h4><a href="#">Grand Velas Riviera Nayarit</a></h4>
+                <p align="justify">
+                  Grand Velas Riviera Nayarit ha rediseñado el concepto Todo Incluido con el sello de lujo que le ha caracterizado desde su apertura en 2002, logrando posicionarlo como el único resort familiar en la costa del Pacífico en ser reconocido con 5 Diamantes por AAA. La experiencia gastronómica que ofrece cada uno de sus restaurantes, su cálida hospitalidad a la altura de las mejores del mundo y los espacios cuidadosamente diseñados por aclamados interioristas hacen de este resort un refugio de lujo, sofisticación y descanso frente a las costas de Bahía de Banderas. 
+                </p>
+                <p align="justify">
+                  Cada servicio ha sido pensado para ofrecer una experiencia inolvidable en uno de los destinos de mayor tendencia en México: Riviera Nayarit. Su Concierge personal se asegurará de cumplir cada una de sus solicitudes mientras usted disfruta del estilo de vida de Grand Velas en nuestra piscina infinita que se funde con el mar, servicio de Pool Concierge, tratamientos para consentirse en SE Spa, servicio a la suite las 24 horas, actividades recreativas para todas las edades y bellísimas suites con vistas incomparables. 
+                </p>
+            </div>
+          </div>
+          <div class="flat-iconbox style2 v2 clearfix mg-top-5 mg-bottom-5">
+            <div class="iconbox v2 style2  ">
+              <div class="iconbox-icon">
+                <span class="icon_pin_alt"></span>
+              </div>
+              <div class="iconbox-content text-info">
+                Av. Cocoteros, 98 Sur, 
+                Nuevo Vallarta, 
+                Riviera Nayarit, Nayarit 63735
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mg-top-30">
+          <div class="flat-map style3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="flat-spacer clearfix" data-desktop="40" data-mobile="20" data-smobile="20" ></div>
+  </div>
+</section>
+{% endblock %}
+{% block script %}
+<script src="{{ asset('assets')}}/automov/javascript/gmap3.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhbP8-v2kwyP5SCLnTt3QrCaSkuReBmfw"></script>
+{% endblock %}

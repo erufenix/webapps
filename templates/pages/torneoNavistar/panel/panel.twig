@@ -1,0 +1,28 @@
+{% extends "layouts/torneoNavistar/panelLayout.twig" %}
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="card card-primary card-outline">
+					<div class="card-header">
+						<h3 class="card-title">&nbsp;</h3>
+						<div class="card-tools">
+							<button type="button" class="btn btn-tool" data-card-widget="maximize">
+								<i class="fas fa-expand"></i>
+							</button>
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>              
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive slidee">
+							<div id="#toolbar" class="float-left"></div>
+							<table id="tableReg" class="table table-sm table-striped" data-url="{{ url('torneoNavistar.panelRegistros') }}" data-detail-view="true"></table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

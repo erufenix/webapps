@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Reservas - Login</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="{{ asset('assets')}}/aside/css/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="{{ asset('assets')}}/aside/css/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="{{ asset('assets')}}/aside/css/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="{{ asset('assets')}}/aside/css/ionicons/css/ionicons.min.css" type="text/css" />
+  <link rel="stylesheet" href="{{ asset('assets')}}/aside/css/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="{{ asset('assets')}}/aside/css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+
+  <!-- build:css css/styles/app.min.css -->
+  <link rel="stylesheet" href="{{ asset('assets')}}/aside/css/styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="{{ asset('assets')}}/aside/css/styles/style.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="{{ asset('assets')}}/aside/css/styles/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+  <div class="padding">
+    <div class="navbar">
+      <div class="pull-center">
+        <!-- brand -->
+        <a href="" class="navbar-brand">
+        	<div data-ui-include="'{{ asset('assets')}}/img/logoTyCh60.png'"></div>
+        	<img src="{{ asset('assets')}}/img/logoTyCh60.png" alt=".">
+        	<span class="hidden-folded inline">Reservaciones</span>
+        </a>
+        <!-- / brand -->
+      </div>
+    </div>
+  </div>
+  <div class="b-t">
+    <div class="center-block w-xxl w-auto-xs p-y-md text-center">
+      <div class="p-a-md">
+        <form name="form" action="{{ path('reservas_panel_login_check') }}" method="post">
+          <div class="input-group m-b">
+            <span class="input-group-addon"><span class="material-icons">account_box</span></span>
+            <input class="form-control" placeholder="Correo" type="mail" name="username">
+          </div>
+          <div class="input-group m-b">
+            <span class="input-group-addon"><span class="material-icons">vpn_key</span></span>
+            <input class="form-control" placeholder="Contraseña" type="password" name="password">
+          </div>
+          <div class="input-group m-b">
+            {{ error }}
+          </div>
+          <button type="submit" class="btn blue-900 p-x-lg">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- ############ LAYOUT END-->
+  </div>
+
+<!-- build:js scripts/app.min.js -->
+<!-- jQuery -->
+  <script src="{{ asset('assets')}}/aside/libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="{{ asset('assets')}}/aside/libs/tether/dist/js/tether.min.js"></script>
+  <script src="{{ asset('assets')}}/aside/libs/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="{{ asset('assets')}}/aside/libs/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="{{ asset('assets')}}/aside/libs/PACE/pace.min.js"></script>
+  <script src="{{ asset('assets')}}/aside/libs/jquery-pjax/jquery.pjax.js"></script>
+  <script src="{{ asset('assets')}}/aside/libs/blockUI/jquery.blockUI.js"></script>
+  <script src="{{ asset('assets')}}/aside/libs/jscroll/jquery.jscroll.min.js"></script>
+<!-- endbuild -->
+</body>
+</html>

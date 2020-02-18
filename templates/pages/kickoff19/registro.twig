@@ -1,0 +1,395 @@
+{% extends "layouts/kickoff19/kickoff19Layout.twig" %}
+{% block content %}
+{% set habs = {
+                'Sencilla': { 'name': 'HABITACIÓN ROH SENCILLA', 'subtotal': '25,000.00', 'IVA': '4,000.00', 'total' : '29,000','add':'1,000.00' },
+                'Doble'   : { 'name': 'HABITACIÓN ROH DOBLE COSTO POR PERSONA', 'subtotal': '16,000.00', 'IVA': '2,560.00', 'total': '18,560.00','add':'2,000.00'}
+              }
+%}
+<div class="wrap-contact-page pd-top-80 ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="flat-form-contact-us" id="frmdiv">
+          <form action="{{ url('kickoff19.setRegistro') }}" method="post" id="frmreg">
+            <div class="flat-title">
+                <h4 class="title">Datos personales</h4>
+            </div>
+            <div class="form-row mg-bottom-20">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <input type="text" class="" name="nombre" id="nombre" required placeholder="Nombre">
+              </div>
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <input type="text" name="apellidos" id="apellidos" required placeholder="Apellidos">
+              </div>
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <input type="email" name="correo" id="correo" required placeholder="Correo">
+              </div>
+            </div>
+            <div class="form-row mg-bottom-20">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <input type="text" class="" name="telefono" id="telefono" required placeholder="Teléfono">
+              </div>
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <input type="text" name="distribuidor" id="distribuidor" required placeholder="Distribuidor">
+              </div>
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <input type="text" name="puesto" id="puesto" required placeholder="Puesto">
+              </div>
+            </div>
+            <div class="flat-title">
+                <h4 class="title float-left">Requiere factura ? </h4>
+                <span class="mg-left-10">
+                  <input class="f-switch" type="checkbox" data-size="mini" data-off-text="No" data-off-color="warning" data-on-text="Si" id="factura" >
+                </span>
+            </div>
+            <div id="fact" class="invisible">
+              <div class="form-row mg-bottom-20">
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                  <input type="text" class="fact" name="factura_rs" id="factura_rs" required placeholder="Razón social">
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                  <input type="text" class="fact" name="factura_rfc" id="factura_rfc" required placeholder="RFC">
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                  <input type="email" name="factura_correo" id="factura_correo" required placeholder="Correo">
+                </div>
+              </div>
+              <div class="form-row mg-bottom-20">
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                   <input type="text" class="fact" name="factura_cp" id="factura_cp" required placeholder="Código postal">
+                </div>
+                <div class="col-sm-12 col-md-2 col-lg-2">
+                   <input type="text" class="fact" name="factura_edo" id="factura_edo" required placeholder="Estado">
+                </div>
+                <div class="col-sm-12 col-md-2 col-lg-2">
+                   <input type="text" class="fact" name="factura_cd" id="factura_cd" required placeholder="Ciudad">
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                  <textarea class="no-resize fact" name="factura_direccion" id="factura_direccion" cols="3" placeholder="Dirección"></textarea>
+                </div>
+              </div>
+              <hr>
+            </div>
+            <div class="form-row mg-bottom-20">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <select name="factura_pago" id="factura_pago" required>
+                  <option value="">Tipo de pago</option>
+                  <option value="Depósito bancario">Depósito bancario</option>
+                  <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                </select>
+              </div>
+              <hr>
+            </div>
+            <div class="flat-title">
+                <h4 class="title">Vuelo <span class="fas fa-plane small"> </span></h4>
+            </div>
+            <div class="mg-bottom-20">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <h6 class="text-info text-center mg-bottom-10">Llegada a Cancún</h6>
+                  <div class="form-row">
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                      <input type="text" class="" name="llegada_nvuelo" id="llegada_nvuelo" required placeholder="No. de vuelo">
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                      <input type="text" class="" name="llegada_aerolinea" id="llegada_aerolinea" required placeholder="Aerolínea">
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                      <input type="text" class="date" name="llegada_fecha" id="llegada_fecha" required placeholder="Fecha">
+                    </div>
+                    <div class="col-sm-12 col-md-2 col-lg-2">
+                      <input type="text" class="hour" name="llegada_hora" id="llegada_hora" required placeholder="Hora">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <h6 class="text-info text-center mg-bottom-10">Salida de Cancún</h6>
+                  <div class="form-row">
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                      <input type="text" class="" name="salida_nvuelo" id="salida_nvuelo" required placeholder="No de vuelo">
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                      <input type="text" class="" name="salida_aerolinea" id="salida_aerolinea" required placeholder="Aerolínea">
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                      <input type="text" class="date" name="salida_fecha" id="salida_fecha_hora" required placeholder="Fecha">
+                    </div>
+                    <div class="col-sm-12 col-md-2 col-lg-2">
+                      <input type="text" class="hour" name="salida_hora" id="salida_hora" required placeholder="Hora">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flat-title">
+                <h4 class="title">Hotel <span class="fas fa-building small"> </span></h4>
+            </div>
+            <div class="mg-bottom-20">
+              <div class="row">
+                <div class="col-sm-12 col-md-5">
+                  <div class="portfolio-wrap">
+                    <div class="flat-imagebox isotope-project">
+                      <div class="imagebox style3 style3_full interior">
+                        <div class="imagebox-image ">
+                          <img src="{{ asset('assets')}}/img/iberoStar_sm.png" alt="Iberostar Cancún">
+                          <div class="overlay"></div>
+                        </div>
+                        <div class="imagebox-content">
+                          <h3 class="heading"><a href="javascript:;">Iberostar Cancún</a></h3>
+                          <div class="meta-project">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-7">
+                  <div class="textbox-content">
+                    <select name="habitacion" id="habitacion" required>
+                      <option value="">Iberostar Cancún</option>
+                      {% for k,h in habs %}
+                        <option value="{{ k }}">{{ h.name }}</option>
+                      {% endfor %}
+                    </select>
+                    <hr>
+                    <div class="clearfix mg-bottom-20">
+                      <div class="text-list mg-bottom-5">
+                        <ul>
+                          {% for hd in habs %}
+                          <li class="row no-warp">
+                            <span class="col-md-7 text-left">{{ hd.name }}</span>
+                            <span class="col-md-5">$ {{ hd.subtotal }} +IVA</span>
+                          </li>
+                          {% endfor %}
+                          <li class="row no-warp">
+                            <span class="col-md-12 text-d90000">Si se inscribe después del 05 de enero el costo de la tarifa subirá $1,000.00 por persona</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="accordion mg-top-10">
+                      <div class="accordion-toggle">
+                        <div class="toggle-title text-info">
+                          La tarifa incluye:
+                        </div>
+                        <div class="toggle-content mg-top-5">
+                          <div class="text-list mg-right-0 mg-bottom-5">
+                            <ul>
+                              <li>Renta de Habitación por 3 Nohes (16 ENERO,17 ENERO,18 ENERO) en Plan Todo incluido con Vista a Jardín o Alberca o Mar</li>
+                              <li>Servicio de Concierge</li>
+                              <li>Mini bar con refrescos, agua embotellada y cervezas que se rebastece diariamente</li>
+                              <li>Buffet con servicio ilimitado categoría 5 estrellas para desayuno, comida y cena en horas normales de operación</li>
+                              <li>Servicio a la Habitación 24 horas (desayuno, comida, cenas y botana)</li>
+                              <li>Bebidas Ilimitadas nacionales e internacionales en todos los restaurantes y bares durante horas normales de operación</li>
+                              <li>Televisión con servicio de TV por cable</li>
+                              <li>Gimnasio</li>
+                              <li>Actividades diarias en el area de la alberca</li>
+                              <li>Entretenimiento en vivo por las noches en el teatro "El Telón"</li>
+                            </ul>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                      <div class="accordion-toggle">
+                        <div class="toggle-title text-info">
+                          Notas importantes:
+                        </div>
+                        <div class="toggle-content mg-top-5">
+                          <div class="text-list mg-right-0 mg-bottom-5">
+                            <ul>
+                              <li>El check inn en el Hotel es a partir de las 15:00 hrs, y el check out es a las 12:00 hrs</li>
+                              <li>No incluye Spa, servicio de lavanderia y Teléfono</li>
+                            </ul>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="divaco" class="invisible mg-bottom-20">
+              <div class="flat-title">
+                <h4 class="title">Acompañante</h4>
+              </div>
+              <div class="form-row mg-bottom-20">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                  <input type="text" class="aco" name="nombre_aco" id="nombre_aco" placeholder="Nombre">
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                  <input type="text" class="aco" name="apellidos_aco" id="apellidos_aco" placeholder="Apellidos">
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                  <input type="email" name="correo_aco" id="correo_aco" placeholder="Correo">
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                  <input type="text" class="aco" name="puesto_aco" id="puesto_aco" placeholder="Puesto">
+                </div>
+              </div>
+              <div class="form-row invisible">
+                <div class="flat-title">
+                    <h4 class="title">Vuelo <span class="fas fa-plane small"> </span></h4>
+                </div>
+              </div>
+             
+              <div class="mg-bottom-20">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <h6 class="text-info text-center mg-bottom-10">Llegada a Cancún</h6>
+                    <div class="form-row">
+                      <div class="col-sm-12 col-md-3 col-lg-3">
+                        <input type="text" class="aco" name="llegada_nvuelo_aco" id="llegada_nvuelo_aco" placeholder="No. de vuelo">
+                      </div>
+                      <div class="col-sm-12 col-md-4 col-lg-4">
+                        <input type="text" class="aco" name="llegada_aerolinea_aco" id="llegada_aerolinea_aco" placeholder="Aerolínea">
+                      </div>
+                      <div class="col-sm-12 col-md-3 col-lg-3">
+                        <input type="text" class="aco datec" name="llegada_fecha_aco" id="llegada_fecha_aco"placeholder="Fecha">
+                      </div>
+                      <div class="col-sm-12 col-md-2 col-lg-2">
+                        <input type="text" class="aco hourc" name="llegada_hora_aco" id="llegada_hora_aco" placeholder="Hora">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <h6 class="text-info text-center mg-bottom-10">Salida de Cancún</h6>
+                    <div class="form-row">
+                      <div class="col-sm-12 col-md-3 col-lg-3">
+                        <input type="text" class="aco" name="salida_nvuelo_aco" id="salida_nvuelo_aco" placeholder="No de vuelo">
+                      </div>
+                      <div class="col-sm-12 col-md-4 col-lg-4">
+                        <input type="text" class="aco" name="salida_aerolinea_aco" id="salida_aerolinea_aco" placeholder="Aerolínea">
+                      </div>
+                      <div class="col-sm-12 col-md-3 col-lg-3">
+                        <input type="text" class="aco datec" name="salida_fecha_aco" id="salida_fecha_hora_aco" placeholder="Fecha">
+                      </div>
+                      <div class="col-sm-12 col-md-2 col-lg-2">
+                        <input type="text" class="aco hourc" name="salida_hora_aco" id="salida_hora_aco" placeholder="Hora">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+            </div>
+            <div class="form-row mg-bottom-20">
+              <div class="col-sm-4 col-md-4 col-12">
+                <div id="captchaContainer">
+                </div>
+              </div>
+            </div>
+            <div class="form-row ocultos">
+              <input type="hidden" id="tot" name="tot" value="">
+              <input type="hidden" id="subt" name="subt" value="">
+              <input type="hidden" id="iva" name="iva" value="">
+              <input type="hidden" id="hotel" name="hotel" value="Iberostar Cancún">
+              <input type="hidden" id="habitaciont" name="habitaciont" value="">
+              <input type="hidden" id="habimg" name="habimg" value="">
+              <input type="hidden" id="hjson" name="hjson" value="{{ habs | json_encode() }}">
+              <input type="hidden" id="urlCheckout" name="urlCheckout" value="{{ url('kickoff19.checkout') }}">
+              <input type="hidden" id="urlExecute" name="urlExecute" value="{{ url('kickoff19.execute') }}">
+              <input type="hidden" id="urlComplete" name="urlComplete" value="{{ url('kickoff19.payComplete') }}">
+              <input type="hidden" id="asset" name="asset" value="{{ asset('assets')}}">
+            </div>
+            <div class="form-row mg-bottom-20">
+              <div class="col-sm-12 col-md-12 col-12" align="right">
+                <button type="submit" id="sendk" class="btn-effect float-rights" name="sendk">
+                  <div>Enviar</div>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="flat-iconbox mg-bottom-20 mg-top-10 invisible" id="result">
+      <div class="row">
+        <div class="col-md-6 col-sm-8 col-12 mx-auto no-float">
+          <div class="iconbox iconbox-whyus style5">
+            <div class="iconbox-icon">
+                <i class="fa fa-check"></i>
+            </div>
+            <div class="iconbox-content">
+                <h5 class="heading"><a href="#">Registro completado</a></h5>
+                <p class="sub-heading">Se envio un correo a <strong><span id="mailf"></span></strong> con los detalles</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mg-bottom-20 invisible" id="divPay">
+      <div class="row">
+        <div class="col-md-4 col-sm-5 col-12">
+          <div class="review-order">
+            <table class="order-table">
+              <tbody>
+                <tr class="order-total">
+                  <th colspan="2" class="title text-center">
+                    Orden
+                  </th>
+                </tr>
+                <tr class="cart-subtotal">
+                  <td class="product-name" colspan="2" id="hname"></td>
+                  </tr>
+                  <tr class="order-total">
+                    <td class="product-name">Subtotal </td>
+                    <td class="total font-weight-500" data-title="Total"> <span class="woocommerce-Price-currencySymbol ">$</span><span class="woocommerce-Price-amount amount" id="hsubtotal"></span> </td>
+                  </tr>
+                  <tr class="order-total">
+                    <td class="product-name">IVA</td>
+                    <td class="total" data-title="Total"><span class="woocommerce-Price-currencySymbol ">$</span><span class="woocommerce-Price-amount amount" id="hiva"></span> </td>
+                  </tr>
+                  <!--<tr class="order-total">
+                    <td class="product-name">Cargo posterior al 05/01/19</td>
+                    <td c-->
+                  <tr class="order-total">
+                    <td class="title" id="stotal">TOTAL </td>
+                    <td class="total text-d90000 font-weight-500" data-title="Total"> <span class="woocommerce-Price-currencySymbol">$</span><span class="woocommerce-Price-amount amount" id="htotal"></span> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-7 col-12" id="pay">
+
+        </div>
+        <div class="col-sm-12 col-md-12 col-12" align="right">
+          <a class="btn btn-styl2 btn-home" name="sendk" href="{{ url('kickoff19.registro') }}">
+            <div>Regresar</div>
+          </a>
+          <a class="btn btn-styl2 btn-home invisible" name="bpk" id="bpk" href="javascript:;">
+            <div>Pagar</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tdb" class="invisible">
+    <div class="text-list mg-bottom-5">
+      <p><strong>Para realizar el pago hacer lo siguiente:</strong></p>
+      <ul>
+        <li class="rowi no-warpi">Depósito en MXN a nombre de Turismo y Convenciones, S.A. de C.V. Bancomer cta. 0447334168 Plaza 001 Suc.0843/ Cuenta Clabe 012 180 004 473 341 682</li>
+        <li>Enviar el comprobante de pago especificando su nombre y el nombre del evento por correo electrónico: marellano@tycgroup.com</li>
+        <li>Posteriormente llamar a los tels. 52 (55) 5148 7509 y 11 para confirmar recepción y recibir su número de reservación.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="ttc" class="invisible">
+    <div class="text-list mg-bottom-5">
+      <p><strong>Para realizar el pago hacer lo siguiente:</strong></p>
+      <ul>
+        <li class="rowi no-warpi">Tarjetas de crédito Visa, Master Card y/o American Express: llamando al tel 52 (55) 5148 7509, 52 (55) 5148 7511 y/o 52 (55) 5148 7569 para realizar el trámite</li>
+        <li>Enviar el comprobante de pago especificando su nombre y el nombre del evento por correo electrónico: marellano@tycgroup.com</li>
+        <li>Posteriormente llamar a los tels. 52 (55) 51 48 75 09 y 11 para confirmar recepción y recibir su número de reservación.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

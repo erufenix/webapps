@@ -1,0 +1,70 @@
+{% extends "layouts/michelin19/michelin__layout.twig" %}
+{% block content %}
+<section id="ssede">
+  <div class="container">
+    <div class="flat-spacer clearfix" data-desktop="40" data-mobile="20" data-smobile="20" ></div>
+    <div class="flat-title text-center v3">
+        <h5 class="heading text-uppercase">{{ title }}</h5>
+    </div>
+    <div id="sede">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="flat-title v5 text-center">
+            <h3>RIVIERA MAYA</h3>
+          </div>
+          <div class="header text-center mg-bottom-20">
+            <h4>Hotel para mayores de 18 años</h4>
+          </div>          
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="flat-imgbox isotope-project clearfix">
+          <div class="imgbox style1">
+            <div class="imgbox-img">
+              <a href="#"><img src="{{ asset('assets')}}/img/breathrv.png" alt="Breathless Riviera Cancun"></a>
+              <div class="overlay"></div>
+              <div class="imgbox-content text-center bg-v1">
+                  <h4 class="heading"><a href="#" class="hover-text2">Breathless Riviera Cancun</a></h4>
+                  <p>Resort & Spa</p>
+              </div>
+            </div>
+          </div> <!-- /.imgbox -->
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="flat-textbox style1 flat-border-bottom mg-top-10">
+            <div class="textbox style1">
+                <h4><a href="#">Breathless Riviera Cancun</a></h4>
+                <p align="justify">
+                  Breathless Riviera Cancún Resort & Spa es un vibrante, chic y moderno resort solo para adultos que buscan una escapada sofisticada y divertida! Nuestro diseño consiste en 526 suites ultra-contemporáneas y tres edificios en forma de herraduras y secciones, cada uno con propia personalidad, vibra y toque único, que ofrece a solteros, parejas y amigos el balance perfecto entre diversión y descanso.
+                </p>
+                <p align="justify">
+                  Descubre el estado de tranquilidad cuando Respires Profundo en la sección xhale club, después de un rejuvenecedor tratamiento en el spa by Pevonia, mézclate en una clase de aerobics acuáticos o con un coctel curado junto a la piscina, o sumérgete en el entretenimiento y baila al ritmo de la música de atractivos DJs en la fiesta de espuma en la zona xcelerate.
+                </p>
+            </div>
+          </div>
+          <div class="flat-iconbox style2 v2 clearfix mg-top-5 mg-bottom-5">
+            <div class="iconbox v2 style2  ">
+              <div class="iconbox-icon">
+                <span class="icon_pin_alt"></span>
+              </div>
+              <div class="iconbox-content text-info">
+                Carretera Cancun-Puerto Morelos
+                Km. 27.5, Mz. 41, Sm. 12, Fracc,
+                Riviera Maya, Puerto Morelos, QROO 77580 México
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mg-top-30">
+          <div class="flat-map style3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="flat-spacer clearfix" data-desktop="40" data-mobile="20" data-smobile="20" ></div>
+  </div>
+</section>
+{% endblock %}
+{% block script %}
+<script src="{{ asset('assets')}}/automov/javascript/gmap3.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn093AMH5_sU2mDz8PG7mpZoxD7cxhfmQ"></script>
+{% endblock %}

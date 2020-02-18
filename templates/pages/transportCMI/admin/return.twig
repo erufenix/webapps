@@ -1,0 +1,64 @@
+{% set tns = { 'shared_one_way' : 'Shared one way', 'shared_round':'Shared round' , 'private_one_way' : 'Private one way', 'private_round':'Private round' } %}
+<form id="freturn">
+<table class="table table-sm table-striped table-bordered">
+  <thead>
+    <tr>
+      <td colspan="5">&nbsp;</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">Nombre</td>
+      <td class="text-center">Transferencia</td>
+      <td class="text-center">Salida</td>
+      <td class="text-center" width="100">Hora</td>
+    </tr>
+    <tr>
+      <td class="text-center">{{data.name}}</td>
+      <td class="text-center">{{ tns[data.transfer] }}</td>
+      <td class="text-justify">
+        <ul>
+          <li class="row">
+            <span class="col-md-4"><strong>Personas: </strong></span>
+            <span class="col-md-8">{{ data.departurePersons }}</span>
+          </li>
+          <li class="row">
+            <span class="col-md-4"><strong>Aerolínea: </strong></span>
+            <span class="col-md-8">{{ data.departureAirline }}</span>
+          </li>
+          <li class="row">
+            <span class="col-md-4"><strong>Vuelo: </strong></span>
+            <span class="col-md-8">{{ data.departureFly }}</span>
+          </li>
+          <li class="row">
+            <span class="col-md-4"><strong>Fecha - Hora: </strong></span>
+            <span class="col-md-8 text-info">{{ (data.departurePersons == '0') ? '' : data.departureDate | date("d/m/Y") ~' - ' ~ data.departureTime | date("H:i") }}</span>
+          </li>                              
+        </ul>
+      </td>
+      <td class="text-center with-form-control"><input type="text"  id="rRt" name="rRt" class="form-control form-control-sm small" readonly=""></td>
+    </tr>    
+  </tbody>
+</table>
+<input type="hidden" name="id" value="{{ data.tranportId  }}">
+</form>
+<script type="text/javascript">
+  $("#rRt").datetimepicker({
+    format: 'HH:mm',
+    ignoreReadonly: true,
+    widgetPositioning:{
+              horizontal: 'right',
+              vertical: 'bottom'
+          },
+    icons: {
+      time: 'fa fa-clock',
+      date: 'fa fa-calendar',
+      up: 'fa fa-chevron-up',
+      down: 'fa fa-chevron-down',
+      previous: 'fa fa-chevron-left',
+      next: 'fa fa-chevron-right',
+      clear: 'fa fa-trash',
+      close: 'fa fa-times'
+    }
+  });   
+</script>

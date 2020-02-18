@@ -1,0 +1,52 @@
+{% extends "layouts/WMC/WMCTours_layout.twig" %}
+{% block content %}
+  {% set lang = obj.data.tourdata.lang %}
+  <section class="bg-white-2 " id="tours">
+    <div class="container">
+      <div class="row no-padding-rl no-padding-top padding-2">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <h3 class="font-family-alt font-weight-700 letter-spacing-2 text-uppercase xs-title-small title-medium title-sideline-base-color">
+            TOURS</h3>
+          <p class="font-family-alt margin-3 no-margin-bottom no-margin-rl text-gray-dark-2 text-large">{{ obj.data.tourinfo['name'][lang] }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12 center-block no-float" id="tour-complete">
+          <div class="pricing bg-white border border-gray-light border-round box-shadow-yes ease position-relative">
+            <div class="display-table height-100 padding-2 width-100">
+              <div class="display-table-cell no-padding-rl vertical-align-middle">
+                <span class="display-block font-family-alt letter-spacing-1 text-gray-dark-2 text-extra-large text-uppercase text-center text-base-color">Payment completed</span>
+                <span class="bg-gray-light-2 margin-2 no-margin-bottom no-margin-rl separator-line-full"></span>
+                <ul class="list-unstyled margin-1 no-margin-bottom text-gray-dark2 text-large text-left">
+                  <li class="check-mark padding-mark mar-10 row">
+                    <span class="col-sm-12 col-md-12 col-lg-12"><strong>{{ obj.data.tourdata.name }} {{ obj.data.tourdata.surname }}</strong> <small>({{ obj.data.tourdata.email }})</small></span>
+                  </li>
+                  {% if(obj.data.tourdata.companion > 0) %}
+                  <li class="check-mark padding-mark mar-10 row">
+                    <span class="col-sm-6 col-md-2 col-lg-2"><strong>Companions:</strong></span>
+                    <span class="col-sm-6 col-md-10 col-lg-10">{{ obj.data.tourdata.companion }}</span>
+                  </li>
+                  {% endif %}                                  
+                  <li class="check-mark padding-mark row">
+                    <span class="col-sm-6 col-md-2 col-lg-2"><strong>Total</strong></span>
+                    <span class="col-sm-6 col-md-10 col-lg-10">${{ obj.data.approval.content.transactions.0.amount.total }} {{ obj.data.approval.content.transactions.0.amount.currency }}</span>
+                  </li>
+                  <li class="check-mark padding-mark row">
+                    <span class="col-sm-6 col-md-2 col-lg-2"><strong>SKU</strong></span>
+                    <span class="col-sm-6 col-md-10 col-lg-10">{{ obj.sku }} </span>
+                  </li>
+                  <li class="check-mark padding-mark row">
+                    <span class="col-sm-6 col-md-2 col-lg-2"><strong>Transaction</strong></span>
+                    <span class="col-sm-6 col-md-10 col-lg-10">{{ obj.tx }} </span>
+                  </li>                                      
+                </ul>
+                <span class="bg-gray-light-2 margin-2 no-margin-bottom no-margin-rl separator-line-full"></span>
+              </div>
+            </div>
+             <a href="{{ url('WMCtours.index') }}/{{ obj.data.tourdata.tour_name }}/{{ lang }}" class="page-scroll btn btn-base-color btn-large display-block letter-spacing-2 text-small width-100">Return to book Tour</a>
+          </div>           
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

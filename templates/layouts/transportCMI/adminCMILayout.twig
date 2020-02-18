@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>CMI ADMIN</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/font-awesome/4.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/animate/animate.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/css/default/style.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/css/default/style-responsive.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/bootstrap-table/extensions/filter-control/bootstrap-table-filter-control.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/bootstrap-table/extensions/bootstrap-table-fixed-columns.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/bootstrap3-editable/inputs-ext/address/address.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/bootstrap3-editable/inputs-ext/typeaheadjs/lib/typeahead.css" rel="stylesheet" />
+	<link href="{{ asset('assets')}}/color/admin/plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+	<link href="{{asset('assets')}}/color/admin/plugins/bootstrap3-editable/inputs-ext/select2/select2.css" rel="stylesheet" />		
+	<link href="{{asset('assets')}}/color/admin/css/default/theme/blue.css" rel="stylesheet" id="theme" />
+	<link href="{{asset('assets')}}/css/adminCMI.css" rel="stylesheet"/>
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{{asset('assets')}}/color/admin/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade show"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar-default">
+			<!-- begin navbar-header -->
+			<div class="navbar-header">
+				<a href="{{ url('adminCMI.index') }}" class="navbar-brand"><span class="navbar-logo_tc"></span><img src="{{ asset('assets')}}/img/cmi_t_w140.png"> Transportation - Admin</a>
+				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- end navbar-header -->
+			
+			<!-- begin header-nav -->
+			<ul class="navbar-nav navbar-right">
+				<!--<li class="dropdown">
+					<a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+						<i class="fa fa-bell"></i>
+						<span class="label">5</span>
+					</a>
+					<ul class="dropdown-menu media-list dropdown-menu-right">
+						<li class="dropdown-header">NOTIFICATIONS</li>
+						<li class="media">
+							<a href="javascript:;">
+								<div class="media-left">
+									<i class="fa fa-bug media-object bg-silver-darker"></i>
+								</div>
+								<div class="media-body">
+									<h6 class="media-heading">Server Error Reports <i class="fa fa-exclamation-circle text-danger"></i></h6>
+									<div class="text-muted f-s-11">3 minutes ago</div>
+								</div>
+							</a>
+						</li>
+						<li class="dropdown-footer text-center">
+							<a href="javascript:;">Ver más</a>
+						</li>
+					</ul>
+				</li>-->
+				<li class="dropdown navbar-user">
+					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+						<!--<img src="{{asset('assets')}}/color/admin/img/user/user-13.jpg" alt="" />-->
+						<div class="avatar">{{ user.userName}}</div> 
+						<span class="d-none d-md-inline">{{ user.userName}}</span> <b class="caret"></b>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<!--<a href="javascript:;" class="dropdown-item">Editar perfil</a>-->
+						<div class="dropdown-divider"></div>
+						<a href="{{ path('transportCMI_panel_logout') }}" class="dropdown-item">Salir</a>
+					</div>
+				</li>
+			</ul>
+			<!-- end header navigation right -->
+		</div>
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						<a href="javascript:;">
+							<div class="cover with-shadow"></div>
+							<div class="image">
+								
+							</div>
+							<div class="info">
+								{{ user.userName }}
+								<small>{{ user.userRoleName }}</small>
+							</div>
+						</a>
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				<ul class="nav">
+					<li class="nav-header">Menú</li>
+					<li class="has-sub">
+						<a href="#transportation">
+							<i class="fa fa-car"></i>
+						  <span>Transportation</span>
+					  </a>
+					</li>
+					<li class="has-sub">
+						<a href="#participantes">
+							<i class="fa fa-user-circle"></i>
+						  <span>Participantes</span>
+					  </a>
+					</li>					
+					{% if (user.userRole == 'ROLE_SUPER_ADMIN') %}
+					<li class="has-sub">
+						<a href="#usuarios">
+							<i class="fa fa-users"></i>
+						  <span>Usuarios</span>
+					  </a>
+					</li>
+					{% endif %}
+					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>					
+				</ul>
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content">
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin #footer -->
+		<div id="footer" class="footer">
+		    &copy; Nuevas Tecnologías Todos los derechos reservados 2018 
+		</div>
+		<!-- end #footer -->
+
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{{asset('assets')}}/color/admin/plugins/jquery/jquery-3.2.1.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="{{asset('assets')}}/color/admin/crossbrowserjs/html5shiv.js"></script>
+		<script src="{{asset('assets')}}/color/admin/crossbrowserjs/respond.min.js"></script>
+		<script src="{{asset('assets')}}/color/admin/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="{{asset('assets')}}/color/admin/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/js-cookie/js.cookie.js"></script>
+	<script src="{{asset('assets')}}/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="{{asset('assets')}}/bootstrap-table/bootstrap-table-locale-all.js"></script>
+	<script src="{{asset('assets')}}/bootstrap-table/extensions/export/tableExport.js"></script>
+	<script src="{{asset('assets')}}/bootstrap-table/extensions/export/bootstrap-table-export.min.js"></script>
+	<script src="{{asset('assets')}}/bootstrap-table/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+	<script src="{{asset('assets')}}/bootstrap-table/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+	<script src="{{asset('assets')}}/bootstrap-table/extensions/bootstrap-table-fixed-columns.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/DataTables/media/js/jquery.dataTables.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/plugins/mockjax/jquery.mockjax.js"></script>
+	<script src="{{asset('assets')}}/color/admin/js/theme/default.min.js"></script>
+	<script src="{{asset('assets')}}/js/material-avatar.js"></script>
+	<script src="{{ asset('assets')}}/color/admin/plugins/moment/moment-with-locales.min.js"></script>
+	<script src="{{ asset('assets')}}/color/admin/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="{{asset('assets')}}/js/axios.min.js"></script>
+	<script src="{{asset('assets')}}/js/jquery.scrollTo.min.js"></script>
+	<script src="{{asset('assets')}}/color/admin/js/apps.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<script>
+		$(document).ready(function() {
+			App.init({
+				ajaxMode: true,
+				ajaxDefaultUrl: '#transportation',
+				ajaxType: 'GET',
+				ajaxDataType: 'html',
+				container: "#content"
+			});
+
+			$('.avatar').materialAvatar(
+				{
+					backgroundColor: '#2a72b5', 
+					textColor: '#fff',
+					shape: 'circle',
+					fontSize: '14'
+				}
+			);
+		});
+	</script>
+</body>
+</html>

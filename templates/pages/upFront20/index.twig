@@ -1,0 +1,58 @@
+{% extends "layouts/upFront/layout.twig" %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12" id="mvalida">
+        <div class="custom-heading part-heading three-slashes">
+          <h2>REGISTRO</h2>
+        </div>      
+        <form action="{{ url('upFront.mvalida') }}" method="post" id="fvalida">
+          <div class="row">
+            <div class="col-md-6 col-sm-12 col-lg-6 row center-block">
+              <div class="col-lg-8">
+                <input class="form-control" type="email" name="mailv" value="" size="40" aria-required="true" aria-invalid="false" placeholder="Correo" required>
+              </div>
+              <div class="col-lg-4" align="center">
+              <button class="btn btn-primary m-b-2" id="sendv" type="submit" ><div>Validar</div></button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 err" id="merr">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="contact-content col-lg-12 col-md-12 col-sm-12 invisible">
+
+
+        <div class="contact-form">
+          <div class="custom-heading part-heading three-slashes">
+            <h2>REGISTRO</h2>
+          </div>
+          <form action="{{ url('upFront.setRegistro') }}" method="post" id="fupfront">
+            <div class="row">
+              <div class="col-lg-6">
+                <input class="form-control" type="text" name="nombre" id="nombre" value="" size="40" aria-required="true" aria-invalid="false" placeholder="Nombre" required>
+              </div>
+              <div class="col-lg-6">
+                <input class="form-control" type="text" name="apellidos" id="apellidos" value="" size="80" aria-required="true" aria-invalid="false" placeholder="Apellidos" required>
+              </div>
+              <div class="col-lg-6">
+                <input class="form-control" type="email" name="correo" id="correo" value="" size="40" aria-invalid="false" placeholder="Correo" readonly required>
+              </div>
+              <div class="col-xs-12">
+                <button class="btn btn-primary pull-right m-b-2" id="send" type="submit" ><div>Confirmar Asistencia</div></button>
+              </div>
+            </div>
+            <div class="ocultos">
+              <input type="hidden" name="urlComplete" value="{{ url('upFront.completed') }}">
+              <input type="hidden" name="id_clave" id="id_clave" value="">
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

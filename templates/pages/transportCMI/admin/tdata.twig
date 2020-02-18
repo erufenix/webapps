@@ -1,0 +1,282 @@
+<h1 class="page-header">Datos de transporte</h1>
+<div class="panel panel-inverse">
+	<div class="panel-heading">
+		<div class="panel-heading-btn">
+			<a href="#transportation" class="btn btn-xs btn-icon btn-circle btn-default" title="Regresar" data-toggle="tooltip"><i class="fa fa-undo"></i></a>
+			<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand" data-toggle="tooltip" title="Expandir"><i class="fa fa-expand"></i></a>
+			<!--<a href="#transportation" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-refresh"></i></a>-->
+			<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse" data-toggle="tooltip" title="Minimizar"><i class="fa fa-minus"></i></a>
+		</div>
+		<h4 class="panel-title">&nbsp;</h4>
+	</div>
+	<div class="panel-body row">
+		<div class="col-sm-12 col-md-12">
+			{% if (user.userRole == 'SUPER_ADMIN' or user.userRole == 'ROLE_ADMIN' ) %}
+			<p>
+				<span class="editablin text-info">* Datos editables</span>
+			</p>
+			{% endif %}
+			<div class="invoice">
+				<div class="invoice-header row">
+					<div class="col-sm-7 col-md-7">
+						<div>
+							{% if (user.userRole == 'SUPER_ADMIN' or user.userRole == 'ROLE_ADMIN' ) %}
+							<h5 class="text-info text-center"><a href="javascript:;" data-type="select" data-pk="1" data-value="" data-source="[{value: 'Fiesta Americana Coral Beach', text: 'Fiesta Americana Coral Beach'}, {value: 'Presidente Intercontinental', text: 'Presidente Intercontinental'},{value: 'Hyatt Ziva', text: 'Hyatt Ziva'},{value: 'Krystal Grand', text: 'Krystal Grand'},{value: 'Krystal', text: 'Krystal'}]" data-title="Seleccionar Hotel" id="hotel">{{ data.hotel }}</a></h5>
+							{% else %}
+							<h5 class="text-info text-center">{{ data.hotel }}</h5>
+							{% endif %}
+						</div>
+						<div>
+							<img class="img-fluid m-t-5" src="https://webapps.tycgroup.com/assets/img/hotel/cmi/{{ hoteles[data.hotel].img }}" id="imgHotel">
+						</div>
+					</div>
+					<div class="col-sm-5 col-md-5 invoice-sec align-middle">
+	          <ul class="list-unstyled items">
+	            <li class="row">
+	              <span class="col-sm-4 col-md-4 bold_bold">Tipo de transporte</span>
+	              <span id="v_transfer" class="col-sm-8 col-md-8">{{ transfer[data.transfer].text }}</span>
+	            </li>
+	            <li class="row">
+	              <span class="col-sm-4 col-md-4 bold_bold">Nombre</span>
+	              {% if (user.userRole == 'SUPER_ADMIN' or user.userRole == 'ROLE_ADMIN' ) %}
+	              <span id="v_name" class="col-sm-8 col-md-8"><a href="javascript:;" id="name" data-type="text" data-pk="1" data-title="Nombre">{{ data.name }}</a></span>
+	              {% else %}
+	              <span id="v_name" class="col-sm-8 col-md-8">{{ data.name }}</span>	
+	            	{% endif %}
+	            </li>
+	            <li class="row">
+	              <span class="col-sm-4 col-md-4 bold_bold">Correo</span>
+	              {% if (user.userRole == 'SUPER_ADMIN' or user.userRole == 'ROLE_ADMIN' ) %}
+	              <span id="v_email" class="col-sm-8 col-md-8"><a href="javascript:;" id="email" data-type="email" data-pk="1" data-title="Correo">{{ data.email }}</a></span>
+	              {% else %}
+	              <span id="v_email" class="col-sm-8 col-md-8">{{ data.email }}</span>
+	              {% endif %}
+	            </li>
+	            <li class="row">
+	              <span class="col-sm-4 col-md-4 bold_bold">Teléfono</span>
+	              {% if (user.userRole == 'SUPER_ADMIN' or user.userRole == 'ROLE_ADMIN' ) %}
+	              <span id="v_phone" class="col-sm-8 col-md-8"><a href="javascript:;" id="phone" data-type="text" data-pk="1" data-title="Teléfono">{{ data.phone }}</a></span>
+	            	{% else %}
+	            	<span id="v_email" class="col-sm-8 col-md-8">{{ data.phone }}</span>
+	            	{% endif %}
+	            </li>                                                                                        
+	          </ul>						
+					</div>
+				</div>
+				<div class="invoice-content row">
+					<div class="col-sm-12 col-md-12">
+					<div class="table-responsive">
+						<table class="table table-invoice">
+							<thead>
+								<tr>
+									<th class="text-center">
+										Llegada<br><span class="fa fa-info-circle"></span> Del Aeropuerto al Hotel
+									</th>
+									<th class="text-center">
+										Salida<br><span class="fa fa-info-circle"></span> Del Hotel al Aeropuerto
+									</th>									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+	                  <ul class="list-unstyled items">
+	                    <li class="row">
+	                      <span class="col-sm-3 col-md-3 bold_semi_bold">Personas</span>
+	                      <span id="v_arrive_persons" class="col-sm-9 col-md-9">{{ data.arrive_persons }}</span>
+	                    </li>
+	                    <li class="row">
+	                      <span class="col-sm-3 col-md-3 bold_semi_bold">Aerolínea</span>
+	                      <span id="v_arrive_airline" class="col-sm-9 col-md-9">{{ data.arrive_airline }}</span>
+	                    </li>
+	                    <li class="row">
+	                      <span class="col-sm-3 col-md-3 bold_semi_bold">Vuelo</span>
+	                      <span id="v_arrive_fly" class="col-sm-9 col-md-9">{{ data.arrive_fly }}</span>
+	                    </li>
+	                    <li class="row">
+	                      <span class="col-sm-3 col-md-3 bold_semi_bold">Fecha - Hora</span>
+	                      <span id="v_arrive_date_time" class="col-sm-9 col-md-9">{{ data.arrive_date | date("d/m/Y") }} - {{ data.arrive_time | date("H:i") }}</span>
+	                    </li>                                                                                                                                     
+	                  </ul>										
+									</td>
+									<td>
+	                  <ul class="list-unstyled items">
+	                    <li class="row">
+	                      <span class="col-sm-3 col-md-3 bold_semi_bold">Personas</span>
+	                      <span id="v_departure_persons" class="col-sm-9 col-md-9">{{ data.departure_persons }}</span>
+	                    </li>
+	                    <li class="row">
+	                      <span class="col-sm-3 col-md-3 bold_semi_bold">Airlínea</span>
+	                      <span id="v_departure_airline" class="col-sm-9 col-md-9">{{ data.departure_airline }}</span>
+	                    </li>
+	                    <li class="row">
+	                      <span class="col-sm-3 col-md-3 bold_semi_bold">Vuelo</span>
+	                      <span id="v_departure_fly" class="col-sm-9 col-md-9">{{ data.departure_fly }}</span>
+	                    </li>
+	                    <li class="row">
+	                      <span class="col-sm-3 col-md-3 bold_semi_bold">Fecha - Hora</span>
+	                      <span id="v_departure_date_time" class="col-sm-9 col-md-9">{{ data.departure_date | date("d/m/Y") }} - {{ data.departure_time | date("H:i") }}</span>
+	                    </li>                                                                                                                                    
+	                  </ul>  										
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+	                  <ul class="list-unstyled items">
+	                    <li class="row">
+	                      <span class="col-sm-3 col-md-2 bold_semi_bold">Status de pago</span>
+	                      <span id="v_departure_persons" class="col-sm-9 col-md-8">{{ data.st }}</span>
+	                    </li>
+	                    <li class="row">
+	                      <span class="col-sm-3 col-md-2 bold_semi_bold">Transacción</span>
+	                      <span id="v_departure_airline" class="col-sm-9 col-md-8"><a href="https://www.paypal.com/activity/payment/{{ data.tx }}" target="_blank">{{ data.tx }}</a></span>
+	                    </li>
+	                  </ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>						
+					</div>
+				</div>
+				<div class="invoice-price">
+					<div class="invoice-price-left">
+						<div class="invoice-price-row">
+							<div class="sub-price">
+								<small>Tarifa de llegada</small>
+								<!--<span class="text-inverse">${{ data.arrive_rate }} USD</span>-->
+								<span class="text-inverse">
+									$<a href="javascript:;" id="arriveRate" data-type="text" data-pk="1" data-title="Tarifa">{{ data.arrive_rate }}</a> USD
+								</span>
+							</div>
+							<div class="sub-price">
+								<i class="fa fa-plus text-muted"></i>
+							</div>
+							<div class="sub-price">
+								<small>Tarifa de salida</small>
+								<!--<span class="text-inverse">${{ data.departure_rate }} USD</span>-->
+								<span class="text-inverse">
+									$<a href="javascript:;" id="departureRate" data-type="text" data-pk="1" data-title="Tarifa">{{ data.departure_rate }}</a> USD
+								</span>								
+							</div>
+						</div>
+					</div>
+					<div class="invoice-price-right">
+						<small>TOTAL</small> <span class="f-w-600" id="tnn">${{ data.total }} USD</span>
+					</div>
+				</div>				
+			</div>			
+		</div>
+		<div class="ocultos">
+			<input type="hidden" name="hoteles" value="{{ hotelesJson }}">
+			<input type="hidden" name="transfer" value="{{ transferJson }}">
+			<input type="hidden" name="id" id="id" value="{{ id }}">
+		</div>
+	</div>		
+</div>
+<script type="text/javascript">
+	$.fn.editable.defaults.mode = 'inline';
+	$.fn.editableform.buttons 	= '<button type="submit" class="btn btn-sm btn-info editable-submit"><i class="fa fa-check"></i></button>\n'+
+																'<button type="button" class="btn btn-sm btn-warning editable-cancel"><i class="fa fa-times"></i></button>';
+	var hotelesJson   					= $.parseJSON('{{ hotelesJson | raw }}');
+	var asset     							= '{{ asset('assets') }}';
+	$('#hotel').editable({
+	    prepend: 'Seleccionar',
+	    url: '{{urlSet}}/{{ id }}',
+	    success: function(response, newValue) {
+	    	if(response.status){
+	    		$("#hotel").html(newValue);
+	    		$("#imgHotel").attr('src', asset + '/img/hotel/cmi/' + hotelesJson[newValue].img);
+	    	}
+    	},
+		  validate: function(value) {
+		      if($.trim(value) === '') { 
+		          return 'Introducir el Hotel';
+		      }
+		  },    	
+	    display: function(value, sourceData) {
+	    }   
+	});
+
+	$('#name').editable({
+		url: '{{urlSet}}/{{ id }}', 
+	  validate: function(value) {
+	      if($.trim(value) === '') { 
+	          return 'Introducir el Nombre';
+	      }
+	  },		
+	});
+
+	$('#email').editable({
+		url: '{{urlSet}}/{{ id }}', 
+	  validate: function(value) {
+	      if($.trim(value) === '') { 
+	          return 'Introducir el Correo';
+	      }
+	  },		
+	});
+
+	$('#phone').editable({
+		url: '{{urlSet}}/{{ id }}', 
+	  validate: function(value) {
+	      if($.trim(value) === '') { 
+	          return 'Introducir el Teléfono';
+	      }
+	  },		
+	});
+
+	$('#arriveRate').editable({
+		url: '{{urlSet}}/{{ id }}', 
+	  validate: function(value) {
+	      if($.trim(value) === '') { 
+	          return 'Introducir el Teléfono';
+	      }
+	  },
+		success: function(response, newValue) {
+			if(response.status){
+				var tn = 0;
+				tn = parseFloat(newValue) + parseFloat($('#departureRate').html());
+				axios.get('{{urlSet_}}/{{ id }}', {
+					params: {
+						name: 'total',
+						value: tn,
+						pk: '1'
+					}
+				})
+				.then(function (response) {
+					$("#tnn").html("$" + tn + " USD");
+				})
+				.catch(function (error) {
+				});				
+			}
+		}				
+	});
+
+	$('#departureRate').editable({
+		url: '{{urlSet}}/{{ id }}', 
+	  validate: function(value) {
+	      if($.trim(value) === '') { 
+	          return 'Introducir el Teléfono';
+	      }
+	  },
+		success: function(response, newValue) {
+			if(response.status){
+				var tn = 0;
+				tn = parseFloat(newValue) + parseFloat($('#arriveRate').html());
+				axios.get('{{urlSet_}}/{{ id }}', {
+					params: {
+						name: 'total',
+						value: tn,
+						pk: '1'
+					}
+				})
+				.then(function (response) {
+					$("#tnn").html("$" + tn + " USD");
+				})
+				.catch(function (error) {
+				});	
+			}
+		}				
+	});	
+
+</script>

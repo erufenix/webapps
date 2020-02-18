@@ -1,0 +1,72 @@
+{% extends "layouts/michelin20/michelin__layout.twig" %}
+{% block content %}
+<section id="scontacto">
+  <div class="container clearfix">
+    <div class="flat-spacer clearfix" data-desktop="40" data-mobile="20" data-smobile="20" ></div>
+    <div class="flat-title text-center v3">
+        <h5 class="heading text-uppercase">{{ title }}</h5>
+    </div>
+    <div id="contacto">
+    	<div class="row ">
+    		<div class="col-md-3">
+    			<ul class="list-unstyled fa-ul flat-border-bottom flat-border-top pd-top-10 pd-bottom-10">
+            <li><span class="fa-li text-info" ><i class="far fa-user"></i></span> Gerardo Terreros</li>
+    				<li><span class="fa-li text-info" ><i class="far fa-envelope"></i></span> gterreros@tycgroup.com</li>
+    				<li><span class="fa-li text-info" ><i class="fas fa-phone"></i></span> 55 5148 7576</li>
+    			</ul>
+    		</div>
+				<div class="col-12 col-sm-12 col-md-9 flat-form-contact contact-v1-page">
+          <form action="{{ url('michelin20.sendContacto') }}" id="fcontacto" method="post">
+            <div class="form-row pd-bottom-30">
+              <div class="col-12 col-sm-6 col-md-6">
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+              </div>
+              <div class="col-12 col-sm-6 col-md-6">
+                <input type="email" name="correo" id="correo" placeholder="Correo" required>
+              </div>
+            </div>
+            <div class="form-row mg-top-20 pd-bottom-30">
+              <div class="col-12 col-sm-12 col-md-12">
+                <textarea name="mensaje" id="mensaje" placeholder="Mensaje" cols="3" class="no-resize" required></textarea>
+              </div>
+            </div>
+            <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+              <div class="col-sm-4 col-lg-4 col-sm-12">
+                <div id="captchaContainerC">
+                </div>
+              </div>
+            </div>
+            <div class="form-row mg-top-20 pd-bottom-30">
+              <div class="col-sm-12 col-ms-12 col-lg-12">
+                <button type="submit" class="btn-effect vm btn-submit mi-yellow-bg mi-blue-text float-right" id="sendc"><div>Enviar</div></button>
+              </div>
+            </div>
+          </form>
+				</div>
+    	</div>
+    </div>
+    <div id="resultc" class="invisible">
+      <div class="flat-company-overviews">
+        <div class="flat-iconbox clearfix fix-float-box">
+          <div class="iconbox one-of-two style1 mx-auto">
+            <div class="iconbox-border">
+              <div class="iconbox-icon">
+                <span class="far fa-check-circle"></span>
+              </div>
+              <div class="iconbox-content">
+                <h5><a href="#">Mensaj enviado</a></h5>
+                <p>En breve recibirá una respuesta</p>
+              </div>
+            </div>
+          </div> <!-- /.iconbox -->
+        </div> <!-- /.flat-iconbox -->
+        <div class="clearfix fix-float-box">
+          <div class="iconbox one-of-two mx-auto">
+              <a class="btn-effect vm btn-submit btn-block mi-yellow-bg mi-blue-text" href="{{ url('michelin20.index') }}/{{ tipo }}/contacto">Regresar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

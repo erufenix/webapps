@@ -1,0 +1,473 @@
+{% extends "layouts/transportCMI/CMILayout.twig" %}
+
+{% block content %}
+{% set persons = 6 %}
+<!-- BEGIN #checkout-cart -->
+<div class="section-container" id="checkout-cart">
+  <!-- BEGIN container -->
+  <div class="container">
+    <!-- BEGIN checkout -->
+    <form action="{{ url('transportCMI.setRegistro') }}" method="post" id="trp">
+      <div class="checkout" id="awizard">
+        <div class="checkout-header">
+          <!-- BEGIN row -->
+          <div class="row">
+            <!-- BEGIN col-3 -->
+            <div class="col-md-6 col-sm-6">
+              <div class="step active" id="tab_transport">
+                <a href="#checkout-body" data-toggle="tab">
+                  <div class="number">1</div>
+                  <div class="info">
+                    <div class="title">TRANSPORTATION</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!-- END col-3 -->
+            <!-- BEGIN col-3 -->
+            <div class="col-md-6 col-sm-6">
+              <div class="step" id="tab_comfirm">
+                <a href="#confirm-body" data-toggle="tab" class="disabledTab">
+                  <div class="number">2</div>
+                  <div class="info">
+                    <div class="title">CONFIRMATION and PAYMENT</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!-- END col-3 -->
+          </div>
+          <!-- END row -->
+        </div>
+        <div class="tab-content">
+          <div class="checkout-body tab-pane active" id="checkout-body">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 form-group row">
+                <label class="control-label col-md-3 bold_semi_bold">
+                  Hotel
+                </label>
+                <div class="col-md-9">
+                  <select class="form-control" name="hotel" id="hotel" required>
+                    <option value="">Select</option>
+                    {% for h in hoteles %}
+                    <option value="{{ h.index }}" title="{{ h.index }}">{{ h.nombre }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <label class="control-label col-md-3 bold_semi_bold m-t-10">
+                  Type of Transfer
+                </label>
+                <div class="col-md-9 m-t-10">
+                  <select class="form-control small input-sm" name="transfer" id="transfer" required>
+                    <option value="">Select</option>
+                    {% for t in transfer | keys  %}
+                    <option value="{{ t }}" class="small" data-type="{{ transfer[t].type }}" data-round="{{ transfer[t].round }}">{{ transfer[t].text }}</option>
+                    {% endfor %}
+                  </select>
+                </div>                
+              </div>
+              <div class="col-md-6 col-sm-6 form-group row">
+                <div class="gallery">
+                  <div class="image gallery-group-1">
+                    <div class="image-inner">
+                      <a href="javascript::;">
+                        <img src="{{ asset('assets')}}/img/hotel/bell.png" alt="" title="" id="imgHotel" />
+                      </a>
+                      <p class="image-caption" id="image-caption">
+                        Select hotel
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <hr>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <h5 class="text-info">Arrive</h5>
+                <h6 class="text-info"><span class="fa fa-info-circle"></span> From the Airport to Hotel</h6>
+              </div>
+              <div class="col-md-12 col-sm-12 form-group row">
+                <div class="col-md-1 col-sm-4">
+                  <label for="arrive_persons">Persons</label>
+                  <select class="form-control person" name="arrive_persons" id="arrive_persons" required>
+                    {% for i in 1..persons %}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <label for="arrive_airline">Airline</label>
+                  <input type="text" class="form-control" id="arrive_airline" name="arrive_airline" required/>
+                </div>
+                <div class="col-md-1 col-sm-4">
+                  <label for="arrive_fly">Fly</label>
+                  <input type="text" class="form-control" id="arrive_fly" name="arrive_fly" required/>
+                </div>
+                <div class="col-md-3 col-sm-4">
+                  <label for="arrive_date">Date</label>
+                  <input type="text" class="form-control date" id="arrive_date" name="arrive_date" required readonly/>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <label for="arrive_time">Time</label>
+                  <input type="text" class="form-control time" id="arrive_time" name="arrive_time" required readonly/>
+                </div>
+                <div class="col-md-3 col-sm-4">
+                  <label for="arrive_rate">Rate</label>
+                  <input type="text" class="form-control" id="arrive_rate" name="arrive_rate" readonly/>
+                </div>                                                   	                	
+              </div>
+              <div class="col-md-12 col-sm-12 m-t-5">
+                <h5 class="text-info">Departure</h5>
+                <h6 class="text-info"><span class="fa fa-info-circle"></span> From the Hotel to Airport</h6>
+              </div>
+              <div class="col-md-12 col-sm-12 form-group row">
+                <div class="col-md-1 col-sm-4">
+                  <label for="departure_persons">Persons</label>
+                  <select class="form-control person" name="departure_persons" id="departure_persons" required>
+                    {% for i in 0..persons %}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <label for="departure_airline">Airline</label>
+                  <input type="text" class="form-control departure" id="departure_airline" name="departure_airline" disabled/>
+                </div>
+                <div class="col-md-1 col-sm-4">
+                  <label for="departure_fly">Fly</label>
+                  <input type="text" class="form-control departure" id="departure_fly" name="departure_fly" disabled/>
+                </div>
+                <div class="col-md-3 col-sm-4">
+                  <label for="departure_date">Date</label>
+                  <input type="text" class="form-control date departure" id="departure_date" name="departure_date" readonly disabled/>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <label for="departure_time">Time</label>
+                  <input type="text" class="form-control time departure" id="departure_time" name="departure_time" readonly disabled/>
+                </div>
+                <div class="col-md-3 col-sm-4">
+                  <label for="departure_rate">Rate</label>
+                  <input type="text" class="form-control" id="departure_rate" name="departure_rate" readonly/>
+                </div>
+                <div class="col-sm-12 col-md-12 m-t-10">
+                  <div class="note note-warning hidden" id="note-transport">
+                    <div class="note-content">
+                    </div>
+                  </div>                   
+                </div>                                                  	                	
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <hr>
+              </div>
+              <div class="col-md-12 col-sm-12 form-group row">
+                <div class="col-md-3 col-sm-4">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="name" name="name" value="{{ (rqst is defined and rqst.name is defined) ? rqst.name  : ''  }}" required/>
+                </div>
+                <div class="col-md-3 col-sm-4">
+                  <label for="phone">Phone</label>
+                  <input type="text" class="form-control mphone" id="phone" name="phone" value="{{ (rqst is defined and rqst.phone is defined) ? rqst.phone  : ''  }}" required/>
+                </div>                 
+                <div class="col-md-3 col-sm-4">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" value="{{ (rqst is defined and rqst.email is defined) ? rqst.email  : ''  }}" required/>
+                </div>                                                                 
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <hr>
+              </div>
+              <div class="col-md-12 col-sm-12 form-group row">
+                <div class="col-md-3 col-sm-4">
+                  <div class="checkbox checkbox-css checkbox-info">
+                  <input type="checkbox" id="bcheckbox"/>
+                  <label for="bcheckbox"><strong class="text-info">Require billing?</strong></label>
+                  </div>
+                </div>         
+              </div>
+              <div id="billing" class="hidden">
+                <div class="col-md-12 col-sm-12 form-group row">
+                  <div class="col-md-3 col-sm-4">
+                    <label for="name">RFC</label>
+                    <input type="text" class="form-control billing" id="rfc" name="rfc"/>
+                  </div>
+                  <div class="col-md-3 col-sm-4">
+                    <label for="name">Company name</label>
+                    <input type="text" class="form-control billing" id="company" name="company"/>
+                  </div>
+                  <div class="col-md-3 col-sm-4">
+                    <label for="arrive_persons">Country</label>
+                    <select class="form-control billing country" name="country" id="country" required>
+                      <option value="">Select</option>
+                      {% for p in paises['content']['geonames'] %}
+                      <option value="{{ p.geonameId }}">{{ p.countryName }}</option> 
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col-md-3 col-sm-4">
+                    <label for="name">Billing email</label>
+                    <input type="email" class="form-control" id="bemail" name="bemail"/>
+                  </div>                                                                    
+                </div>
+                <div class="col-md-12 col-sm-12 form-group row m-t-15">
+                  <div class="col-md-3 col-sm-4">
+                    <label for="name">City</label>
+                    <input type="text" class="form-control billing" id="city" name="city"/>
+                  </div>
+                  <div class="col-md-3 col-sm-4">
+                    <label for="name">State</label>
+                    <input type="text" class="form-control billing" id="state" name="state"/>
+                  </div>
+                  <div class="col-md-3 col-sm-4">
+                    <label for="name">Address</label>
+                    <textarea placeholder="Street, number, colony, etc" rows="3" class="form-control billing" id="address" name="address"></textarea>
+                  </div>
+                  <div class="col-md-3 col-sm-4">
+                    <label for="name">billing phone</label>
+                    <input type="text" class="form-control billing mphone" id="bphone" name="bphone"/>
+                  </div>                                                                  
+                </div>
+                <div class="col-md-12 col-sm-12 form-group row m-t-15">
+                  <div class="col-md-3 col-sm-4">
+                    <label for="name">Postal code</label>
+                    <input type="text" class="form-control billing" id="cp" name="cp"/>
+                  </div>                   
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <hr>
+                </div>                
+              </div>
+              <div class="col-md-12 col-sm-12 form-group row m-t-10">
+                <div class="col-md-3 col-sm-4" id="captchaContainer">
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <hr>
+              </div>
+              <div class="col-md-12 col-sm-12 row">
+                <div class="col-md-8 col-sm-8 text-danger" align="right">
+                </div>
+                <div class="col-md-2 col-sm-2 bold_semi_bold text-right">
+                  Total
+                </div>
+                <div class="col-md-2 col-sm-2 text-right text-info" id="ttotal" align="right">0
+                </div>                
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <hr>
+              </div>       
+            </div>            
+          </div>
+          <div class="checkout-body tab-pane" id="confirm-body">
+            <div class="checkout-message" id="checkout-message">
+              <h1>Thank you! <small class="text-danger">Your data will be processed when you click on <strong>Pay</strong>, to change them click on <strong>Back</strong></small></h1>
+              <div class="table-responsive2">
+                <table class="table table-payment-summary">
+                  <tbody>
+                    <tr>
+                        <td class="value" id="v_hotel" width="50%">
+                          <h5 class="text-info">Hotel</h5>
+                          <div class="text-center"></div>
+                          <img class="img-responsive m-t-5">
+                        </td>
+                        <td class="value" width="50%">
+                          <ul class="list-unstyled">
+                            <li class="row">
+                              <span class="col-sm-4 col-md-4 bold_semi_bold">Type of Transfer</span>
+                              <span id="v_transfer" class="col-sm-8 col-md-8"><small></small></span>
+                            </li>
+                            <li class="row">
+                              <span class="col-sm-4 col-md-4 bold_semi_bold">Nombre</span>
+                              <span id="v_name" class="col-sm-8 col-md-8"></span>
+                            </li>
+                            <li class="row">
+                              <span class="col-sm-4 col-md-4 bold_semi_bold">Email</span>
+                              <span id="v_email" class="col-sm-8 col-md-8"></span>
+                            </li>
+                            <li class="row">
+                              <span class="col-sm-4 col-md-4 bold_semi_bold">Phone</span>
+                              <span id="v_phone" class="col-sm-8 col-md-8"></span>
+                            </li>                                                                                        
+                          </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td class="text-info text-center">
+                        Arrive <span class="fa fa-info-circle"></span> From the Airport to Hotel
+                      </td>
+                      <td class="text-info text-center">
+                        Departure <span class="fa fa-info-circle"></span> From the Hotel to Airport
+                      </td>                      
+                    </tr>
+                    <tr>
+                      <td>
+                        <ul class="list-unstyled">
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Persons</span>
+                            <span id="v_arrive_persons" class="col-sm-9 col-md-9"></span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Airline</span>
+                            <span id="v_arrive_airline" class="col-sm-9 col-md-9"></span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Fly</span>
+                            <span id="v_arrive_fly" class="col-sm-9 col-md-9"></span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Date - Time</span>
+                            <span id="v_arrive_date_time" class="col-sm-9 col-md-9"></span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Rate</span>
+                            <span id="v_arrive_rate" class="col-sm-9 col-md-9"></span>
+                          </li>
+                          <li id="one-mode" class="hidden text-danger m-t-5">
+                            <span class="fa fa-exclamation-circle"></span> Transport only one way mode. <b>Airport to Hotel
+                          </li>                                                                                                                                     
+                        </ul> 
+                      </td>
+                      <td>
+                        <ul class="list-unstyled">
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Persons</span>
+                            <span id="v_departure_persons" class="col-sm-9 col-md-9"></span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Airline</span>
+                            <span id="v_departure_airline" class="col-sm-9 col-md-9"></span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Fly</span>
+                            <span id="v_departure_fly" class="col-sm-9 col-md-9"></span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Date - Time</span>
+                            <span id="v_departure_date_time" class="col-sm-9 col-md-9"></span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Rate</span>
+                            <span id="v_departure_rate" class="col-sm-9 col-md-9"></span>
+                          </li>                                                                                                                                      
+                        </ul>                        
+                      </td>                      
+                    </tr>                    
+                    <tr>
+                      <td colspan="2" class="text-info">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <div class="row">
+                          <div class="col-sm-9 col-md-10 bold_semi_bold" align="right">Total</div>
+                          <div class="col-sm-3 col-md-2" id="v_total" align="right">Total</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tbilling hidden">
+                      <td class="text-info text-center" colspan="2">
+                        Billing data
+                      </td>
+                    </tr>
+                    <tr class="tbilling hidden">
+                      <td colspan="2">
+                        <table class="table table-sm">
+                          <tr>
+                            <td width="33.33%">
+                              <ul class="list-unstyled">
+                                <li class="row">
+                                  <span class="col-sm-6 col-md-6 bold_semi_bold">RFC</span>
+                                  <span id="v_rfc" class="col-sm-6 col-md-6"><small></small></span>
+                                </li>
+                                <li class="row">
+                                  <span class="col-sm-6 col-md-6 bold_semi_bold">Company name</span>
+                                  <span id="v_company" class="col-sm-6 col-md-6"></span>
+                                </li>
+                                <li class="row">
+                                  <span class="col-sm-6 col-md-6 bold_semi_bold">Country</span>
+                                  <span id="v_country" class="col-sm-6 col-md-6"></span>
+                                </li>
+                                <li class="row">
+                                  <span class="col-sm-6 col-md-6 bold_semi_bold">Email</span>
+                                  <span id="v_bemail" class="col-sm-6 col-md-6"></span>
+                                </li>                                                                                        
+                              </ul>                              
+                            </td>
+                            <td width="33.33%">
+                              <ul class="list-unstyled">
+                                <li class="row">
+                                  <span class="col-sm-4 col-md-4 bold_semi_bold">City</span>
+                                  <span id="v_city" class="col-sm-8 col-md-8"><small></small></span>
+                                </li>
+                                <li class="row">
+                                  <span class="col-sm-4 col-md-4 bold_semi_bold">State</span>
+                                  <span id="v_state" class="col-sm-8 col-md-8"></span>
+                                </li>
+                                <li class="row">
+                                  <span class="col-sm-4 col-md-4 bold_semi_bold">Address</span>
+                                  <span id="v_address" class="col-sm-8 col-md-8"></span>
+                                </li>
+                                <li class="row">
+                                  <span class="col-sm-4 col-md-4 bold_semi_bold">Phone</span>
+                                  <span id="v_bphone" class="col-sm-8 col-md-8"></span>
+                                </li>                                                                                        
+                              </ul> 
+                            </td>
+                            <td width="33.33%">
+                              <ul class="list-unstyled">
+                                <li class="row">
+                                  <span class="col-sm-4 col-md-4 bold_semi_bold">Postal code</span>
+                                  <span id="v_cp" class="col-sm-8 col-md-8"><small></small></span>
+                                </li>                                
+                              </ul>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row">
+                  <div class="col-md-12 col-sm-12" id="ninfo">
+                    <div class="note note-info">
+                      <div class="note-icon"><i class="fa fa-danger text-warning"></i></div>
+                      <div class="note-content">
+                        {{ msg | raw }}
+                      </div>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="ppp" class="hidden">
+            </div>
+          </div>        
+        </div>
+        <div class="checkout-footer pager wizard">
+          <button type="button" class="btn btn-white btn-lg pull-left hidden" id="back"><div>Back</div></button>
+          <button type="submit" class="btn btn-info btn-lg p-l-30 p-r-30 m-l-10" id="next"><div>Next</div></button>
+          <button type="button" class="btn btn-warning btn-lg pull-right hidden" id="pay"><div>Continue</div></button>
+          <button type="button" class="btn btn-warning btn-lg pull-right hidden" id="payF"><div><span class="fa fa-paypal"></span> Pay</div></button>
+        </div>      
+      </div>
+      <div class="ocultos">
+        <input type="hidden" name="hotelesJson" id="hoteles" value="{{ hotelesJson }}">
+        <input type="hidden" name="transferJson" id="transferJson" value="{{ transferJson }}">
+        <input type="hidden" name="asset" id="asset" value="{{ asset('assets') }}">
+        <input type="hidden" name="total" id="total" value="">
+        <input type="hidden" name="hotelName" id="hotelName" value="">
+        <input type="hidden" name="hotelImg" id="hotelImg" value="">
+        <input type="hidden" name="urlReturn" id="urlReturn" value="{{ hostFull }}">
+        <input type="hidden" name="urlCancel" id="urlCancel" value="{{ hostFull }}">
+        <input type="hidden" name="hosts" id="hosts" value="{{ hosts }}">
+        <input type="hidden" name="hostFull" id="hostFull" value="{{ hostFull }}">
+        <input type="hidden" name="urlCheckOut" id="urlCheckOut" value="{{ url('transportCMI.checkout') }}/en">
+        <input type="hidden" name="urlExecute" id="urlExecute" value="{{ url('transportCMI.execute') }}/en">
+        <input type="hidden" name="urlComplete" id="urlComplete" value="{{ url('transportCMI.payComplete') }}/en">
+      </div>
+    </form>
+    <!-- END checkout -->
+  </div>
+  <!-- END container -->
+</div>
+<!-- END #checkout-cart -->
+{% endblock content %}  

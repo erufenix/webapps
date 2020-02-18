@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<metahttp-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- Tell the browser to be responsive to screen width -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<!-- Favicon icon -->
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets')}}/adminpress/images/favicon.png">
+		<title>UPFRONT Admin</title>
+		<!-- Bootstrap Core CSS -->
+		<link href="{{ asset('assets')}}/adminpress/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="{{asset('assets')}}/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" />
+		<link href="{{asset('assets')}}/bootstrap-table/extensions/filter-control/bootstrap-table-filter-control.css" rel="stylesheet" />
+		<link href="{{asset('assets')}}/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.css" rel="stylesheet" />
+		 <link href="{{ asset('assets')}}/adminpress/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">  		
+		<!-- Custom CSS -->
+		<link href="{{ asset('assets')}}/adminpress/horizontal/css/style.css" rel="stylesheet">
+		<!-- You can change the theme colors from here -->
+		<link href="{{ asset('assets')}}/adminpress/horizontal/css/colors/red-dark.css" id="theme" rel="stylesheet">   
+	  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body class="fix-header card-no-border logo-center">
+		<!-- ============================================================== -->
+		<!-- Preloader - style you can find in spinners.css -->
+		<!-- ============================================================== -->
+			<div class="preloader"> <svg class="circular" viewbox="25 25 50 50">
+				<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+			</svg>
+		</div>
+		<!-- ============================================================== -->
+		<!-- Main wrapper - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+			<div id="main-wrapper"> <!-- ============================================================== -->
+			<!-- Topbar header - style you can find in pages.scss -->
+			<!-- ============================================================== -->
+				<header class="topbar"> <nav class="navbar top-navbar navbar-expand-md navbar-light">
+					<!-- ============================================================== -->
+					<!-- Logo -->
+					<!-- ============================================================== -->
+						<div class="navbar-header"> <a
+							class="navbar-brand" href="index.html">
+							<!-- Logo icon -->
+							<b>
+								<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+								<!-- Dark Logo icon -->
+								<img
+								src="https://webapps.tycgroup.com/assets/img/upfront120.png" alt="homepage" class="dark-logo"/> <!-- Light Logo icon -->
+								<img src="https://webapps.tycgroup.com/assets/img/upfront120.png" alt="homepage" class="light-logo"/>
+							</b>
+							<!--End Logo icon -->
+							<!-- Logo text -->
+							<span>
+						</a>
+					</div>
+					<!-- ============================================================== -->
+					<!-- End Logo -->
+					<!-- ============================================================== -->
+						<div class="navbar-collapse"> <!-- ============================================================== -->
+						<!-- toggle and nav items -->
+						<!-- ============================================================== -->
+							<ul class="navbar-nav mr-auto mt-md-0"> <li class="nav-item dropdown mega-dropdown">
+								<div class="dropdown-menu animated slideInUp">
+								</div>
+							</li>
+							<!-- ============================================================== -->
+						<!-- End Messages -->
+							<!-- ============================================================== -->
+						</ul>
+						<!-- ============================================================== -->
+						<!-- User profile and search -->
+						<!-- ============================================================== -->
+							<ul class="navbar-nav my-lg-0"> <!-- ============================================================== -->
+							<!-- Profile -->
+							<!-- ============================================================== -->
+								
+								<li class="nav-item">
+                  <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="{{ path('upfront20_panel_logout') }}"> 
+									<i class="mdi mdi-exit-to-app"></i> Salir</a> 
+								</li>	
+								<div class="dropdown-menu dropdown-menu-right scale-up">
+									<!--<ul class="dropdown-user">
+										<li>
+											<div class="dw-user-box">
+												<div class="u-img"><img src="{{ asset('assets')}}/adminpress/images/users/1.jpg" alt="user"></div>
+												<div class="u-text">
+													<h4>Steave Jobs</h4>
+													<p class="text-muted">varun@gmail.com</p>
+												</div>
+											</div>
+										</li>
+										<li role="separator" class="divider"></li>
+										<li>
+											<a href="#">
+												<i class="fa fa-power-off"></i>
+												Salir</a>
+										</li>
+									</ul>-->
+								</div>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<!-- ============================================================== -->
+			<!-- End Topbar header -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Left Sidebar - style you can find in sidebar.scss  -->
+			<!-- ============================================================== -->
+				<aside
+				class="left-sidebar"> <!-- Sidebar scroll-->
+				<div
+					class="scroll-sidebar">
+					<!-- Sidebar navigation-->
+					<nav class="sidebar-nav">
+						<ul id="sidebarnav">
+							<li class="nav-small-cap">PERSONAL</li>
+							<li>
+								<a class="has-arrow waves-effect waves-dark" href="{{ url('upFront.panel') }}">
+									<i class="mdi mdi-account-multiple"></i>
+									<span class="hide-menu">Participantes</span>
+								</a>
+							</li>
+							<li>
+								<a class="has-arrow waves-effect waves-dark asistencia" href="javascript:;">
+									<i class="mdi mdi-airplay"></i>
+									<span class="hide-menu">Asistencia</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<!-- End Sidebar navigation -->
+				</div>
+				<!-- End Sidebar scroll-->
+			</aside>
+			<!-- ============================================================== -->
+			<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Page wrapper  -->
+			<!-- ============================================================== -->
+				<div class="page-wrapper"> <!-- ============================================================== -->
+				<!-- Bread crumb and right sidebar toggle -->
+				<!-- ============================================================== -->
+					<div class="row page-titles"> <div class="col-md-5 align-self-center">
+						<h3 class="text-themecolor">{{title}}</h3>
+					</div>
+				</div>
+				<!-- ============================================================== -->
+				<!-- End Bread crumb and right sidebar toggle -->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- Container fluid  -->
+				<!-- ============================================================== -->
+					<div class="container-fluid"> <!-- ============================================================== -->
+					<!-- Start Page Content -->
+					<!-- ============================================================== -->
+						<div class="row"> <div class="col-12">
+							<div class="card">
+								<div class="card-body">
+									{% block content %}{% endblock %}
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- ============================================================== -->
+				<!-- End PAge Content -->
+					<!-- ============================================================== -->
+					<!-- ============================================================== -->
+					<!-- Right sidebar -->
+					<!-- ============================================================== -->
+				</div>
+				<!-- ============================================================== -->
+				<!-- End Container fluid  -->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- footer -->
+				<!-- ============================================================== -->
+					<footer class="footer"> © 2020 T&C Nuevas Tecnologías
+				</footer>
+				<!-- ============================================================== -->
+			<!-- End footer -->
+				<!-- ============================================================== -->
+			</div>
+			<!-- ============================================================== -->
+		<!-- End Page wrapper  -->
+			<!-- ============================================================== -->
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== --><script src="{{ asset('assets')}}/adminpress/plugins/jquery/jquery.min.js"> </script>
+		<!-- Bootstrap tether Core JavaScript -->
+		<script src="{{ asset('assets')}}/adminpress/plugins/bootstrap/js/popper.min.js"></script>
+		<script src="{{ asset('assets')}}/adminpress/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<!-- slimscrollbar scrollbar JavaScript -->
+		<script src="{{ asset('assets')}}/adminpress/horizontal/js/jquery.slimscroll.js"></script>
+		<!--Wave Effects -->
+		<script src="{{ asset('assets')}}/adminpress/horizontal/js/waves.js"></script>
+		<!--Menu sidebar -->
+		<script src="{{ asset('assets')}}/adminpress/horizontal/js/sidebarmenu.js"></script>
+		<!--stickey kit -->
+		<script src="{{ asset('assets')}}/adminpress/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+		<script src="{{ asset('assets')}}/adminpress/plugins/sparkline/jquery.sparkline.min.js"></script>
+		<!--Custom JavaScript -->
+		<script src="{{asset('assets')}}/bootstrap-table/bootstrap-table.js"></script>
+		<script src="{{asset('assets')}}/bootstrap-table/bootstrap-table-locale-all.js"></script>
+		<script src="{{asset('assets')}}/bootstrap-table/extensions/export/tableExport.js"></script>
+		<script src="{{asset('assets')}}/bootstrap-table/extensions/export/bootstrap-table-export.min.js"></script>
+		<script src="{{asset('assets')}}/bootstrap-table/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+		<script src="{{asset('assets')}}/bootstrap-table/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+    <script src="{{asset('assets')}}/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.js"></script>
+		<script src="{{ asset('assets')}}/form/jquery.form.min.js"></script>
+		<script src="{{ asset('assets')}}/form/jquery.validate.min.js"></script>    
+    <script src="{{asset('assets')}}/js/axios.min.js"></script>
+		<script src="{{asset('assets')}}/moment-with-locales.js"></script>
+		<script src="{{ asset('assets')}}/adminpress/plugins/toast-master/js/jquery.toast.js"></script>
+    <script src="{{ asset('assets')}}/adminpress/horizontal/js/custom.min.js"></script>
+    {% block scripts %}{% endblock %}
+	</body>
+
+</html>

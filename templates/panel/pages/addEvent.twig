@@ -1,0 +1,49 @@
+<form action="{{ url('panel.setEvent') }}" method="post" id="addEvent">
+	<div class="form-group row">
+		<div class="col-md-6 text-left">
+			<label>Nombre del evento</label>
+			<input type="text" class="form-control input-sm form-control-sm" name="nombreEvento" value="" placeholder="" required="">
+		</div>
+		<div class="col-md-6 text-left">
+			<label>Clave del evento</label>
+			<input type="text" class="form-control input-sm form-control-sm nsp" name="claveEvento" value="" placeholder="" required>
+		</div>		
+	</div>
+	<div class="form-group row">
+		<div class="col-md-6 text-left">
+			<label>Sede del evento</label>
+			<input type="text" class="form-control input-sm form-control-sm" name="sedeEvento" value="" placeholder="" required>
+		</div>
+		<div class="col-md-6 text-left">
+			<label>Fecha del evento</label>
+			<div class="row">
+				<div class="col-sm-12 col-md-5">
+					<input type="date" class="form-control input-sm form-control-sm dates" name="fechaEventoInicio" value="" placeholder=""  required readonly>
+				</div>
+				<div class="col-sm-12 col-md-2 text-center">
+					al
+				</div>
+				<div class="col-sm-12 col-md-5">
+					<input type="date" class="form-control input-sm form-control-sm dates" name="fechaEventoFin" value="" placeholder=""  required readonly>
+				</div>				
+			</div>
+		</div>			
+	</div>
+	<div class="form-group row">
+		<div class="col-md-4 text-left">
+			<label>Fecha (min) llegada</label>
+			<input type="date" class="form-control input-sm form-control-sm dates" name="minFechaLlegada" value="" placeholder=""  required readonly>
+		</div>
+		<div class="col-md-4 text-left">
+			<label>Fecha (max) salida</label>
+			<input type="date" class="form-control input-sm form-control-sm dates" name="maxFechaLlegada" value="" placeholder="" required readonly>
+		</div>
+		<div class="col-md-4 text-left">
+			<label for="formaPago">Forma de pago <small>(seleccione al menos uno)</small></label>
+		  <div class="checkbox inline">
+		    <label class="ui-check"><input type="checkbox" name="formaPago[]" id="formaPagoDB" value="DB" data-parsley-checkmin="1" required=""><i class="dark-white"></i>DB</label>
+		    <label class="ui-check"><input type="checkbox" name="formaPago[]" id="formaPagoTC" value="TC"><i class="dark-white"></i>TC</label>
+		  </div>			
+			</div>
+	</div>
+</form>

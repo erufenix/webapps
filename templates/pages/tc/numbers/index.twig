@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('assets')}}/canvas/css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('assets')}}/canvas/style.css" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('assets')}}/canvas/css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('assets')}}/canvas/css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('assets')}}/canvas/css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('assets')}}/canvas/css/magnific-popup.css" type="text/css" />
+  <link rel="stylesheet" href="{{ asset('assets')}}/canvas/css/components/bs-switches.css" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('assets')}}/canvas/css/responsive.css" type="text/css" />
+	<style type="text/css" media="screen">
+    .boxed-bg {
+        background-image: url("{{ asset('assets')}}/img/bgst.png");
+    }
+
+    .boxed-bg {
+        background-image: url('{{ asset('assets')}}/img/bg2st.png');
+        background-position: 50% 0;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+  	.content-wrap {
+      padding: 20px 0;
+    }
+    .no-float{
+    	float: none;
+    }
+    .tomato{
+    	border: 1px solid tomato
+    }
+    .button.disabled, .button:disabled, .button-dirtygreen.disabled:hover {
+    	opacity: 0.65;
+    	cursor: default;
+  	}
+    #wrapper,#content{
+      background: none;
+    }
+
+    .m-t-10_{
+      margin-top: 10px;
+    }
+
+    .powered{
+      z-index: 299;
+      position: fixed;
+      width: 260px;
+      height: 24px;
+      background-color: #333;
+      background-color: rgba(0,0,0,0.3);
+      font-size: 12px;
+      line-height: 24px;
+      text-align: center;
+      color: #FFF;
+      top: auto;
+      left: auto;
+      right: 10px;
+      bottom: 15px;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .normal{
+      text-transform:none !important;
+      margin-top: 0px !important;
+    }
+
+    .m-b-10{
+      margin-bottom:10px;
+    }
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>Sorteo números</title>
+
+</head>
+<body class="stretched boxed-bg">
+	<div id="wrapper" class="clearfix">
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container clearfix">
+					<form action="javascript:;" method="post" id="frmticket">
+						<div class="col-lg-4 col-md-6 col-sm-12 col-12 nobottommargin mx-auto no-float">
+							<div class="form-row m-b-10">
+								<div class="col-8 col-sm-6 col-md-8">
+									<input class="form-control form-control-sm mt-1 form__input" type="email" id="correo" name="correo" placeholder="Correo" required>
+								</div>
+								<div class="col-4 col-sm-6 col-md-4" align="center">
+									<!--<button class="button button-3d button-rounded button-dirtygreen button-small btn-block mb-2" id="ticket" type="button"><i class="icon-ticket"></i>Boleto</button>-->
+                  <input id="sticket" type="checkbox" data-off-color="warning" data-off-text="<i class='icon-chevron-left'></i>" data-on-text="<i class='icon-ticket'></i>">
+								</div>
+							</div>
+              <div class="form-row">
+                <div class="col-md-2 col-6 mx-auto no-float">
+
+                </div>
+              </div>
+							<div class="form-row hidden" id="msg">
+								<div class="col-12 col-sm-12 col-md-12 mt-2">
+									<div class="style-msg alertmsg m-b-10">
+										<div class="sb-msg small"><i class="icon-warning-sign"></i><strong> </strong> <small>Correo no valido o el dominio es incorrecto <strong>correo@tycgroup.com , correo@tecnoregistro.com.mx, correo@proyex.com.mx, correo@handcraft.com.mx, correo@tierradeideas.mx, correo@tcexpo.com.mx</strong><small> </div>
+									</div>
+								</div>
+							</div>
+							<div class="feature-box center media-box fbox-bg">
+								<div class="fbox-media">
+									<a href="#"><img class="image_fade" src="{{ asset('assets')}}/img/reg001.png" alt="Featured Box Image"></a>
+								</div>
+								<div class="fbox-desc">
+									<h2 id="tk" class="timer" data-from="1" data-to="300" data-speed="500"></h2>
+                  <h3 id="msg2" class="text-info text-center">Por favor, ingresa tu correo electrónico y da clic sobre el botón naranja para obtener tu número.</h3>
+									<h2 id="su" class="hidden mb-0">
+                    <span class="subtitle">Suerte!</span>
+                  </h2>
+                  <h3 id="mailf" class="normal"></h3>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+  <div class="powered">
+    Nuevas Tecnologías 2018-2019 &copy; T&C Group
+  </div>
+</div>
+<script src="{{ asset('assets')}}/canvas/js/jquery.js"></script>
+<script src="{{ asset('assets')}}/canvas/js/plugins.js"></script>
+<script src="{{ asset('assets')}}/canvas/js/components/bs-switches.js"></script>
+<script src="{{ asset('assets')}}/canvas/js/functions.js"></script>
+<script src="{{ asset('assets')}}/js/validator.min.js"></script>
+<script src="{{ asset('assets')}}/js/jquery.countTo.js"></script>
+<script src="{{ asset('assets')}}/js/axios.min.js"></script>
+<script type="text/javascript">
+  jQuery(".bt-switch").bootstrapSwitch();
+	$("body").on('keypress', '#correo', function(event) {
+		$("#ticket").removeClass('disabled').prop('disabled',false);
+    if(event.which == 13) {
+      gen();
+    }
+	});
+
+  $("#sticket").bootstrapSwitch({
+    onSwitchChange: function(event, state) {
+        if(state == true){
+            gen();
+        }
+        else{
+            /*$("#msg").removeClass('hidden').addClass('shake animated');
+            $("#ticket").removeClass('disabled').prop('disabled',false);
+            $('#sticket').bootstrapSwitch('state', false, false);*/
+        }
+    }
+  });
+
+  function gen(){
+    var rxp = /[a-zA-Z0-9._%-]+@(tycgroup\.com|tecnoregistro\.com.mx|proyex\.com.mx|handcraft\.com.mx|tierradeideas\.mx|tcexpo\.com.mx)/;
+    $("#msg").addClass('hidden').removeClass('shake animated');
+    if(validator.isEmail($("#correo").val()) && rxp.test($("#correo").val()) ){
+      $('.timer').countTo({
+        onComplete: function (value) {
+          $(this).countTo('restart');
+        }
+      });
+      $("#msg").addClass('hidden').removeClass('shake animated');
+      $("#ticket").addClass('disabled').prop('disabled',true);
+      axios.post('{{ url('numbers.ticket') }}',$("#frmticket").serialize())
+       .then(function (response) {
+          var data = response.data;
+          if(data.st){
+            if(data.yt){
+              $("#msg2").html(data.msg);
+            }
+            else{
+              $("#msg2").html('');
+            }
+            $(".timer").countTo('stop');
+            $("#tk").html(data.ticket);
+            $("#su").removeClass('hidden');
+            $('#sticket').bootstrapSwitch('state', false, false);
+            $("#mailf").html(data.correo);
+            $("#correo").val('');
+            $("#correo").attr('placeholder','Correo');
+          }
+        })
+        .catch(function (error) {
+        })
+        .then(function () {
+        });
+    }
+    else{
+      $("#msg").removeClass('hidden').addClass('shake animated');
+      $("#ticket").removeClass('disabled').prop('disabled',false);
+      $('#sticket').bootstrapSwitch('state', false, false);
+    }
+  }
+</script>
+</body>

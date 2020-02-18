@@ -1,0 +1,73 @@
+<section class="our-company">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="custom-heading part-heading three-slashes">
+          <h2>LIVE AQUA MEXICO CITY</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-4 col-lg-4">
+        <div class="office">
+          <p>
+            <i class="fa fa-map-marker"></i>
+            Avenida Paseo de Los Tamarindos Numero 98, CDMX, 05120, Mexico
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-8">
+        <div class="flat-map"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+if ( $(".flat-map").length ){
+    var googleMap = function () {
+        // gmap default
+        if ($().gmap3) {
+            var data = JSON.parse('[{"address":"Avenida Paseo de Los Tamarindos Numero 98, CDMX, 05120, Mexico","content":""}]');
+            $(".flat-map")
+            .gmap3({
+                map: {
+                    options: {
+                        zoom: 10,
+                        center: [19.3863262,-99.2529023],
+                        zoom:17,
+                        mapTypeId: 'LIVE AQUA MEXICO CITY',
+                        mapTypeControlOptions: {
+                            mapTypeIds: ['LIVE AQUA MEXICO CITY', google.maps.MapTypeId.SATELLITE, google.maps.MapTypeId.HYBRID]
+                        },
+                        scrollwheel: true
+                    },
+                },
+            });
+
+        }
+        // json loop
+        $.each(data, function (key, val) {
+            $('.flat-map').gmap3({
+                marker: {
+                    values: [{
+                        address: val.address,
+                        options: {
+                            icon: "../assets/img/icon-map.png"
+                        }
+
+                    }]
+                },
+                styledmaptype: {
+                    id: "LIVE AQUA MEXICO CITY",
+                    options: {
+                        name: "LIVE AQUA MEXICO CITY"
+                    }
+                }
+            });
+        });
+    };
+
+  googleMap();  
+  }
+</script>

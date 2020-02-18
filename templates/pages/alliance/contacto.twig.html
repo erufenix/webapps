@@ -1,0 +1,90 @@
+{% extends (tpo == 'alliance') ? "layouts/alliance/allianceLayout_dis.twig.html" : "layouts/alliance/allianceLayout_asoc.twig.html" %}
+{% block content %}
+{{ "TPO" ~ dump(tpo) }}
+<section class="m-b-40 m-t-40">
+  <div class="container">
+    <div class="custom-heading section-heading">
+      <h1>CONTACTO</h1>
+    </div>
+  </div>
+</section>
+<section class="our-company m-b-40" id="contacto">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <div align="center">
+          <h5 class="info-mi">T&C</h5>
+        </div>
+        <div class="description">
+          <hr>
+          <ul class="list-unstyled mb-20">
+            <li><span class="fas fa-fw fa-user"></span> Gerardo Terreros</li>
+            <li><span class="fas fa-fw fa-envelope"></span> gterreros@tcevents.com</li>
+            <li><span class="fas fa-fw fa-phone"></span> +52 55 5148 7500 ext. 7576</li>
+          </ul>
+          <hr>
+        </div>
+        <div class="description">
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <div class="description">
+          <form action="{{ url('alliance.sendContacto') }}" method="post" id="frmContacto">
+            <div class="from-group row m-b-20">
+              <div class="col-md-6 col-lg-6 col-sm-12">
+                <label for="nombre" class="material">Nombre</label>
+                <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+              </div>
+              <div class="col-md-6 col-lg-6 col-sm-12">
+                <label for="correo" class="material">Correo</label>
+                <input class="form-control" type="mail" name="correo" id="correo" placeholder="Correo" required>
+              </div>                             
+            </div>
+            <div class="from-group row m-b-20">
+              <div class="col-md-12 col-lg-12 col-sm-12">
+                <label for="Mensaje" class="material">Mensaje</label>
+                <textarea name="mensaje" id="mensaje" class="no-resize form-control" rows="3" required></textarea>
+              </div>                
+            </div>
+            <div class="from-group row m-b-20">
+              <div class="col-md-4 col-lg-4 col-sm-12">
+                <div id="captchaContainerC"></div>
+              </div>
+            </div>            
+            <div class="from-group row m-b-20" align="right">
+              <button type="submit" id="sendc" class="btn btn-primary float-right"><div>Enviar</div></button>
+            </div>                        
+          </form>          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="col-md-12 col-sm-12 col-lg-12 row hidden" id="resultc">
+  <section class="our-services service-icon-list">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 center-block no-float">
+          <div class="content">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="type">
+                  <i class="fa fa-check"></i>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <h3 class="info-mi">Mensaje enviado correctamente</h3>
+                <p class="m-b-10">En breve recibiras una respuesta</p>
+                <h6 class="m-b-20">Gracias!</h6>
+              </div>
+            </div>
+          </div>
+          <div align="right">
+            <a href="{{ url("alliance.contacto") }}" class="btn btn-warning btn-block">Regresar</a>
+          </div>
+        </div>
+      </div>
+      </div>
+  </section>      
+</div> 
+{% endblock %}

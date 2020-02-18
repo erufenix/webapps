@@ -1,0 +1,253 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-9">
+            <h3 class="c-center c-font-uppercase c-font-bold">{{evento}}</h3>
+        </div>
+        <div class="col-sm-12 col-sm-3">
+            <a class="btn btn-link pull-right cbp-singlePage" href="{{ url ('mapa') }}">
+                <i class="icon-map"></i> Mapa
+            </a>
+            <a class="btn btn-link pull-right cbp-singlePage" href="{{ url ('politicas') }}">
+                <i class="icon-map"></i> Políticas de Reservación
+            </a>            
+        </div>
+    </div>
+    <form action="{{ url ('reservar') }}" method="post">
+    <div class="c-content-divider c-divider-sm c-left c-bg-red">
+        <i class="icon-dot c-bg-red c-square"></i>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-5">
+            <div class="cbp-panel">
+                <div class="c-content-latest-works cbp cbp-l-grid-masonry-projects wow animate fadeInLeft">
+                    <div class="cbp-item graphic center-block-i">
+                        <div class="cbp-caption">
+                            <div class="cbp-caption-defaultWrap">
+                                <img src="{{ asset('assets')}}/img/edi/sheraton.jpg" alt=""> </div>
+                            <div class="cbp-caption-activeWrap">
+                            <div class="c-masonry-border"></div>
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <a href="{{ asset('assets')}}/img/edi/sheraton.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Sheraton Ambassador"><span class="icon-magnifier"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbp-l-grid-masonry-projects-desc">Sheraton Ambassador</div>
+                    </div>                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-7">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th class="text-center">Habitación</th>
+                        <th class="text-center">Tarifa</th>
+                        <th class="text-center">Selección</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Sencilla Classic
+                        </td>
+                        <td class="text-center">
+                            $ 7,445.00
+                        </td>
+                        <td>
+                            <div class="form-group form-c-radios">
+                                <div class="c-radio-list">
+                                    <div class="c-radio">
+                                        <input type="radio" id="htl_1_1" class="c-radio" name="hotel" value='{"hotel":"Sheraton Ambassador","habitacion":" Sencilla Classic","tipoPago":"Doble","costoNoche":"2481.66","cargoBellBoys":"30.00","divisa":"MXN","op":"MA","diasPago":"3"}'>
+                                            <label for="htl_1_1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span>&nbsp;
+                                            </label>
+                                    </div>
+                                </div>
+                            </div>                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Doble Classic  
+                        </td>
+                        <td class="text-center">
+                            $ 7,445.00
+                        </td>
+                        <td>
+                            <div class="c-radio-list">
+                                <div class="c-radio">
+                                    <input type="radio" id="htl_1_2" class="c-radio" name="hotel" value='{"hotel":"Sheraton Ambassador","habitacion":" Doble Classic","tipoPago":"Doble","costoNoche":"2481.66","cargoBellBoys":"60.00","divisa":"MXN","op":"MA","diasPago":"3"}'>
+                                        <label for="htl_1_2">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span>&nbsp;
+                                        </label>
+                                </div>
+                            </div>                                                   
+                        </td>
+                    </tr>                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">&nbsp;
+                        </td>
+                        <td class="text-center">
+                            <button type="submit" class="btn btn-primary btn-block">Reservar</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="clearfix">
+                <div class="c-content-title-3 c-title-sm c-theme-border c-margin-t-20">
+                    <h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>
+                        <ul>
+                            <li>
+                                Renta de Habitación por 3 noches de hospedaje, sencilla o doble en Plan Europeo (Sin alimentos incluidos), Impuestos y Propinas a Camaristas. 
+                            </li>
+                            <li>
+                                Habitación Sencilla o doble incluye una sola inscripción al Congreso. Para una segunda inscripción, favor de comunicarse al Colegio de Pediatría de Nuevo León.
+                            </li>
+                        </ul>
+                </div>
+                <div class="c-content-title-3 c-title-sm c-border-yellow">
+                    <h3 class="c-font-yellow c-font-uppercase">Notas importantes:</h3>
+                        <ul>
+                            <li>
+                                Se realizará un solo cargo por persona por concepto de Propinas a Bell Boys (Sencilla $30.00 / Doble $60.00).
+                            </li>
+                            <li>
+                                El check inn en el Hotel es a partir de las 15:00 hrs, y el check out es a las 13:00 hrs.
+                            </li>
+                        </ul>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="c-content-divider c-divider-sm c-left c-bg-red">
+        <i class="icon-dot c-bg-red c-square"></i>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-5">
+            <div class="cbp-panel">
+                <div class="c-content-latest-works cbp cbp-l-grid-masonry-projects wow animate fadeInLeft">
+                    <div class="cbp-item graphic center-block-i">
+                        <div class="cbp-caption">
+                            <div class="cbp-caption-defaultWrap">
+                                <img src="{{ asset('assets')}}/img/edi/antarixCinter.png" alt=""> </div>
+                            <div class="cbp-caption-activeWrap">
+                            <div class="c-masonry-border"></div>
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <a href="{{ asset('assets')}}/img/edi/antarixCinter.png" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Antaris Cintermex"><span class="icon-magnifier"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbp-l-grid-masonry-projects-desc">Antaris Cintermex</div>
+                    </div>                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-7">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th class="text-center">Habitación</th>
+                        <th class="text-center">Tarifa</th>
+                        <th class="text-center">Selección</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Sencilla Luxor Suite
+                        </td>
+                        <td class="text-center">
+                            $ 8,871.00
+                        </td>
+                        <td>
+                            <div class="form-group form-c-radios">
+                                <div class="c-radio-list">
+                                    <div class="c-radio">
+                                        <input type="radio" id="htl_2_1" class="c-radio" name="hotel" value='{"hotel":"Antaris Cintermex","habitacion":" Sencilla Luxor Suite","tipoPago":"Doble","costoNoche":"2957.00","cargoBellBoys":"30.00","divisa":"MXN","op":"MA","diasPago":"3"}'>
+                                            <label for="htl_2_1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span>&nbsp;
+                                            </label>
+                                    </div>
+                                </div>
+                            </div>                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Doble Luxor Suite  
+                        </td>
+                        <td class="text-center">
+                            $ 8,871.00
+                        </td>
+                        <td>
+                            <div class="c-radio-list">
+                                <div class="c-radio">
+                                    <input type="radio" id="htl_2_2" class="c-radio" name="hotel" value='{"hotel":"Antaris Cintermex","habitacion":" Doble Luxor Suite","tipoPago":"Doble","costoNoche":"2957.00","cargoBellBoys":"60.00","divisa":"MXN","op":"MA","diasPago":"3"}'>
+                                        <label for="htl_2_2">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span>&nbsp;
+                                        </label>
+                                </div>
+                            </div>                                                   
+                        </td>
+                    </tr>                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">&nbsp;
+                        </td>
+                        <td class="text-center">
+                            <button type="submit" class="btn btn-primary btn-block">Reservar</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="clearfix">
+                <div class="c-content-title-3 c-title-sm c-theme-border c-margin-t-20">
+                    <h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>
+                        <ul>
+                            <li>
+                                Renta de Habitación por 3 noches de hospedaje, sencilla o doble en Plan Europeo (Sin alimentos incluidos), Impuestos y Propinas a Camaristas.
+                            </li>
+                            <li>
+                                Habitación Sencilla o doble incluye una sola inscripción al Congreso. Para una segunda inscripción, favor de comunicarse al Colegio de Pediatría de Nuevo León.
+                            </li>
+                        </ul>
+                </div>
+                <div class="c-content-title-3 c-title-sm c-border-yellow">
+                    <h3 class="c-font-yellow c-font-uppercase">Notas importantes:</h3>
+                        <ul>
+                            <li>
+                                Se realizará un solo cargo por persona por concepto de Propinas a Bell Boys (Sencilla $30.00 / Doble $60.00). 
+                            </li>
+                            <li>
+                                El check inn en el Hotel es a partir de las 15:00 hrs, y el check out es a las 13:00 hrs.
+                            </li>
+                        </ul>
+                </div>                
+            </div>
+        </div>
+    </div>    
+    </form>
+</div>
+{% endblock %}

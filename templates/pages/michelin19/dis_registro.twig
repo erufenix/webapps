@@ -1,0 +1,342 @@
+{% extends "layouts/michelin19/michelin__layout.twig" %}
+{% block content %}
+<section id="sreg">
+  <div class="container">
+    <div class="flat-spacer clearfix" data-desktop="40" data-mobile="20" data-smobile="20" ></div>
+    <div class="flat-title text-center v3">
+        <h5 class="heading text-uppercase">{{ title }}</h5>
+    </div>
+    <div id="valida" class="invisible">
+      <form action="{{ url('michelin19.valida') }}" id="fvalida" method="post">
+        <div class="row">
+          <div class="col-md-8 center-block no-float mx-auto form-row flat-border-bottom flat-border-top">
+            <div class="col-12 col-sm-12 col-md-12">
+               <div class="flat-spacer clearfix" data-desktop="30" data-mobile="20" data-smobile="20" ></div>
+            </div>
+            <div class="col-12 col-sm-8 col-md-8">
+              <input type="text" name="clave" id="clave" placeholder="Clave" required>
+            </div>
+            <div class="col-12 col-sm-4 col-md-4">
+              <button type="submit" class="btn-effect vm btn-submit btn-block mi-yellow-bg mi-blue-text" id="bvalida"><div>Validar</div></button>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12">
+              <span id="err" class="text-danger invisible">Esta clave no es valida o ya fue utilizada</span>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12">
+               <div class="flat-spacer clearfix" data-desktop="30" data-mobile="20" data-smobile="20" ></div>
+            </div>
+            <div class="ocultos">
+              <input type="hidden" name="tipov" name="tipov" value="{{ tipo }}">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="registro" class="invisibles">
+      <div class="flat-spacer clearfix" data-desktop="20" data-mobile="10" data-smobile="10" ></div>
+      <form action="{{ url('michelin19.setRegistro') }}" id="fregistro" method="post">
+        <div class="form-row">
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="tpoNombre" id="exampleRadios2" value="distribuidor" checked required>
+              <label class="form-check-label" for="exampleRadios2">
+                Nombre de la distribuidora
+              </label>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <input type="text" name="distribuidor" id="distribuidor" placeholder="Razón social / Distribuidor" required>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre del asistente" required>
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-12 col-sm-6 col-md-4">
+            <input type="email" name="correo" id="correo" placeholder="Correo de la Persona que asistirá a la convención" required>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <input type="text" name="celular" id="celular" placeholder="Celular" required>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <input type="text" name="contacto" id="contacto" placeholder="Contacto" required>
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-sm-12 col-ms-4 col-lg-4">
+            <div class="preffered-time-wrap">
+              <div class="wrap-checked-all">
+                <div class="wrap-checked">
+                  <input type="checkbox" name="aco" id="aco">
+                  <label for="aco"><span class="fa fa-user-plus"></span> Acompañante</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-ms-4 col-lg-4 invisible" id="div_aco">
+            <input type="text" name="aco_nombre" id="aco_nombre" placeholder="Nombre del acompañante">
+          </div>
+          <div class="col-sm-12 col-ms-4 col-lg-4">
+            &nbsp;
+          </div>
+        </div>
+        <div class="row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-sm-12 col-md-12 pd-bottom-30 row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <select name="transporte" id="transporte" required>
+                <option value="">Transporte</option>
+                <option value="terrestre">Terrestre</option>
+                <option value="aereo">Aéreo</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 vuelo invisible">
+              <div class="flat-title v9 text-center">
+                <h5 class="text-danger"><i class="fas fa-plane-arrival"></i> Vuelo de llegada a Cancún</h5>
+              </div>
+            <div class="form-row">
+              <div class="col-sm-12 col-md-3 col-lg-3">
+                <input type="text" class="cvuelo" name="nvuelol" id="nvuelol" required placeholder="No. de vuelo">
+              </div>
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <!--<input type="text" class="" name="aerolineal" id="aerolineal" required placeholder="Aerolínea">-->
+                <select name="aerolineal" id="aerolineal" class="cvuelo">
+                  <option value="">Aerolínea</option>
+                  <option value="Aeroméxico">Aeroméxico</option>
+                  <option value="Volaris">Volaris</option>
+                  <option value="VivaAeobus">VivaAeobus</option>
+                  <option value="Calafia Airlines">Calafia Airlines</option>
+                  <option value="Interjet">Interjet</option>
+                </select>
+              </div>
+              <div class="col-sm-12 col-md-3 col-lg-3">
+                <input type="text" class="date cvuelo" name="llegada_fecha" id="llegada_fecha" required placeholder="Fecha" readonly>
+              </div>
+              <div class="col-sm-12 col-md-2 col-lg-2">
+                <input type="text" class="hour cvuelo" name="llegada_hora" id="llegada_hora" required placeholder="Hora" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 vuelo invisible">
+            <div class="flat-title v9 text-center">
+              <h5 class="text-danger"><i class="fas fa-plane-departure"></i> Vuelo de salida de Cancún</h5>
+            </div>
+            <div class="form-row">
+              <div class="col-sm-12 col-md-3 col-lg-3">
+                <input type="text" class="cvuelo" name="nvuelos" id="nvuelos" required placeholder="No. de vuelo">
+              </div>
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <!--<input type="text" class="" name="aerolineas" id="aerolineas" required placeholder="Aerolínea">-->
+                <select name="aerolineas" id="aerolineas" class="cvuelo">
+                  <option value="">Aerolínea</option>
+                  <option value="Aeroméxico">Aeroméxico</option>
+                  <option value="Volaris">Volaris</option>
+                  <option value="VivaAeobus">VivaAeobus</option>
+                  <option value="Calafia Airlines">Calafia Airlines</option>
+                  <option value="Interjet">Interjet</option>
+                </select>
+              </div>
+              <div class="col-sm-12 col-md-3 col-lg-3">
+                <input type="text" class="date cvuelo" name="salida_fecha" id="salida_fecha" required placeholder="Fecha" readonly>
+              </div>
+              <div class="col-sm-12 col-md-2 col-lg-2">
+                <input type="text" class="hour cvuelo" name="salida_hora" id="salida_hora" required placeholder="Hora" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-12 com-sm-12 col-md-12">
+            <div class="flat-title v9">
+              <h5>Break Outs 26 de Febrero</h5>
+            </div>
+          </div>
+          <div class="col-12 com-sm-12 col-md-12">
+            <ul class="flat-filter talleres style2 text-center clearfix nav nav-tabs" id="myTab" role="tablist">
+              <li class="active">
+                <a href="javascript:;" data-filter="#tdis">Distribuidor</a>
+              </li>
+              <li class="invisible" id="tab-aco">
+                <a href="javascript:;" data-filter="#taco">Acompañante</a>
+              </li>
+            </ul>
+            <div class="tab-content mg-top-20">
+              <div class="tab-pane fade active show flat-filter-tab" id="tdis">
+                <div class="col-12 com-sm-12 col-md-12 mg-bottom-20">
+                  <h6 class="text-danger mg-bottom-10">Seleccionar 3 Break Outs por la mañana</h6>
+                  <div class="preffered-time-wrap">
+                    <div class="wrap-checked-all">
+                    {% for mkey,tm in talleresM %}
+                      {% set noTaller = mkey %}
+                      {% set ot = '' %}
+                      {% for _tm_ in tm %}
+                      {% set ot = ot ~ "<option value='" ~ _tm_.idTaller ~ "|" ~ _tm_.hora  ~"' data-hora='" ~ _tm_.hora ~ "' data-cupo='" ~ _tm_.cupo ~ "' " ~ (_tm_.cupo >= 20  ? 'disabled' : '') ~ ">" ~ _tm_.hora ~ "</option>" %}
+                      {% endfor  %}
+                      <div class="wrap-checked">
+                        <input type="checkbox" name="tm[]" id="tm{{ noTaller }}" class="tm" data-rel="{{ noTaller }}" value="{{ tm[0]['taller'] }}">
+                        <label for="tm{{ noTaller }}">{{ tm[0]['taller'] }}</label>
+                        <select name="stm[]" id="stm{{noTaller}}" class="stm" data-rel="{{ noTaller }}" disabled>
+                          <option value="">Hora</option>
+                          {{ ot | raw }}
+                        </select>
+                      </div>
+                    {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 com-sm-12 col-md-12">
+                  <h6 class="text-danger mg-bottom-10">Seleccionar 3 Break Outs por la tarde</h6>
+                  <div class="preffered-time-wrap">
+                  <div class="wrap-checked-all">
+                  {% for tkey,tt in talleresT %}
+                    {% set noTaller = tkey %}
+                    {% set ot = '' %}
+                    {% for _tt_ in tt %}
+                    {% set ot = ot ~ "<option value='" ~ _tt_.idTaller ~ "|" ~ _tt_.hora  ~"' data-hora='" ~ _tt_.hora ~ "' data-cupo='" ~ _tt_.cupo ~ "' " ~ (_tt_.cupo >= 20 ? 'disabled' : '') ~ ">" ~ _tt_.hora ~ "</option>" %}
+                    {% endfor  %}
+                    <div class="wrap-checked">
+                      <input type="checkbox" name="tt[]" id="tt{{ noTaller }}" class="tt" data-rel="{{ noTaller }}" value="{{ tt[0]['taller'] }}">
+                      <label for="tt{{ noTaller }}">{{ tt[0]['taller'] }}</label>
+                      <select name="stt[]" id="stt{{noTaller}}" class="stt" data-rel="{{ noTaller }}" disabled>
+                        <option value="">Hora</option>
+                        {{ ot | raw }}
+                      </select>
+                    </div>
+                  {% endfor %}
+                  </div>
+                  </div>
+                </div>                
+              </div>
+              <div class="tab-pane fade flat-filter-tab" id="taco">
+                <div class="form-check form-check-inline clearfix">
+                  <input class="form-check-input" type="checkbox" id="_talleres_" value="">
+                  <label class="form-check-label text-danger none" for="_talleres_">El acompañante tomará Break Outs el 26 de Febrero?</label>
+                </div>
+                <div class="col-12 com-sm-12 col-md-12 mg-bottom-20 mg-top-10 invisible atalleres">
+                  <h6 class="text-danger mg-bottom-10">Seleccionar 3 Break Outs por la mañana (acompañante)</h6>
+                  <div class="preffered-time-wrap">
+                    <div class="wrap-checked-all">
+                    {% for amkey,atm in talleresM %}
+                      {% set noTaller = amkey %}
+                      {% set ot = '' %}
+                      {% for _tm_ in atm %}
+                      {% set ot = ot ~ "<option value='" ~ _tm_.idTaller ~ "|" ~ _tm_.hora  ~"' data-hora='" ~ _tm_.hora ~ "' data-cupo='" ~ _tm_.cupo ~ "' " ~ (_tm_.cupo >= 20  ? 'disabled' : '') ~ ">" ~ _tm_.hora ~ "</option>" %}
+                      {% endfor  %}
+                      <div class="wrap-checked">
+                        <input type="checkbox" name="atm[]" id="atm{{ noTaller }}" class="atm" data-rel="{{ noTaller }}" value="{{ atm[0]['taller'] }}">
+                        <label for="atm{{ noTaller }}">{{ atm[0]['taller'] }}</label>
+                        <select name="astm[]" id="astm{{noTaller}}" class="astm" data-rel="{{ noTaller }}" disabled>
+                          <option value="">Hora</option>
+                          {{ ot | raw }}
+                        </select>
+                      </div>
+                    {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 com-sm-12 col-md-12 invisible atalleres">
+                  <h6 class="text-danger mg-bottom-10">Seleccionar 3 Break Outs por la tarde (acompañante)</h6>
+                  <div class="preffered-time-wrap">
+                  <div class="wrap-checked-all">
+                  {% for atkey,att in talleresT %}
+                    {% set noTaller = atkey %}
+                    {% set ot = '' %}
+                    {% for _tt_ in att %}
+                    {% set ot = ot ~ "<option value='" ~ _tt_.idTaller ~ "|" ~ _tt_.hora  ~"' data-hora='" ~ _tt_.hora ~ "' data-cupo='" ~ _tt_.cupo ~ "' " ~ (_tt_.cupo >= 20 ? 'disabled' : '') ~ ">" ~ _tt_.hora ~ "</option>" %}
+                    {% endfor  %}
+                    <div class="wrap-checked">
+                      <input type="checkbox" name="att[]" id="att{{ noTaller }}" class="att" data-rel="{{ noTaller }}" value="{{ att[0]['taller'] }}">
+                      <label for="att{{ noTaller }}">{{ att[0]['taller'] }}</label>
+                      <select name="astt[]" id="astt{{noTaller}}" class="astt" data-rel="{{ noTaller }}" disabled>
+                        <option value="">Hora</option>
+                        {{ ot | raw }}
+                      </select>
+                    </div>
+                  {% endfor %}
+                  </div>
+                  </div>
+                </div>                                               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-sm-12 col-ms-4 col-lg-4">
+              <select name="habitacion" id="habitacion" required>
+              <option value="">Habitación</option>
+              <option value="sencilla">Sencilla</option>
+              <option value="doble">Doble</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-ms-4 col-lg-4 invisible" id="div_hab">
+            <select name="ncamas" id="ncamas" required>
+              <option value="">No. de cama</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-ms-4 col-lg-4">
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-sm-12 col-ms-6 col-lg-6">
+             <textarea name="comentarios" id="mensaje" placeholder="Comentarios" cols="4" class="no-resize"></textarea>
+          </div>
+        </div>
+        <div class="form-row mg-top-20 flat-border-bottom pd-bottom-30">
+          <div class="col-sm-4 col-lg-4 col-sm-12">
+            <div id="captchaContainer1">
+            </div>
+          </div>
+        </div>
+        <div>
+          <input type="hidden" name="idClave" id="idClave" value="">
+          <input type="hidden" name="regDoble" id="regDoble" value="">
+          <input type="hidden" name="tipo" id="tipo" value="{{ tipo }}">
+        </div>
+        <div class="form-row mg-top-20 pd-bottom-30">
+          <div class="col-sm-12 col-ms-12 col-lg-12">
+            <button type="submit" class="btn-effect vm btn-submit mi-yellow-bg mi-blue-text float-right" id="send"><div>Enviar</div></button>
+          </div>
+        </div>
+      </form>
+      <div class="flat-spacer clearfix" data-desktop="40" data-mobile="20" data-smobile="20" ></div>
+    </div>
+    <div id="result" class="invisible">
+      <div class="flat-company-overviews">
+        <div class="flat-iconbox clearfix fix-float-box">
+          <div class="iconbox one-of-two style1 mx-auto">
+            <div class="iconbox-border">
+              <div class="iconbox-icon">
+                <span class="far fa-check-circle"></span>
+              </div>
+              <div class="iconbox-content">
+                <h5><a href="#">Registro completo</a></h5>
+                <p>Se envio un correo a <span id="mailr"></span> con lo detalles</p>
+              </div>
+            </div>
+          </div> <!-- /.iconbox -->
+        </div> <!-- /.flat-iconbox -->
+        <div class="clearfix fix-float-box">
+          <div class="iconbox one-of-two mx-auto">
+              <a class="btn-effect vm btn-submit btn-block mi-yellow-bg mi-blue-text" href="{{ url('michelin19.index') }}/{{ tipo }}/registro">Regresar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  $('.flat-filter.talleres li').on('click',function() {
+      var selector = $($(this).find("a").attr('data-filter'));
+      $('.flat-filter.talleres li').removeClass('active');
+      $(this).addClass('active');
+      $('.flat-filter-tab').removeClass('active show');
+      selector.addClass('active show');
+      return false;
+  });  
+</script>    
+{% endblock %}

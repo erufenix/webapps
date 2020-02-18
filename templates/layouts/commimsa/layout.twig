@@ -1,0 +1,88 @@
+<!doctype html>
+<html class="boxed">
+	<head>
+			<meta charset="UTF-8">
+			<title>TALLER PARA LA IDENTIFICACIÓN DE PRIORIDADES NACIONALES EN INVESTIGACIÓN, DESARROLLO DE TECNOLOGÍA Y FORMACIÓN DE RECURSOS HUMANOS</title>
+			<meta name="keywords" content="COMMIMSA" />
+			<meta name="description" content="TALLER PARA LA IDENTIFICACIÓN DE PRIORIDADES NACIONALES EN INVESTIGACIÓN, DESARROLLO DE TECNOLOGÍA Y FORMACIÓN DE RECURSOS HUMANOS">
+			<meta name="author" content="COMMIMSA">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+			<!-- Web Fonts  -->
+			<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+			<!-- Vendor CSS -->
+			<link rel="stylesheet" href="{{ asset('assets')}}/portoAdmin/vendor/bootstrap/css/bootstrap.css" />
+			<link rel="stylesheet" href="{{ asset('assets')}}/portoAdmin/vendor/font-awesome/css/font-awesome.css" />
+			<link rel="stylesheet" href="{{ asset('assets')}}/portoAdmin/vendor/magnific-popup/magnific-popup.css" />
+			<link rel="stylesheet" href="{{ asset('assets')}}/portoAdmin/vendor/bootstrap-datepicker/css/datepicker3.css" />
+
+			<!-- Theme CSS -->
+			<link rel="stylesheet" href="{{ asset('assets')}}/portoAdmin/stylesheets/theme.css" />
+			<!-- Skin CSS -->
+			<link rel="stylesheet" href="{{ asset('assets')}}/portoAdmin/stylesheets/skins/default.css" />
+			<!-- Theme Custom CSS -->
+			<link rel="stylesheet" href="{{ asset('assets')}}/portoAdmin/stylesheets/theme-custom.css">
+			<link rel="stylesheet" href="{{ asset('assets')}}/color.css">
+			<link rel="stylesheet" href="{{ asset('assets')}}/animate.min.css">
+  		<link rel="stylesheet" href="{{ asset('assets')}}/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+  		<link rel="stylesheet" href="{{ asset('assets')}}/formvalidation/css/formValidation.min.css">			
+			<link rel="stylesheet" href="{{ asset('assets')}}/cmmm.css">
+			<!-- Head Libs -->
+			<script src="{{ asset('assets')}}/portoAdmin/vendor/modernizr/modernizr.js"></script>
+	</head>
+<body>
+	<section class="body">
+		<header class="header" id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 57, 'stickySetTop': '-57px', 'stickyChangeLogo': true}">
+			<div class="logo-container">
+				<a href="{{ url('commimsa.index') }}" class="logo">
+				<img src="{{ asset('assets')}}/img/logommm100.png" height="100" alt="logo" />
+				</a>
+				<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+					<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+				</div>
+			</div>
+			<div class="header-right">
+				<p class="navbar-text">TALLER PARA LA IDENTIFICACIÓN DE PRIORIDADES NACIONALES EN INVESTIGACIÓN, DESARROLLO DE TECNOLOGÍA Y FORMACIÓN DE RECURSOS HUMANOS</p>
+			</div>
+		</header>
+		<div class="inner-wrapper">
+			<section role="main" class="content-body">
+				{% block content %}
+				{% endblock %}
+			</section>
+		</div>
+		<footer id="footer">
+			<div class="footer-copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<p>Desarrollado por Nuevas Tecnologías - T&C 2017 </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>		
+	</section>
+	<script src="{{ asset('assets')}}/portoAdmin/vendor/jquery/jquery.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/vendor/bootstrap/js/bootstrap.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/vendor/nanoscroller/nanoscroller.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/vendor/magnific-popup/magnific-popup.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/vendor/bootstrap-wizard/jquery.bootstrap.wizard.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/vendor/pnotify/pnotify.custom.js"></script>	
+	<script src="{{ asset('assets')}}/portoAdmin/vendor/ios7-switch/ios7-switch.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/javascripts/theme.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/javascripts/theme.custom.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/javascripts/theme.init.js"></script>
+	<script src="{{ asset('assets')}}/jeoQuery/jeoquery.js"></script>
+	<script src="{{ asset('assets')}}/moment-with-locales.js"></script>
+	<script src="{{ asset('assets')}}/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="{{ asset('assets')}}/formvalidation/js/formValidation.min.js"></script>
+	<script src="{{ asset('assets')}}/formvalidation/js/framework/bootstrap.min.js"></script>
+	<script src="{{ asset('assets')}}/formvalidation/js/language/es_ES.js"></script>
+	<script src="{{ asset('assets')}}/formvalidation/js/addons/reCaptcha2.min.js"></script>
+	<script src="{{ asset('assets')}}/portoAdmin/javascripts/ui-elements/examples.lightbox.js"></script>
+	<script src="{{ asset('assets')}}/cmmm.js"></script>	
+</body>
+</html>

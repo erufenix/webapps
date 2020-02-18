@@ -1,0 +1,167 @@
+{% extends "layouts/aippi/aippiLayout.twig" %}
+
+{% block content %}
+{% set hoteles = {'Fiesta Americana Coral Beach':'fiestaAmericana.jpg','Presidente Intercontinental':'intercontinental-cancun.jpeg','Hyatt Ziva':'ziva.jpg','Krystal Grand':'KrystalGrand.jpg','Krystal':'kristal.jpg'} %}
+{% set tns = {'shared':'Shared','private':'Private'} %}
+{% set persons = 7 %}
+<!-- BEGIN #checkout-cart -->
+<div class="section-container" id="checkout-cart">
+  <!-- BEGIN container -->
+  <div class="container">
+    <!-- BEGIN checkout -->
+    <form action="{{ url('aippi.setRegistro') }}" method="post" id="trp">
+      <div class="checkout" id="awizard">
+        <div class="checkout-header">
+          <!-- BEGIN row -->
+          <div class="row">
+            <!-- BEGIN col-3 -->
+            <div class="col-md-12 col-sm-12">
+              <div class="step active" id="tab_complete">
+                <a href="#complete-body" data-toggle="tab">
+                  <div class="number"></div>
+                  <div class="info">
+                    <div class="title">COMPLETE TRANSPORTATION</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!-- END col-3 -->
+          </div>
+          <!-- END row -->
+        </div>
+        <div class="tab-content">
+          <div class="complete-body tab-pane active" id="confirm-body">
+            <div class="checkout-message">
+              <h1>Thank you! <small>Your process is completed</small></h1>
+              <div class="table-responsive2">
+                <table class="table table-payment-summary">
+                  <tbody>
+                    <tr>
+                        <td class="value" id="v_hotel" width="50%">
+                          <h5 class="text-info">Hotel</h5>
+                          <div class="text-center">{{ data.hotel }}</div>
+                          <img class="img-responsive m-t-5" src="https://webapps.tycgroup.com/assets/img/hotel/aippi/{{ hoteles[data.hotel] }}">
+                        </td>
+                        <td class="value" width="50%">
+                          <ul class="list-unstyled">
+                            <li class="row">
+                              <span class="col-sm-4 col-md-4 bold_semi_bold">Type of Transfer</span>
+                              <span id="v_transfer" class="col-sm-8 col-md-8">{{ tns[data.transfer] }}</span>
+                            </li>
+                            <li class="row">
+                              <span class="col-sm-4 col-md-4 bold_semi_bold">Nombre</span>
+                              <span id="v_name" class="col-sm-8 col-md-8">{{ data.name }}</span>
+                            </li>
+                            <li class="row">
+                              <span class="col-sm-4 col-md-4 bold_semi_bold">Email</span>
+                              <span id="v_email" class="col-sm-8 col-md-8">{{ data.email }}</span>
+                            </li>
+                            <li class="row">
+                              <span class="col-sm-4 col-md-4 bold_semi_bold">Phone</span>
+                              <span id="v_phone" class="col-sm-8 col-md-8">{{ data.phone }}</span>
+                            </li>                                                                                        
+                          </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td class="text-info text-center">
+                        Arrive <span class="fa fa-info-circle"></span> From the Airport to Hotel
+                      </td>
+                      <td class="text-info text-center">
+                        Departure <span class="fa fa-info-circle"></span> From the Hotel to Airport
+                      </td>                      
+                    </tr>
+                    <tr>
+                      <td>
+                        <ul class="list-unstyled">
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Persons</span>
+                            <span id="v_arrive_persons" class="col-sm-9 col-md-9">{{ data.arrive_persons }}</span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Airline</span>
+                            <span id="v_arrive_airline" class="col-sm-9 col-md-9">{{ data.arrive_airline }}</span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Fly</span>
+                            <span id="v_arrive_fly" class="col-sm-9 col-md-9">{{ data.arrive_fly }}</span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Date - Time</span>
+                            <span id="v_arrive_date_time" class="col-sm-9 col-md-9">{{ data.arrive_date | date("d/m/Y") }} - {{ data.arrive_time | date("H:i") }}</span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Rate</span>
+                            <span id="v_arrive_rate" class="col-sm-9 col-md-9">{{ data.arrive_rate }}</span>
+                          </li>                                                                                                                                      
+                        </ul> 
+                      </td>
+                      <td>
+                        <ul class="list-unstyled">
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Persons</span>
+                            <span id="v_departure_persons" class="col-sm-9 col-md-9">{{ data.departure_persons }}</span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Airline</span>
+                            <span id="v_departure_airline" class="col-sm-9 col-md-9">{{ data.departure_airline }}</span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Fly</span>
+                            <span id="v_departure_fly" class="col-sm-9 col-md-9">{{ data.departure_fly }}</span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Date - Time</span>
+                            <span id="v_departure_date_time" class="col-sm-9 col-md-9">{{ data.departure_date | date("d/m/Y") }} - {{ data.departure_time | date("H:i") }}</span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Rate</span>
+                            <span id="v_departure_rate" class="col-sm-9 col-md-9">{{ data.departure_rate }}</span>
+                          </li>                                                                                                                                      
+                        </ul>                        
+                      </td>                      
+                    </tr>                    
+                    <tr>
+                      <td colspan="2" class="text-info">
+                        <ul class="list-unstyled">
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Transaction ID</span>
+                            <span id="v_departure_rate" class="col-sm-9 col-md-9">{{ data.tx }}</span>
+                          </li>
+                          <li class="row">
+                            <span class="col-sm-3 col-md-3 bold_semi_bold">Code</span>
+                            <span id="v_departure_rate" class="col-sm-9 col-md-9">{{ data.code }}</span>
+                          </li>                          
+                        <ul class="list-unstyled">                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <div class="row">
+                          <div class="col-sm-9 col-md-10 bold_semi_bold" align="right">Total</div>
+                          <div class="col-sm-3 col-md-2" id="v_total" align="right">$ {{ data.total }} USD</div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>        
+        </div>
+        <div class="checkout-footer pager wizard">
+          <a class="btn btn-info btn-lg pull-right" id="exit" href="{{ home }}"><div>Close</div></a>
+        </div>      
+      </div>
+      <div class="ocultos">
+        <input type="hidden" name="total" id="total" value="">
+        <input type="hidden" name="hotelName" id="hotelName" value="">
+        <input type="hidden" name="hotelImg" id="hotelImg" value="">
+      </div>
+    </form>
+    <!-- END checkout -->
+  </div>
+  <!-- END container -->
+</div>
+<!-- END #checkout-cart -->
+{% endblock content %}  

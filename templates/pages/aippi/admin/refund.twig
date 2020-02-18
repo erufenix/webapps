@@ -1,0 +1,25 @@
+<form id="frefund">
+<table class="table table-sm table-striped table-bordered">
+  <thead>
+    <tr>
+      <td colspan="5">&nbsp;</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">Nombre</td>
+      <td class="text-center">Transacción</td>
+      <td class="text-center">Pago</td>
+      <td class="text-center" width="60">Rembolso</td>
+    </tr>
+    <tr>
+      <td class="text-center">{{ data.name }} <small>({{ data.email }})</small></td>
+      <td class="text-center">{{ data.tx  }}</td>
+      <td class="text-center">$ {{ data.total }} USD</td>
+      <td class="text-center with-form-control"><input type="text"  id="rfund" name="rfund" class="form-control form-control-sm small"></td>
+    </tr>    
+  </tbody>
+</table>
+<input type="hidden" name="tx" value="{{ data.tx  }}">
+<input type="hidden" name="code" value="{{ data.code  }}">
+</form>

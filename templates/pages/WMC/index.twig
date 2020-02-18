@@ -1,0 +1,164 @@
+{% extends "layouts/WMC/WMCTours_layout.twig" %}
+{% block content %}
+  <section class="bg-white-2 " id="tours">
+    <div class="container">
+      <div class="row no-padding-rl no-padding-top padding-2">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <h3 class="font-family-alt font-weight-700 letter-spacing-2 text-uppercase xs-title-small title-medium title-sideline-base-color">
+            {{ tours[tour]['name'][lang] }}</h3>
+          <p class="font-family-alt margin-3 no-margin-bottom no-margin-rl text-gray-dark-2 text-large">{{ tours[tour]['name'][lang] }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="gallery-wrapper">
+            <div class="gallery-grid grid-col-1 gutter-wide">
+              <div class="item">
+                <figure>
+                  <div class="gallery-img">
+                    <a href="{{ asset('assets')}}/img/{{ tours[tour]['picture'] }}">
+                      <img src="{{ asset('assets')}}/img/{{ tours[tour]['picture'] }}" alt="">
+                    </a>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-12" id="tour-resume">
+          <div class="pricing bg-white border border-gray-light border-round box-shadow-yes ease position-relative">
+            <div class="display-table height-100 padding-2 width-100">
+              <div class="display-table-cell no-padding-rl text-center vertical-align-middle">
+                <span class="display-block font-family-alt margin-5 no-letter-spacing no-margin-bottom no-margin-rl text-gray-dark-2 title-extra-large-4">
+                  <span class="pricing-dollar position-relative title-large text-base-color" id="price">${{ tours[tour]['price'][currency] }}</span>
+                </span>
+                <span class="bg-gray-light-2 no-margin-bottom no-margin-rl separator-line-full"></span>
+                <div class="margin-3 no-margin-bottom no-margin-rl text-gray-dark-2 text-medium text-justify" id="tourdes">
+                  {{ tours[tour]['description'][lang] | raw }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-12" id="tour-dv">
+          <div class="pricing bg-white border border-gray-light border-round box-shadow-yes ease position-relative">
+            <div class="display-table height-100 padding-2 width-100">
+              <div class="display-table-cell no-padding-rl vertical-align-middle">
+                <form id="fvalida" method="post" action="{{ url('WMCtours.checkout') }}">
+                  <div id="tourinfo">
+                    <div class="from-group row">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <input type="text" placeholder="{{ forms[lang]['name'] }}" name="name" id="name" class="required" required>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <input type="text" placeholder="{{ forms[lang]['surname'] }}" name="surname" id="surname"  class="required" required>
+                      </div>                    
+                    </div>
+                    <div class="from-group row">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <input type="email" placeholder="{{ forms[lang]['email'] }}" name="email" id="email" class="required email" required>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <input type="text" placeholder="{{ forms[lang]['tour_date'] }}" name="tour_date" id="tour_date" class="required date" readonly required>
+                      </div>                    
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <span class="bg-gray-light-2 no-margin-bottom no-margin-rl separator-line-full"></span>
+                    </div>                  
+                    <div class="from-group row">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" value="1" id="hcompanion">
+                            {{ forms[lang]['companion'] }}
+                          </label>
+                        </div>
+                      </div>                      
+                    </div>
+                    <div class="from-group row companion companionAdd">
+                      <div class="col-lg-5 col-md-5 col-sm-12">
+                        <input type="text" placeholder="{{ forms[lang]['companion_name'] }}" name="cfullname[]" class="required cfullname1 disabled" disabled>
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-12">
+                        <input type="email" placeholder="{{ forms[lang]['companion_email'] }}" name="cemail[]" class="required cemail1 disabled" disabled>
+                      </div>
+                      <div class="col-lg-2 col-md-2 col-sm-12">
+                        <button type="button" class="btn btn-base-color btn-small addButton disabled" disabled><i class="fa fa-plus"></i></button>
+                      </div>                                     
+                    </div>
+                    <div class="form-group row hide companion" id="cTemplate">
+                      <div class="col-lg-5 col-md-5 col-sm-12">
+                        <input type="text" placeholder="{{ forms[lang]['companion_name'] }}" name="cfullname[]">
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-12">
+                        <input type="email" placeholder="{{ forms[lang]['companion_email'] }}" name="cemail[]">
+                      </div>
+                      <div class="col-lg-2 col-md-2 col-sm-12">
+                        <button type="button" class="btn btn-base-color btn-small removeButton"><i class="fa fa-minus"></i></button>
+                      </div>                     
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <span class="bg-gray-light-2 no-margin-bottom no-margin-rl separator-line-full"></span>
+                    </div>
+                    <div class="from-group row">
+                      <div class="col-lg-3 col-md-3 col-sm-12" id="captchaContainer">
+                      </div>
+                    </div>                    
+                  </div>
+                  <div id="comfirm" class="text-large hidden">
+                    <div class="row">                    
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                        <p class="text-base-color text-center title-large">{{ forms[lang]['tour_data'] }}</p>  
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                        <span class="bg-gray-light-2 no-margin-bottom no-margin-rl separator-line-full"></span>
+                      </div>                      
+                      <div class="col-lg-12 col-md-12 col-sm-12" id="dname">
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12" id="ddate">
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12" id="dcompanion">
+                        <p></p>
+                        <ol>
+                        </ol>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                        <span class="bg-gray-light-2 no-margin-bottom no-margin-rl margin-1 separator-line-full"></span>
+                      </div>                        
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                        <p class="text-danger">{{ forms[lang]['msg1'] | raw }}
+                      </div>                      
+                    </div>
+                  </div>
+                  <div class="from-group row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <button id="next" type="submit" class="btn btn-base-color btn-medium pull-right"><span>{{ forms[lang]['next'] }}</span></button>
+                      <button id="continue" type="button" class="btn btn-success btn-medium pull-right hidden"><span>{{ forms[lang]['continue'] }}</span></button>
+                      <button id="back" type="button" class="btn btn-warning btn-medium pull-right hidden"><span>{{ forms[lang]['back'] }}</span></button>
+                    </div>
+                  </div>
+                  <div class="from-group">
+                    <input type="hidden" name="tour_name" value="{{ tour }}">
+                    <input type="hidden" name="urlPayExecute" value="{{ url('WMCtours.payExecute') }}">
+                    <input type="hidden" name="urlPayCancel" value="{{ url('WMCtours.payCancel') }}">
+                    <input type="hidden" name="urlPayComplete" value="{{ url('WMCtours.payComplete') }}">
+                    <input type="hidden" name="lang" id="lang" value="{{ lang }}">
+                  </div> 
+                </form>
+                <div id="pptour">
+                  <div id="tpp">
+                  </div>
+                  <div class="from-group row">
+                    <button id="pay" type="button" class="btn btn-warning btn-medium pull-right hidden"><span>{{ forms[lang]['pay'] }}</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

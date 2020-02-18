@@ -1,0 +1,86 @@
+{% extends "layouts/reservacion/layout_universal.twig.html" %}
+{% block content %}
+  {% set _request = request.get('request') %}
+  {% set _data    = request.get('data') %}
+  {% set _code    = request.get('code') %}
+  {% set _tx      = request.get('tx') %}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<h3 class="c-center c-font-uppercase c-font-bold">{{evento}}</h3>
+			</div>
+			<div class="col-sm-5 col-md-5">
+				<div class="from-group row">
+					<label class="col-md-4 control-label">Fecha del evento</label>
+					<div class="col-md-8">
+						<p class="form-control-static">{{ ( fechas is defined and fechas[lang] is defined ) ? fechas[lang] : fechas }}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+			</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="from-group row">
+					<label class="col-md-4 control-label">Sede del evento</label>
+					<div class="col-md-8">
+						<p class="form-control-static">{{ ( sede is defined and sede[lang] is defined ) ? sede[lang] : sede }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="c-content-divider c-divider-sm c-left c-bg-red">
+			<i class="icon-dot c-bg-red c-square"></i>
+		</div>
+		<div class="row">
+			<div class="col-sm-8 col-md-8 center-block no-float">
+            <div id="aproved" class="c-content-box c-size-lg c-overflow-hide c-bg-white">
+              <div class="c-shop-order-complete-1 c-content-bar-1 c-align-left c-bordereds c-theme-border c-shadow">
+                <div class="c-theme-bg">
+                    <p class="c-message c-center c-font-white c-font-20 c-font-sbold">
+                        <i class="fa fa-check"></i> Gracias! Su pago ha sido aceptado</p>
+                </div>
+                <div class="c-bank-details c-margin-t-30 c-margin-b-30">
+                    <!--<h3 class="c-border-bottom">Account Name : &nbsp;
+                        <span class="c-font-thin">Themehats</span>
+                    </h3>-->
+                    <ul class="c-list-inline list-inline order row">
+                        <li class="col-xs-12 col-sm-6 col-md-4">
+                            <h3 class="small">Orden</h3>
+                            <p id="c_order" class="small">{{ _code }}</p>
+                        </li>
+                        <li class="col-xs-12 col-sm-6 col-md-4">
+                            <h3 class="small">Transacción</h3>
+                            <p id="c_id" class="small">{{ _tx }}</p>
+                        </li>
+                        <li class="col-xs-12 col-sm-6 col-md-3">
+                            <h3 class="small">Total</h3>
+                            <p id="c_total" class="small">${{ _data.cargototal }}  {{ _data.divisa }}</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="c-border-bottom c-row-item">
+                  <div class="row">
+                    <div class="col-md-7 col-sm-12 c-image">
+                      <img id="imgfinal" class="img-responsive" src="{{ _request.imgHotel }}">
+                    </div>
+                    <div class="col-md-5 col-sm-12">
+                      <h3 class="small" id="finalName"></h3>
+                      <h3 class="small" id="finalHotel">Hotel: <span class="grey56">{{ _data.nombrehotel }}</span> </h3>
+                      <h3 class="small" id="finalHabitacion">Habitación:  <span class="grey56">{{ _data.tipohabitacion }}</span></h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="c-border-bottom c-row-item">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                      <a href="{{ urlIndex }}" class="btn btn-block btn-info">Regresar</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

@@ -1,0 +1,31 @@
+{% extends "layouts/reservas/panelLayout.twig.html" %}
+
+{% block content %}
+<div class="padding">
+	<div class="row">
+		<div class="col-md-2">
+			<div class="box">
+      	<div class="box-header">
+         <button class="btn btn-sm btn-icon deep-orange-A400 pull-right addeve" data-src="{{ url('reserva.panel.addEvent') }}" data-title="Agregar evento" data-toggle="modal" data-target="#m-a-a" data-ui-toggle-class="fade-right-big" data-ui-target="#animate" data-cancel="Cancelar" data-accept="Agregar" data-id="addEnvBtn" data-form="addEvent"><i class="fa fa-plus"></i></button> 
+        </div>
+      	<div class="box-body">
+      	</div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <ul class="row list-unstyled">
+      {% for e in eventos %}
+        <li class="col-xs-6 col-sm-3 col-md-2">
+          <div class="box p-a-xs">
+            <a href="{{ url('reserva.panel.evento')}}/{{ e.eve_claveEvento }}"><img data-name="{{ e.eve_claveEvento }}" class="nevent img-responsive"></a>
+            <div class="p-a-sm">
+              <div class="text-ellipsis text-center">{{ e.l_nombreEvento }}</div>
+            </div>
+          </div>          
+        </li>  
+      {% endfor %}
+      </ul>
+    </div>			
+	</div>
+</div> 
+{% endblock %}

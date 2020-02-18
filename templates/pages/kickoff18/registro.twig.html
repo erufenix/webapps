@@ -1,0 +1,322 @@
+{% extends "layouts/kickoff18/kickoff18Layout.twig.html" %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="text-center">
+				<h4 class="ui-title-block">REGISTRO</h4>
+				<div class="ui-decor"></div>
+			</div>			
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<form action="{{ url('kickoff18.setRegistro') }}" method="post" id="frmk">
+				<div class="wrap-title">
+					<h6 class="ui-title-inner">Datos personales</h6>
+				</div>	
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <input class="form-control" id="nombre" type="text" name="nombre" placeholder="Nombre" required="required" />
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">    
+            <div class="form-group">
+                <input class="form-control" id="apellidos" type="text" name="apellidos" placeholder="Apellidos" required="required" />
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">    
+            <div class="form-group">
+                <input class="form-control" id="correo" type="email" name="correo" placeholder="Correo" required="required" />
+            </div>                  
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <input class="form-control" id="telefono" type="tel" name="telefono" placeholder="Teléfono" required="required" />
+            </div>
+          </div>    
+          <div class="col-md-4 col-sm-6 col-xs-12">    
+            <div class="form-group">
+                <input class="form-control" id="distribuidor" type="text" name="distribuidor" placeholder="Distribuidora" required="required" />
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">    
+            <div class="form-group">
+                <input class="form-control" id="puesto" type="text" name="puesto" placeholder="Puesto" required="required" />
+            </div>
+          </div>              
+        </div>					
+				<div class="wrap-title">
+					<h6 class="ui-title-inner">Facturación</h6>
+        </div> 
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <input class="form-control" id="facturaRS" type="text" name="facturaRS" placeholder="Razón social" required="required" />
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">    
+            <div class="form-group">
+                <input class="form-control" id="facturaRFC" type="text" name="facturaRFC" placeholder="RFC" required="required" />
+            </div>
+          </div>
+					<div class="col-md-4 col-sm-6 col-xs-12">    
+            <div class="form-group">
+            	<textarea class="form-control no-resize" id="facturaDireccion" name="facturaDireccion" rows="3" placeholder="Dirección" required="required"></textarea>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">    
+            <div class="form-group">
+                <input class="form-control" id="facturaCorreo" type="text" name="facturaCorreo" placeholder="Correo" required="required" />
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">    
+            <div class="form-group">
+              <select class="selectpickerd form-control" data-width="100%" required name="facturaPago" id="facturaPago">
+                  <option value="">Tipo de pago</option>
+                  <option value="BD">Depósito bancario</option>
+                  <option value="TC">Tarjeta de crédito</option>
+              </select>            	
+            </div>
+          </div>                               
+        </div>
+				<div class="wrap-title">
+					<h6 class="ui-title-inner">Vuelo</h6>
+        </div>
+        <div class="row">
+        	<div class="col-md-6 col-sm-12 col-xs-12 row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+        		  <h6 class="text-center text-info"><span class="fa fa-plane fa-rotate-90"></span> Llegada a la Riviera Maya</h6>
+            </div>
+        		<div class="col-md-4 col-sm-4 col-xs-12">
+        			<div class="form-group">
+        				<input class="form-control" id="nvueloIda" type="text" name="nvueloIda" placeholder="No. de vuelo" required="required" />
+        			</div>
+        		</div>
+        		<div class="col-md-4 col-sm-4 col-xs-12">
+        			<div class="form-group">
+        				<input class="form-control" id="aerolineaIda" type="text" name="aerolineaIda" placeholder="Aerolínea" required="required" />
+        			</div>
+        		</div>
+        		<div class="col-md-4 col-sm-4 col-xs-12">
+        			<div class="form-group">
+        				<input class="form-control dates" id="fechaIda" type="text" name="fechaIda" placeholder="Fecha" required="required" />
+        			</div>
+        		</div>
+        		<div class="col-md-4 col-sm-4 col-xs-12">
+        			<div class="form-group">
+        				<input class="form-control horas" id="horaIda" type="text" name="horaIda" placeholder="Hora" required="required" />
+        			</div>
+        		</div>         		          		        		
+        	</div>
+        	<div class="col-md-6 col-sm-12 col-xs-12 row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+        		  <h6 class="text-center text-info"><span class="fa fa-plane"></span> Salida de la Riviera Maya</h6>
+            </div>
+        		<div class="col-md-4 col-sm-4 col-xs-12">
+        			<div class="form-group">
+        				<input class="form-control" id="nvueloRegreso" type="text" name="nvueloRegreso" placeholder="No. de vuelo" required="required" />
+        			</div>
+        		</div>
+        		<div class="col-md-4 col-sm-4 col-xs-12">
+        			<div class="form-group">
+        				<input class="form-control" id="aerolineaRegreso" type="text" name="aerolineaRegreso" placeholder="Aerolínea" required="required" />
+        			</div>
+        		</div>
+        		<div class="col-md-4 col-sm-4 col-xs-12">
+        			<div class="form-group">
+        				<input class="form-control dates" id="fechaRegreso" type="text" name="fechaRegreso" placeholder="Fecha" required="required" />
+        			</div>
+        		</div>
+        		<div class="col-md-4 col-sm-4 col-xs-12">
+        			<div class="form-group">
+        				<input class="form-control horas" id="horaRegreso" type="text" name="horaRegreso" placeholder="Hora" required="required" />
+        			</div>
+        		</div>         		          		        		        		
+        	</div>        	
+        </div>
+				<div class="wrap-title">
+					<h6 class="ui-title-inner">Camisa</h6>
+				</div>	        
+        <div class="row">
+        	<div class="col-xs-12 col-sm-2 col-md-1">
+        		<label>Talla</label>
+        	</div>
+        	<div class="col-xs-12 col-sm-6 col-md-4">
+            <input class="forms__radio hiddens" id="camisa-ch" type="radio" name="camisa" value="CH" required />
+            <label class="forms__label forms__label-radio forms__label-radio-3" for="camisa-ch">Ch</label>
+            <input class="forms__radio hiddens" id="camisa-m" type="radio" name="camisa" value="M" required />
+            <label class="forms__label forms__label-radio forms__label-radio-3" for="camisa-m">M</label>
+            <input class="forms__radio hiddens" id="camisa-g" type="radio" name="camisa" value="G" required />
+            <label class="forms__label forms__label-radio forms__label-radio-3" for="camisa-g">G</label>
+            <input class="forms__radio hiddens" id="camisa-xg" type="radio" name="camisa" value="XG" required />
+            <label class="forms__label forms__label-radio forms__label-radio-3" for="camisa-xg">XG</label>
+            <input class="forms__radio hiddens" id="camisa-xxg" type="radio" name="camisa" value="XXG" required />
+            <label class="forms__label forms__label-radio forms__label-radio-3" for="camisa-xxg">XXG</label>
+        	</div>
+        </div>
+				<div class="wrap-title">
+					<h6 class="ui-title-inner">Hotel</h6>
+				</div>
+				<div class="row">
+          <div class="form-group">
+          	<div class="col-md-4 col-sm-4 col-xs-12">
+	            <select class="selectpickers form-control" data-width="100%" required="" name="habitacion" id="habitacion">
+	                <option value="">Habitación</option>
+	                <option value="Sencilla">Sencilla</option>
+	                <option value="Doble">Doble</option>
+	            </select>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12 row">
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="clearfix">
+                  <ul class="list-unstyled">
+                    <li><b>Sencilla:</b> $10,000.00 por habitación</li>
+                    <li><b>Doble:</b> $12,000.00 por persona</li>
+                  </ul>                
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6">
+                <span><b>Total:</b> </span><span id="vtot"></span>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 m-t-10">
+                <a class="btn btn-primary btn-xs" href="javascript:;" data-fancybox data-type="ajax" data-src="{{ url('kickoff18.tarifa')  }}">Detalles de tarifa</a>
+                <a class="btn btn-primary btn-xs" href="javascript:;" data-fancybox data-type="ajax" data-src="{{ url('kickoff18.politicas')  }}">Políticas de reservación</a>
+              </div>
+            </div>          	
+          </div>					
+				</div>
+        <div id="acodiv" class="hidden m-t-30">
+          <div class="wrap-title">
+            <h6 class="ui-title-inner">Acompañante</h6>
+          </div> 
+          <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="form-group">
+                  <input class="form-control aco" id="acoNombre" type="text" name="acoNombre" placeholder="Nombre" />
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">    
+              <div class="form-group">
+                  <input class="form-control aco" id="acoApellidos" type="text" name="acoApellidos" placeholder="Apellidos"/>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">    
+              <div class="form-group">
+                  <input class="form-control acos" id="acoCorreo" type="email" name="acoCorreo" placeholder="Correo"/>
+              </div>                             
+            </div>  
+            <div class="col-xs-12 col-sm-6 col-md-4">    
+              <div class="form-group">
+                  <input class="form-control aco" id="acoPuesto" type="text" name="acoPuesto" placeholder="Puesto"/>
+              </div>                  
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-1">
+              <b>Camisa</b>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-7">
+              <div class="col-xs-12 col-sm-10 col-md-11">
+                <input class="forms__radio hiddens aco" id="aco-camisa-ch" type="radio" name="acoCamisa" value="CH" />
+                <label class="forms__label forms__label-radio forms__label-radio-3" for="aco-camisa-ch">Ch</label>
+                <input class="forms__radio hiddens aco" id="aco-camisa-m" type="radio" name="acoCamisa" value="M"/>
+                <label class="forms__label forms__label-radio forms__label-radio-3" for="aco-camisa-m">M</label>
+                <input class="forms__radio hiddens aco" id="aco-camisa-g" type="radio" name="acoCamisa" value="G"/>
+                <label class="forms__label forms__label-radio forms__label-radio-3" for="aco-camisa-g">G</label>
+                <input class="forms__radio hiddens aco" id="aco-camisa-xg" type="radio" name="acoCamisa" value="XG"/>
+                <label class="forms__label forms__label-radio forms__label-radio-3" for="aco-camisa-xg">XG</label>
+                <input class="forms__radio hiddens aco" id="aco-camisa-xxg" type="radio" name="acoCamisa" value="XXG"/>
+                <label class="forms__label forms__label-radio forms__label-radio-3" for="aco-camisa-xxg">XXG</label>
+              </div>              
+            </div>                                              
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 row">
+              <div class="col-md-6 col-sm-12 col-xs-12 row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <h6 class="text-center text-info"><span class="fa fa-plane fa-rotate-90"></span> Llegada a la Riviera Maya</h6>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="form-group">
+                    <input class="form-control aco" id="acoNvueloIda" type="text" name="acoNvueloIda" placeholder="No. de vuelo"/>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="form-group">
+                    <input class="form-control aco" id="acoAerolineaIda" type="text" name="acoAerolineaIda" placeholder="Aerolínea"/>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="form-group">
+                    <input class="form-control datesa aco" id="acoFechaIda" type="text" name="acoFechaIda" placeholder="Fecha"/>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="form-group">
+                    <input class="form-control horasa aco" id="acoHoraIda" type="text" name="acoHoraIda" placeholder="Hora"/>
+                  </div>
+                </div>                                  
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12 row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <h6 class="text-center text-info"><span class="fa fa-plane"></span> Salida de la Riviera Maya</h6>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="form-group">
+                    <input class="form-control aco" id="acoNvueloIda" type="text" name="acoNvueloRegreso" placeholder="No. de vuelo"/>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="form-group">
+                    <input class="form-control aco" id="acoAerolineaRegreso" type="text" name="acoAerolineaRegreso" placeholder="Aerolínea"/>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="form-group">
+                    <input class="form-control datesa aco" id="acoFechaRegreso" type="text" name="acoFechaRegreso" placeholder="Fecha"/>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="form-group">
+                    <input class="form-control horasa aco" id="acoHoraRegreso" type="text" name="acoHoraRegreso" placeholder="Hora"/>
+                  </div>
+                </div>                   
+              </div>          
+            </div>
+          </div>         
+        </div>
+        <div class="row">
+          <div class="form-group ocultos">
+            <input id="tot" name="tot" value="" type="hidden">
+          </div>
+        </div>
+        <div class="row m-t-40">
+          <div class="col-sm-4 col-md-4 col-xs-">
+            <div id="captchaContainer1">
+            </div>            
+          </div>
+        </div>
+        <div class="row m-t-30">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <button class="btn btn-primary pull-right" type="submit" id="sendk"><div>Enviar</div></button>
+          </div>
+        </div>				                                
+			</form>
+		</div>
+    <div class="col-xs-12 col-sm-12 col-md-12 hidden" id="resultk">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="b-blockquote b-blockquote-2 no-mark rows">
+            <blockquote class="">
+              <h4 class="info-mi">Registro exitoso</h4>
+              <p class="m-b-10">Se envio un correo a <span id="nmail"></span> con los detalles</p>
+              <h6 class="m-b-20 pull-right">Gracias!</h6>
+            </blockquote>
+          </div>          
+        </div>        
+      </div>
+      <div class="row">
+        <a class="btn btn-primary pull-right">Regresar</a>
+      </div>
+    </div>
+	</div>
+</div>	
+{% endblock %}

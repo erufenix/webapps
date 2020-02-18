@@ -1,0 +1,79 @@
+{% extends "layouts/kickoff19/kickoff19Layout.twig" %}
+{% block content %}
+  <div class="content-wrap main-contact-page pd-top-80 pd-bottom-80">
+    <div class="container" id="dvcontact">
+      <div class="row">
+        <div class="col-md-9 col-sm-12 col-12">
+          <form action="{{ url('kickoff19.sendContacto') }}" method="post" id="frmcontact">
+            <div class="form-row mg-bottom-20">
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <input type="text" class="" name="nombre" id="nombre" required placeholder="Nombre">
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <input type="text" name="correo" id="correo" required placeholder="Correo">
+              </div>
+            </div>
+            <div class="form-row mg-bottom-20">
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <textarea class="no-resize" name="mensaje" id="mensaje" cols="3" placeholder="Mensaje" required></textarea>
+              </div>
+            </div>
+            <div class="form-row mg-bottom-20">
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                <div id="captchaContainerC"></div>
+              </div>
+            </div>
+            <div class="form-row mg-bottom-20">
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" id="sendc" class="btn-effect float-right" name="sendc">
+                  <div>Enviar</div>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3 col-sm-12 col-12">
+          <div class="sidebar-right">
+            <div class="widget widget-logo-info widget-text sidebar-right">
+              <strong>T&C Group</strong>
+              <ul class="info">
+                <li class="person">Mónica Flores</li>
+                <li class="phone"><a href="#" class="data-hover">55 5148 7554</a></li>
+                <li class="mail"><a href="#" class="data-hover">mflores@tycgroup.com</a></li>
+              </ul>
+              <hr>
+              <ul class="info">
+                <li class="person">Mariela Arellano</li>
+                <li class="phone"><a href="#" class="data-hover">55 5148 7511</a></li>
+                <li class="mail"><a href="#" class="data-hover">marellano@tycgroup.com</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="flat-iconbox mg-bottom-20 mg-top-10 invisible" id="resultc">
+        <div class="row">
+          <div class="col-md-6 col-sm-8 col-12 mx-auto no-float">
+            <div class="iconbox iconbox-whyus style5">
+              <div class="iconbox-icon">
+                <i class="fa fa-check"></i>
+              </div>
+              <div class="iconbox-content">
+                <h5 class="heading"><a href="#">Mensaje enviado</a></h5>
+                <p class="sub-heading">En breve recibirá una respuesta</p>
+              </div>
+            </div>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-md-6 col-sm-8 col-12 mx-auto no-float mg-top-10" align="right">
+            <a class="btn btn-styl2 btn-home" href="{{ url('kickoff19.contacto') }}">
+              <div>Regresar</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

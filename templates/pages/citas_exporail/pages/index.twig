@@ -1,0 +1,47 @@
+{% extends 'pages/citas_exporail/layout/layOutExpoRail.twig' %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-10 mx-auto">
+      <div class="border border-light p-5">
+          <p class="h4 mb-4 text-center"> Citas FONATOUR EXPORAIL</p>
+          
+          <form class="text-center needs-validation" style="color: #757575;" id="fscitas" method="post" action="{{ url('citaExporail.cita') }}">
+
+            <div class="md-form form-group">
+              <input type="text" id="nombre" name="nombre" class="form-control" required>
+              <label for="nombre">Nombre</label>
+              <div class="invalid-feedback">
+                Escribe el nombre
+              </div>
+            </div>
+
+            <div class="md-form form-group">
+              <input type="email" id="correo" name="correo" class="form-control" required>
+              <label for="correo">Correo</label>
+              <div class="invalid-feedback">
+                Escribe un correo valido
+              </div>
+            </div>
+
+            <div class="md-form form-group">
+              <input type="text" id="empresa" name="empresa" class="form-control" required>
+              <label for="nombre">Empresa</label>
+              <div class="invalid-feedback">
+                Escribe la empresa
+              </div>              
+            </div> 
+            <div class="md-form form-group">
+              <input type="hidden" id="paso1" name="paso1" value="true">
+              <input type="hidden" value="{{ url('citaExporail.valMail') }}" name="valcita" id="valcita">
+            </div>
+            <div class="md-form form-group">       
+              <button class="btn red-rail text-white btn-block my-4 waves-effect z-depth-0" type="submit">Soliciar Cita</button>
+            </citas>
+          </form>
+      </div>
+    </div>  
+  </div>
+</div>
+{% endblock %}

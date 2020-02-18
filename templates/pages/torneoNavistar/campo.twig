@@ -1,0 +1,50 @@
+{% extends "layouts/torneoNavistar/layout.twig" %}
+{% block content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7 col-md-7 col-lg-7">
+        <div id="js-grid-mosaic-flat" class="cbp cbp-l-grid-mosaic-flat">
+              <div class="cbp-item web-design graphic">
+                <a href="{{ asset('assets')}}/img/pvrmx-exterior.jpg" class="cbp-caption cbp-lightbox" data-title="Marriott Puerto Vallarta Resort & Spa">
+                  <div class="cbp-caption-defaultWrap">
+                    <img src="{{ asset('assets')}}/img/pvrmx-exterior.jpg" alt="">
+                  </div>
+                  <div class="cbp-caption-activeWrap">
+                    <div class="cbp-l-caption-alignCenter">
+                      <div class="cbp-l-caption-body">
+                        <div class="cbp-l-caption-title">
+                          Marriott Puerto Vallarta Resort & Spa
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>        
+        </div>
+      </div>
+      <div class="col-sm-5 col-md-5 col-lg-5">
+        <h4 class="uppercase font-weight-4">Marriott Puerto Vallarta Resort & Spa</h4>
+        <p>
+          Uno de los más completos hoteles en Puerto Vallarta, Marriott Puerto Vallarta Resort & Spa ofrece elegantes habitaciones, lujosas suites y unas impresionantes vistas al mar. Convenientemente ubicado en la Bahía de Banderas, nuestro resort frente a la playa está a unos pasos de la famosa Marina Vallarta, donde se encuentran varios restaurantes, tiendas y un campo de golf profesional. Nuestro hotel también ofrece fácil acceso al Aeropuerto Internacional Licenciado Gustavo Díaz Ordaz, al Centro de Convenciones de Puerto Vallarta y al centro de Puerto Vallarta.<br/><br/>
+          Las habitaciones de nuestro resort ofrecen modernas instalaciones y hermosa decoración. Duerma profundamente en nuestras cómodas camas, y disfrute de las magníficas vistas desde su balcón privado.<br><br/>
+          Algunas de las comodidades del hotel incluyen Internet de alta velocidad, mini-refrigeradores, espaciosos escritorios, cajas de seguridad y baños de mármol con lujosos complementos de la prestigiada marca THANN. Para espacio adicional, elija una de nuestras exclusivas suites.<br/><br/>
+          <ul class="fa-ul">
+            <li><span class="fa-li"><i class="fas fa-map-marked-alt"></i></span>Paseo La Marina Norte 435, Marina Vallarta, Puerto Vallarta  48354 México</li>
+          </ul> 
+        </p>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+         <div id="map_hotel" class="map">
+         </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDhbP8-v2kwyP5SCLnTt3QrCaSkuReBmfw"></script> 
+<script type="text/javascript" src="{{ asset('assets')}}/arma/c6/js/gmaps/jquery.gmap.min.js"></script> 
+{% endblock %}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><!--<![endif]-->
+  <head>
+    <!-- Basic Page Needs -->
+    <meta charset="UTF-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Michelin Alliance 2019</title>
+
+    <meta name="author" content="Nuevas Tecnologías T&C Group">
+    <meta name="description" content="Michelin 2019 Alliance">
+    <!-- set the Keyword -->
+    <meta name="keywords" content="Michelin Alliance 2019, Michelin Alliance 2019 registro, Michelin Alliance 2019 Asociados">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/automov/stylesheet/style.css">
+    <link rel="stylesheet" href="{{ asset('assets')}}/css/michelin19.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/automov/stylesheet/colors/color1.css" id="colors">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/automov/stylesheet/responsive.css">
+  </head>
+
+  <body>
+    <div id="wrapper" class="wrapper">
+      <div class="preloader">
+        <div class="load">
+          <div class="block"><img src="{{ asset('assets')}}/phoenix/images//svg/bars.svg" width="60" alt="loader"></div>
+        </div>
+      </div> <!-- /.preloaer -->
+
+      <header id="header" class="header-v5">
+        <div class="container container-header clearfix">
+          <div id="logo">
+            <a href="{{ url('michelin19.index')}}/{{ tipo }}">
+              <img src="{{ asset('assets')}}/img/Michelin2018_140.png" alt="michelin" data-retina="{{ asset('assets')}}/img/Michelin2018_140.png">
+            </a>
+          </div>
+          <div class="mobile-button v2">
+            <span></span>
+          </div>
+          <div class="nav-wrap text-center">
+            <nav id="mainnav" class="mainnav header-v1">
+              <ul class="menu">
+                <li class="active">
+                  <a href="{{ url('michelin19.index') }}/{{ tipo }}">INICIO</a>
+                </li>
+                <li>
+                  <a href="javascript:;">SEDE</a>
+                </li>
+                <li>
+                  <a href="{{ url('michelin19.index') }}/{{ tipo }}/registro">REGISTRO</a>
+                </li>
+                <li >
+                  <a href="#">CONTACTO</a>
+                </li>
+              </ul>
+            </nav><!-- /.mainnav -->
+          </div>
+          <div class="flat-menu-extra clearfix logo2">
+            <img src="{{ asset('assets')}}/img/logAli19Asoc.png" alt="michelin" data-retina="{{ asset('assets')}}/img/logAli19Asoc.png">
+          </div>
+        </div> <!-- /.container -->
+      </header> <!-- /#header -->
+      <main id="main" class="main">
+        {% block content %}
+        {% endblock %}
+      </main>
+      <footer id="footer" class=" style2 pd-bottom-100">
+        <div class="flat-spacer clearfix" data-desktop="40" data-mobile="30" data-smobile="30" ></div>
+        <div class="container">
+          <div class="bottom style1 clearfix">
+            <div class="flat-socails">
+            </div>
+            <div class="flat-copy-right">
+              <p>Desarrollado por Nuevas Tecnologías <a href="https://tycgroup.com/" target="_blank" class="text-info">T&C Group</a> © 2017-2018</p>
+            </div>
+          </div> <!-- /.bottom -->
+        </div> <!-- /.container -->
+      </footer> <!-- /.footer -->
+      <span class="gotop">
+        <img src="{{ asset('assets')}}/automov/images/goto-automov.png" alt="AutoMov">
+      </span> <!-- /.gotop -->
+
+      <!-- Javascript -->
+      <script src="{{ asset('assets')}}/automov/javascript/jquery.min.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/plugins.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/bootstrap.min.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/owl.carousel.min.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/imagesloaded.min.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/jquery-isotope.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/jquery-countTo.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/waypoints.min.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/equalize.min.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/jquery.cookie.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/jquery.validate.min.js"></script>
+      <script src="{{ asset('assets')}}/automov/javascript/main.js"></script>
+      <script src="{{ asset('assets')}}/js/michelin19.js"></script>
+    </div>
+  </body>
+</html>

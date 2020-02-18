@@ -1,0 +1,409 @@
+{% extends "layouts/upFront/panelLayout.twig" %}
+{% block content %}
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="table-responsive slide">
+        <div id="#toolbar" class="toolbar">
+          <a class="btn waves-effect waves-light btn-info text-white add">Agregar</a>
+        </div>
+        <table data-toggle="table" class="table table-striped" id="tbuser" data-unique-id="id_upfront" data-url="{{ url('upFront.panelParticipantes') }}">
+          <thead>
+            <tr>
+              <th data-field="id_upfront" data-title="ID" data-sortable="true" data-align="center" data-valign="center" data-width="60"></th>
+              <th data-field="nombre" data-title="Nombre" data-sortable="true" data-align="center" data-valign="center"></th>
+              <th data-field="apellidos" data-title="Apellidos" data-sortable="true" data-align="center" data-valign="center"></th>
+              <th data-field="correo" data-title="Correo" data-sortable="true" data-align="center" data-valign="center"></th>
+              <th data-field="folio" data-title="Folio" data-sortable="true" data-align="center" data-valign="center"></th>
+              <th data-field="entrada" data-title="Entrada" data-sortable="true" data-align="center" data-valign="center" data-formatter="hourFormatter"></th>
+              <th data-field="mesa" data-title="Mesa" data-sortable="true" data-align="center" data-valign="center"></th>
+              <th data-field="silla" data-title="Silla" data-sortable="true" data-align="center" data-valign="center"></th>
+              <th data-formatter="operateFormatter" data-events='operateEvents' data-align="center" data-valign="center"><span class="fa fa-cog"></span></th>
+            </tr>													
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalIn" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalInLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sms">
+      <div class="modal-content">
+        <form id="frmIn" action="" method="post">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modalInModalLabel">Modal Heading</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          </div>
+          <div class="modal-body">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!--<form id="frmUp" action="" method="post" onsubmit="return false;">-->
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info waves-effect" id="btn-action"><span></span></button>
+          </div>
+        <!--</form>-->
+      </div>
+    </div>
+  </div>  
+
+{% endblock %}
+{% block scripts %}
+<script>
+  axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+  var modal   = $("#myModal");
+  var modalin = $("#modalIn");
+  $('#tbuser').bootstrapTable({
+    //url:        '/registros',
+    classes: 		"table table-striped table-sm table-bordered",
+    locale: 		"es-MX",
+    pagination: true,
+    search:     true,
+    showExport: true,
+    filterControl: true,
+    exportTypes: ['csv','excel'],
+    exportDataType: 'all',
+    }
+  )
+
+  function hourFormatter(value, row, index) {
+    var h = (row.entrada != undefined) ? moment(row.entrada).format('HH:mm:ss') : '-' ;
+    return [
+      h     
+    ].join('')
+  };
+
+  function operateFormatter(value, row, index) {
+    var id  	= row.id_upfront;
+    var url   = '{{ url("upFront.panelMesa") }}' + '/' + id;
+    var urlm  = '{{ url("upFront.panelMail") }}/' + id;
+    //url = url.replace("id", id);
+    var cl = (row.mesa == 0 && row.silla == 0) ? "text-warning" : "text-success";
+    return [
+      '<a class="mesa" href="javascript:void(0)" title="Mesa" data-ref="' + url + '">',
+      '<i class="mdi mdi-bulletin-board ' + cl + ' m-r-10"></i>',
+      '</a>',
+      '<a class="mailing" href="javascript:void(0)" title="Mail" data-ref="' + urlm + '">',
+      '<i class="mdi mdi-email-alert m-r-10"></i>',
+      '</a>'    
+    ].join('')
+  };  
+
+  window.operateEvents = {
+    'click .mesa': function (e, value, row, index) {
+      var url 		= e.currentTarget.getAttribute('data-ref');
+      var raction = 'Asignando...'
+      axios.get(
+                  url,
+                    {
+                      raction 		: 'Asignando...'
+                    }
+                )
+                .then(function (response) {
+                  var data = response.data;
+                  if(response.status){
+                    modal.find('.modal-title').html('Asignar mesa');
+                    modal.find('.modal-body').html(data.html);
+                    modal.find('#btn-action').html('Asignar');
+                    modal.modal('show');
+                  }
+                })
+                .catch(function (error) {		
+                })
+                .then(function (){             
+                });					
+      },
+    'click .mailing': function (e, value, row, index) {
+      var urlm 		= e.currentTarget.getAttribute('data-ref');
+      var raction = 'Enviando...'
+      var myToast = $.toast({
+        text: "Enviando correo", 
+        heading: '...', 
+        icon: 'info', 
+        showHideTransition: 'slide',
+        allowToastClose: false, 
+        hideAfter: false, 
+        stack: 5,
+        position: 'top-right',
+        
+        
+        
+        textAlign: 'left',  
+        loader: true, 
+        loaderBg: '#9EC600',
+        beforeShow: function () {},
+        afterShown: function () {},
+        beforeHide: function () {}, 
+        afterHidden: function () {} 
+      });      
+      axios.get(
+                  urlm,
+                    {
+                      raction 		: 'Enviando...'
+                    }
+                )
+                .then(function (response) {     
+                  var data = response.data;
+                  if(response.status){
+                    myToast.update({
+                            heading: '',
+                            text: 'Correo enviado',
+                            icon: 'success',
+                            showHideTransition: 'slide',
+                            allowToastClose: false,
+                            hideAfter: 3000,
+                        });
+                    setTimeout(function(){
+                                          myToast.reset();
+                                        }, 
+                                        1500);                                
+                  }
+                })
+                .catch(function (error) {		
+                })
+                .then(function (){             
+                });					
+      }      
+    }
+
+  $(".asistencia").on('click', function () {
+    var url = '{{ url('upFront.panelEntrada') }}';
+    axios.get(
+                url,
+                  {
+                    raction 		: '...'
+                  }
+              )
+              .then(function (response) {    
+                var data = response.data;
+                if(response.status){
+                  modalin.find('.modal-title').html('Registrar entrada');
+                  modalin.find('.modal-body').html(data.html);
+                  modalin.find('#btn-action').html('Enviar');
+                  modalin.modal('show');
+                }
+              })
+              .catch(function (error) {		
+              })
+              .then(function (){             
+              });
+  });
+
+  if ($("#frmIn").length ){
+      var url = '{{ url('upFront.panelCheckin') }}'
+      $("#frmIn").validate({					
+          rules:{
+          },
+          messages:{
+          },
+          submitHandler: function(form) {
+            $(".hourIn").removeClass('animated flash text-danger text-success').html('');
+            axios.post(url,$("#frmIn").serialize())
+            .then(function (response) {
+              var data = response.data;
+              if(response.status){
+                if(data.update){
+                  $(".hourIn").addClass('animated flash text-success').html(data.time);
+                  $("#amesa").html(data.data.mesa);
+                  $("#asilla").html(data.data.silla);
+                  $('#tbuser').bootstrapTable('updateByUniqueId', {
+                    id: data.data.id_upfront,
+                    row: {
+                      entrada: data.data.entrada,
+                    }
+                  });                  
+                }
+                else{
+                  $(".hourIn").addClass('text-danger').html(data.time);
+                  $("#amesa").html(data.data.mesa);
+                  $("#asilla").html(data.data.silla);                  
+                  $('#tbuser').bootstrapTable('updateByUniqueId', {
+                    id: data.data.id_upfront,
+                    row: {
+                      entrada: data.data.entrada,
+                    }
+                  });                  
+                }
+                if(data.status == false ){
+                  $(".hourIn").addClass('animated flash text-danger').html('Sin registro');
+                }
+              }
+              setTimeout(function(){ $(".hourIn").removeClass(
+                                                              'animated flash text-danger text-success').html('');
+                                                              $("#folio").val('');
+                                                              $("#amesa").val(0); 
+                                                              $("#asilla").val(data.data.silla);
+                                                              $("#amesa").html('');
+                                                              $("#asilla").html('');
+                                                              }, 
+                                                            1500);
+            })
+            .catch(function (error) {
+              
+            })
+            .then(function (){             
+            });
+          },                   
+          errorPlacement: function(error, element)
+          {
+            error.insertAfter(element.parent());
+          }        
+        }
+      );
+  }
+
+  /*$('body #folio').keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        alert('You pressed a "enter" key in textbox');  
+    }
+  });*/
+
+
+  /*$('#frmUp').bind('keypress keydown keyup', function(e){
+       if(e.keyCode == 13) { e.preventDefault(); }
+  });*/
+
+  /*if ($("#frmUp").length ){
+      var url = '{{ url('upFront.panelMesas') }}'
+      $("#frmUp").validate({					
+          rules:{
+          },
+          messages:{
+          },
+          submitHandler: function(form,event) {
+            event.preventDefault();
+            $('#btn-action').attr('disabled',true).addClass('disabled').html("Asignando...");
+            axios.post(url,$("#frmUp").serialize())
+            .then(function (response) {
+              var data = response.data;
+              if(response.status){
+                $('#tbuser').bootstrapTable('updateByUniqueId', {
+                  id: data.data.id_upfront,
+                  row: {
+                    mesa:   data.data.mesa,
+                    silla:  data.data.silla
+                  }
+                });                
+                $('#btn-action').removeAttr('disabled').removeClass('disabled').html("Asignar");
+                modal.find('.modal-body').html('');
+                modal.modal('hide');
+              }
+            })
+            .catch(function (error) {
+              
+            })
+            .then(function (){             
+            });
+          },                   
+          errorPlacement: function(error, element)
+          {
+            error.insertAfter(element.parent());
+          }        
+        }
+      );
+  }*/
+
+
+  $("body").on('click','#btn-action', function () {
+    var mesa  = $("#mesa").val();
+    var silla = $("#silla").val();
+    var id    = $("#idm").val();
+    if(mesa !== '' && silla !== ''){
+        var url = '{{ url('upFront.panelMesas') }}/' + id + '/' + mesa + "/" + silla;
+        $('#btn-action').attr('disabled',true).addClass('disabled').html("Asignando...");
+        axios.post(url)
+        .then(function (response) {
+          var data = response.data;
+          if(response.status){
+            $('#tbuser').bootstrapTable('updateByUniqueId', {
+              id: data.data.id_upfront,
+              row: {
+                mesa:   data.data.mesa,
+                silla:  data.data.silla
+              }
+            });                
+            $('#btn-action').removeAttr('disabled').removeClass('disabled').html("Asignar");
+            modal.find('.modal-body').html('');
+            modal.modal('hide');
+          }
+        })
+        .catch(function (error) {
+          
+        })
+        .then(function (){             
+        });
+    }
+    else{
+
+    }
+  });
+
+  $("body").on('click','.add', function () {
+    var url = '{{ url('upFront.panelAdd') }}';
+    axios.get(
+                url,
+                  {
+                    raction 		: '...'
+                  }
+              )
+              .then(function (response) {    
+                var data = response.data;
+                if(response.status){
+                  modal.find('.modal-title').html('Nuevo registro');
+                  modal.find('.modal-body').html(data.html);
+                  modal.find('#btn-action').html('Guardar');
+                  modal.find('.modal-footer').addClass('invisible');
+                  modal.modal('show');
+                }
+              })
+              .catch(function (error) {		
+              })
+              .then(function (){             
+              });    
+  });
+
+  $("body").on('click','.regnew', function () {
+        var validate  = true;
+        $("#msg").html('');
+        $('#fsreg :input').each(function (index, element) {
+          var val = $.trim(element.value);
+          if(val == ''){
+            validate = false;
+            $("#msg").html('Por favor rellene todos los campos');
+            return false;
+          }
+        });
+        if(validate){
+          $('.regnew').attr('disabled',true).addClass('disabled').html("Guardando...");
+          axios.post("{{url ('upFront.panelNew') }}",$('#fsreg :input').serialize())
+          .then(function (response) {
+            var data = response.data;
+            if(response.status){
+              $('.regnew').removeAttr('disabled').removeClass('disabled').html("Guardar");
+              modal.find('.modal-body').html('');
+              modal.modal('hide');
+            }
+          })
+          .catch(function (error) {
+            
+          })
+          .then(function (){             
+          });
+        }
+  });
+
+  
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layouts/kickoff19/kickoff19Layout.twig" %}
+{% block content %}
+  <div class="wrap-contact-page pd-top-80 ">
+    <div class="container">
+      <div class="flat-iconbox mg-bottom-20 mg-top-10">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-12 mx-auto no-float">
+            <div class="iconbox iconbox-whyus style5">
+              <div class="iconbox-icon">
+                <i class="fa fa-check"></i>
+              </div>
+              <div class="iconbox-content">
+                <h5 class="heading"><a href="#">Pago completado</a></h5>
+                <div class="cart-form">
+                  <table class="shop-table table">
+                    <thead>
+                      <tr>
+                        <th class="product-quantity">Producto</th>
+                        <th class="product-quantity">SKU</th>
+                        <th class="product-quantity">Transacción</th>
+                        <th class="product-quantity">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="product-name text-center">{{ rq.item }}</td>
+                        <td class="product-name text-center">{{ rq.code }}</td>
+                        <td class="product-name text-center">{{ rq.tx }}</td>
+                        <td class="product-name text-center">${{ rq.amount | number_format(2, '.', ',') }} MXN</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-12 mx-auto no-float mg-top-10 mg-bottom-20" align="right">
+        <a class="btn btn-styl2 btn-home" name="sendk" href="{{ url('kickoff19.registro') }}">
+          <div>Regresar</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

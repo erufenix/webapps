@@ -1,0 +1,68 @@
+<div id="poliEs">
+	<div class="c-content-title-2 c-title-md">
+		<h3 class="c-center c-font-uppercase c-font-bold c-theme-font">POLÍTICAS DE RESERVACIÓN PARA INDIVIDUALES</h3>
+		<div class="c-line c-dot c-dot-square c-bg-blue c-bg-after-blue"></div>
+	</div>	
+	<p>
+		<strong>Para que su reservación sea confirmada deberá realizar lo siguiente:</strong>		
+	</p>
+	<div class="lodecimal">
+		<ol>
+			<li>
+				Llenar su formato de reservación, sin olvidar atender las politicas marcadas. 
+			</li>
+			<li>
+				Realizar el pago <strong>de su estancia completa</strong> en alguna de las siguientes formas de pago: 
+				<blockquote class="c-margin-t-5 c-theme-borders">
+					<dl class="list-unstyleds c-margin-t-10">
+						<dd>&#183; Depósito en USD a nombre de Turismo y Convenciones, S.A. de C.V. Bancomer cta. 0142854783 Plaza 001 Suc.0843/ Cuenta Clabe 012 180 001 428 547 832.</dd>
+						<dd>&#183; Depósito en MXN a nombre de Turismo y Convenciones, S.A. de C.V. Bancomer cta. 0447334168 Plaza 001 Suc.0843/ Cuenta Clabe 012 180 004 473 341 682.</dd>
+						<dd>&#183; Tarjetas de crédito Visa, Master Card y American Express: llamando a los tels:   52 (55) 51 48 75 09 y 11.</dd>
+					</dl>
+				</blockquote>
+			</li>
+			<li>
+				Enviar el comprobante de pago especificando su nombre y el nombre del evento:
+				<dl>
+					<dd>&#183; Por fax 52 (55) 5148 20 13.</dd>
+					<dd>&#183; Por correo electrónico: Carlos Aguirre <a href="mailto:caguirre@tycgroup.com" class="c-theme-font">caguirre@tycgroup.com</a></dd>
+				</dl>
+				<u>Posteriormente llamar a los tels. 52 (55) 51 48 75 09 y 69</u> para confirmar recepción y recibir su número de reservación.
+			</li>
+			<li>
+				Por la cercanía del evento no se aceptarán cancelaciones y el cargo será de la Estancia completa.
+			</li>
+			<li>
+				En caso de salidas anticipadas se realizará el cargo de la <strong>Estancia Completa.</strong>	
+			</li>
+			<li>
+				<strong>No Show:</strong> Si usted no se presenta en el hotel en la fecha indicada, causará la cancelación de su reservación y el cargo de su <u>Estancia Completa</u>.
+			</li>
+			<li>Sólo se aceptarán cambios de nombre y fecha por escrito, hasta el día<b> 15 de febrero, 2018</b>, posteriormente a esta fecha no se aceptarán cambios.</li>
+			<li>
+				Favor de enviarnos su número telefónico o e-mail para dudas y/o aclaraciones.
+			</li>
+		</ol>
+	</div>
+</div>
+<hr>
+<div class="contactES">
+  <p>
+  	<address>
+  		{% if operador is empty %}
+      <strong>Contacto</strong><br><br>
+      T&C<br>
+      <span class="icon-user"></span>  Mariela Arrellano<br>
+      <span class="icon-envelope"></span> <a href="mailto:caguirre@tycgroup.com" class="c-theme-font">caguirre@tycgroup.com</a><br>
+      <span class="icon-call-in"></span> +52 55 5148 75 00 ext: 76  			
+  		{% else %}
+      <strong>Contacto</strong><br><br>
+      T&C<br>
+      <span class="icon-user"></span>  {{ operador.name }}<br>
+      <span class="icon-envelope"></span> <a href="mailto:{{ operador.mail }}" class="c-theme-font">{{ operador.mail }}</a><br>
+      <span class="icon-call-in"></span> operador.phone
+  		{% endif %}	
+  	</address>
+  </p>
+</div>
+</hr>

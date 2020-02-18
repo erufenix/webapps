@@ -1,0 +1,849 @@
+{% extends "layouts/reservacion/layout.twig.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h3 class="c-center c-font-uppercase c-font-bold">{{evento}}</h3>
+		</div>
+		<div class="col-sm-5 col-md-5">
+			<div class="from-group row">
+				<label class="col-md-4 control-label">Event date</label>
+				<div class="col-md-8">
+					<p class="form-control-static">NOVEMBER 4 TO 8</p>
+				</div>
+			</div>							
+		</div>
+		<div class="col-sm-3 col-md-3">
+		</div>
+		<div class="col-sm-4 col-md-4">
+			<div class="from-group row">
+				<label class="col-md-4 control-label">Venue</label>
+				<div class="col-md-8">
+					<p class="form-control-static">KRYSTAL CANCUN</p>
+				</div>
+			</div>			
+		</div>		
+	</div>
+	<form action="{{ url('isot.setReservacion') }}" method="post" id="frmRsv">
+		<div class="c-content-divider c-divider-sm c-left c-bg-red">
+			<i class="icon-dot c-bg-red c-square"></i>
+		</div>
+		<div class="row">
+			<div class="col-sm-10 col-md-10">
+				<h2 class="c-theme-font c-font-uppercase text-center">Booking Information</h2>
+			</div>
+			<div class="col-sm-2 col-md-2 link-info">
+				<ul class="list-unstyled">
+					<li>
+						<a class="btn btn-primary btn-xs  cbp-singlePage" href="{{ url('isot.politicas') }}/{{lang}}">
+							<small><i class="icon-book-open"></i> Reservation policies</small>
+						</a>
+					</li>
+				</ul> 
+			</div>
+			<div class="col-sm-12 col-md-12"><hr></div>
+			<div class="col-sm-4 col-md-4">
+				<div class="from-group row">
+					<label class="col-md-5 control-label">Arrival date</label>
+					<div class="col-sm-4 col-md-4">
+						<input class="form-control  c-square c-theme input-sm date" placeholder="" type="text" id="fechaLlegada" name="fechaLlegada" required readonly>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="from-group row">
+					<label class="col-md-5 control-label">Departure date</label>
+					<div class="col-sm-4 col-md-4">
+						<input class="form-control  c-square c-theme input-sm date" placeholder="" type="text" id="fechaSalida" name="fechaSalida" required readonly>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="c-content-title-3 c-title-sm c-border-red c-margin-t-15" id="notaf">
+					<p class="c-font-red-3" style="font-size:14px;">
+						To book before or after the official dates of the event will be subject to availability.
+					</p>
+				</div>
+			</div>											
+			<div class="col-sm-6 col-md-12 c-margin-b-15">
+				<hr>
+			</div>
+			<div class="col-sm-12 col-md-6">
+				<div class="from-group">
+					<div class="row">
+						<label class="col-md-4 control-label">Hotel</label>
+						<div class="col-md-6">
+							<select class="form-control  c-square c-theme input-sm" id="idHotel" name="idHotel"required>
+								<option value="" selected>Select</option>
+								{% for ht in hoteles %}
+									{% if ht.agotado == false %}
+									<option value="{{ ht.index }}" {{ (ht.index == idHotel) ? 'selected': '' }}>{{ ht.nombre }}</option>
+									{% endif %}
+									}
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<label class="col-md-12 control-label">Rooms</label>
+						<div class="col-sm-12 col-md-12" id="habitaciones">
+							<div class="text-center"><span class="has-error">Select Hotel</span></div>
+						</div>
+						<div class="col-md-12" data-div-for="habitacionc">
+							<small style="display:none;" class="help-block" data-fv-validator="notEmpty" data-fv-for="habitacionc" data-fv-result="INVALID">Please select any Room</small>
+						</div>                                               
+					</div>
+					<div class="row">
+						<label class="col-md-12 control-label">Pay nights</label>
+						<div class="col-md-12">
+							<div class="c-radio-inline">
+								<div class="c-radio">
+									<input id="ppN" class="c-radio" name="pagoPor" type="radio" value="N" required checked>
+									<label for="ppN" class="normal">
+										<span class="inc"></span>
+										<span class="check"></span>
+										<span class="box"></span> 2 nights
+									</label>
+								</div>
+								<div class="c-radio">
+									<input id="ppC" class="c-radio" name="pagoPor" type="radio" value="C" required>
+									<label for="ppC" class="normal">
+										<span class="inc"></span>
+										<span class="check"></span>
+										<span class="box"></span> Whole stay <small class="c-font-red-3">(<i class="fa fa-info-circle"></i> Select dates in arrival and departure)</small>
+									</label>
+								</div>                                                                                                           							
+							</div>						
+						</div>						
+					</div>
+					<div class="row">
+						<label class="col-md-12 control-label">Payment method</label>
+						<div class="col-md-12">
+							<div class="c-radio-inline">
+								<div class="c-radio">
+									<input id="pDB" class="c-radio" name="pago" type="radio" value="DB" required>
+									<label for="pDB" class="normal">
+										<span class="inc"></span>
+										<span class="check"></span>
+										<span class="box"></span> Bank deposit 
+									</label>
+								</div>
+								<div class="c-radio hiddens">
+									<input id="pPP" class="c-radio" name="pago" type="radio" value="PP" required>
+									<label for="pPP" class="normal">
+										<span class="inc"></span>
+										<span class="check"></span>
+										<span class="box"></span> Credit card / PayPal
+									</label>
+								</div>                                                                                                           							
+							</div>						
+						</div>						
+					</div>
+				</div>				
+			</div>
+			<div class="col-sm-12 col-md-6">
+				<div class="item">
+					<div class="c-content-person-1 text-center">
+						<div class="c-caption c-content-overlay">
+							<div class="c-overlay-wrapper">
+								<div class="c-overlay-content text-center" align="center">
+									<a href="{{ asset('assets')}}/img/hotel/radla18/source.png" data-lightbox="fancybox" data-fancybox-group="gallery-1" id="htimg">
+										<i class="icon-magnifier"></i>
+									</a>
+								</div>
+							</div>
+							<img class="c-overlay-object img-responsive center-block" src="{{ asset('assets')}}/img/hotel/radla18/source.png" alt="" id="httumb" align="center">
+						</div>
+						<div class="c-body">
+							<div class="c-position text-center no-float" id="htnombre"><span class="has-error">Select Hotel</span></div>
+						</div>
+					</div>
+				</div>			
+			</div>
+			<div class="col-sm-12 col-md-12">
+				<div class="c-content-title-3 c-title-sm c-theme-border c-margin-t-15" id="msgs">
+				</div>			
+			</div>			
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<h2 class="c-theme-font c-font-uppercase text-center">Guest information</h2>
+				<hr>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Name</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="nombre" name="nombre" required>
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Last name</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="apaterno" name="apaterno" required>
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Middle name</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="amaterno" name="amaterno" required>
+						</div>
+					</div>			
+				</div>
+			</div>
+			<div class="row  c-margin-t-15">
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Country</label>
+						<div class="col-md-8">
+							<select class="form-control  c-square c-theme input-sm paises" id="pais" name="pais" required>
+								<option value="">Seleccionar</option>
+							</select>						
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Postal code</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="cp" name="cp" required>					
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">State</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="estado" name="estado" required>					
+						</div>
+					</div>			
+				</div>
+			</div>
+			<div class="row c-margin-t-15">
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Province</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="colProvi" name="colProvi" required>					
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Address</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm" placeholder="Calle y número" type="text" id="direccion" name="direccion" required>					
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Phone number</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm" placeholder="(Incluir clave lada)" type="text" id="telefono" name="telefono" required>					
+						</div>
+					</div>			
+				</div>													
+			</div>
+			<div class="row c-margin-t-15">
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Mobile phone number</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm" placeholder="" type="text" id="celular" name="celular">					
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">E-Mail</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm" placeholder="" type="email" id="correo" name="correo" required>					
+						</div>
+					</div>			
+				</div>									
+			</div>
+			<div class="row c-margin-t-15">
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Companion persons</label>
+						<div class="col-md-8">
+							<textarea class="form-control  c-square c-theme" rows="3" id="acom" name="acom" placeholder="Please separate your companions with ',' (comma)"></textarea>			
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Additional comments</label>
+						<div class="col-md-8">
+							<textarea class="form-control  c-square c-theme" rows="3" id="comentarios" name="comentarios" placeholder="Maximum 500 characters"></textarea>			
+						</div>
+					</div>			
+				</div>				
+			</div>																				
+		</div>
+		<hr>
+		<div class="row c-margin-t-20">
+			<div class="col-sm-12 col-md-12">
+				<h2 class="c-theme-font c-font-uppercase text-center">Billing information</h2>
+				<hr>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<div class="from-group">
+						<label class="col-md-4 control-label">I require billing?</label>
+						<div class="col-md-8">
+							<div class="c-radio-inline">
+								<div class="c-radio has-info">
+									<input id="sifac" class="c-radio rfactura" name="factura" type="radio" value="1">
+									<label for="sifac">
+										<span class="inc"></span>
+										<span class="check"></span>
+										<span class="box"></span> Yes
+									</label>
+								</div>
+								<div class="c-radio has-info">
+									<input id="nofac" class="c-radio rfactura" name="factura" type="radio" value="0">
+									<label for="nofac">
+										<span class="inc"></span>
+										<span class="check"></span>
+										<span class="box"></span> No
+									</label>
+								</div>                                                                                                           							
+							</div>
+						</div>
+					</div>			
+				</div>			
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">R.F.C</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm factura" placeholder="Solo para México" type="text" id="rfc" name="rfc" required>
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Company name</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm factura" placeholder="" type="text" id="rsFactura" name="razonSocial" required>
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Country</label>
+						<div class="col-md-8">
+							<select class="form-control  c-square c-theme input-sm factura paises" id="paisFactura" name="paisFactura">
+								<option value="">Select</option>
+							</select>						
+						</div>
+					</div>			
+				</div>								
+			</div>
+			<div class="row c-margin-t-15">
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Postal code</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm factura" placeholder="" type="text" id="cpFactura" name="cpFactura" required>
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">State</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm factura" placeholder="" type="text" id="estadoFactura" name="estadoFactura" required>
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Delegation</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm factura" placeholder="Solo para México" type="text" id="delMunFactura" name="delMunFactura" required>
+						</div>
+					</div>			
+				</div>												
+			</div>
+			<div class="row c-margin-t-15">
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Province</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm factura" placeholder="" type="text" id="colProFactura" name="colProFactura" required>
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Address</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm factura" placeholder="Calle y número" type="text" id="direccionFactura" name="direccionFactura" required>
+						</div>
+					</div>			
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">Phone number</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm factura" placeholder="" type="text" id="telefonoFactura" name="telefonoFactura" required>
+						</div>
+					</div>			
+				</div>														
+			</div>
+			<div class="row c-margin-t-15">
+				<div class="col-sm-12 col-md-4">
+					<div class="from-group">
+						<label class="col-md-4 control-label">E-mail</label>
+						<div class="col-md-8">
+							<input class="form-control  c-square c-theme input-sm factura" placeholder="" type="text" id="correoFactura" name="correoFactura" required>
+						</div>
+					</div>			
+				</div>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<h2 class="c-theme-font c-font-uppercase text-center">Terms and Conditions</h2>
+				<hr>
+			</div>
+			<div class="col-sm-12 col-md-6">
+				<div class="from-group">
+	        <div class="c-checkbox-inline">
+	        	<div class="c-checkbox">
+	            <input type="checkbox" id="acepto" name="acepto" class="c-check"  value="1" required>
+	            <label for="acepto" class="c-font-thin c-font-17">
+	              <span></span>
+	              <span class="check"></span>
+	              <span class="box"></span> I accept Reservation and cancellation policies 
+	            </label>
+          		</div>
+	        </div>
+        </div>			
+			</div>
+			<div class="col-sm-12 col-md-6" id="captchaContainer">
+			</div>			
+		</div>
+		<div class="row ocultos">
+			<input type="hidden" id="operador" name="operador" value="RO">
+			<input type="hidden" id="claveEvento" name="claveEvento" value="ISOT">
+			<input type="hidden" id="divisa" name="divisa" value="{{ currency }}">
+			<input type="hidden" id="evento" nombre="evento" value="{{ evento }}">
+			<input type="hidden" id="lang" name="lang" value="{{ lang }}">
+			<input type="hidden" id="hotel" name="hotel" value="">
+			<input type="hidden" id="fechaEvento" name="fechaEvento" value="November 4 to 8">
+			<input type="hidden" id="nombreEvento" name="nombreEvento" value="{{evento}}">
+			<input type="hidden" id="sedeEvento" name="sedeEvento" value="KRYSTAL CANCUN">
+		</div>
+		<div class="row c-margin-t-15">
+			<div class="col-sm-12 col-md-12" align="right">
+				<button type="button" class="btn btn-danger"><div>Cancel</div></button>
+				<button type="submit" class="btn btn-primary" id="send"><div>Book</div></button>
+			</div>
+		</div>				    
+	</form>
+	<div id="result" class="row">
+          <div class="col-md-8 col-sm-10 center-block no-float">
+              <div class="c-content-feature-2 c-option-2 c-theme-bg-parent-hover">
+                  <div id="mdb" class="hidden">
+	                 <div class="c-icon-wrapper c-theme-bg-on-parent-hover">
+	                 	<div class="c-content-line-icon c-theme c-icon-8"></div>
+	                 </div>                  	
+	                	<h3 class="c-font-uppercase c-title">Booking record successfully completed, this will be complete when we receive notification of your payment</h3>
+	                	<p>Payment method: <strong>Bank deposit</strong></p>
+	                 <p>An email was sent to <b><span id="nmail"></span></b> with the details</p>
+	                 <p class="c-border-red c-border">
+	                 	Once the reservation department has received the payment verification, you will be sent the same route in a period not exceeding 48 hours your confirmation number.
+	                 </p>
+	                 <div align="center" class="c-margin-t-20">
+	                 	<a href="javascript:void()" onclick="window.location.reload(true)" class="btn btn-success">Regresar</a>
+	                 </div>
+                	</div>
+                	<div id="mpp" class="hidden">
+                  	<div class="c-icon-wrapper c-theme-bg-on-parent-hover">
+                      		<div class="c-content-line-icon c-theme c-icon-8"></div>
+                  	</div>                		
+	                 <h3 class="c-font-uppercase c-title">Reserved booking details correctly, this will be complete when we receive notification of your payment</h3>
+	                 <p>Payment method: <strong>Credit card / PayPal</strong></p>
+	                 <p class="c-border-red c-border">
+	                 	Once the reservation department has received the payment verification, you will be sent via electronic mail within a period not exceeding 48 hours your confirmation number.
+	                 </p>	                 
+	                 <div align="center" class="c-margin-t-20">
+	                 <form data-event="true" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+	                 	<input name="cmd" value="_xclick" type="hidden">
+	                 	<input name="business" value="WSP439AHMNCYS" type="hidden">
+	                 	<input name="lc" id="lc" value="US" type="hidden">
+	                 	<input name="item_name" id="item_name" value="ISOT" type="hidden">
+	                 	<input name="item_number" id="item_number" value="" type="hidden">
+	                 	<input name="amount" id="amount" value="" type="hidden">
+	                 	<input name="currency_code" value="{{currency | upper}}" type="hidden">
+	                 	<input name="button_subtype" value="services" type="hidden">
+	                 	<input name="no_note" value="1" type="hidden">
+	                 	<input name="no_shipping" value="1" type="hidden">
+	                 	<input name="rm" value="1" type="hidden">
+	                 	<input name="return" value="{{ url }}" type="hidden">
+	                 	<input name="cancel_return" value="{{ url }}" type="hidden">
+	                 	<input name="bn" value="PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted" type="hidden">
+	                 	<input src="{{ asset('assets')}}/img/pay/paypal_us.png" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea." border="0" type="image">
+	                 	<img alt="" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" border="0" width="1" height="1">
+	                 </form>             	
+	                		<!--<img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_paynow_cc_144x47.png" alt="Paga ahora">-->
+	                 </div>                		
+                	</div>
+              </div>
+          </div>		
+	</div>
+
+</div>
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript">
+		var hJson 	= '{{ hotelesJson | raw }}';
+		var paises  = {{ paises | raw }};
+		var obj   	= jQuery.parseJSON(hJson);
+		var objp   	= jQuery.parseJSON(paises);
+		var cur   	= '{{ currency }}';
+		var idHotel	= '{{ idHotel }}';
+		var lang 	= '{{ lang }}';
+		var j 		= idHotel;
+		var $dialog = null;
+		if(idHotel != 0 && obj[j] != undefined){
+			//var j 				= idHotel - 1;
+			var img 			= obj[j]['img'];
+			var nombre 		= obj[j]['nombre'];
+			var habitaciones 	= obj[j]['habitaciones'];
+			var habs 			= '';
+			var mensajes 		= obj[j]['mensajes'][lang];
+			$("#htimg").attr('href', '{{ asset('assets')}}/img/hotel/isot/' + img);
+			$("#httumb").attr('src', '{{ asset('assets')}}/img/hotel/isot/' + img);
+			$("#htnombre").html(nombre);
+			$("#hotel").val(nombre);
+			$.each(habitaciones, function(index, val) {
+				if (typeof(val.sep) !== 'undefined') {
+					habs += '<div class="row"><div class="col-sm-12 col-md-12"><hr></div></div>';
+				}
+				else{
+					habs += '<div class="from-group row">\n'+
+									'	<div class="col-sm-7 col-md-7 hbtipo">' + ((val.tipo[lang] == '') ? '&nbsp' : val.tipo[lang])  + (val.hagotada == true ? ' <span class="label label-warning c-font-slim">Agotada</span>' : '') + '</div>\n'+
+									'	<div class="col-sm-3 col-md-3 hbcosto"> {{ currency | upper }} $ ' + ((val.costo[cur] == '') ? '&nbsp;' : val.costo[cur]  ) + '</div>\n'+
+									'	<div class="col-sm-2 col-md-2 hbradio">\n'+
+									'			<div class="c-radio">\n'+
+									'				<input class="c-radio" name="habitacionc" id="htc' + (index + 1 ) + '" value="' + val.tipo[lang]+ "|" + val.costo[cur] + "|" + val.propinas[cur] + "|" + val.pack + '|' + val.pp +'|' + val.costor[cur] +'" type="radio" required' + (val.hagotada == true ? ' disabled' : '') + ' >&nbsp;\n'+
+									'				<label for="htc' + (index + 1 ) + '">\n'+
+									'					<span></span><span class="check"></span><span class="box"></span>&nbsp\n'+
+									'				</label>\n'+
+									'			</div>\n'+								
+									'	</div>\n'+
+									'</div>';
+				}
+			});
+			$("#habitaciones").html(habs);
+			$("#msgs").html(mensajes);
+			//$('#frmRsv').formValidation('enableFieldValidators', 'habitacionc', true);
+			//$('#frmRsv').formValidation('revalidateField', 'habitacionc');												
+		}
+
+		$("#idHotel").change(function(event) {
+			var e = $(this);
+			var value = e.val();
+			if(value != 0){
+				var i 				= value;
+				var img 			= obj[i]['img'];
+				var nombre 		= obj[i]['nombre'];
+				var habitaciones 	= obj[i]['habitaciones'];
+				var habs 			= '';
+				var mensajes 		= obj[i]['mensajes'][lang];
+				$("#htimg").attr('href', '{{ asset('assets')}}/img/hotel/isot/' + img);
+				$("#httumb").attr('src', '{{ asset('assets')}}/img/hotel/isot/' + img);
+				$("#htnombre").html(nombre);
+				$("#hotel").val(nombre);
+				$.each(habitaciones, function(index, val) {
+					if (typeof(val.sep) !== 'undefined') {
+						habs += '<div class="row"><div class="col-sm-12 col-md-12"><hr></div></div>';
+					}
+					else{					
+						habs += '<row class="from-group">\n'+
+										'	<div class="col-sm-7 col-md-7 hbtipo">' + ((val.tipo[lang] == '') ? '&nbsp' : val.tipo[lang])  + (val.hagotada == true ? ' <span class="label label-warning c-font-slim">Agotada</span>' : '') + '</div>\n'+
+										'	<div class="col-sm-3 col-md-3 hbcosto"> {{ currency | upper }} $ ' + ((val.costo[cur] == '') ? '&nbsp;' : val.costo[cur]  ) + '</div>\n'+
+										'	<div class="col-sm-2 col-md-2 hbradio">\n'+
+										'			<div class="c-radio">\n'+
+										'				<input class="c-radio" name="habitacionc" id="htc' + (index + 1 ) + '" value="' + val.tipo[lang]+ "|" + val.costo[cur] + "|" + val.propinas[cur] + "|" + val.pack + '|' + val.pp +'|' + val.costor[cur] + '" type="radio" required' + (val.hagotada == true ? ' disabled' : '') + ' >&nbsp;\n'+
+										'				<label for="htc' + (index + 1 ) + '">\n'+
+										'					<span></span><span class="check"></span><span class="box"></span>&nbsp\n'+
+										'				</label>\n'+
+										'			</div>\n'+		
+										'	</div>\n'+
+										'</row>';
+				}
+				});
+				$("#habitaciones").html(habs);
+				$("#msgs").html(mensajes);
+			  $('#frmRsv').formValidation('enableFieldValidators', 'habitacionc', true);
+			  $('#frmRsv').formValidation('revalidateField', 'habitacionc');						
+
+			}
+			else{
+				$("#htimg").attr('href', '{{ asset('assets')}}/img/hotel/radla18/source.png');
+				$("#httumb").attr('src', '{{ asset('assets')}}/img/hotel/radla18/source.png');
+				$("#htnombre").html('<span class="has-error">Seleccionar el hotel</span>');
+				$("#habitaciones").html('<div class="text-center"><span class="has-error">Seleccionar el hotel</span></div>');
+				$("#msgs").html('');
+			}
+
+		});
+
+		$("#fechaLlegada").datetimepicker({
+			minDate: moment('2018-11-02'),
+			maxDate: moment('2018-11-09'),
+			format: 'DD/MM/YYYY',
+			locale: 'en',
+			ignoreReadonly: true,
+			showTodayButton: false,
+			toolbarPlacement:'bottom',
+			widgetPositioning:{
+           			horizontal: 'auto',
+            			vertical: 'bottom'
+        		},
+			icons: {
+				time: 'fa fa-clock-o',
+				date: 'fa fa-calendar',
+				up: 'fa fa-chevron-up',
+				down: 'fa fa-chevron-down',
+				previous: 'fa fa-chevron-left',
+				next: 'fa fa-chevron-right',
+				clear: 'fa fa-trash',
+				close: 'fa fa-times'
+			} 			
+		})
+		.on('dp.change', function(ec) {
+			$("#fechaSalida").data("DateTimePicker").minDate(ec.date.add(1,'day'));
+			$('#frmRsv').formValidation('enableFieldValidators', 'date', true);
+			$('#frmRsv').formValidation('revalidateField', 'date');	
+		});
+
+		$("#fechaSalida").datetimepicker({
+			minDate: moment('2018-11-03'),
+			maxDate: moment('2018-11-10'),
+			format: 'DD/MM/YYYY',
+			locale: 'en',
+			ignoreReadonly: true,
+			showTodayButton: false,
+			toolbarPlacement:'bottom',
+			widgetPositioning:{
+           			horizontal: 'auto',
+            			vertical: 'bottom'
+        		},
+			icons: {
+				time: 'fa fa-clock-o',
+				date: 'fa fa-calendar',
+				up: 'fa fa-chevron-up',
+				down: 'fa fa-chevron-down',
+				previous: 'fa fa-chevron-left',
+				next: 'fa fa-chevron-right',
+				clear: 'fa fa-trash',
+				close: 'fa fa-times'
+			} 			
+		})
+		.on('dp.change', function(ec) {
+			$('#frmRsv').formValidation('enableFieldValidators', 'date', true);
+			$('#frmRsv').formValidation('revalidateField', 'date');	
+		});
+
+		$("body").on('click', '.rfactura', function(event) {
+			var e = $(this);
+			var v = e.val();
+			if(v == '1'){
+				$(".factura").removeClass('disabled');
+				$(".factura").removeAttr('disabled');
+				$('#frmRsv').formValidation('enableFieldValidators', 'factura', true);
+				$('#frmRsv').formValidation('revalidateField', 'factura');				
+			}
+			else{
+				$('#frmRsv').formValidation('enableFieldValidators', 'factura', false);
+				$('#frmRsv').formValidation('revalidateField', 'factura');	
+				$(".factura").nextAll('.help-block[data-fv-result="INVALID"]').css('display', 'none');
+				$(".factura").addClass('disabled');
+				$(".factura").prop('disabled', true);
+				$(".factura").val('');
+			}
+			/* Act on the event */
+		});
+
+		if (objp && objp.geonames){
+			$('.paises').empty();
+			$('.paises').append($('<option>', { 
+				value: '',
+				text : 'Select'
+			})
+			);
+			var sortedNames = obj.geonames;
+			if (objp.geonames.sort) {
+				sortedNames = objp.geonames.sort(function (a, b) {
+					return a.countryName.localeCompare(b.countryName);
+				});
+				$.each(objp.geonames, function(i,item) {
+					var o = new Option(item.countryName,item.geonameId );
+					$('.paises').append(o);
+				});
+			}
+		}		
+
+
+		if ( $("#frmRsv").length ) {
+			var host = jQuery(location).attr('host');
+			$('#frmRsv')
+				.formValidation({
+					framework: 'bootstrap',
+					locale: 'en_US',
+					live: 'enabled',
+					fields: {
+						factura:{
+							selector: '.factura',
+							validators: {
+								notEmpty: {
+									enabled: true
+								}
+							}
+						},
+						date:{
+							selector: '.date',
+							validators: {
+								notEmpty: {
+									enabled: true
+								}
+							}
+						},
+						habitacionc:{
+							validators: {
+								notEmpty: {
+									enabled: true
+								}
+							}
+						}																		                           
+					},
+					addOns: {
+						reCaptcha2: {
+							element: 'captchaContainer',
+							theme: 'clean',
+							siteKey: (host == 'localhost') ? '6LeTACUTAAAAABdKkPPyxt71S91_xFTCz92MGw-n' : '6LeYoEMUAAAAAOJoJPemnWI8JHE4yfNMtpgR_vgU',
+							timeout: 120,
+							message: 'Captcha is no valid',
+							language: 'en'
+						}
+					}              
+				})
+				.on('err.field.fv', function(e, data) {
+					if(data.field == 'habitacionc'){
+						$('div[data-div-for="habitacionc"]>small').css('display', 'inline');
+					}
+				})
+				.on('success.field.fv', function(e, data) {
+					if(data.field == 'habitacionc'){
+						$('div[data-div-for="habitacionc"]>small').css('display', 'none');
+					}
+					if(data.fv.getInvalidFields().length >= 0){
+
+					}
+				})			
+				.on('init.form.fv', function(e, data) {
+				})
+				.on('success.form.fv', function(e){// Prevent form submission
+					e.preventDefault();
+					// Get the form instance
+					var $form = $(e.target);
+					// Get the FormValidation instance
+					var bv = $form.data('formValidation');
+					// Use Ajax to submit form data
+					$('#send').find("div").html("<span class='fa fa-circle-o-notch fa-spin'></span> Reservando");
+					$('#send').attr('disabled', 'disabled');
+      				/* empieza el dialog */
+      				var pageLoad 	= "{{ url('isot.confirmacion') }}/{{ lang }}";
+      				var zIndexHeader = $(".c-layout-header-fixed .c-layout-header").css('zIndex');
+      				var msgbox = new BootstrapDialog({
+  						title: "Reservation Request",
+        					size: BootstrapDialog.SIZE_WIDE,
+        					type: BootstrapDialog.TYPE_INFO,
+        					cssClass: 'user-dialog',
+        					closeByBackdrop: false,
+		           			message: function(dialog) {
+		           				var $message = $('<div align="center" id="msgmodal"><span class="fa fa-circle-o-notch fa-spin text-green"></span> Cargando</div>');
+		              			var pageToLoad = dialog.getData('pageToLoad');
+		              			$message.load(pageToLoad,$form.serialize(), function() {
+		              			});
+		              			return $message;
+		           			},
+		           			data: {
+		              			'pageToLoad': pageLoad
+		           			},
+								draggable: true,
+								z_index_backdrop: zIndexHeader + 10,
+    						z_index_modal: zIndexHeader +20,
+    						buttons: [
+    							{
+    								id: "btn-can-action",
+            						label: "<span>Cancel</span>",
+            						cssClass: "btn btn-xs btn-danger c-btn-square",
+		                				action: function(dialogItself){
+		                    				var $button   = this;
+		                    				$('#send').find("div").html("Book");
+		                    				$('#send').removeAttr('disabled');
+		                    				dialogItself.close();
+		                				}            				
+    							},
+    							{
+    								id: "btn-send-action",
+            				label: "<span>Acept</span>",
+            				cssClass: "btn btn-xs btn-success c-btn-square",
+            				autospin: true,
+            				action: function(dialogItself){
+	        							var $buttonSend 	= dialogItself.getButton('btn-send-action');
+	        							var $buttonCancel = dialogItself.getButton('btn-can-action');
+	        							$buttonSend.disable();
+	        							$buttonCancel.disable();
+	          						$.post($form.attr('action'), $form.serialize(), function(result) {
+													if(result.status){
+														dialogItself.close();
+														$("#frmRsv").addClass('animated fadeOutUp');
+														if(result.data.formapago == 'DB'){
+															$("#mpp").addClass('hidden');
+															$("#mdb").removeClass('hidden').addClass('animated fadeInUp');
+														}
+														else{
+															$("#mdb").addClass('hidden');
+															$("#item_name").val(result.data.claveevento);
+															$("#item_number").val(result.data.claveevento + "-" + result.data.clavereservacion);
+															$("#amount").val(result.data.cargototal);
+															$("#mpp").removeClass('hidden').addClass('animated fadeInUp');
+													}
+													$("#frmRsv").remove();
+													$("#nmail").html(result.data.email);
+													//$buttonSend.enabled();
+	        								//$buttonCancel.enabled();
+												}
+											}, 'json');
+            				}
+    							}        							
+    						]				           				                       				
+      				});
+				     	msgbox.realize();
+      				var foo 	= msgbox.getModalFooter();
+      				var $btnc  = msgbox.getButton('btn-can-action');
+      				$btnc.before('<span class="quest finfo">The data is correct?</span>');	     	
+				     	msgbox.open();
+				     	$dialog = msgbox;      				
+				});			
+		}			
+	</script>
+{% endblock %}   

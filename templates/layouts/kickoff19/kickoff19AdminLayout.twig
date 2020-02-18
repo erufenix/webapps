@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>KICKOFF19 Admin</title>
+  <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="KICKOFF19 Admin">
+<meta name="keywords" content="KICKOFF19, kickoff19, Navistar, International kickoff19">
+<meta name="author" content="KICKOFF19">
+<!-- Favicon icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets')}}/ico/international/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets')}}/ico/international/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets')}}/ico/international/favicon-16x16.png">
+<link rel="manifest" href="{{ asset('assets')}}/ico/international/site.webmanifest">
+<link rel="mask-icon" href="{{ asset('assets')}}/ico/international/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- Google font-->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+<!-- Required Fremwork -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/bower_components/bootstrap/dist/css/bootstrap.min.css">
+<!-- themify-icons line icon -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/flatable/icon/themify-icons/themify-icons.css">
+<!-- ico font -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/flatable/icon/icofont/css/icofont.css">
+<!-- flag icon framework css -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/flatable/pages/flag-icon/flag-icon.min.css">
+<!-- Menu-Search css -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/flatable/pages/menu-search/css/component.css">
+<!-- Style.css -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/flatable/css/style.css">
+<!--color css-->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/flatable/css/color/color-1.css" id="color"/>
+</head>
+
+<body class="fix-menu">
+  <!-- Pre-loader start -->
+  <div class="theme-loader">
+    <div class="ball-scale">
+      <div></div>
+    </div>
+  </div>
+  <!-- Pre-loader end -->
+  <!-- Menu header start -->
+  <nav class="navbar header-navbar">
+    <div class="navbar-wrapper">
+      <div class="navbar-logo">
+        <a class="mobile-menu" id="mobile-collapse" href="#!">
+          <i class="ti-menu"></i>
+        </a>
+        <a class="mobile-search morphsearch-search" href="#">
+          <i class="ti-search"></i>
+        </a>
+        <a href="index.html">
+          <img src="{{ asset('assets')}}/img/kick19.png" class="img-fluid" alt="logo">
+        </a>
+        <a class="mobile-options">
+          <i class="ti-more"></i>
+        </a>
+      </div>
+      <div class="navbar-container container-fluid">
+        <div>
+          <ul class="nav-left">
+            <li>
+              <a id="collapse-menu" href="#">
+                <i class="ti-menu"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#!" onclick="javascript:toggleFullScreen()">
+                <i class="ti-fullscreen"></i>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav-right">
+            <li class="user-profile header-notification">
+              <a href="#!">
+                <img src="{{ asset('assets')}}/flatable/images/user.png" alt="User-Profile-Image">
+                <span>John Doe</span>
+                <i class="ti-angle-down"></i>
+              </a>
+              <ul class="show-notification profile-notification">
+                <li>
+                  <a href="{{ path('kickOff19_admin_logout') }}">
+                    <i class="ti-layout-sidebar-left"></i> Salir
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Menu header end -->
+  <!-- Menu aside start -->
+  <div class="main-menu">
+    <div class="main-menu-header">
+      <img class="img-40" src="{{ asset('assets')}}/flatable/images/user.png" alt="User-Profile-Image">
+      <div class="user-details">
+        <span>John Doe</span>
+        <span id="more-details">UX Designer<i class="ti-angle-down"></i></span>
+      </div>
+    </div>
+    <div class="main-menu-content">
+      <ul class="main-navigation">
+        <li class="more-details">
+          <a href="#!"><i class="ti-layout-sidebar-left"></i>Logout</a>
+        </li>
+        <li class="nav-title" data-i18n="nav.category.navigation">
+          <i class="ti-line-dashed"></i>
+          <span>Menú</span>
+        </li>
+        <li class="nav-item single-item">
+          <a href="#registros" v-bind:href="href" v-on:click="go">
+            <i class="icofont icofont-book-alt"></i>
+            <span data-i18n="nav.dash.main">Registros</span>
+          </a>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+  <!-- Menu aside end -->
+  <!-- Sidebar inner chat end-->
+  <div class="main-body">
+    <div class="page-wrapper">
+      <div id="app" v-html="rawHtml">
+
+      </div>
+    </div>
+  </div>
+  <!-- Warning Section Starts -->
+  <!-- Older IE warning message -->
+<!--[if lt IE 9]>
+<div class="ie-warning">
+<h1>Warning!!</h1>
+<p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+<div class="iew-container">
+<ul class="iew-download">
+<li>
+<a href="http://www.google.com/chrome/">
+<img src="{{ asset('assets')}}/flatable/images/browser/chrome.png" alt="Chrome">
+<div>Chrome</div>
+</a>
+</li>
+<li>
+<a href="https://www.mozilla.org/en-US/firefox/new/">
+<img src="{{ asset('assets')}}/flatable/images/browser/firefox.png" alt="Firefox">
+<div>Firefox</div>
+</a>
+</li>
+<li>
+<a href="http://www.opera.com">
+<img src="{{ asset('assets')}}/flatable/images/browser/opera.png" alt="Opera">
+<div>Opera</div>
+</a>
+</li>
+<li>
+<a href="https://www.apple.com/safari/">
+<img src="{{ asset('assets')}}/flatable/images/browser/safari.png" alt="Safari">
+<div>Safari</div>
+</a>
+</li>
+<li>
+<a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+<img src="{{ asset('assets')}}/flatable/images/browser/ie.png" alt="">
+<div>IE (9 & above)</div>
+</a>
+</li>
+</ul>
+</div>
+<p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+<!-- Warning Section Ends -->
+<!-- Required Jquery -->
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/tether/dist/js/tether.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- jquery slimscroll js -->
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+<!-- modernizr js -->
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/modernizr/modernizr.js"></script>
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/modernizr/feature-detects/css-scrollbars.js"></script>
+<!-- classie js -->
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/classie/classie.js"></script>
+<!-- i18next.min.js -->
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/i18next/i18next.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/i18next-xhr-backend/i18nextXHRBackend.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/jquery-i18next/jquery-i18next.min.js"></script>
+<!-- Custom js -->
+<script type="text/javascript" src="{{ asset('assets')}}/js/vue.js"></script>
+<script type="text/javascript" src="{{ asset('assets')}}/js/axios.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets')}}/flatable/js/script.js"></script>
+<script src="{{ asset('assets')}}/js/kick19.js"></script>
+</body>
+
+</html>

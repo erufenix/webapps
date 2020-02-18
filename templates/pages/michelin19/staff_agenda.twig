@@ -1,0 +1,176 @@
+{% extends "layouts/michelin19/michelin__layout.twig" %}
+{% block content %}
+<section id="sagenda">
+  <div class="container">
+    <div class="flat-spacer clearfix" data-desktop="40" data-mobile="20" data-smobile="20" ></div>
+    <div class="flat-title text-center v3">
+      <h5 class="heading text-uppercase">{{ title }}</h5>
+    </div>
+    <div id="agenda" class="mg-bottom-30">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="table-responsive">
+
+            <!--<table class="table mi-table" id="mi-table">
+              <thead>
+                <tr>
+                  <th class="text-center" colspan="7">&nbsp;</th>
+                </tr>
+                <tr class="bg-dark">
+                  <th class="text-center" colspan="2"></th>
+                  <th class="text-center align-middle"><strong>DOMINGO 24</strong></th>
+                  <th class="text-center align-middle"><strong>LUNES 25</strong></th>
+                  <th class="text-center align-middle"><strong>MARTES 26</strong></th>
+                  <th class="text-center align-middle"><strong>MIERCOLES 27</strong></th>
+                  <th class="text-center align-middle"><strong>JUEVES 28</strong></th>
+                </tr>
+              </thead>
+              <tr>
+                <td class="text-center color001 align-middle" rowspan="3"><strong>MAÑANA</strong></td>
+                <td class="text-center color004 vertical-th align-middle" rowspan="10"><span>LLEGADA Y REGISTRO RSM<br> requeridos para Reunion de Ejecución</span></td>
+                <td class="text-center align-middle color002" rowspan="3">Registro durante el día</td>
+                <td class="text-center align-middle color001" rowspan="3">Plenaria<br> Alliance (9:00 - 14:00)</td>
+                <td class="text-center align-middle color001" rowspan="3">Talleres<br> (9:00 - 14:00)</td>
+                <td class="text-center align-middle color001" rowspan="3">Conferencia Speaker y Cierre<br> (9:00 - 14:00)</td>
+                <td class="text-center color004 vertical-th align-middle" rowspan="10"><span>Salidas</span></td>
+              </tr>
+              <tr>
+              </tr>
+              <tr>
+              </tr>
+              <tr>
+                <td class="text-center align-middle color006"><strong>COMIDA</strong></td>
+                <td class="text-center align-middle color005">Acceso habitaciones<br> 15.00 hrs</td>
+                <td class="text-center align-middle color006">Comida en hotel</td>
+                <td class="text-center align-middle color006">Comida en hotel</td>
+                <td class="text-center align-middle color006"">Comida en hotel</td>
+              </tr>
+              <tr>
+                <td class="text-center align-middle color002" rowspan="3"><strong>TARDE</strong></td>
+                <td class="text-center align-middle color002" rowspan="3">Registro durante el día</td>
+                <td class="text-center align-middle color003" rowspan="3">Tiempo Libre</td>
+                <td class="text-center align-middle color001" rowspan="3">Talleres<br> (15:30 - 18:15)</td>
+                <td class="text-center align-middle color003" rowspan="3">Tiempo Libre</td>
+              </tr>
+              <tr>
+              </tr>
+              <tr>
+              </tr>
+              <tr>
+                <td class="text-center align-middle color003" rowspan="3"><strong>NOCHE</strong></td>
+                <td class="text-center align-middle">Cocktail Bienvenida<br> 19-00 - 20:30 hrs</td>
+                <td class="text-center align-middle color003" rowspan="3">Cena Libre</td>
+                <td class="text-center align-middle color003" rowspan="3">Cena Libre</td>
+                <td class="text-center align-middle color001">Cena y Premiacion Alliance</td>
+              </tr>
+              <tr>
+                <td class="text-center color001 align-middle" rowspan="2">Cena Libre</td>
+                <td class="text-center color001 align-middle">Show en Teatro</td>
+              </tr>
+              <tr>
+                <td class="text-center align-middle"></td>
+              </tr>
+            </table>-->
+            <table class="table mi-table table-bordered" id="mi-table">
+              <thead>
+                <tr>
+                  <th class="text-center" colspan="6">AGENDA GENERAL</th>
+                </tr>
+                <tr class="bg-dark">
+                  <th class="text-center">&nbsp;</th>
+                  <th class="text-center align-middle"><strong>DOMINGO 24</strong></th>
+                  <th class="text-center align-middle"><strong>LUNES 25</strong></th>
+                  <th class="text-center align-middle"><strong>MARTES 26</strong></th>
+                  <th class="text-center align-middle"><strong>MIERCOLES 27</strong></th>
+                  <th class="text-center align-middle"><strong>JUEVES 28</strong></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="color001">
+                  <td class="text-center align-middle"><strong>MAÑANA</strong></td>
+                  <td class="text-center align-middle">Llegadas</td>
+                  <td class="text-center align-middle">Sesión Plenaria 9.00hrs</td>
+                  <td class="text-center align-middle">Sesión Workshop 9.00hrs</td>
+                  <td class="text-center align-middle">Sesión Plenaria 9.00hrs</td>
+                  <td class="text-center align-middle">Vuelos de regreso</td>
+                </tr>
+                <tr class="color006">
+                  <td class="text-center align-middle"><strong>COMIDA</strong></td>
+                  <td class="text-center align-middle">Comida libre</td>
+                  <td class="text-center align-middle">Comida en el hotel</td>
+                  <td class="text-center align-middle">Comida libre</td>
+                  <td class="text-center align-middle">Comida en el hotel</td>
+                  <td class="text-center align-middle">Comida en el hotel</td>
+                </tr>
+                <tr class="color002">
+                  <td class="text-center align-middle"><strong>TARDE</strong></td>
+                  <td class="text-center align-middle">Llegadas</td>
+                  <td class="text-center align-middle">Tiempo libre</td>
+                  <td class="text-center align-middle">Sesión Workshop 14.30hrs</td>
+                  <td class="text-center align-middle">Tiempo libre</td>
+                  <td class="text-center align-middle">Vuelo de regreso</td>
+                </tr>
+                <tr class="color004">
+                  <td class="text-center align-middle"><strong>NOCHE</strong></td>
+                  <td class="text-center align-middle">Cocktail Bienvenida 19.00hrs</td>
+                  <td class="text-center align-middle">Tiempo libre</td>
+                  <td class="text-center align-middle">Tiempo libre</td>
+                  <td class="text-center align-middle">Cena premiación y Show Cierre de Simposio 19.00hrs</td>
+                  <td class="text-center align-middle">&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mg-top-20">
+          <div class="flat-title v9">
+            <h5>Código de vestimenta</h5>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="flat-fullbox style3 clearfix owl-carousel block">
+              <div class="textbox style3 bg-9">
+                  <div class="overlay"></div>
+                  <div class="textbox-content text-center">
+                      <div class="textbox-icon">
+                          <i class="fas fa-male fa-7x"></i>
+                      </div>
+                      <p>
+                        <strong>Sesiones</strong><br>
+                        Casual Sport: Jeans cómodos;  polo, camisa o  playera Calzado (zapato cerrado o sport )
+                      </p>
+                      <p>
+                        <strong>Coctel y Cena Clausura</strong><br>
+                        Pantalón de vestir y camisa con manga larga o corta
+                      </p>
+                  </div>
+              </div>
+          </div>  <!-- /.flat-textbox -->
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="flat-fullbox style3 clearfix owl-carousel block">
+              <div class="textbox style3 bg-9">
+                  <div class="overlay"></div>
+                  <div class="textbox-content text-center">
+                      <div class="textbox-icon">
+                          <i class="fas fa-female fa-7x"></i>
+                      </div>
+                      <p>
+                        <strong>Sesiones</strong><br>
+                        Casual: Pantalón, camisa o Polo  vestido sin manga Calzado zapato cerrado o bajo
+                      </p>
+                      <p>
+                        <strong>Coctel y Cena Clausura</strong><br>
+                        Vestido de coctel para mujeres
+                      </p>
+                  </div>
+              </div>
+          </div>  <!-- /.flat-textbox -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+

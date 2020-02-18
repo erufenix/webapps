@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>KICKOFF19 Login</title>
+    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Phoenixcoded">
+    <meta name="keywords" content=", Flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="Phoenixcoded">
+    <!-- Favicon icon -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets')}}/ico/international/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets')}}/ico/international/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets')}}/ico/international/favicon-16x16.png">
+    <link rel="manifest" href="{{ asset('assets')}}/ico/international/site.webmanifest">
+    <link rel="mask-icon" href="{{ asset('assets')}}/ico/international/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/flatable/icon/themify-icons/themify-icons.css">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/flatable/icon/icofont/css/icofont.css">
+
+    <link rel="stylesheet" href="{{ asset('assets')}}/formvalidation/css/formValidation.min.css" />
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/flatable/css/style.css">
+    <!-- color .css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/flatable/css/color/color-3.css" id="color"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets')}}/css/kick19.css">
+</head>
+
+<body class="fix-menu">
+    <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+        <!-- Container-fluid starts -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Authentication card start -->
+                    <div class="login-card card-block auth-body">
+                        <form class="md-float-material" action="{{ path('kickOff19_admin_login_check') }}" method="post" id="frmlogin">
+                            <div class="text-center">
+                            </div>
+                            <div class="auth-box">
+                                <div class="row m-b-20">
+                                    <div class="col-md-12">
+                                      <img src="{{ asset('assets')}}/img/kick19.png" alt="logo" width="320" height="75" data-retina="{{ asset('assets')}}/img/kick19.png" data-width="320" data-height="75">
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="form-row m-b-10">
+                                  <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="input-group input-group-primary">
+                                      <span class="input-group-addon"><i class="icofont icofont-user-alt-5"></i></span>
+                                      <input type="text" class="form-control" name="user_correo" id="user_correo" required>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-row m-b-10">
+                                  <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="input-group input-group-primary">
+                                      <span class="input-group-addon"><i class="icofont icofont-key"></i></span>
+                                      <input type="text" class="form-control" name="user_password" id="user_password" required>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="text-warning">{{ error }}</div>
+                                  </div>
+                                </div>
+                                <div class="form-row m-t-30">
+                                  <div class="col-md-12">
+                                    <button type="submit" class="btn btn-inverse btn-md btn-block btn-skew waves-effect text-center m-b-20">Entrar</button>
+                                  </div>
+                                </div>
+                                <hr/>
+
+                            </div>
+                        </form>
+                        <!-- end of form -->
+                    </div>
+                    <!-- Authentication card end -->
+                </div>
+                <!-- end of col-sm-12 -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container-fluid -->
+    </section>
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1>Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="{{ asset('assets')}}/flatable/images/browser/chrome.png" alt="Chrome">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="{{ asset('assets')}}/flatable/images/browser/firefox.png" alt="Firefox">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="{{ asset('assets')}}/flatable/images/browser/opera.png" alt="Opera">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="{{ asset('assets')}}/flatable/images/browser/safari.png" alt="Safari">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="{{ asset('assets')}}/flatable/images/browser/ie.png" alt="">
+                    <div>IE (9 & above)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+    <!-- Warning Section Ends -->
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="{{ asset('assets')}}/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets')}}/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets')}}/bower_components/tether/dist/js/tether.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="{{ asset('assets')}}/bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="{{ asset('assets')}}/bower_components/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="{{ asset('assets')}}/bower_components/modernizr/feature-detects/css-scrollbars.js"></script>
+    <!-- i18next.min.js -->
+    <script type="text/javascript" src="{{ asset('assets')}}/bower_components/i18next/i18next.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets')}}/bower_components/i18next-xhr-backend/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets')}}/bower_components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets')}}/bower_components/jquery-i18next/jquery-i18next.min.js"></script>
+
+    <script src="{{ asset('assets')}}/formvalidation/js/formValidation.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/framework/bootstrap4.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/addons/reCaptcha2.min.js"></script>
+    <script src="{{ asset('assets')}}/formvalidation/js/language/es_ES.js"></script>
+
+    <!-- Custom js -->
+    <script type="text/javascript" src="{{ asset('assets')}}/flatable/js/script.js"></script>
+    <script src="{{ asset('assets')}}/js/kick19.js"></script>
+    <!---- color js --->
+</body>
+
+</html>

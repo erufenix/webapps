@@ -1,0 +1,275 @@
+{% extends "layouts/commimsa/layout.twig" %}
+{% block content %}
+{% set treg = {'1':'Consulado','2':'Correos de México','3':'Embajada','4':'Ministerio','5':'Operador designado','6':'Regulador','7':'Secretaría General','8':'Uniones restringidas','9':'Otro'} %}
+<div class="row">
+	<div class="col-md-12 col-sm-12">
+			<section class="panel form-wizard" id="w4">
+				<header class="panel-heading panel-heading-transparent hidden">
+					<div class="panel-actions">
+					</div>
+				</header>
+				<div class="panel-body">
+					<form class="form-horizontal" action="{{ url('commimsa.setRegistro') }}" method="post" id="frmmm">
+						<div class="wizard-progress wizard-progress-lg">
+							<div class="steps-progress">
+								<div class="progress-indicator"></div>
+							</div>
+							<ul class="wizard-steps">
+								<li class="active">
+									<a href="#w4-datos" data-toggle="tab"><span>1</span>Personales</a>
+								</li>
+								<li>
+									<a href="#w4-hospedaje" data-toggle="tab"><span>2</span>Hospedaje / Vuelo</a>
+								</li>
+								<li>
+									<a href="#w4-confirmacion" data-toggle="tab"><span>3</span>Confirmación</a>
+								</li>
+							</ul>
+						</div>
+						<div class="tab-content">
+							<div id="w4-datos" class="tab-pane active">
+								<h4 class="text-info">Datos Personales</h4>
+								<blockquote class="warning">
+									<p>Por favor verifique que los datos sean correctos</p>
+									<p><span class="text-danger">*</span>Campos son requeridos</p>
+								</blockquote>
+								<div class="form-group row">
+									<div class="col-sm-12 col-md-4">
+										<label class="control-label"><span class="text-danger">*</span> Nombre</label>
+										<input name="nombre" id="nombre" class="form-control" type="text" required="">
+									</div>
+									<div class="col-sm-12 col-md-4">
+										<label class="control-label"><span class="text-danger">*</span> Apellido paterno</label>
+										<input name="apaterno" id="apaterno" class="form-control" type="text" required="">
+									</div>
+									<div class="col-sm-12 col-md-4">
+										<label class="control-label"><span class="text-danger">*</span> Apellido materno</label>
+										<input name="amaterno" id="amaterno" class="form-control" type="text" required="">
+									</div>																	
+								</div>								
+								<div class="form-group row">
+									<div class="col-sm-12 col-md-4">
+										<label class="control-label"><span class="text-danger">*</span> País de origen</label>
+										<select class="form-control paises" name="pais" id="pais" required>
+										</select>
+									</div>
+									<div class="col-sm-12 col-md-4">
+										<label class="control-label"><span class="text-danger">*</span> Tipo de registro</label>
+										<select class="form-control" name="tregistro" id="tregistro" required>
+											<option value="">Seleccionar</option>
+											{%  for tr in treg | keys %}
+											<option value="{{treg[tr]}}">{{treg[tr]}}</option>
+											{% endfor %}
+										</select>
+									</div>								
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Organización</label>
+									<input name="organizacion" id="organizacion" class="form-control" type="text" required="">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Cargo</label>
+									<input name="cargo" id="cargo" class="form-control" type="text" required="">
+								</div>								
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Correo electrónico</label>
+									<input name="correo" id="correo" class="form-control" type="text" required="">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label class="control-label"><span class="text-danger">*</span> Teléfono</label>
+									<input name="telefono" id="telefono" class="form-control" type="text" required="">
+								</div>								
+							</div>
+							<div class="form-group row">
+								<div class="col-md-4 col-sm-6">
+									<label class="control-label"> Acompañante</label>
+									<div class="switch switch-sm switch-info" id="aco">
+										<input type="checkbox" name="switch" value="1" data-plugin-ios-switch/>
+									</div>									
+								</div>
+							</div>
+							<div class="form-group row hidden" data-aco>
+								<div class="col-md-4 col-sm-12">
+									<label class="control-label"> Nombre completo</label>
+									<input name="aco_nombre" id="aco_nombre" class="form-control aco" type="text">
+								</div>
+								<div class="col-md-4 col-sm-12">
+									<label class="control-label"> Edad</label>
+									<input name="aco_edad" id="aco_edad" class="form-control aco" type="text">
+								</div>								
+							</div>								
+						</div>
+						<div id="w4-hospedaje" class="tab-pane">
+							<div class="form-group row">
+								<div class="col-md-6 col-sm-12 zoom-gallery">
+									<a class="mb-xs mr-xs" href="{{ asset('assets')}}/img/hotel/cmmm/emporio.jpg" title="Hotel Emporio Reforma"><img class="img-responsive" src="{{ asset('assets')}}/img/hotel/cmmm/emporio.jpg"></a>
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<h4 class="mb-md text-uppercase text-center">Hotel Emporio Reforma</h4>
+									<p class="leads text-justify">
+										Este hotel sencillo está ubicado en un edificio moderno a 12 minutos a pie de la parada de metro más cercana, a 2,7 km del Zócalo, la plaza principal de la ciudad, y a 3,2 km del Museo Nacional de Historia, situado en el castillo de Chapultepec.<br><br>
+										Las habitaciones y suites son sencillas y tienen Wi-Fi gratis, televisiones de pantalla plana, reproductores de DVD, teteras, cafeteras, minibares y baños con bañeras de hidromasaje. Las suites cuentan también con zonas de descanso. Servicio de habitaciones disponible 24/7.
+									</p>
+									<p class="leads">
+										<span class="fa fa-map-marker"></span> Paseo de la Reforma 124, Juarez, 06600 Cuauhtemoc, CDMX
+									</p>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<h5 class="text-center">Llegada a Ciudad de México</h5>
+									<div class="row">
+										<div class="col-md-4 col-sm-12">
+											<label class="control-label">Aerolínea</label>
+											<input name="aerolinea_l" id="aerolinea_l" class="form-control" type="text" required>
+										</div>
+										<div class="col-md-4 col-sm-12">
+											<label class="control-label">No.vuelo</label>
+											<input name="nvuelo_l" id="nvuelo_l" class="form-control" type="text" required>
+										</div>
+										<div class="col-md-4 col-sm-12">
+											<label class="control-label">Fecha y Hora</label>
+											<input name="fechahora_l" id="fechahora_l" class="form-control date" type="text" readonly required>
+										</div>																				
+									</div>
+								</div>
+								<div class="col-md-6">
+									<h5 class="text-center">Salida de Ciudad de México</h5>
+									<div class="row">
+										<div class="col-md-4 col-sm-12">
+											<label class="control-label">Aerolínea</label>
+											<input name="aerolinea_s" id="aerolinea_s" class="form-control" type="text" required>
+										</div>
+										<div class="col-md-4 col-sm-12">
+											<label class="control-label">No.vuelo</label>
+											<input name="nvuelo_s" id="nvuelo_s" class="form-control" type="text" required>
+										</div>
+										<div class="col-md-4 col-sm-12">
+											<label class="control-label">Fecha y Hora</label>
+											<input name="fechahora_s" id="fechahora_s" class="form-control date" type="text" readonly required>
+										</div>																				
+									</div>									
+								</div>								
+							</div>							
+						</div>
+						<div id="w4-confirmacion" class="tab-pane">
+							<div class="row">
+								<div class="col-md-12">
+									<blockquote class="warning">
+										<p><span class="fa fa-info-circle fa-lg text-info"></span> Si sus datos son correctos de clic en <strong>Enviar</strong>, en otro caso clic en <strong>Anterior</strong> para modificarlos</p>
+								</blockquote>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6 col-sm-12">
+									<h5 class="mb-md text-uppercase text-info">Datos personales</h5>
+									<ul class="list-unstyled">
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Nombre:</span>
+											<span class="col-md-9" data-form="nombre"></span>
+										</li>
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Correo:</span>
+											<span class="col-md-9" data-form="correo"></span>
+										</li>										
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">País:</span>
+											<span class="col-md-9" data-form="pais"></span>
+										</li>
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Tipo de registro:</span>
+											<span class="col-md-9" data-form="tregistro"></span>
+										</li>
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Organización:</span>
+											<span class="col-md-9" data-form="organizacion"></span>
+										</li>
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Cargo:</span>
+											<span class="col-md-9" data-form="cargo"></span>
+										</li>
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Teléfono:</span>
+											<span class="col-md-9" data-form="telefono"></span>
+										</li>
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Acompañante:</span>
+											<span class="col-md-9" data-form="aco_nombre"></span>
+										</li>
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Teléfono:</span>
+											<span class="col-md-9" data-form="aco_edad"></span>
+										</li>																																																																																				
+									</ul>
+								</div>
+								<div class="col-sm-6 col-sm-12">
+									<h5 class="mb-md text-uppercase text-info">Datos de hospedaje y vuelo</h5>
+									<h6 class=""><strong>Llegada a Ciudad de México</strong></h6>
+									<ul class="list-unstyled">
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Aerolínea:</span>
+											<span class="col-md-9" data-form="aerolinea_l"></span>
+										</li>
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">No. de vuelo:</span>
+											<span class="col-md-9" data-form="nvuelo_l"></span>
+										</li>
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Fecha y hora:</span>
+											<span class="col-md-9" data-form="fechahora_l"></span>
+										</li>
+									</ul>
+									<h6 class=""><strong>Salida de Ciudad de México</strong></h6>
+									<ul class="list-unstyled">	
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Aerolínea:</span>
+											<span class="col-md-9" data-form="aerolinea_s"></span>
+										</li>
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">No. de vuelo:</span>
+											<span class="col-md-9" data-form="nvuelo_s"></span>
+										</li>	
+										<li class="row">
+											<span class="col-md-3 font-blue-ebonyclay">Fecha y Hora:</span>
+											<span class="col-md-9" data-form="fechahora_s"></span>
+										</li>																																																															
+									</ul>									
+								</div>								
+							</div>
+						</div>						
+						<hr>
+			      <ul class="pager wizard">
+			          <li class="previous"><a href="javascript: void(0);">Anterior</a></li>
+			          <li class="next"><a href="javascript: void(0);">Suguiente</a></li>
+			          <li class="send hidden"><button class="mb-xs mt-xs mr-xs btn btn-primary"><div>Enviar</div></button></li>
+			        </ul>																			
+						</div>											
+					</form>
+					<div id="result" class="row hidden">
+						<div class="col-md-8 col-sm-8 no-float center-block">
+							<section class="panel panel-horizontal">
+								<header class="panel-heading bg-white">
+									<div class="panel-heading-icon bg-primary mt-sm">
+										<i class="fa fa-check"></i>
+									</div>
+								</header>
+								<div class="panel-body p-lg">
+									<h3 class="text-weight-semibold mt-sm">Registro completado</h3>
+									<p>Se envio un correo a <span id="nmail"></span> con los detalles </p>
+								</div>
+								<div class="panel-footer bg-white no-border">
+									<p>
+										<a href="" class="mb-xs mt-xs mr-xs btn btn-primary">Regresar</a>
+									</p>									
+								</div>
+							</section>							
+						</div>
+					</div>	
+				</div>						
+			</section>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,383 @@
+{% extends "layouts/torneoNavistar/layout.twig" %}
+{% block content %}
+<section class="sec-padding">
+  <div class="container">
+    <form action="{{ url('torneoNavistar.setRegistro') }}" method="post" id="ftorneo" class="sky-form">
+      <div class="row">
+        <div class="col col-6">
+          <label class="label font-weight-bolder">Nombre completo</label>
+          <label class="input"> <i class="icon-append far fa-user"></i>
+            <input type="text" name="nombre" id="nombre" class="form-control" required>
+          </label>
+        </div>
+        <div class="col col-3">
+          <label class="label font-weight-bolder">Correo</label>
+          <label class="input"> <i class="icon-append fas fa-at"></i>
+            <input type="email" name="correo" id="correo" class="form-control" required>
+          </label>
+        </div>
+        <div class="col col-3">
+          <label class="label font-weight-bolder">Teléfono</label>
+          <label class="input"> <i class="icon-append fas fa-mobile-alt"></i>
+            <input type="text" name="telefono" id="telefono" class="form-control" required>
+          </label>
+        </div>               
+      </div>
+      <div class="row mt-4">
+        <div class="col col-6">
+          <label class="label font-weight-bolder">Empresa</label>
+          <label class="input"> <i class="icon-append far fa-building"></i>
+            <input type="text" name="empresa" id="empresa" required>
+          </label>
+        </div>
+        <div class="col col-6">
+          <label class="label font-weight-bolder">Distribuidor</label>
+          <label class="input"> <i class="icon-append far fa-building"></i>
+            <input type="text" name="distribuidor" id="distribuidor" required>
+          </label>
+        </div>            
+      </div>
+      <div class="row mt-4">
+        <hr>
+      </div>
+      <div class="row mt-4">
+        <div class="col col-12 mb-3">
+          <div class="alert alert-danger p-3">
+            <span class="text-info"><i class="fas fa-info-circle"></i> Si ya tiene su itinerario de vuelo, por favor rellene los campos en la opción de <strong>aéreo</strong>. En otro caso enviarlo a <strong>cecilia.merino@navistar.com</strong> antes del 20 de enero para considerar sus traslados del aeropuerto al hotel</span>
+          </div>
+        </div>      
+        <div class="col col-3">
+          <label class="select">
+            <select name="transporte" id="transporte">
+              <option value="">Transporte</option>
+              <option value="Terestre">Terrestre</option>
+              <option value="Aereo">Aéreo</option>
+            </select>
+            <i></i>
+          </label>    
+        </div>
+        <div class="col col-9 row hidden" id="dvuelos">
+          <div class="col col-12">
+            <label class="label font-weight-bolder info-text">Vuelo de llegada a Puerto Vallarta <i class="fas fa-plane-arrival"></i></label>
+          </div>
+          <div class="col col-12 row mt-2 mb-4">
+            <div class="col col-3">
+              <label class="label font-weight-bolder">No. de vuelo</label>
+              <label class="input"> <i class="icon-append far fa-paper-plane"></i>
+                <input type="text" name="nvuelol" id="nvuelol" class="fvuelol">
+              </label>          
+            </div>
+            <div class="col col-4">
+              <label class="label font-weight-bolder">Aerolínea</label>
+              <label class="select">
+                <select name="aerolineal" id="aerolineal" class="fvuelol">
+                  <option value="">Seleccionar</option>
+                  <option value="Aeroméxico">Aeroméxico</option>
+                  <option value="American Airlines">American Airlines</option>
+                  <option value="Delta">Delta</option>
+                  <option value="Calafia Airlines">Calafia Airlines</option>
+                  <option value="Tar">Tar</option>
+                  <option value="Interjet">Interjet</option>
+                  <option value="United">United</option>
+                  <option value="VivaAeobus">VivaAeobus</option>                  
+                  <option value="Volaris">Volaris</option>                
+                </select>
+                <i></i>
+              </label>    
+            </div>
+            <div class="col col-3">
+              <label class="label font-weight-bolder">Fecha</label>
+              <label class="input">
+                <i class="icon-append fa fa-calendar"></i>
+                <input type="text" name="fechal" id="fechal" placeholder="" class="hasDatepicker valid fvuelol">
+              </label>          
+            </div>
+            <div class="col col-2">
+              <label class="label font-weight-bolder">Hora</label>
+              <label class="input">
+                <i class="icon-append fa fa-calendar"></i>
+                <input type="text" name="horal" id="horal" placeholder="" class="hasDatepicker valid fvuelol">
+              </label>          
+            </div>               
+          </div>
+          <div class="col col-12">
+            <label class="label font-weight-bolder info-text">Vuelo de salida de Puerto Vallarta <i class="fas fa-plane-departure"></i></label>
+          </div>
+          <div class="col col-12 row mt-3 mb-4">
+            <div class="col col-3">
+              <label class="label font-weight-bolder">No. de vuelo</label>
+              <label class="input"> <i class="icon-append far fa-paper-plane"></i>
+                <input type="text" name="nvuelos" id="nvuelos" class="fvuelol">
+              </label>          
+            </div>
+            <div class="col col-4">
+              <label class="label font-weight-bolder">Aerolínea</label>
+              <label class="select">
+                <select name="aerolineas" id="aerolineas" class="fvuelol">
+                  <option value="">Seleccionar</option>
+                  <option value="Aeroméxico">Aeroméxico</option>
+                  <option value="American Airlines">American Airlines</option>
+                  <option value="Delta">Delta</option>
+                  <option value="Calafia Airlines">Calafia Airlines</option>
+                  <option value="Tar">Tar</option>
+                  <option value="Interjet">Interjet</option>
+                  <option value="United">United</option>
+                  <option value="VivaAeobus">VivaAeobus</option>                  
+                  <option value="Volaris">Volaris</option>                
+                </select>
+                <i></i>
+              </label>    
+            </div>
+            <div class="col col-3">
+              <label class="label font-weight-bolder">Fecha</label>
+              <label class="input">
+                <i class="icon-append fa fa-calendar"></i>
+                <input type="text" name="fechas" id="fechas" placeholder="" class="hasDatepicker valid fvuelol">
+              </label>          
+            </div>
+            <div class="col col-2">
+              <label class="label font-weight-bolder">Hora</label>
+              <label class="input">
+                <i class="icon-append fa fa-calendar"></i>
+                <input type="text" name="horas" id="horas" placeholder="" class="hasDatepicker valid fvuelol">
+              </label>          
+            </div>               
+          </div>                
+        </div>
+      </div>
+      <div class="row mt-4">
+        <hr>
+      </div>
+      <div class="row mt-4">
+        <div class="col col-12 mb-3">
+          <div class="alert alert-danger p-3">
+            <span class="text-info"><i class="fas fa-info-circle"></i> ¿Si va requerir Hospedaje?, selecione el tipo de habitación y numero de noches</span>
+          </div>
+        </div>
+        <div class="col col-3">
+          <label class="select">
+            <select name="habitacion" id="habitacion">
+              <option value="">Habitación</option>
+              <option value="Sencilla">Sencilla</option>
+              <option value="Doble">Doble</option>
+            </select>
+            <i></i>
+          </label>    
+        </div>
+        <div class="col col-2 invisible noches" id="fnoches">
+          <label class="select">
+            <select name="noches" id="noches">
+              <option value="">Noches</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+            <i></i>
+          </label>         
+        </div>
+        <div class="col col-3 invisible noches" id="fnochesa">
+          <label class="select">
+            <select name="nochesa" id="nochesa">
+              <option value="">Noches adicionales</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+            <i></i>
+          </label>          
+        </div>        
+        <div class="col col-4 invisible" id="fncamas">
+          <label class="select">
+            <select name="ncamas" id="ncamas">
+              <option value="">No de camas</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+            <i></i>
+          </label>    
+        </div>      
+      </div>
+      <div class="row mt-4">
+        <hr>
+      </div>
+      <div class="row mt-4">
+        <div class="col col-12 mb-3">
+          <label class="checkbox"><input type="checkbox" name="factura" id="factura"><i></i><span class="text-info">¿Va requerir factura?</span></label>
+        </div>
+        <div class="col col-4 hidden fact">
+          <label class="label font-weight-bolder">Razón social</label>
+          <label class="input">
+            <input type="text" name="rsocial" id="rsocial" class="form-control">
+          </label>
+        </div>
+        <div class="col col-4 hidden fact">
+          <label class="label font-weight-bolder">RFC</label>
+          <label class="input">
+            <input type="text" name="rfc" id="rfc" class="form-control">
+          </label>
+        </div>
+        <div class="col col-4 hidden fact">
+          <label class="label font-weight-bolder">Correo</label>
+          <label class="input">
+            <input type="text" name="fcorreo" id="fcorreo" class="form-control">
+          </label>
+        </div>                               
+      </div>
+      <div class="row mt-4 hidden fact">
+        <div class="col col-4">
+          <label class="label font-weight-bolder">Teléfono</label>
+          <label class="input">
+            <input type="text" name="ftelefono" id="ftelefono" class="form-control">
+          </label>
+        </div>
+        <div class="col col-4 hidden fact">
+          <label class="label">Dirección</label>
+          <label class="textarea">
+            <i class="icon-append far fa-comment"></i>
+            <textarea rows="4" name="fdireccion" id="fdireccion"></textarea>
+          </label>
+        </div>                
+      </div>
+      <div class="row mt-4">
+        <hr>
+      </div>      
+      <div class="row mt-4">
+        <div class="col col-6">
+          <div class="inline-group">
+            <label class="radio"><input type="radio" value="Jugador" name="tipo" class="tipo" required><i></i>Jugador</label>
+            <label class="radio"><input type="radio" value="No jugador" name="tipo" class="tipo" required><i></i>No jugador</label>
+          </div>    
+        </div>
+      </div>
+      <div class="row mt-4 dnjugador hidden">
+        <div class="col col-2 invisibles" id="fncamisa">
+          <label class="label font-weight-bolder">Camisa</label>
+          <label class="select">
+            <select name="njcamisa" id="njcamisa">
+              <option value="">Seleccionar</option>
+              <option value="CH">CH</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+            </select>
+            <i></i>
+          </label>         
+        </div>
+      </div>
+      <div class="row mt-4 djugador hidden">
+        <div class="col col-2">
+          <label class="label font-weight-bolder">Handicap</label>
+          <label class="input"> <i class="icon-append fas fa-sort-numeric-up-alt"></i>
+            <input type="text" name="handicap" id="handicap">
+          </label>    
+        </div>
+        <div class="col col-2">
+          <label class="label font-weight-bolder">¿Renta de equipo?</label>
+          <label class="select">
+            <select name="equipo" id="equipo">
+              <option value="">Seleccionar</option>
+              <option value="Si">Si</option>
+              <option value="No">No</option>
+            </select>
+            <i></i>
+          </label>    
+        </div>
+        <div class="col col-2 invisibles" id="flado">
+          <label class="label font-weight-bolder">Guante</label>
+          <label class="select">
+            <select name="guante" id="guante">
+              <option value="">Seleccionar</option>
+              <option value="Izquierdo">Izquierdo</option>
+              <option value="Derecho">Derecho</option>
+            </select>
+            <i></i>
+          </label>    
+        </div>
+        <div class="col col-2 invisibles" id="fgtalla">
+          <label class="label font-weight-bolder">Talla</label>
+          <label class="select">
+            <select name="gtalla" id="gtalla">
+              <option value="">Seleccionar</option>
+              <option value="CH">CH</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+            <i></i>
+          </label>    
+        </div>
+        <div class="col col-2 invisibles" id="fcamisa">
+          <label class="label font-weight-bolder">Camisa</label>
+          <label class="select">
+            <select name="jcamisa" id="jcamisa">
+              <option value="">Seleccionar</option>
+              <option value="CH">CH</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+            </select>
+            <i></i>
+          </label>    
+        </div>
+        <div class="col col-2 invisible">
+          <label class="label font-weight-bolder">&nbsp;</label>
+          <label class="input">
+            <input type="text" name="no" id="no" class="form-control">
+          </label>          
+        </div>                     
+      </div>
+      <div class="row mt-4 djugador hidden">
+        <div class="col col-2">
+          <label class="label font-weight-bolder">Alergias</label>
+          <label class="select">
+            <select name="alergiasi" id="alergiasi">
+              <option value="">Seleccionar</option>
+              <option value="Si">Si</option>
+              <option value="No">No</option>
+            </select>
+            <i></i>
+          </label>      
+        </div>
+        <div class="col col-4 invisible" id="falergias">
+          <label class="label">Alergia</label>
+          <label class="textarea">
+            <i class="icon-append far fa-comment"></i>
+            <textarea rows="4" name="alergia" id="alergia"></textarea>
+          </label>    
+        </div>
+        <div class="col col-4" id="falergias">
+          <label class="label">Requerimientos especiales</label>
+          <label class="textarea">
+            <i class="icon-append far fa-comment"></i>
+            <textarea rows="4" name="respeciales" id="respeciales"></textarea>
+          </label>    
+        </div>                 
+      </div>
+      <div class="row form-group mt-5">
+        <div class="col col-4">
+          <label class="label">Comentarios</label>
+          <label class="textarea">
+            <i class="icon-append far fa-comment"></i>
+            <textarea rows="4" name="comentarios" id="comentarios"></textarea>
+          </label>
+        </div>    
+      </div>
+      <div class="row form-group mt-5">
+        <div>
+          <button type="submit" class="button  disabled" disabled id="send">Enviar</button>
+        </div>
+      </div>      
+    </form>   
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  HoldOn.open({
+    theme:    "sk-cube-grid",
+    message:  "<h3>Registro CERRADO</br>Gracias! nos vemos en el torneo</h3>",
+    textColor:"white"
+  }); 
+</script>
+{% endblock %}

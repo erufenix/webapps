@@ -1,0 +1,107 @@
+{% extends (tpo == 'alliance') ? "layouts/alliance/allianceLayout_dis.twig.html" : "layouts/alliance/allianceLayout_asoc.twig.html" %}
+{% block content %}	
+<section class="m-b-40 m-t-40">
+  <div class="container">
+    <div class="custom-heading section-heading">
+      <h1>AGENDA</h1>
+    </div>
+  </div>
+</section>
+<section class="our-company m-b-40">
+  <div class="container">
+    <div class="row">
+      {% if tpo == 'alliance' %}  
+      <div class="col-lg-12 col-md-12 col-sm-12" id="adis">
+        <table class="table table-sm table-bordered">
+          <thead>  
+            <tr class="table-info-mi">
+              <th colspan="4" class="text-md-center text-lg-center text-sm-center">Convención Distribuidores Alliance 2018</th>
+            </tr>
+            <tr class="table-info-mi">
+              <th colspan="4" class="text-md-center text-lg-center text-sm-center">AGENDA GENERAL</th>
+            </tr>            
+          </thead>
+          <tbody>
+            <tr class="bg-dark text-white">
+              <td>&nbsp;</td>
+              <td class="text-md-center text-sm-center text-lg-center">LUNES 12</td>
+              <td class="text-md-center text-sm-center text-lg-center">MARTES 13</td>
+              <td class="text-md-center text-sm-center text-lg-center">MIÉRCOLES 14</td>
+            </tr>
+            <tr class="table-danger">
+              <td class="text-md-center text-sm-center text-lg-center">MAÑANA</td>
+              <td class="text-md-center text-sm-center text-lg-center">Llegada</td>
+              <td class="text-md-center text-sm-center text-lg-center">Plenaria<br>9.00 a 15.00 hrs</td>
+              <td class="text-md-center text-sm-center text-lg-center">Salida</td>
+            </tr>
+            <tr class="table-danger">
+              <td class="text-md-center text-sm-center text-lg-center">COMIDA</td>
+              <td class="text-md-center text-sm-center text-lg-center">Comida libre</td>
+              <td class="text-md-center text-sm-center text-lg-center">Comida en el hotel</td>
+              <td class="text-md-center text-sm-center text-lg-center">Salida</td>
+            </tr>
+            <tr class="table-success">
+              <td class="text-md-center text-sm-center text-lg-center">TARDE</td>
+              <td class="text-md-center text-sm-center text-lg-center">Plenaria 16.00 a 20.30</td>
+              <td class="text-md-center text-sm-center text-lg-center">Plenaria 16.30 a 19.00</td>
+              <td class="text-md-center text-sm-center text-lg-center">Salida</td>
+            </tr>
+            <tr class="table-info">
+              <td class="text-md-center text-sm-center text-lg-center">NOCHE</td>
+              <td class="text-md-center text-sm-center text-lg-center">Cocktail Bienvenida 20.30 Cena libre en hotel 21.15</td>
+              <td class="text-md-center text-sm-center text-lg-center">Cena premiación 20.00</td>
+              <td class="text-md-center text-sm-center text-lg-center">Salida</td>
+            </tr>                                                  
+          </tbody>
+        </table>
+      </div>
+      {% elseif tpo == 'asociados' %}
+      <div class="col-lg-12 col-md-12 col-sm-12" id="aasoc">
+        <table class="table table-sm table-bordered">
+          <thead>  
+            <tr class="table-info-mi">
+              <th colspan="4" class="text-md-center text-lg-center text-sm-center">Convención Distribuidores Asociados 2018</th>
+            </tr>
+            <tr class="table-info-mi">
+              <th colspan="4" class="text-md-center text-lg-center text-sm-center">AGENDA GENERAL</th>
+            </tr>            
+          </thead>
+          <tbody>
+            <tr class="bg-dark text-white">
+              <td>&nbsp;</td>
+              <td class="text-md-center text-sm-center text-lg-center">MIÉRCÓLES 14</td>
+              <td class="text-md-center text-sm-center text-lg-center">JUEVEs 15</td>
+              <td class="text-md-center text-sm-center text-lg-center">VIERNES 16</td>
+            </tr>
+            <tr class="table-danger">
+              <td class="text-md-center text-sm-center text-lg-center">MAÑANA</td>
+              <td class="text-md-center text-sm-center text-lg-center">Llegada</td>
+              <td class="text-md-center text-sm-center text-lg-center">Plenaria<br>8.30 a 14.00</td>
+              <td class="text-md-center text-sm-center text-lg-center">Salida</td>
+            </tr>
+            <tr class="table-danger">
+              <td class="text-md-center text-sm-center text-lg-center">COMIDA</td>
+              <td class="text-md-center text-sm-center text-lg-center">Comida libre</td>
+              <td class="text-md-center text-sm-center text-lg-center">Comida en el hotel</td>
+              <td class="text-md-center text-sm-center text-lg-center">Salida</td>
+            </tr>
+            <tr class="table-success">
+              <td class="text-md-center text-sm-center text-lg-center">TARDE</td>
+              <td class="text-md-center text-sm-center text-lg-center">Plenaria 16.00 a 19.00</td>
+              <td class="text-md-center text-sm-center text-lg-center">Plenaria 15.30 a 18.30</td>
+              <td class="text-md-center text-sm-center text-lg-center">Salida</td>
+            </tr>
+            <tr class="table-info">
+              <td class="text-md-center text-sm-center text-lg-center">NOCHE</td>
+              <td class="text-md-center text-sm-center text-lg-center">Cocktail Bienvenida 19.30 Cena en hotel 20.15</td>
+              <td class="text-md-center text-sm-center text-lg-center">Cena premiación 20.00</td>
+              <td class="text-md-center text-sm-center text-lg-center">&nbsp;</td>
+            </tr>                                                  
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section> 
+{% endblock %}
