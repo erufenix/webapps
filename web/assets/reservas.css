@@ -1,0 +1,266 @@
+label,.form-control-static {
+	font-size: 16px;
+}
+
+label{
+	font-weight: 500 !important;
+}
+
+
+.tomato{
+	border:1px solid tomato;
+}
+
+.has-error{
+	color: #e7505a;
+}
+
+.no-float{
+	float: inherit !important;
+}
+
+label.normal{
+	font-weight: lighter !important;
+}
+
+.help-block[data-fv-result="INVALID"],.ferror,.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label {
+    color: #a94442;
+}
+
+.finfo{
+	color:#4eabe6;
+}
+
+.help-block[data-fv-result="INVALID"], .ferror{
+	font-size: 12px;
+	border-radius: 3px;
+	border:1px solid #a94442;
+	padding: 4px;
+	color:#FFF;
+	background: #a94442 none repeat scroll 0 0;
+	display: inline;
+}
+
+.strong{
+	font-weight: bold;
+}
+
+.bootstrap-dialog .bootstrap-dialog-title{
+	font-weight: bold;
+}
+
+.no-margintb{
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.quest{
+	margin-left: 15px;
+	margin-right: 15px;
+	font-weight: bold;
+}
+
+.c-border{
+	padding: 10px 20px !important;
+	margin: 0 0 20px;
+	font-size: 17.5px;
+	border-left: 5px solid #eee;
+}
+
+.link-info .btn-xs{
+	font-size: 13px;
+}
+
+.no-resize{
+	resize: none; 
+}
+
+.h6t{
+	font-size: 0.8rem !important;
+}
+
+/* ---------------------------------------
+/* Fine Uploader Gallery View Styles
+/* ---------------------------------------
+
+
+/* Buttons
+------------------------------------------ */
+
+
+/* Upload Button
+------------------------------------------ */
+.qq-preview .qq-upload-button {
+	display: inline-block;
+	float: left;
+	font-weight: 400;
+	line-height: 1.25;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	padding: .25rem .5rem;
+	font-size: .875rem;
+	border-radius: .2rem;
+
+	border-radius: .25rem;
+	min-width: 7rem;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #2196f3;
+}
+.qq-preview .qq-upload-button-hover {
+    background: #33B6CC;
+}
+.qq-preview .qq-upload-button-focus {
+    outline: 1px dotted #000000;
+}
+
+.qq-preview .bupload{
+	margin-bottom:20px;
+}
+
+.qq-upload-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.qq-progress-bar {
+    display: block;
+    display: block;
+    background: #00abc7;
+    width: 0%;
+    height: 15px;
+    border-radius: 6px;
+    margin-bottom: 3px;
+}
+
+.qq-total-progress-bar {
+    height: 25px;
+    border-radius: 9px;
+}
+
+.qq-total-progress-bar-container {
+    margin-left: 9px;
+    display: inline;
+    float: right;
+    width: 500px;
+}
+
+.qq-preview .qq-upload-cancel {
+    background-color: #B71C1C;
+    color: #FFF;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 12px;
+    border: none;
+    height: 22px;
+    width: 22px;
+    padding: 4px;
+    position: absolute;
+    right: 5px;
+    top: 9px;
+    margin: 0;
+    line-height: 17px;
+}
+
+
+.qq-preview .qq-upload-spinner,
+.qq-preview .qq-upload-size,
+.qq-preview .qq-upload-retry,
+.qq-preview .qq-upload-failed-text,
+.qq-preview .qq-upload-delete,
+.qq-preview .qq-upload-pause,
+.qq-preview .qq-upload-continue {
+    display: inline;
+}
+
+
+.qq-preview .qq-upload-spinner {
+    display: inline-block;
+    background: url("loading.gif");
+    position: absolute;
+    left: 50%;
+    margin-left: -7px;
+    top: 53px;
+    width: 15px;
+    height: 15px;
+    vertical-align: text-bottom;
+}
+.qq-preview .qq-drop-processing {
+    display: block;
+}
+.qq-preview .qq-drop-processing-spinner {
+    display: inline-block;
+    background: url("processing.gif");
+    width: 24px;
+    height: 24px;
+    vertical-align: text-bottom;
+}
+
+.qq-preview .qq-hide {
+    display: none;
+}
+
+.no-event{
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;    
+}
+
+.o-container{
+    position: relative;
+}
+
+.o-image{
+  transition: .5s ease;
+  backface-visibility: hidden;    
+}
+
+.o-container:hover{
+    cursor: pointer;
+}
+
+.o-middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.o-text {
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+.o-container:hover .o-image {
+  opacity: 0.5;
+}
+
+.o-container:hover .o-middle {
+  opacity: 1;
+}
+
+
+ol.decimal {
+    counter-reset: item;
+}
+ol.decimal li {
+    display: block;
+    position: relative;
+}
+ol.decimal li:before {
+    content: counters(item, ".")".";
+    counter-increment: item;
+    position: absolute;
+    margin-right: 100%;
+    right: 10px; /* space between number and text */
+}

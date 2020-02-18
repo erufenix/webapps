@@ -1,0 +1,142 @@
+label,.form-control-static {
+	font-size: 16px;
+}
+
+label{
+	font-weight: 500 !important;
+}
+
+
+.tomato{
+	border:1px solid tomato;
+}
+
+.has-error{
+	color: #e7505a;
+}
+
+.no-float{
+	float: inherit !important;
+}
+
+label.normal{
+	font-weight: lighter !important;
+}
+
+.help-block[data-fv-result="INVALID"],.ferror,.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label {
+    color: #a94442;
+}
+
+.finfo{
+	color:#4eabe6;
+}
+
+.help-block[data-fv-result="INVALID"], .ferror{
+	font-size: 12px;
+	border-radius: 3px;
+	border:1px solid #a94442;
+	padding: 4px;
+	color:#FFF;
+	background: #a94442 none repeat scroll 0 0;
+	display: inline;
+}
+
+.strong{
+	font-weight: bold;
+}
+
+
+.bootstrap-dialog .bootstrap-dialog-title{
+	font-weight: bold;
+}
+
+.no-margintb{
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.quest{
+	margin-left: 15px;
+	margin-right: 15px;
+	font-weight: bold;
+}
+
+.c-border{
+	padding: 10px 20px !important;
+	margin: 0 0 20px;
+	font-size: 17.5px;
+	border-left: 5px solid #eee;
+}
+
+.link-info .btn-xs{
+	font-size: 13px;
+}
+
+/* ---------------------------------------
+/* Fine Uploader Gallery View Styles
+*/
+/* Upload Button
+------------------------------------------ */
+.qq-upload-button {
+    display: inline;
+    width: 105px;
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    text-align: center;
+    float: left;
+    background: #00ABC7;
+    color: #FFFFFF;
+    border-radius: 2px;
+    border: 1px solid #2dadc2;
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.37) inset,
+                1px 0 1px rgba(255, 255, 255, 0.07) inset,
+                0 1px 0 rgba(0, 0, 0, 0.36),
+                0 -2px 12px rgba(0, 0, 0, 0.08) inset;
+}
+.qq-upload-button-hover {
+    background: #33B6CC;
+}
+.qq-upload-button-focus {
+    outline: 1px dotted #000000;
+}
+
+.lodecimal ol {
+    counter-reset: item;
+}
+
+.lodecimal ol li {
+    display: block;
+    position: relative;
+}
+.lodecimal ol li:before {
+    content: counters(item, ".")".";
+    counter-increment: item;
+    position: absolute;
+    margin-right: 100%;
+    right: 10px; /* space between number and text */
+}
+
+.c-content-feature-2 p.small {
+    font-size: 14px;
+    color: #5c6873;
+    font-weight: 300;
+    margin: 0;
+}
+
+.list-inline.order {
+	padding-left:15px;
+	padding-right:15px;
+}
+
+.grey56{
+	color: #5c6873;
+}
+
+.pointer{
+	cursor: pointer !important;
+}
+
+.alert-mini{
+	padding: 5px;
+	margin-bottom: 5px;
+}
