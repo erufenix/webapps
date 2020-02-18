@@ -1,0 +1,78 @@
+Entity\AppsUpfront:
+    type: entity
+    table: upfront
+    id:
+        idUpfront:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_upfront
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''''''
+        apellidos:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+        correo:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''''''
+        fechaRegistro:
+            type: datetime
+            nullable: true
+            options:
+                default: 'NULL'
+            column: fecha_registro
+        folio:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+                default: ''''''
+        idClave:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: id_clave
+        mesa:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        silla:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        active:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+        entrada:
+            type: time
+            nullable: true
+            options:
+                default: 'NULL'
+    lifecycleCallbacks: {  }

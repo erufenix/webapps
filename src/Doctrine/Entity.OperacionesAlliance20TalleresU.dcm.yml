@@ -1,0 +1,66 @@
+Entity\OperacionesAlliance20TalleresU:
+    type: entity
+    table: alliance20_talleres_u
+    id:
+        idTallerU:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_taller_u
+            generator:
+                strategy: IDENTITY
+    fields:
+        idRegistro:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_registro
+        idTaller:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: id_taller
+        noTaller:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: no_taller
+        hrTaller:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+                default: ''''''
+            column: hr_taller
+        tTaller:
+            type: string
+            nullable: false
+            length: 2
+            options:
+                fixed: false
+                default: ''''''
+            column: t_taller
+        taller:
+            type: string
+            nullable: false
+            length: 300
+            options:
+                fixed: false
+                default: ''''''
+        uTaller:
+            type: string
+            nullable: false
+            length: 2
+            options:
+                fixed: false
+                default: ''''''
+            column: u_taller
+    lifecycleCallbacks: {  }

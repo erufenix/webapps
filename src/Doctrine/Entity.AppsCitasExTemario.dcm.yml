@@ -1,0 +1,67 @@
+Entity\AppsCitasExTemario:
+    type: entity
+    table: citas_ex_temario
+    id:
+        idTemario:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_temario
+            generator:
+                strategy: IDENTITY
+    fields:
+        noTema:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: no_tema
+        tema:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+                default: ''''''
+        noSubtema:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: no_subtema
+        subtema:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+                default: ''''''
+        mesa:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        dia:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+                default: ''''''
+        hora:
+            type: time
+            nullable: true
+            options:
+                default: 'NULL'
+        bloqueada:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+    lifecycleCallbacks: {  }

@@ -1,0 +1,254 @@
+Entity\OperacionesNavistargolf:
+    type: entity
+    table: navistarGolf
+    id:
+        idRegistro:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_registro
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClave:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'ID de la clave usada'
+                default: '0'
+            column: id_clave
+        tpoNombre:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+                comment: 'tipo de nombre'
+                default: ''
+            column: tpo_nombre
+        nombre:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+                default: ''
+        apellidos:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''
+        correo:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''
+        celular:
+            type: string
+            nullable: false
+            length: 18
+            options:
+                fixed: false
+                comment: Celular
+                default: '0'
+        empresa:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''
+        distribuidor:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+                default: ''
+        acoNombre:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''
+            column: aco_nombre
+        habitacion:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+                default: ''
+        ncamas:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        transporte:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+                comment: 'Tipo de transporte'
+        aerolineas:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+        nvuelos:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+                default: ''
+        fechaHoraVuelos:
+            type: datetime
+            nullable: true
+            column: fecha_hora_vuelos
+        aerolineal:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+        nveulol:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+                default: ''
+        fechaHoraVuelol:
+            type: datetime
+            nullable: true
+            column: fecha_hora_vuelol
+        fechaRegistro:
+            type: datetime
+            nullable: true
+            column: fecha_registro
+        tipo:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+                comment: Grupo
+                default: ''
+        handicap:
+            type: smallint
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        equipo:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+                default: ''
+        guante:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+                default: ''
+        gtalla:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+                default: ''
+        alergias:
+            type: text
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        comentarios:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        noches:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        nochesa:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        rsocial:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''
+        rfc:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+                default: ''
+        fcorreo:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+                default: ''
+        ftelefono:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+                default: ''
+        fdireccion:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        jcamisa:
+            type: string
+            nullable: false
+            length: 6
+            options:
+                fixed: false
+                default: ''
+        njcamisa:
+            type: string
+            nullable: false
+            length: 6
+            options:
+                fixed: false
+                default: ''
+        respeciales:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,50 @@
+Entity\OperacionesAlliance18Claves:
+    type: entity
+    table: alliance18_claves
+    id:
+        idClave:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'ID de la clave'
+            id: true
+            column: id_clave
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                comment: 'Nombre completo para registro'
+                default: ''''''
+        clave:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+                comment: 'Clave para registro'
+                default: ''''''
+        grupo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        bloqueada:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+        regDoble:
+            type: boolean
+            nullable: false
+            options:
+                comment: 'Registro doble'
+                default: '0'
+            column: reg_doble
+    lifecycleCallbacks: {  }

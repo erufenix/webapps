@@ -1,0 +1,112 @@
+Entity\OperacionesBfg17:
+    type: entity
+    table: bfg17
+    id:
+        idRegistro:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_registro
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+                default: ''''''
+        apellidos:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''''''
+        correo:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+                default: ''''''
+        celular:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                default: '''0'''
+        razonSocial:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+            column: razon_social
+        habitacion:
+            type: string
+            nullable: false
+            length: 12
+            options:
+                fixed: false
+                default: ''''''
+        transporte:
+            type: string
+            nullable: false
+            length: 12
+            options:
+                fixed: false
+                default: ''''''
+        fechaLlegada:
+            type: date
+            nullable: true
+            options:
+                default: 'NULL'
+            column: fecha_llegada
+        fechaSalida:
+            type: date
+            nullable: true
+            options:
+                default: 'NULL'
+            column: fecha_salida
+        alergia:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                default: ''''''
+        licenciaEmision:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''''''
+            column: licencia_emision
+        licenciaDigitos:
+            type: string
+            nullable: false
+            length: 4
+            options:
+                fixed: false
+                default: '''0'''
+            column: licencia_digitos
+        licenciaValida:
+            type: date
+            nullable: true
+            options:
+                default: 'NULL'
+            column: licencia_valida
+        fechaRegistro:
+            type: datetime
+            nullable: true
+            options:
+                default: 'NULL'
+            column: fecha_registro
+    lifecycleCallbacks: {  }

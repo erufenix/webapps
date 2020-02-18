@@ -1,0 +1,397 @@
+Entity\ReservacionesReservaciones:
+    type: entity
+    table: reservaciones
+    id:
+        idreservacion:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idReservacion
+            generator:
+                strategy: IDENTITY
+    fields:
+        claveevento:
+            type: string
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+            column: claveEvento
+        clavereservacion:
+            type: string
+            nullable: false
+            length: 24
+            options:
+                fixed: false
+            column: claveReservacion
+        idioma:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+                comment: 'Idioma de la reservación'
+        nombreevento:
+            type: string
+            nullable: false
+            length: 175
+            options:
+                fixed: false
+            column: nombreEvento
+        fechaevento:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: fechaEvento
+        sedeevento:
+            type: string
+            nullable: false
+            length: 175
+            options:
+                fixed: false
+            column: sedeEvento
+        nombrehotel:
+            type: string
+            nullable: false
+            length: 175
+            options:
+                fixed: false
+            column: nombreHotel
+        tipohabitacion:
+            type: string
+            nullable: false
+            length: 150
+            options:
+                fixed: false
+            column: tipoHabitacion
+        pagapor:
+            type: string
+            nullable: false
+            length: 2
+            options:
+                fixed: false
+                comment: 'N = Por noches, C = Toda la estancia'
+            column: pagaPor
+        diaspago:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 'Días que va a pagar'
+                default: '0'
+            column: diasPago
+        costonoche:
+            type: decimal
+            nullable: false
+            precision: 9
+            scale: 2
+            options:
+                comment: 'Costo por noche'
+            column: costoNoche
+        cargobellboys:
+            type: decimal
+            nullable: false
+            precision: 9
+            scale: 2
+            column: cargoBellBoys
+        cargototal:
+            type: decimal
+            nullable: false
+            precision: 9
+            scale: 2
+            column: cargoTotal
+        divisa:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+        operador:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+        fechallegada:
+            type: date
+            nullable: false
+            column: fechaLlegada
+        fechasalida:
+            type: date
+            nullable: false
+            column: fechaSalida
+        formapago:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+                comment: 'DB = Deposito Bancario, TC = Tarjeta de Credito, TG = Tarjeta en Garantia, PP = PayPal'
+            column: formaPago
+        sTransm:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 'ID transferencia solo pago con TC o PP'
+            column: s_transm
+        nombre:
+            type: string
+            nullable: false
+            length: 90
+            options:
+                fixed: false
+        app:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        apm:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        pais:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+        cp:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+        estado:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+        colonia:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+        direccion:
+            type: string
+            nullable: false
+            length: 150
+            options:
+                fixed: false
+        telefono:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+        telmovil:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: telMovil
+        email:
+            type: string
+            nullable: false
+            length: 150
+            options:
+                fixed: false
+        acompanantes:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        comentarios:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        requierefactura:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+                comment: '1 = Si, 2 = No'
+            column: requiereFactura
+        razonsocialRs:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: razonSocial_RS
+        rfcRs:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: false
+            column: RFC_RS
+        paisRs:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: pais_RS
+        cpRs:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: cp_RS
+        estadoRs:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: estado_RS
+        delegacionRs:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: delegacion_RS
+        coloniaRs:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: colonia_RS
+        direccionRs:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: direccion_RS
+        telefonoRs:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: telefono_RS
+        faxRs:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: fax_RS
+        emailRs:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: email_RS
+        aceptapoliticas:
+            type: boolean
+            nullable: false
+            column: aceptaPoliticas
+        fechareservacion:
+            type: datetime
+            nullable: false
+            column: fechaReservacion
+        requireSeguro:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+                default: 'No'
+            column: require_seguro
+        seguroViajero:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: seguro_viajero
+        fechaNacimiento:
+            type: date
+            nullable: true
+            column: fecha_nacimiento
+        tipoViaje:
+            type: string
+            nullable: true
+            length: 75
+            options:
+                fixed: false
+            column: tipo_viaje
+        beneficiario1:
+            type: string
+            nullable: true
+            length: 210
+            options:
+                fixed: false
+            column: beneficiario_1
+        parentesco1:
+            type: string
+            nullable: true
+            length: 125
+            options:
+                fixed: false
+            column: parentesco_1
+        porcentaje1:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: porcentaje_1
+        beneficiario2:
+            type: string
+            nullable: true
+            length: 210
+            options:
+                fixed: false
+            column: beneficiario_2
+        parentesco2:
+            type: string
+            nullable: true
+            length: 125
+            options:
+                fixed: false
+            column: parentesco_2
+        porcentaje2:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: porcentaje_2
+        status:
+            type: string
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+                comment: 'Iniciada = Res iniciada no terminada, Reservacion = Terminada pero no gestionada aun, Cancelado, Pagado, Pendiente'
+        tx:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+                comment: 'Numero de transacción de PP'
+                default: ''
+    lifecycleCallbacks: {  }

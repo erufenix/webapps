@@ -1,0 +1,89 @@
+Entity\OperacionesWmctours:
+    type: entity
+    table: wmctours
+    id:
+        tourId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: tour_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        tourCve:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+                default: ''
+            column: tour_cve
+        tourDate:
+            type: date
+            nullable: true
+            column: tour_date
+        name:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+                default: ''
+        email:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+                default: ''
+        surname:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''
+        companionsName:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: companions_name
+        companionsMail:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: companions_mail
+        dateCreated:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: date_created
+        total:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+                default: ''
+        sku:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+                default: ''
+        tx:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+                default: '0'
+    lifecycleCallbacks: {  }

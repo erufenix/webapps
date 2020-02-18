@@ -1,0 +1,217 @@
+Entity\OperacionesAlliance20:
+    type: entity
+    table: alliance20
+    id:
+        idRegistro:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_registro
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClave:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'ID de la clave usada'
+                default: '0'
+            column: id_clave
+        tpoNombre:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+                comment: 'tipo de nombre'
+                default: ''
+            column: tpo_nombre
+        nombre:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+                default: ''
+        apellidos:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''
+        correo:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''
+        celular:
+            type: string
+            nullable: false
+            length: 18
+            options:
+                fixed: false
+                comment: Celular
+                default: ''
+        contacto:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                comment: contacto
+                default: ''
+        distribuidor:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''
+        acoNombre:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''
+            column: aco_nombre
+        habitacion:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+                default: ''
+        ncamas:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        transporte:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+                comment: 'Tipo de transporte'
+        aerolineas:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+        nvuelos:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+                default: ''
+        fechaHoraVuelos:
+            type: datetime
+            nullable: true
+            column: fecha_hora_vuelos
+        aerolineal:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+        nveulol:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+                default: ''
+        fechaHoraVuelol:
+            type: datetime
+            nullable: true
+            column: fecha_hora_vuelol
+        cmVuelo:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+                comment: 'Comentario de vuelo'
+            column: cm_vuelo
+        actividad:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        opActividad:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                default: ''
+            column: op_actividad
+        diaActividad:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: dia_actividad
+        fechaRegistro:
+            type: datetime
+            nullable: true
+            column: fecha_registro
+        fechaL:
+            type: date
+            nullable: true
+            options:
+                comment: 'Fecha de llegada'
+            column: fecha_l
+        fechaS:
+            type: date
+            nullable: true
+            options:
+                comment: 'Fecha de salida'
+            column: fecha_s
+        token:
+            type: string
+            nullable: false
+            length: 11
+            options:
+                fixed: false
+                default: ''
+        tipo:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+                comment: Grupo
+                default: ''
+        talleres:
+            type: text
+            nullable: true
+            length: 16777215
+            options:
+                fixed: false
+        talleresAco:
+            type: text
+            nullable: true
+            length: 16777215
+            options:
+                fixed: false
+            column: talleres_aco
+        comentarios:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

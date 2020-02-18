@@ -1,0 +1,66 @@
+Entity\OperacionesWmctoursUser:
+    type: entity
+    table: wmctours_user
+    id:
+        idUser:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_user
+            generator:
+                strategy: IDENTITY
+    fields:
+        user:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+                default: ''
+        userName:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+                default: ''
+            column: user_name
+        userCorreo:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+                default: ''
+            column: user_correo
+        userPassword:
+            type: string
+            nullable: true
+            length: 128
+            options:
+                fixed: false
+                default: ''
+            column: user_password
+        userRole:
+            type: string
+            nullable: true
+            length: 16
+            options:
+                fixed: false
+                default: ROLE_WMC_VIEW
+            column: user_role
+        userCreate:
+            type: datetime
+            nullable: true
+            column: user_create
+        userRoleName:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+                default: Consulta
+            column: user_role_name
+    lifecycleCallbacks: {  }

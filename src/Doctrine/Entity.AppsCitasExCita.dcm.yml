@@ -1,0 +1,75 @@
+Entity\AppsCitasExCita:
+    type: entity
+    table: citas_ex_cita
+    id:
+        idCita:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_cita
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+                default: ''''''
+        correo:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+        empresa:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+        telefono:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+        cita:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+        hora:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+                default: ''''''
+        dia:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+                default: ''''''
+        mesa:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        recordatorio:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+    lifecycleCallbacks: {  }

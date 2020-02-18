@@ -1,0 +1,63 @@
+Entity\AppsAlliance19talleres:
+    type: entity
+    table: alliance19Talleres
+    id:
+        idTaller:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_taller
+            generator:
+                strategy: IDENTITY
+    fields:
+        noTaller:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: no_taller
+        taller:
+            type: string
+            nullable: false
+            length: 300
+            options:
+                fixed: false
+                default: ''
+        hora:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+                default: '00:00 - 00:00'
+        nHora:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: n_hora
+        turno:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+                default: ''
+        cupo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        cupostaff:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: cupoStaff
+    lifecycleCallbacks: {  }

@@ -1,0 +1,272 @@
+Entity\OperacionesTransportAippi:
+    type: entity
+    table: transport_aippi
+    id:
+        tranportId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: tranport_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        hotel:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+                default: 'NULL'
+        transfer:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+                default: ''''''
+        arrivePersons:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+                default: '''0'''
+            column: arrive_persons
+        arriveAirline:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+                default: ''''''
+            column: arrive_airline
+        arriveFly:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: ''''''
+            column: arrive_fly
+        arriveDate:
+            type: date
+            nullable: true
+            options:
+                default: 'NULL'
+            column: arrive_date
+        arriveTime:
+            type: time
+            nullable: true
+            options:
+                default: 'NULL'
+            column: arrive_time
+        arriveRate:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: ''''''
+            column: arrive_rate
+        departurePersons:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+                default: '''0'''
+            column: departure_persons
+        departureAirline:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: ''''''
+            column: departure_airline
+        departureFly:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: ''''''
+            column: departure_fly
+        departureDate:
+            type: date
+            nullable: true
+            options:
+                default: 'NULL'
+            column: departure_date
+        departureTime:
+            type: time
+            nullable: true
+            options:
+                default: 'NULL'
+            column: departure_time
+        departureRate:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: ''''''
+            column: departure_rate
+        name:
+            type: string
+            nullable: true
+            length: 120
+            options:
+                fixed: false
+                default: ''''''
+        phone:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: ''''''
+        email:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: ''''''
+        total:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: ''''''
+        comments:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: 'NULL'
+        registerDate:
+            type: datetime
+            nullable: true
+            options:
+                default: 'NULL'
+            column: register_date
+        pay:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: false
+                default: '''0'''
+        code:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                default: '''0'''
+        st:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+                default: ''''''
+        tx:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+                default: ''''''
+        refund:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+                comment: Rembolso
+                default: ''''''
+        txRefund:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+                comment: 'Tx del rembolso'
+                default: '''0'''
+            column: tx_refund
+        rfc:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+                default: ''''''
+        company:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+        country:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        bemail:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+        city:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+        state:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+        address:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+                default: 'NULL'
+        bphone:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+                default: ''''''
+        cp:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+                default: ''''''
+        aviso:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Aviso salida'
+                default: '0'
+    lifecycleCallbacks: {  }

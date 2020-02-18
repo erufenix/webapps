@@ -1,0 +1,276 @@
+Entity\OperacionesKick19:
+    type: entity
+    table: kick19
+    id:
+        idRegistro:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'id Registro'
+            id: true
+            column: id_registro
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                comment: Nombre
+                default: ''''''
+        apellidos:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                comment: Apellidos
+                default: ''''''
+        correo:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                comment: Correo
+                default: ''''''
+        telefono:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+                comment: Teléfono
+                default: ''''''
+        distribuidor:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+                comment: Distribuidor
+        puesto:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                comment: Puesto
+                default: ''''''
+        facturaRs:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                comment: 'Factura Razón social'
+                default: ''''''
+            column: factura_rs
+        facturaRfc:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                comment: 'Factura RFC'
+            column: factura_rfc
+        facturaCorreo:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                comment: 'Factura correo'
+            column: factura_correo
+        facturaDireccion:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+                comment: 'Factura dirección'
+                default: 'NULL'
+            column: factura_direccion
+        facturaPago:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+                comment: 'Factura pago'
+            column: factura_pago
+        facturaCp:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''''''
+            column: factura_cp
+        facturaEdo:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''''''
+            column: factura_edo
+        facturaCiudad:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''''''
+            column: factura_ciudad
+        llegadaNvuelo:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+                default: ''''''
+            column: llegada_nvuelo
+        llegadaAerolinea:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+            column: llegada_aerolinea
+        llegadaFecha:
+            type: datetime
+            nullable: true
+            options:
+                default: 'NULL'
+            column: llegada_fecha
+        salidaNvuelo:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+                default: ''''''
+            column: salida_nvuelo
+        salidaAerolinea:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+            column: salida_aerolinea
+        salidaFecha:
+            type: datetime
+            nullable: true
+            options:
+                default: 'NULL'
+            column: salida_fecha
+        habitacion:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+        nombreAco:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''''''
+            column: nombre_aco
+        apellidosAco:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''''''
+            column: apellidos_aco
+        correoAco:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''''''
+            column: correo_aco
+        puestoAco:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''''''
+            column: puesto_aco
+        llegadaNvueloAco:
+            type: string
+            nullable: true
+            length: 16
+            options:
+                fixed: false
+                default: ''''''
+            column: llegada_nvuelo_aco
+        llegadaAerolineaAco:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+            column: llegada_aerolinea_aco
+        llegadaFechaAco:
+            type: datetime
+            nullable: true
+            options:
+                default: 'NULL'
+            column: llegada_fecha_aco
+        salidaNvueloAco:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+                default: ''''''
+            column: salida_nvuelo_aco
+        salidaAerolineaAco:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''''''
+            column: salida_aerolinea_aco
+        salidaFechaAco:
+            type: datetime
+            nullable: true
+            options:
+                default: 'NULL'
+            column: salida_fecha_aco
+        fechaRegistro:
+            type: datetime
+            nullable: true
+            options:
+                default: 'NULL'
+            column: fecha_registro
+        tx:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+                default: '''0'''
+        tot:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                default: ''''''
+    lifecycleCallbacks: {  }
