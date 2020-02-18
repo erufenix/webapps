@@ -1,0 +1,68 @@
+/*dl {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.c-layout-header-fixed .c-layout-page {
+	margin-top: 210px;
+}
+
+.c-layout-header-fixed .c-layout-header {
+    height: 300px;
+}
+
+@media (min-width: 992px) {
+	.c-page-on-scroll.c-layout-header-fixed .c-layout-header {
+		height: 220px;
+	}
+}
+
+
+@media (min-width: 992px) {
+	.c-layout-header .c-brand {
+		margin: 20px 0 20px 0;
+	}
+
+	.c-page-on-scroll.c-layout-header-fixed .c-layout-header .c-mega-menu{
+		display: none;
+	}
+
+
+	.c-page-on-scroll.c-layout-header-fixed .c-layout-header .c-x{
+		width:500px;
+	}
+
+	.c-page-on-scroll.c-layout-header-fixed .c-layout-header .c-x{
+		display: none;
+	}
+
+	.c-page-on-scroll.c-layout-header-fixed .c-layout-header .tclogo{
+		margin-top: 70px;
+	}
+
+	.c-layout-header .emp-logo .c-desktop-logo-inverse{
+		width:500px;
+	}
+
+}
+
+.c-layout-header .tclogo{
+				margin-top: 80px;
+}
+
+.c-layout-header .emp-logo .c-desktop-logo{
+	width:400px;
+}
+
+
+.ml-auto, .mx-auto {
+
+    margin-left: auto !important;
+
+}
+.mr-auto, .mx-auto {
+
+    margin-right: auto !important;
+
+}
+*/

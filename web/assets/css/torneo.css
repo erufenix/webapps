@@ -1,0 +1,268 @@
+body {
+  background: #ffffff !important;
+}
+
+.site-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.sec-padding {
+  flex: 1 0 auto
+}
+
+.text-color-primary {
+  color: #f47820 !important;
+}
+.bg-color-primary {
+  background-color: #f47820;
+}
+.bg-color-secondary {
+  background-color: #6e44a3;
+}
+.bg-color-tertiary {
+  background-color: #38cef9;
+}
+.btn.btn-color-primary {
+  background-color: #f47820;
+}
+.header-section ul li.active > a {
+  color: #f47820;
+}
+.header-section.style4 ul li ul {
+  background: #f47820;
+}
+.header-section ul li:hover > a,
+.header-section ul li.active > a {
+  color: #f47820;
+}
+.header-section.style4 ul li.search-parent .search-box {
+  background: #f47820;
+}
+.header-section.style4 ul li.search-parent .search-box .form-control {
+  background: #f47820;
+}
+@media only screen and (max-width: 1000px) {
+  .header-section.style4 #menu ul {
+    background: #f47820;
+  }
+}
+.header-section ul li .number {
+  background: #f47820;
+}
+.header-section.style4 ul li.cart-parent .cart-box {
+  background: #f47820;
+}
+.header-section ul li.mega-menu > ul > li ul li a:hover {
+  color: #f47820;
+}
+.header-section ul li.search-parent a.m-link {
+  color: #f47820;
+}
+.header-section ul li.cart-parent a.m-link {
+  color: #f47820;
+}
+.header-section.dark-dropdowns.style4 ul li:hover > a,
+.header-section.dark-dropdowns.style4 ul li.active > a {
+  color: #f47820;
+}
+.header-section.dark-dropdowns.style4 ul li.mega-menu > ul > li ul li a:hover {
+  color: #f47820;
+}
+.header-section.dark-dropdowns.style4 #menu ul li ul li:hover a span.sub-arrow,
+header-section.dark-dropdowns.style4 #menu ul li ul li.active a span.sub-arrow {
+  color: #f47820;
+}
+.header-section.dark-dropdowns.style2 ul li:hover > a,
+.header-section.dark-dropdowns.style2 ul li.active > a {
+  color: #f47820;
+}
+.header-section.dark-dropdowns.style2 ul li.mega-menu > ul > li ul li.active a {
+  color: #f47820;
+}
+.header-section.dark-dropdowns.style2 ul li.mega-menu > ul > li ul li a:hover {
+  color: #f47820;
+}
+.btn-top-1 {
+  background-color: #f47820;
+}
+.header-section.dark-dropdowns.style1 ul li:hover > a,
+.header-section.dark-dropdowns.style1 ul li.active > a {
+  color: #f47820;
+}
+.header-section.dark-dropdowns.style1 ul li.mega-menu > ul > li ul li a:hover {
+  color: #f47820;
+}
+.header-section.dark-dropdowns.style1 ul li:hover > a,
+.header-section.dark-dropdowns.style1 ul li.active > a {
+  color: #f47820;
+}
+.header-section.act-style-1 ul li.active > a {
+  background-color: #f47820 !important;
+}
+.header-section.style3 #menu ul li.mega-menu li ul li:hover a,
+.header-section.style3 #menu ul li.mega-menu li ul li.active a {
+  color: #f47820;
+}
+.header-section.style3 #menu ul li.mega-menu li ul li:hover a,
+.header-section.style3 #menu ul li.mega-menu li ul li.active a {
+  color: #f47820;
+}
+.header-section.style3 #menu ul li ul li:hover > a,
+.header-section.style3 #menu ul li ul li.active > a {
+  color: #f47820;
+}
+.header-section.style3 #menu ul li ul li:hover a span.sub-arrow,
+header-section.style3 #menu ul li ul li.active a span.sub-arrow {
+  color: #f47820;
+}
+.header-section.style5.dark #menu ul li ul li:hover > a,
+.header-section.style5.dark #menu ul li ul li.active > a {
+  color: #f47820;
+}
+.header-section ul li.cart-parent .cart-box span {
+  color: #f47820;
+}
+.header-section ul li.cart-parent .cart-box span {
+  color: #f47820;
+}
+.header-section ul li.cart-parent .cart-box .btn.btn-primary {
+  background: #f47820 none repeat scroll 0 0 !important;
+}
+.tp-caption.sbut2 a {
+  background-color: #f47820;
+}
+.section-primary {
+  background-color: #f47820;
+}
+.btn.btn-prim {
+  background-color: #f47820;
+}
+.section-primary {
+  background-color: #f47820;
+}
+.tp-caption.text-primary {
+  color: #f47820;
+}
+.c6-feature-box-2 .icon {
+  color: #f47820;
+}
+.c6-feature-box-2:hover .title,
+.c6-feature-box-2.active .title {
+  color: #f47820;
+}
+.c6-feature-box-2:hover .icon,
+.c6-feature-box-2.active .icon {
+  border: 1px solid #f47820;
+  background-color: #f47820;
+}
+.btn.btn-border.primary {
+  color: #f47820;
+  border-color: #f47820;
+}
+.btn.btn-border:hover.primary {
+  background-color: #f47820;
+  border-color: #f47820;
+}
+.c6-feature-box-3 .img-box:hover,
+.c6-feature-box-3 .img-box.active {
+  background-color: #f47820;
+}
+.text-primary {
+  color: #f47820;
+}
+.c6-feature-box-4 .img-circle {
+  background-color: #f47820;
+}
+.c6-feature-box-5 .img-box .overlay .post-icon.primary {
+  background-color: #f47820;
+}
+.footer-tags li a:hover,
+.footer-tags li a.active {
+  border: 1px solid #f47820;
+  color: #f47820;
+}
+.newsletter-submit-btn {
+  border: 1px solid #f47820;
+  background-color: #f47820;
+}
+.footer-social-icons li a:hover,
+.footer-social-icons li a.active {
+  color: #f47820;
+}
+.scrollup {
+  background: #f47820 url(https://codelayers.net/templates/arma/corporate6/images/scroll-top-arrow.png) no-repeat 15px 16px;
+}
+.iconlist.gyellow li i {
+  color: #f47820;
+}
+.pagenation-holder .breadcrumb li.current a {
+  color: #f47820;
+}
+.c6-feature-box-6 {
+  border: 6px solid #f47820;
+}
+.c6-feature-box-7 {
+  background: #f47820;
+}
+.sky-form .button {
+  background-color: #f47820;
+}
+
+.header-inner{
+  height: 320px;
+}
+
+.header-inner .text{
+  padding: 18% 0 0 0;
+}
+
+.header-inner-tmargin {
+  margin-top: -198px;
+}
+
+.header-section .logo.mar-4{
+  padding-bottom: 20px;
+}
+
+.font-weight-bolder {
+  font-weight: bolder !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.sky-form .col-12 {
+  width: 100%;
+}
+
+.sky-form .info-text {
+  color: #2a70e8;
+}
+
+.tomato{
+  border:1px solid tomato;
+}
+
+.header-section.style4 .mod-menu {
+  background: rgba(255, 255, 255,0.9);
+}
+
+.header-section.pin-style.pin.style4{
+  background: rgba(255, 255, 255,0.86);
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+.iconlist li{
+  margin: 0 0 5px 0;
+}
+
+
+.sky-form .checkbox input + i:after {
+	content: '✔';
+}

@@ -1,0 +1,34 @@
+dl {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.c-layout-header-fixed .c-layout-page {
+	margin-top: 130px;
+}
+
+
+@media (min-width: 992px) {
+	.c-page-on-scroll.c-layout-header-fixed .c-layout-header {
+		height: 120px;
+	}
+}
+
+
+@media (min-width: 992px) {
+	.c-layout-header .c-brand {
+		margin: 20px 0 20px 0;
+	}
+
+	.c-page-on-scroll.c-layout-header-fixed .c-layout-header .c-mega-menu{
+		display: none; 
+	}
+
+	.c-page-on-scroll.c-layout-header-fixed .c-layout-header .tclogo{
+	margin-top: 30px;}     
+
+}
+
+.c-layout-header .tclogo{
+				margin-top: 60px;
+}

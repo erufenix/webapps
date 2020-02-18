@@ -1,0 +1,114 @@
+.l-theme {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+.main {
+    flex: 1 0 auto
+}
+
+.main{
+	margin-top: 167px;
+	margin-bottom: 50px;
+}
+
+.wrap-title {
+    margin-bottom: 10px;
+}
+
+.no-resize {
+    resize: none;
+}
+
+.tomato{
+  border:1px solid tomato;
+}
+
+.black{
+	color: #000 important;
+}
+
+
+.text-info {
+	padding-bottom: 5px;
+}
+
+.forms__label-radio-3{
+	padding-left: 25px;
+	margin-right: 12px;
+}
+
+.form-control-feedback {
+    z-index: 2;
+    display: block;
+    width: 100%;
+    line-height: 1;
+    text-align: right;
+    color: #999;
+    padding-top: 13px;
+    border: none;
+    height: auto;
+    padding-bottom: 13px;
+    position: static;
+    transition: all .3s;
+}
+
+.m-b-10{
+  margin-bottom: 10px !important;
+}
+
+.m-b-20{
+  margin-bottom: 20px !important;
+}
+
+.m-b-30{
+  margin-bottom: 30px !important;
+}
+
+.m-b-40{
+  margin-bottom: 40px !important;
+}
+
+.m-b-50{
+  margin-bottom: 50px !important;
+}
+
+.m-t-10{
+  margin-top: 10px !important;
+}
+
+.m-t-20{
+  margin-top: 20px !important;
+}
+
+.m-t-30{
+  margin-top: 30px !important;
+}
+.m-t-40{
+  margin-top: 40px !important;
+}
+
+.no-float{
+  float: inherit;
+}
+
+
+.b-blockquote-2::after {
+    position: absolute;
+    top: 3px;
+    left: 13px;
+    width: 60px;
+    height: 50px;
+    font: 100px/1 Poppins;
+    content: '✔';
+}
+
+.footer {
+  background: url("../img/navitruck2.png");
+  padding-top: 50px;
+}
+
+.footer__main{
+  padding-bottom: 40px;
+}

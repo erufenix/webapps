@@ -1,0 +1,424 @@
+/*
+Template: Arma
+category: corporate 6
+Author: Codelayers
+Version: 1.0
+Design and Developed by: Codelayers
+*/
+
+
+/*
+======================================
+[ CSS TABLE CONTENT ]
+======================================
+
+    [Table of contents]
+
+	1.feature boxes
+	2.parallax sections
+	3.footer styles
+	4.crossed shapes
+
+	
+======================================
+[ END CSS TABLE CONTENT ]
+======================================
+*/
+
+/*========= Wedding layout styles ===========*/
+
+/*============ Feature boxes ============ */
+
+/* feature box 1
+ ------------------------------ */
+.c6-feature-box-1{
+	width:90%;
+	float:left;
+	padding:40px 40px;
+}
+
+
+/* feature box 2
+ ------------------------------ */
+.c6-feature-box-2 {
+    width: 100%;
+	float:left;
+	padding-bottom:50px;
+}
+
+.c6-feature-box-2 .icon {
+	font-size: 26px;
+	color:#d93030;
+	border:1px solid #e7e7e7;
+}
+.c6-feature-box-2:hover .icon, .c6-feature-box-2.active .icon {
+	font-size: 26px;
+	color:#fff;
+	border:1px solid #d93030;
+	background-color:#d93030;
+}
+
+.c6-feature-box-2:hover .title, .c6-feature-box-2.active .title {
+	color:#d93030;
+}
+
+
+
+/* feature box 3
+ ------------------------------ */
+.c6-feature-box-3 {
+    width: 100%;
+	float:left;
+	padding:100px;
+	background-color:#fff;
+}
+.c6-feature-box-3 .img-box {
+    width: 100%;
+	float:left;
+	padding:20px;
+	transition: all 0.3s ease-out 0s;
+	background-color:#ebebeb;
+}
+.c6-feature-box-3 .img-box:hover,
+.c6-feature-box-3 .img-box.active {
+	background-color:#d93030;
+}
+
+.c6-feature-box-3 .img-box:hover .title,
+.c6-feature-box-3 .img-box.active .title {
+	color:#fff;
+}
+
+.c6-feature-box-3 .img-box:hover p,
+.c6-feature-box-3 .img-box.active p {
+	color:#fff;
+}
+
+
+/* feature box 4
+ ------------------------------ */
+.c6-feature-box-4 {
+    width:90%;
+	float:right;
+	padding:100px;
+	background-color:#fff;
+}
+.c6-feature-box-4 .img-circle {
+    width: 150px;
+	height:150px;
+    float: left;
+	padding:8px;
+	border-radius:100%;
+	background-color:#d93030;
+}
+.c6-feature-box-4 .img-circle .img {
+	background-color:#fff;
+}
+
+
+
+
+/* featurebox 5
+ ------------------------------ */
+.c6-feature-box-5 {
+    width: 100%;
+    float: left;
+	transition: all 0.3s ease-out 0s;
+}
+.c6-feature-box-5 .img-box {
+	position:relative;
+    width: 100%;
+    float: left;
+}
+.c6-feature-box-5 .img-box .overlay {
+	position: absolute;
+    width: 100%;
+    float: left;
+	background:rgba(0,0,0, 0.1);
+}
+
+.c6-feature-box-5 .text-box .icon-b{
+    width:38px;
+	height:38px;
+    float: right;
+	color:#c4c4c6;
+	text-align:center;
+	border-radius:100%;
+	line-height:38px;
+	margin-right:5px;
+	background-color:#f4f4f7;
+}
+
+.c6-feature-box-5 .img-box .overlay .post-icon{
+	position:absolute;
+    width:64px;
+	height:64px;
+    float: left;
+	color:#fff;
+	left:25px;
+	top:25px;
+	font-size:22px;
+	text-align:center;
+	border-radius:100%;
+	line-height:57px;
+}
+
+.c6-feature-box-5 .img-box .overlay .post-icon.primary{
+	color:#fff;
+	background-color:#d93030;
+}
+
+.c6-feature-box-5:hover, .c6-feature-box-5.active {
+	-webkit-box-shadow: 0px 0px 18px 14px rgba(0,0,0,0.09);
+	-moz-box-shadow: 0px 0px 18px 14px rgba(0,0,0,0.09);
+	box-shadow: 0px 0px 18px 14px rgba(0,0,0,0.09);
+}
+
+
+
+/* featurebox 6
+ ------------------------------ */
+ 
+.c6-feature-box-6 {
+    width: 100%;
+    float: left;
+	padding:50px;
+	border:6px solid #d93030;
+	background-color:#fff;
+	transition: all 0.3s ease-out 0s;
+}
+
+
+
+/* featurebox 7
+ ------------------------------ */
+
+.c6-feature-box-7 {
+    width: 100%;
+    float: left;
+	padding:50px;
+	background:#d93030;
+}
+.c6-feature-box-7 .blog-post-info span{
+	color:#fff;
+	}	
+
+/* newsletter
+ ------------------------------ */
+ 
+.c5-newsletter-1 {
+	width: 100%;
+	height: 60px;
+	float: left;
+	padding: 20px;
+	border-radius:40px;
+	border: 1px solid #fff;
+	background-color: #fff;
+	}
+
+.newsletter-submit-btn {
+    width: 100%;
+    height: 60px;
+    float: left;
+    padding: 0px;
+	margin-top:5px;
+	color:#fff;
+	text-transform:uppercase;
+    border-radius:40px;
+	border: 1px solid #d93030;
+	background-color: #d93030;
+}
+
+
+
+/*============ Section Titles ============ */
+
+.c6-sub-title {
+    width: 55%;
+    font-size: 22px;
+    line-height: 30px;
+    margin: 15px auto 0 auto;
+}
+.c6-sub-title.left-align {
+    width: 100%;
+    font-size: 22px;
+    line-height: 30px;
+    margin: 15px auto 0 auto;
+}
+
+.c6-big-title {
+    font-size: 70px;
+    line-height:70px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*============ Parallax Sections ============ */
+.parallax-1 {
+    background: rgba(0, 0, 0, 0) url("http://via.placeholder.com/2000x1300") no-repeat fixed 50% 0;
+}
+.parallax-2 {
+    background: rgba(0, 0, 0, 0) url("http://via.placeholder.com/2000x1300") no-repeat fixed 50% 0;
+}
+.parallax-3{
+    background: rgba(0, 0, 0, 0) url("http://via.placeholder.com/2000x1300") no-repeat fixed 50% 0;
+}
+.parallax-4{
+    background: rgba(0, 0, 0, 0) url("http://via.placeholder.com/2000x1300") no-repeat fixed 50% 0;
+}
+
+
+
+
+
+
+
+
+/*----------------------------RESPONSIVE STYLES------------------------------- */
+/* ---------- MAX 1024PX ---------- */
+@media screen and (max-width: 1024px) {
+	
+.c5-big-title {
+    font-size: 46px;
+}
+.c5-feature-box-5 .img-box .overlay {
+    padding:30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+}
+	
+	
+
+	
+	
+/* ---------- MAX 991PX ---------- */
+@media only screen and (max-width: 991px) {
+
+.container{ 
+	width:94%;
+}
+
+
+
+
+}
+
+
+
+/* ---------- MAX 800PX ---------- */
+@media only screen and (max-width: 800px) {
+
+
+
+
+
+
+
+
+
+
+ 
+}
+
+
+
+/* ---------- MAX 768PX ---------- */
+@media only screen and (max-width: 768px) {
+
+
+
+
+
+
+
+
+
+
+}
+
+
+/* ---------- MAX 767PX ---------- */
+@media only screen and (max-width: 767px) {
+
+}
+
+
+@media screen and (max-width: 640px) {
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+@media screen and (max-width: 480px) {
+.c6-feature-box-4 {
+    padding: 30px;
+}
+.c6-feature-box-3 {
+    padding: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+}
+
+/* ---------- MAX 360PX ---------- */
+@media screen and (max-width: 360px) {
+
+.c6-big-title {
+    font-size: 48px;
+    line-height: 46px;
+}
+}
+
+
+/* ---------- MAX 320PX ---------- */
+@media only screen and (max-width: 320px) {
+
+
+
+
+}

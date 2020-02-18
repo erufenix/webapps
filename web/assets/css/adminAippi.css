@@ -1,0 +1,82 @@
+#page-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto
+}
+
+.tomato{
+  border:1px solid tomato;
+}
+
+.logo-aippi img{
+  margin: 10px 10px;
+}
+
+.bold_medium{
+  font-weight: 500;
+}
+
+.bold_semi_bold{
+  font-weight: 600;
+}
+
+.bold_bold{
+  font-weight: 700;
+  color: #242a30;
+}
+
+ul.items li{
+  padding: 4px 5px;
+  line-height: 14px;
+}
+
+.invoice-sec {
+    display: table-cell;
+    width: 1%;
+}
+
+.editablin{
+  text-decoration: none;
+  border-bottom: dashed 1px #0088cc;
+}
+
+.header .navbar-brand{
+  height: 70px;
+}
+.page-header-fixed {
+  padding-top: 70px;
+}
+
+.login .login-header .brand {
+  font-size: 22px;
+}
+
+.avatar{
+  width: 32px;
+  height: 32px;
+}
+
+/* Scrollbar */
+.scrollbar {
+  margin: 0 0 1em 0;
+  height: 5px;
+  background: #ccc;
+  line-height: 0;
+}
+.scrollbar .handle {
+  width: 100px;
+  height: 100%;
+  background: #292a33;
+  cursor: pointer;
+}
+.scrollbar .handle .mousearea {
+  position: absolute;
+  top: -9px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}

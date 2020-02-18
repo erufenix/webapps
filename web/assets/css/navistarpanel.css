@@ -1,0 +1,7 @@
+.brand-link .brand-image {
+  max-height: 100%;
+}
+
+[class*='sidebar-dark'] .brand-link {
+  border-bottom: 0px solid #4b545c;
+}

@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'Michelin';
+  src: url('/fonts/michelin/fonts/Michelin-Light.eot');
+  src:
+    url('/fonts/michelin/fonts/Michelin-Light.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/michelin/fonts/Michelin-Light.woff2') format('woff2'),
+    url('/fonts/michelin/fonts/Michelin-Light.woff') format('woff'),
+    url('/fonts/michelin/fonts/Michelin-Light.ttf') format('truetype'),
+    url('/fonts/michelin/fonts/Michelin-Light.svg#Michelin-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Michelin';
+  src: url('/fonts/michelin/fonts/Michelin-Regular.eot');
+  src:
+    url('/fonts/michelin/fonts/Michelin-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/michelin/fonts/Michelin-Regular.woff2') format('woff2'),
+    url('/fonts/michelin/fonts/Michelin-Regular.woff') format('woff'),
+    url('/fonts/michelin/fonts/Michelin-Regular.ttf') format('truetype'),
+    url('/fonts/michelin/fonts/Michelin-Regular.svg#Michelin-Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Michelin';
+  src: url('/fonts/michelin/fonts/Michelin-SemiBold.eot');
+  src:
+    url('/fonts/michelin/fonts/Michelin-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/michelin/fonts/Michelin-SemiBold.woff2') format('woff2'),
+    url('/fonts/michelin/fonts/Michelin-SemiBold.woff') format('woff'),
+    url('/fonts/michelin/fonts/Michelin-SemiBold.ttf') format('truetype'),
+    url('/fonts/michelin/fonts/Michelin-SemiBold.svg#Michelin-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Michelin';
+  src: url('/fonts/michelin/fonts/Michelin-Bold.eot');
+  src:
+    url('/fonts/michelin/fonts/Michelin-Bold.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/michelin/fonts/Michelin-Bold.woff2') format('woff2'),
+    url('/fonts/michelin/fonts/Michelin-Bold.woff') format('woff'),
+    url('/fonts/michelin/fonts/Michelin-Bold.ttf') format('truetype'),
+    url('/fonts/michelin/fonts/Michelin-Bold.svg#Michelin-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Michelin';
+  src: url('/fonts/michelin/fonts/Michelin-Black.eot');
+  src:
+    url('/fonts/michelin/fonts/Michelin-Black.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/michelin/fonts/Michelin-Black.woff2') format('woff2'),
+    url('/fonts/michelin/fonts/Michelin-Black.woff') format('woff'),
+    url('/fonts/michelin/fonts/Michelin-Black.ttf') format('truetype'),
+    url('/fonts/michelin/fonts/Michelin-Black.svg#Michelin-Black') format('svg');
+  font-weight: 900;
+  font-style: normal;
+}
