@@ -1,0 +1,15 @@
+{
+  "typeAcquisition": {
+    "include": [
+      "jquery"
+    ]
+  },
+  "exclude": [
+    "node",
+    "node_modules",
+    "var",
+    "vendor",
+    "var"
+  ],
+  "typescript.tsserver.log": "verbose"
+}

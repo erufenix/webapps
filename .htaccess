@@ -1,0 +1,13 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule ^ - [L]
+
+RewriteCond %{DOCUMENT_ROOT}/web/$1 -f
+RewriteRule ^(.+?)/?$ /web/$1 [L]
+
+RewriteCond %{DOCUMENT_ROOT}/web/$1 !-f
+RewriteRule ^(.+?)/?$ /web/index.php [L]
