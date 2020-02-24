@@ -41,6 +41,7 @@ $app->mount('/SFLOOKwedding', new Controller\eventos17\bodaSFLOOKController());
 $app->mount('/LIICNCP', new Controller\eventos17\LIICNCPController());
 $app->mount('/expoRail20', new Controller\eventos17\expoRail20Controller());
 $app->mount('/ANCAM', new Controller\eventos17\ancamController());
+$app->mount('/SICC', new Controller\eventos17\SICCController());
 
 $app->mount('/hookSB', new Controller\PP\hooksbController());
 //$app->mount('/mAlliance', new Controller\operaciones\allianceController());

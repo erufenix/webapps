@@ -75,7 +75,7 @@
 						<div class="col-md-6 col-sm-12">
 						  <label class="control-label">Pagar por</label>
 							<div class="c-radio-inline">
-								<div class="c-radio {{ (all == true) ? 'hidden' : ''}}" id="rnight">
+								<div class="c-radio {{ (all == true) ? ' hidden' : ''}}" id="rnight">All
 									<input id="ppN" class="c-radio ppor" name="pagoPor" type="radio" value="N" required>
 									<label for="ppN" class="normal">
 										<span class="inc"></span>
@@ -84,7 +84,7 @@
 									</label>
 								</div>
 								<div class="c-radio" id="rall">
-									<input id="ppC" class="c-radio ppor" name="pagoPor" type="radio" value="C" required {{(all == true) ? 'checked' : ''}}>
+									<input id="ppC" class="c-radio ppor" name="pagoPor" type="radio" value="C" required {{(all == true) ? ' checked' : ''}}>
 									<label for="ppC" class="normal">
 										<span class="inc"></span>
 										<span class="check"></span>

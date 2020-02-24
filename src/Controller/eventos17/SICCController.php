@@ -86,8 +86,8 @@ class SICCController implements ControllerProviderInterface
       $hoteles[1] =
         array(
           'index'         => '1',
-          'nombre'        => 'CAMINO REAL GUADALAJARA',
-          'img'           => 'caminoreal.jpg',
+          'nombre'        => 'IBEROSTAR CANCUN',
+          'img'           => 'ibero.jpg',
           'agotado'       => false,
           'habitaciones'  => array(
             array(
@@ -96,15 +96,15 @@ class SICCController implements ControllerProviderInterface
                 'en'    => '',
               ),
               'costo' => array(
-                'mxn'   =>   '1,765.50',
+                'mxn'   =>   '5,103.00',
                 'usd'   =>   ''
               ),
               'costor'    => array(
-                'mxn'   =>   '1,765.50',
+                'mxn'   =>   '5,103.00',
                 'usd'   =>   '0'
               ),
               'propinas'  =>   array(
-                'mxn'   =>   '30.00',
+                'mxn'   =>   '0.00',
                 'usd'   =>   '0'
                       ),
               'pack' => 0,
@@ -117,15 +117,15 @@ class SICCController implements ControllerProviderInterface
                 'en'    => '',
               ),
               'costo' => array(
-                'mxn'   =>   '1,944.00',
+                'mxn'   =>   '6,004.00',
                 'usd'   =>   ''
               ),
               'costor'    => array(
-                'mxn'   =>   '1,944.00',
+                'mxn'   =>   '6,004.00',
                 'usd'   =>   '0'
               ),
               'propinas'  =>   array(
-                'mxn'   =>   '60.00',
+                'mxn'   =>   '0.00',
                 'usd'   =>   '0'
                       ),
               'pack' => 0,
@@ -138,26 +138,28 @@ class SICCController implements ControllerProviderInterface
                                   'es' => 
                                     '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                     '<ul>'.
-                                    '<li>Renta de habitación por noche con desayuno buffet, impuestos y propinas a camaristas. 
+                                    '<li>El servicio de TODO-INCLUIDO, es decir la tarifa da derecho a la habitación, los alimentos y bebidas que se ofrecen en el HOTEL.								 
                                     </li>'.
                                     '</ul>'.
                                     '<h3 class="c-theme-font c-font-uppercase">Notas Importantes:</h3>'.
                                     '<ul>'.
-                                    '<li>Se realizara cargo por persona por entrada y salida por concepto de propinas a bell boys (Sencilla $30.00 / Doble $60.00).
+                                    '<li>Incluye todos los impuestos, vigentes aplicables y propinas.
                                     </li>'.
-                                    '<li>Persona extra $400.00 por habitación, por noche.
+                                    '<li>Derecho a dos menores de 13 años comprartiendo la habitacion con 2 adultos (de conformidad a las politicas vigentes en el hotel al momento de realizar el check in
                                     </li>'.
-                                    '<li>Check In 15:00 hrs / Check Out 13:00 hrs.
+                                    '<li>Check In es a las 15:00 horas y Check Out a las 12:00 horas
                                     </li>'.
                                     '<li>Tarifas cotizadas en MN.
                                     </li>'.
+                                    '<li>EL HOTEL manifiesta a EL CLIENTE que por Disposición Oficial existe un Derecho de Saneamiento Ambiental, por el importe de $26.06 MN al momento de realizar el check in el cual se calcula por habitación, por noche de conformidad a las disposiciones legales vigentes.
+                                    </li>'.                                    
                                     '</ul>'.                                   
                                     '',
                                 'en' => ''.
                                         '',
                   )
             );
-            
+
         if(empty($qry)){
           $vmode = 'live';
         }
@@ -182,10 +184,10 @@ class SICCController implements ControllerProviderInterface
           'fechas'        => $this->fechas,
           'sede'          => $this->sede,
           'claveEvento'   => 'SICC',
-          'fechaLleMin'   => '2020-10-13',
-          'fechaLleMax'   => '2020-10-16',
-          'fechaSalMin'   => '2020-10-14',
-          'fechaSalMax'   => '2020-10-17',
+          'fechaLleMin'   => '2020-10-23',
+          'fechaLleMax'   => '2020-10-24',
+          'fechaSalMin'   => '2020-10-24',
+          'fechaSalMax'   => '2020-10-24',
           'disabledDates' => false,
           'noches'        => 2,
           'urlIndex'      => $app['url_generator']->generate(SICC.".index"),
@@ -195,14 +197,14 @@ class SICCController implements ControllerProviderInterface
           'urlChekout'    => $app['url_generator']->generate(SICC.".checkOut"),
           'urlExecute'    => $app['url_generator']->generate(SICC.".execute"),
           'urlPayReturn'  => $app['url_generator']->generate(SICC.".payReturn"),
-          'rutaImg'       => 'SICC',
+          'rutaImg'       => 'sicc',
           'links'         => array(
                               'es' => array(
-                                        'politicas' => array(
+                                        /*'politicas' => array(
                                                         'url'   => $app['url_generator']->generate(SICC.".politicas"),
                                                         'name'  => 'Políticas de reservación'
                                                         ),
-                                        'formato'   => array()
+                                        'formato'   => array()*/
                                       ),
                               'en' => array(
                                         'politicas' => array(
@@ -237,7 +239,8 @@ class SICCController implements ControllerProviderInterface
           'dateMsg'         => array(
                                ),
           '_msg_'           => array(),
-          'first'           => 1
+          'first'           => 1,
+          'allGbl'          => true
           ));
     }
  

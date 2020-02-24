@@ -388,7 +388,7 @@ $(document).ready(function() {
 				    $(".allfechasmsg").removeClass("c-font-yellow animated shake");  			
 		  		}
 		  		else{
-			      $(".allfechasmsg").html("<label><i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Selecciona las fechas para toda la estancia</label>");
+			      $(".allfechasmsg").html("<label><i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Selecciona las fechas para toda la estancias</label>");
 			      $(".allfechas .control-label").delay( 300 ).addClass("c-font-blue animated shake");
 			      $(".allfechasmsg").delay( 300 ).addClass("c-font-yellow animated shake");		
 		  		}
