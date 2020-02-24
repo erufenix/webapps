@@ -200,11 +200,11 @@ class SICCController implements ControllerProviderInterface
           'rutaImg'       => 'sicc',
           'links'         => array(
                               'es' => array(
-                                        /*'politicas' => array(
+                                        'politicas' => array(
                                                         'url'   => $app['url_generator']->generate(SICC.".politicas"),
                                                         'name'  => 'Políticas de reservación'
                                                         ),
-                                        'formato'   => array()*/
+                                        'formato'   => array()
                                       ),
                               'en' => array(
                                         'politicas' => array(
