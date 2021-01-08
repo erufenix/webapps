@@ -102,7 +102,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 ));
 
 $app->register(new DoctrineOrmServiceProvider(), array(
-	'orm.ems.default' => 'devapps',
+	'orm.ems.default' => 'reservacion',
 	'orm.ems.options'	=> array(
 		'reservacion' => array(
 			'connection'	=> 'reservacion',
@@ -316,7 +316,7 @@ $app->register(new SwiftmailerServiceProvider(), array(
 			'host'				=> 'server.tcevents.com',
 			'port' 				=> 465,
 			'username' 		=> 'no--reply@sin-tcevents.mx',
-			'password' 		=> 'h(^;pHDn.2',
+			'password' 		=> '9NFxVI_78q)q',
 			'encryption' 	=> 'ssl',
 			'auth_mode' 	=> 'login',
 			'transport' 	=> 'smtp'

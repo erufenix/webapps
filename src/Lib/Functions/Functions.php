@@ -122,7 +122,7 @@ class Functions {
 		]);
 
 		try {
-			$response = $client->post("http://api.geonames.org/countryInfoJSON?username=erufenix&lang=$lang",
+			$response = $client->post("http://api.geonames.org/countryInfoJSON?username=erubi&lang=$lang",
 			    [
 			    	'body' => '{}'
 			  	]

@@ -27,7 +27,7 @@ class SICCController implements ControllerProviderInterface
     {
         $this->evento         = "1ER SEMINARIO INTERNACIONAL DE CONSERVACION DE CARRETERAS";
         $this->fechas         = array(
-                                'es' => '23 Y 24 DE ABRIL DEL 2020',
+                                'es' => '29 Y 30 DE OCTUBRE DEL 2020',
                                 'en' => ''
                               );
         $this->sede           = array(
@@ -38,14 +38,17 @@ class SICCController implements ControllerProviderInterface
                                 'name'      => 'Carlos Aguirre',
                                 'sortName'  => 'CA',
                                 'mail'      => 'caguirre@tycgroup.com',
-                                'phone'     => '+52 55 5148 75 00 ext: 69'
+                                'phone'     => '+52 55 5148 75 00 ext: 69',
+                                'cell'      => '55 4860 6845'
+                                
                               );
         $this->extOperador  =   array(
                                 array(
                                   'name'      => 'Mariela Arellano',
                                   'sortName'  => 'MA',
                                   'mail'      => 'marellano@tycgroup.com',
-                                  'phone'     => '+52 55 5148 75 00 ext: 11'
+                                  'phone'     => '+52 55 5148 75 00 ext: 11',
+                                  'cell'      => '55 4540 8447'
                                 )
                               );
     }
@@ -74,9 +77,9 @@ class SICCController implements ControllerProviderInterface
     public function index(Request $request, Application $app, $idHotel, $currency, $lang)
     {
       $pages = array(
-                ''      => 'universal/es.index.twig.html',
-                'es'    => 'universal/es.index.twig.html',
-                'en'    => 'universal/en.index.twig.html'
+                ''      => 'SICC/es.index.twig.html',
+                'es'    => 'SICC/es.index.twig.html',
+                'en'    => 'SICC/en.index.twig.html'
       );
       $fn       = new Functions;
       $paises   = array_column($fn->getCountryListArray($lang)['content']['geonames'], 'countryName', 'geonameId');
@@ -92,7 +95,7 @@ class SICCController implements ControllerProviderInterface
           'habitaciones'  => array(
             array(
               'tipo'  => array(
-                'es'    => 'HABITACION DE LUJO SENCILLA',
+                'es'    => 'HABITACION DE LUJO SENCILLA (Una Persona)',
                 'en'    => '',
               ),
               'costo' => array(
@@ -113,7 +116,7 @@ class SICCController implements ControllerProviderInterface
             ),
             array(
               'tipo'  => array(
-                'es'    => 'HABITACION DE LUJO DOBLE',
+                'es'    => 'HABITACION DE LUJO DOBLE (Dos Personas)',
                 'en'    => '',
               ),
               'costo' => array(
@@ -143,7 +146,7 @@ class SICCController implements ControllerProviderInterface
                                     '</ul>'.
                                     '<h3 class="c-theme-font c-font-uppercase">Notas Importantes:</h3>'.
                                     '<ul>'.
-                                    '<li>Incluye todos los impuestos, vigentes aplicables y propinas.
+                                    '<li>Tarifa Por noche Incluye todos los impuestos, vigentes aplicables y propinas.
                                     </li>'.
                                     '<li>Derecho a dos menores de 13 años comprartiendo la habitacion con 2 adultos (de conformidad a las politicas vigentes en el hotel al momento de realizar el check in
                                     </li>'.
@@ -152,13 +155,199 @@ class SICCController implements ControllerProviderInterface
                                     '<li>Tarifas cotizadas en MN.
                                     </li>'.
                                     '<li>EL HOTEL manifiesta a EL CLIENTE que por Disposición Oficial existe un Derecho de Saneamiento Ambiental, por el importe de $26.06 MN al momento de realizar el check in el cual se calcula por habitación, por noche de conformidad a las disposiciones legales vigentes.
-                                    </li>'.                                    
+                                    </li>'.
+                                    '<li>'.
+                                    'Los menores tienen un costo por noche de $ 1,425.00 M.N aplicable de la siguiente forma:'.
+                                    '<ul>'.
+                                    '<li>'.
+                                    '0-2 años menores gratis'.
+                                    '</li>'.
+                                    '<li>'.
+                                    '3 a 12 aplica tarifa de menor siempre que comparta la misma habitación con 2 adultos.'.
+                                    '</li'.
+                                    '</ul>'.
+                                    '</li>'.
                                     '</ul>'.                                   
                                     '',
                                 'en' => ''.
                                         '',
                   )
             );
+            
+            
+      $hoteles[2] =
+        array(
+          'index'         => '2',
+          'nombre'        => 'PARADISUS CANCÚN',
+          'img'           => 'Paradisus-Cancun.jpg',
+          'agotado'       => false,
+          'habitaciones'  => array(
+            array(
+              'tipo'  => array(
+                'es'    => 'HABITACION DE LUJO SENCILLA',
+                'en'    => '',
+              ),
+              'costo' => array(
+                'mxn'   =>   '4,807.88',
+                'usd'   =>   ''
+              ),
+              'costor'    => array(
+                'mxn'   =>   '4,807.88',
+                'usd'   =>   '0'
+              ),
+              'propinas'  =>   array(
+                'mxn'   =>   '0.00',
+                'usd'   =>   '0'
+                      ),
+              'pack' => 0,
+              'pp'        => 0,
+              'hagotada' => false
+            ),
+            array(
+              'tipo'  => array(
+                'es'    => 'HABITACION DE LUJO DOBLE',
+                'en'    => '',
+              ),
+              'costo' => array(
+                'mxn'   =>   '5,627.88',
+                'usd'   =>   ''
+              ),
+              'costor'    => array(
+                'mxn'   =>   '5,627.88',
+                'usd'   =>   '0'
+              ),
+              'propinas'  =>   array(
+                'mxn'   =>   '0.00',
+                'usd'   =>   '0'
+                      ),
+              'pack' => 0,
+              'pp'        => 0,
+              'hagotada' => false
+            )                                                                     
+          ),
+          'all' => true,
+          'mensajes'          => array(
+                                  'es' => 
+                                    '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
+                                    '<ul>'.
+                                    '<li>Habitación de Lujo con Terreza								 
+                                    </li>'.
+                                    '<li>Propinas a bell boys y camaristas
+                                    </li>'.
+                                    '<li>Desyauno,comida y cena tipo buffet
+                                    </li>'.
+                                    '<li>Cena en restaurantes de especialidades (previa resevración)
+                                    </li>'.
+                                    '<li>Servicio de barra libre premium, en centros de consumo
+                                    </li>'.
+                                    '<li>Servicio a cuarto (menú preestablecido) existe un cargo por servicio por orden
+                                    </li>'.
+                                    '<li>Mini bar (4 refrescos, 2 botella de agua y botana)
+                                    </li>'.                                    
+                                    '</ul>'.
+                              
+                                    '',
+                                'en' => ''.
+                                        '',
+                  )
+            );
+            
+      $hoteles[3] =
+        array(
+          'index'         => '3',
+          'nombre'        => 'FIESTA AMERICANA CONDESA CANCÚN',
+          'img'           => 'fiesta_americana_condesa.jpg',
+          'agotado'       => false,
+          'hidden'        => false,
+          'habitaciones'  => array(
+            array(
+              'tipo'  => array(
+                'es'    => 'HABITACION SENCILLA',
+                'en'    => '',
+              ),
+              'costo' => array(
+                'mxn'   =>   '3,727.88',
+                'usd'   =>   ''
+              ),
+              'costor'    => array(
+                'mxn'   =>   '3,727.88',
+                'usd'   =>   '0'
+              ),
+              'propinas'  =>   array(
+                'mxn'   =>   '0.00',
+                'usd'   =>   '0'
+                      ),
+              'pack' => 0,
+              'pp'        => 0,
+              'hagotada' => false
+            ),
+            array(
+              'tipo'  => array(
+                'es'    => 'HABITACION DOBLE',
+                'en'    => '',
+              ),
+              'costo' => array(
+                'mxn'   =>   '5,027.88',
+                'usd'   =>   ''
+              ),
+              'costor'    => array(
+                'mxn'   =>   '5,027.88',
+                'usd'   =>   '0'
+              ),
+              'propinas'  =>   array(
+                'mxn'   =>   '0.00',
+                'usd'   =>   '0'
+                      ),
+              'pack' => 0,
+              'pp'        => 0,
+              'hagotada' => false
+            )                                                                     
+          ),
+          'all' => true,
+          'mensajes'          => array(
+                                  'es' => 
+                                    '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
+                                    '<ul>'.
+                                    '<li>Hospedaje en Habitación de Lujo.								 
+                                    </li>'.
+                                    '<li>Desayuno, comida y cena en los restaurantes del hotel de acuerdo a los horarios de operación. No se permiten reservaciones grupales en los restaurantes del hotel.
+                                    </li>'.
+                                    '<li>Barra Libre de reconocidas marcas de prestigio internacional en los restaurantes y bares del hotel de acuerdo a los horarios de operación. 
+                                    </li>'.
+                                    '<li>Variedad de refrigerios en el área de alberca de acuerdo al menú de Pool Concierge, refrigerios en la alberca (durante horarios de operación).
+                                    </li>'.
+                                    '<li>Mini Bar incluyendo refrescos, cerveza nacional y agua embotellada. Resurtido diariamente.
+                                    </li>'.
+                                    '<li>Servicio a cuartos 24 horas.
+                                    </li>'.
+                                    '<li>Conexión al servicio de internet del hotel en habitación y áreas abiertas. No es una conexión dedicada para el grupo.
+                                    </li>'.
+                                    '<li>Acceso al gimnasio.
+                                    </li>'.
+                                    '<li>Fiesta kids club.
+                                    </li>'.
+                                    '<li>Fiesta teens club.
+                                    </li>'.
+                                    '<li>Centro de Entretenimiento y actividades recreativas para la familia.
+                                    </li>'.
+                                    '<li>Llamadas telefónicas locales (no aplica a teléfonos celulares).
+                                    </li>'.
+                                    '<li>Cargos por servicio e Impuestos Incluidos.
+                                    </li>'.
+                                    '<li>Servicio de Concierge y Recepción las 24 hrs
+                                    </li>'.
+                                    '<li>Seguridad las 24 hrs
+                                    </li>'.
+                                    '<li>Todos los impuestos y propinas.
+                                    </li>'.                                       
+                                    '</ul>'.
+                              
+                                    '',
+                                'en' => ''.
+                                        '',
+                  )
+            );            
+            
 
         if(empty($qry)){
           $vmode = 'live';
@@ -184,10 +373,10 @@ class SICCController implements ControllerProviderInterface
           'fechas'        => $this->fechas,
           'sede'          => $this->sede,
           'claveEvento'   => 'SICC',
-          'fechaLleMin'   => '2020-10-23',
-          'fechaLleMax'   => '2020-10-24',
-          'fechaSalMin'   => '2020-10-24',
-          'fechaSalMax'   => '2020-10-24',
+          'fechaLleMin'   => '2020-10-28',
+          'fechaLleMax'   => '2020-10-29',
+          'fechaSalMin'   => '2020-10-29',
+          'fechaSalMax'   => '2020-10-31',
           'disabledDates' => false,
           'noches'        => 2,
           'urlIndex'      => $app['url_generator']->generate(SICC.".index"),
@@ -237,10 +426,14 @@ class SICCController implements ControllerProviderInterface
           'hostFull'        => sprintf("%s://%s%s", (!empty($request->server->get('HTTPS')) && $request->server->get('HTTPS') == 'on') ? 'https' : 'http', $request->server->get('SERVER_NAME'), $request->server->get('REQUEST_URI')),
           'mode'            => $vmode,
           'dateMsg'         => array(
+                                'es' => '<i class="fa fa-info-circle"></i> En caso de requerir reservaciones con fecha del 26 ,27 de octubre o posteriores  31 de octubre, 1 de noviembre favor de contactar a nuestros ejecutivos <strong>marellano@tycgroup.com</strong> que se encuentra al final de la reservación'
                                ),
           '_msg_'           => array(),
           'first'           => 1,
-          'allGbl'          => true
+          'allGbl'          => true,
+          'blkAco'          => true,
+          'notaHotel'       => '<blockquote class="c-border-red c-bg-red-3 c-bg-red-3-font"><p><i class="fa fa-info-circle"></i> TODO INCLUIDO : Hospedaje , Alimentos y Bebidas</p></blockquote>',
+          'customSelect'    => 'size="4"'
           ));
     }
  
@@ -305,8 +498,8 @@ class SICCController implements ControllerProviderInterface
                 ->setTo($request->request->get('correo'), $nombre)
                 ->setBcc(array(
                     "erubi@tycgroup.com" => "Edgar Rubi",
-                    "marellano@tycgroup.com" => "Mariela Arellano",
-                    "caguirre@tycgroup.com" => "Carlos Aguirre"
+                    //"marellano@tycgroup.com" => "Mariela Arellano",
+                    //"caguirre@tycgroup.com" => "Carlos Aguirre"
                   ))
                 ->setFrom('no--reply@sin-tcevents.mx', 'Reservacion')
                 ->setSubject($this->evento);
@@ -314,9 +507,9 @@ class SICCController implements ControllerProviderInterface
               $mail
                 ->setTo("erubi@tycgroup.com", "Edgar Rubi")
                 ->setBcc(array(
-                    "lcazares@tcevents.com" => "Luis Cazares",
-                    "marellano@tycgroup.com" => "Mariela Arellano",
-                    "caguirre@tycgroup.com" => "Carlos Aguirre"
+                    //"lcazares@tcevents.com" => "Luis Cazares",
+                   //"marellano@tycgroup.com" => "Mariela Arellano",
+                    //"caguirre@tycgroup.com" => "Carlos Aguirre"
                   ))
                 ->setFrom('no--reply@sin-tcevents.mx', 'Reservacion')
                 ->setSubject("Inicio de proceso Reservacion " . $this->evento);

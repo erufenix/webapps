@@ -1,4 +1,4 @@
-{% extends "layouts/reservacion/layout_universal.twig.html" %}
+{% extends "layouts/reservacion/layout_universal_c.twig.html" %}
 {% block content %}
 	{% set paises = paises | sort %}
 	<div class="container">
@@ -147,78 +147,89 @@
 				<div class="col-sm-6 col-md-12 c-margin-b-15">
 					<hr>
 				</div>
-				<div class="col-sm-12 col-md-6">
-					<div class="from-group">
-						<div class="row">
-							<label class="col-md-4 control-label">Hotel</label>
-							<div class="col-md-6">
-								<select class="form-control  c-square c-theme input-sm" id="idHotel" {{ customSelect is defined ? customSelect | raw : '' }} name="idHotel" required {{ (blkAll is defined and blkAll == true) ? ' disabled': ''  }}>
-									<option value="" selected style="text-align:center; font-weight: bold;">Seleccionar</option>
-									{% for ht in hoteles %}
-										{% set hidden = (ht.hidden is defined and ht.hidden == true )  ? true :  false %}
-										{% if hidden is empty %}
-										{% set select = '' %}
-										{% if ht.index == idHotel %}
-											{% set select = 'selected' %}
-										{% endif %}
-										{% if noOne is defined and noOne == true %}
-											{% set select = (ht.index == idHotel) ? 'selected' : '' %}
-										{% endif %}
-										{% if first is defined and idHotel == 1 %}
-											{% set select = (ht.index == first) ? 'selected' : '' %}
-										{% endif %}																											
-										<option value="{{ ht.index }}" {{ select }} {{ (ht.agotado == true) ? 'disabled' : '' }}>{{ ht.nombre }} {{ (ht.agotado == true) ? '[AGOTADO]' : '' }}</option>
-										{% endif %}
-									{% endfor %}
-								</select>
+        <div class="col-sm-12 col-md-12">
+					{% if notaHotel is defined %}
+					<div class="row">
+							<div class="col-sm-12 col-md-12">
+							{{ notaHotel | raw }}
 							</div>
-						</div>
-						<div class="row">
-							<label class="col-md-12 control-label">Habitaciones</label>
-							<div class="col-sm-12 col-md-12" id="habitaciones">
-								<div class="text-center"><span class="has-error">Seleccionar el hotel</span></div>
-							</div>
-							<div class="col-md-12" data-div-for="habitacionc">
-								<small style="display:none;" class="help-block" data-fv-validator="notEmpty" data-fv-for="habitacionc" data-fv-result="INVALID">Por favor introduce un valor</small>
-							</div>
-						</div>
-						{% if notaHotel is defined %}
-						<div class="row">
-						    <div class="col-sm-12 col-md-12">
-						    {{ notaHotel | raw }}
-						    </div>
-						</div>
-						{% endif %}
-						</div>
 					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="item">
-							<div class="c-content-person-1 text-center">
-								<div class="c-caption c-content-overlay">
-									<div class="c-overlay-wrapper">
-										<div class="c-overlay-content text-center" align="center">
-											<a href="{{ asset('assets')}}/img/hotel/source.png" data-lightbox="fancybox" data-fancybox-group="gallery-1" id="htimg">
-												<i class="icon-magnifier"></i>
-											</a>
+					{% endif %}
+					<div data-div-for="habitacionc" class="hide">
+						<span class="c-content-label c-font-uppercase c-font-bold c-bg-red">
+							{{ lang == 'es' ? 'Seleccione la habitación' : 'Select the room' }}
+						</span>	
+					</div>
+        	<div class="from-group">
+            {% for ht in hoteles %}
+            {% set i = loop.index  %}
+						{% set hidden = (ht.hidden is defined and ht.hidden == true )  ? true :  false %}
+						{% if hidden is empty %}
+							<div class="from-group row">
+								<div class="col-sm-12 col-md-6">
+									<div class="item">
+										<div class="c-content-person-1 text-center">
+											<div class="c-body">
+												<div class="c-position text-center no-float" id="htnombre"><strong>{{ ht.nombre }}</strong></div>
+											</div>                  
+											<div class="c-caption c-content-overlay">
+												<div class="c-overlay-wrapper">
+													<div class="c-overlay-content text-center" align="center">
+														<a href="{{ asset('assets')}}/img/hotel/{{ rutaImg }}/{{ ht.img }}" data-lightbox="fancybox" data-fancybox-group="gallery-1" id="htimg">
+															<i class="icon-magnifier"></i>
+														</a>
+													</div>
+												</div>
+												<img class="c-overlay-object img-responsive center-block" src="{{ asset('assets')}}/img/hotel/{{ rutaImg }}/{{ ht.img }}" alt="" id="httumb" align="center">
+											</div>
 										</div>
 									</div>
-									<img class="c-overlay-object img-responsive center-block" src="{{ asset('assets')}}/img/hotel/source.png" alt="" id="httumb" align="center">
 								</div>
-								<div class="c-body">
-									<div class="c-position text-center no-float" id="htnombre"><span class="has-error">Seleccionar el hotel</span></div>
-									<div class="row">
-										<div class="col-sm-7 col-md-7 hbtipo">
-											<label class="normal pointer" for="htc' + (index + 1 ) + '">' + ((val.tipo[lang] == '') ? '&nbsp' : val.tipo[lang])  + (val.hagotada == true ? ' <span class="label label-warning c-font-slim">Agotada</span>' : '') + '</label></div>									
+								<div class="col-sm-12 col-md-6">
+									<div class="c-content-person-1">
+										<div class="c-body text-center">
+											<div class="c-position text-center no-float"><strong>Habitaciones</strong></div>
+										</div>
+										
+										{% if ht.agotado %}
+										<div class="col-sm-12 col-md-12 text-center">
+											<span class="c-content-label c-font-uppercase c-font-bold c-bg-red">AGOTADO</span>
+										</div>
+										{% else %}										
+										{% for hb in (ht.habitaciones) %}
+										<div class="from-group row">
+											<div class="col-sm-7 col-md-7 hbtipo">
+												<label class="normal pointer" for="htc{{ i }}_{{ loop.index  }}">{{ hb.tipo[lang] }} {{ hb.hagotada ?'<span class="label label-warning c-font-slim">Agotada</span>' : '' }}</label>
+											</div>
+											<div class="col-sm-3 col-md-3 hbcosto">
+												<label class="normal pointer" for="htc{{ i }}_{{ loop.index  }}">{{ currency | upper }} {{ hb.costo[currency] == '' ? '&nbsp;' : '$' ~ hb.costo[currency]   }}</label>
+											</div>
+											<div class="col-sm-2 col-md-2 hbradio">
+												<div class="c-radio">
+												<input class="c-radio htc" name="habitacionc" data-hotel-nombre="{{ ht.nombre }}" data-hotel-image="{{ ht.img }}" data-hotel-index={{ ht.index }} id="htc{{ i }}_{{ loop.index  }}" value="{{ hb.tipo[lang] }}|{{ hb.costo[currency] }}|{{ hb.propinas[currency] }}|{{ hb.pack }}|{{ hb.pp }}|{{ hb.costor[currency] }}" type="radio" required {{ hb.hagotada ? 'disabled' : ''  }}>
+												<label for="htc{{ i }}_{{ loop.index  }}">
+													<span></span><span class="check"></span><span class="box"></span>
+												</label>
+												</div>
+											</div>
+										</div>
+										{% endfor %}
+										{% endif %}
+									</div>  
+								</div>
+								<div class="col-sm-12 col-md-12">
+									<div class="c-content-title-3 c-title-sm c-theme-border c-margin-t-15" id="msgs">
+									{{ ht.mensajes[lang] | raw }}
 									</div>
+									<div class="c-content-divider c-divider-sm c-right c-bg-green ">
+                  	<i class="icon-dot no-icon c-rounded c-bg-green c-font- "></i>
+                  </div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-12">
-						<div class="c-content-title-3 c-title-sm c-theme-border c-margin-t-15" id="msgs">
-						</div>
-					</div>
-				</div>
+						{% endif %} 
+            {% endfor %}
+					</div>	
+        </div>
 				<hr>
 				<div class="row">
 					<div class="col-sm-12 col-md-12">
@@ -510,7 +521,7 @@
 					</div>
 				</div>
 				<div class="row ocultos">
-					<input type="hidden" id="operador" name="operador" value="{{ (operador is empty) ?  'MA' : operador.sortName }}">
+					<input type="hidden" id="operador" name="operador" value="MA">
 					<input type="hidden" id="claveEvento" name="claveEvento" value="{{ claveEvento }}">
 					<input type="hidden" id="divisa" name="divisa" value="{{ currency | upper }}">
 					<input type="hidden" id="currency" name="currency" value="{{ currency }}">
@@ -541,6 +552,7 @@
 					<input type="hidden" id="pmode" name="pmode" value='{{ (mode is defined) ? mode : 'live'  }}'>
 					<input type="hidden" id="blkAco" name="blkAco" value='{{ (blkAco is defined) ? blkAco : ''  }}'>
 					<input type="hidden" id="disabledDates" name="disabledDates" value='{{ ( disabledDates is defined ) ? disabledDates : false }}' >
+					<input type="hidden" id="idHotel" name="idHotel" value=''>
 				</div>
 				<div class="row c-margin-t-15">
 					<div class="col-sm-12 col-md-12" align="right">
@@ -549,9 +561,9 @@
 					</div>
 				</div>
 			</form>
-			<input type="hidden" id="hotelesJson" name="hotelesJson" value='{{ hotelesJson }}'>
+			<input type="hidden" id="hotelesJson" value='{{ hotelesJson }}'>
 			<input type="hidden" id="paises" name="paises" value=''>
-			<input type="hidden" id="operador" name="operador" value='{{ operadorJson }}'>
+			<input type="hidden" id="operador" name="operador" value='MA'>
 			<div id="result" class="row">
 				<div class="col-md-8 col-sm-10 center-block no-float">
 					<div class="c-content-feature-2 c-option-2 c-theme-bg-parent-hover">
@@ -569,7 +581,7 @@
 								<a href="javascript::;" onclick="window.location.reload(true)" class="btn btn-success">Regresar</a>
 							</div>
 						</div>
-						<div id="mpp" class="hidden">
+						<div id="mpp" class="hiddens">
 							<div class="c-icon-wrapper c-theme-bg-on-parent-hover">
 								<div class="c-content-line-icon c-theme c-icon-8"></div>
 							</div>
@@ -637,7 +649,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 
 		</div>

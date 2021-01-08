@@ -84,6 +84,12 @@
                 }                                
             }
 
+            var rectangle = $('<rect>').attr({
+                'height': settings.height,
+                'width': settings.width,
+                'rx' : settings.radius,
+                'fill': finalColor
+            });            
 
             var svg = $('<svg></svg>').attr({
                 'xmlns': 'http://www.w3.org/2000/svg',
@@ -99,6 +105,7 @@
             });
 
             svg.append(cobj);
+            svg.append(rectangle, cobj);
            // svg.append(group);
             var svgHtml = window.btoa(unescape(encodeURIComponent($('<div>').append(svg.clone()).html())));
 

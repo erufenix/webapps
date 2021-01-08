@@ -306,7 +306,7 @@ $(document).ready(function() {
         //$('#fregistro').formValidation('revalidateField', 'stm' + rel);
       }
     });
-
+  
     $(".date").datetimepicker({
         minDate: moment('2020-02-10'),
         maxDate: moment('2020-02-13'),
