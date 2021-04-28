@@ -1,20 +1,20 @@
 <?php
- 
+
 namespace Controller\eventos17;
 
 use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
- 
+
 use Symfony\Component\HttpFoundation\Request;
- 
+
 use Lib\Functions\Functions;
- 
+
 use Lib\Functions\ppPlus;
 
 //use Lib\Functions\ppplusLive as ppplus;
- 
+
 define("ANCAM","ANCAM");
- 
+
 class ancamController implements ControllerProviderInterface
 {
     private $evento;
@@ -22,7 +22,7 @@ class ancamController implements ControllerProviderInterface
     private $sede;
     private $operador;
     private $extOperador;
- 
+
     public function __construct()
     {
         $this->evento         = "XIX CONGRESO NACIONAL DE CARDIOLOGÍA";
@@ -49,8 +49,8 @@ class ancamController implements ControllerProviderInterface
                                 )
                               );
     }
- 
- 
+
+
     public function connect(Application $app)
     {
         $index = $app['controllers_factory'];
@@ -68,9 +68,9 @@ class ancamController implements ControllerProviderInterface
         $index->post('/payReturn/{lang}', sprintf('Controller\eventos17\%sController::payReturn', ANCAM))->bind(ANCAM.'.payReturn')->assert('lang', '\w+')->value('lang', 'es');
         $index->post('/payCancel/{lang}', sprintf('Controller\eventos17\%sController::payCancel', ANCAM))->bind(ANCAM.".payCancel")->assert('lang', '\w+')->value('lang', 'es');
         $index->get('/execute/{lang}', sprintf('Controller\eventos17\%sController::execute', ANCAM))->bind(ANCAM.'.execute')->assert('lang', '\w+')->value('lang', 'es');
-        return $index; 
+        return $index;
     }
- 
+
     public function index(Request $request, Application $app, $idHotel, $currency, $lang)
     {
       $pages = array(
@@ -131,14 +131,14 @@ class ancamController implements ControllerProviderInterface
               'pack' => 0,
               'pp'        => 0,
               'hagotada' => false
-            )                                                                     
+            )
           ),
           'all' => true,
           'mensajes'          => array(
-                                  'es' => 
+                                  'es' =>
                                     '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                     '<ul>'.
-                                    '<li>Renta de habitación por noche con desayuno buffet, impuestos y propinas a camaristas. 
+                                    '<li>Renta de habitación por noche con desayuno buffet, impuestos y propinas a camaristas.
                                     </li>'.
                                     '</ul>'.
                                     '<h3 class="c-theme-font c-font-uppercase">Notas Importantes:</h3>'.
@@ -151,13 +151,13 @@ class ancamController implements ControllerProviderInterface
                                     </li>'.
                                     '<li>Tarifas cotizadas en MN.
                                     </li>'.
-                                    '</ul>'.                                   
+                                    '</ul>'.
                                     '',
                                 'en' => ''.
                                         '',
                   )
             );
-             
+
       $hoteles[2] =
         array(
           'index'         => '2',
@@ -206,11 +206,11 @@ class ancamController implements ControllerProviderInterface
               'pack' => 0,
               'pp'        => 0,
               'hagotada' => false
-            )                                                                     
+            )
           ),
           'all' => false,
           'mensajes'          => array(
-                                  'es' => 
+                                  'es' =>
                                     '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                     '<ul>'.
                                     '<li>Renta de habitación por noche con desayuno continental, impuestos y propinas a camaristas.
@@ -224,7 +224,7 @@ class ancamController implements ControllerProviderInterface
                                     </li>'.
                                     '<li>Tarifas cotizadas en MN.
                                     </li>'.
-                                    '</ul>'.                                    
+                                    '</ul>'.
                                     '',
                                 'en' => ''.
                                         '',
@@ -279,11 +279,11 @@ class ancamController implements ControllerProviderInterface
               'pack' => 0,
               'pp'        => 0,
               'hagotada' => false
-            )                                                                     
+            )
           ),
           'all' => false,
           'mensajes'          => array(
-                                  'es' => 
+                                  'es' =>
                                     '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                     '<ul>'.
                                     '<li>Renta de habitación por noche con desayuno buffet, impuestos,propinas a camaristas y bell boys.
@@ -295,7 +295,7 @@ class ancamController implements ControllerProviderInterface
                                     </li>'.
                                     '<li>Tarifas cotizadas en MN.
                                     </li>'.
-                                    '</ul>'.                                    
+                                    '</ul>'.
                                     '',
                                 'en' => ''.
                                         '',
@@ -350,11 +350,11 @@ class ancamController implements ControllerProviderInterface
                   'pack' => 0,
                   'pp'        => 0,
                   'hagotada' => false
-                )                                                                     
+                )
               ),
               'all' => false,
               'mensajes'          => array(
-                                      'es' => 
+                                      'es' =>
                                         '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                         '<ul>'.
                                         '<li>Renta de habitación por noche con desayuno buffet, impuestos y propinas a camaristas.
@@ -366,7 +366,7 @@ class ancamController implements ControllerProviderInterface
                                         </li>'.
                                         '<li>Tarifas cotizadas en MN.
                                         </li>'.
-                                        '</ul>'.                               
+                                        '</ul>'.
                                         '',
                                     'en' => ''.
                                             '',
@@ -421,11 +421,11 @@ class ancamController implements ControllerProviderInterface
                   'pack' => 0,
                   'pp'        => 0,
                   'hagotada' => false
-                )                                                                     
+                )
               ),
               'all' => false,
               'mensajes'          => array(
-                                      'es' => 
+                                      'es' =>
                                         '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                         '<ul>'.
                                         '<li>Renta de habitación por noche con desayuno buffet, impuestos y propinas a camaristas.
@@ -437,13 +437,13 @@ class ancamController implements ControllerProviderInterface
                                         </li>'.
                                         '<li>Tarifas cotizadas en MN.
                                         </li>'.
-                                        '</ul>'.                               
+                                        '</ul>'.
                                         '',
                                     'en' => ''.
                                             '',
                       )
                 );
-                
+
       $hoteles[5] =
                 array(
                   'index'         => '5',
@@ -492,11 +492,11 @@ class ancamController implements ControllerProviderInterface
                       'pack' => 0,
                       'pp'        => 0,
                       'hagotada' => false
-                    )                                                                     
+                    )
                   ),
                   'all' => false,
                   'mensajes'          => array(
-                                          'es' => 
+                                          'es' =>
                                             '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                             '<ul>'.
                                             '<li>Renta de habitación por noche con desayuno buffet, impuestos y propinas a camaristas.
@@ -511,12 +511,12 @@ class ancamController implements ControllerProviderInterface
                                             </li>'.
                                             '<li>Tarifas cotizadas en MN.
                                             </li>'.
-                                            '</ul>'.                               
+                                            '</ul>'.
                                             '',
                                         'en' => ''.
                                                 '',
                           )
-                    );                
+                    );
 
       $hoteles[6] =
                 array(
@@ -566,11 +566,11 @@ class ancamController implements ControllerProviderInterface
                       'pack' => 0,
                       'pp'        => 0,
                       'hagotada' => false
-                    )                                                                     
+                    )
                   ),
                   'all' => false,
                   'mensajes'          => array(
-                                          'es' => 
+                                          'es' =>
                                             '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                             '<ul>'.
                                             '<li>Renta de habitación por noche con desayuno buffet, impuestos y propinas a camaristas.
@@ -584,13 +584,13 @@ class ancamController implements ControllerProviderInterface
                                             </li>'.
                                             '<li>Tarifas cotizadas en MN.
                                             </li>'.
-                                            '</ul>'.                                    
+                                            '</ul>'.
                                             '',
                                         'en' => ''.
                                                 '',
                           )
-                    );                
-                    
+                    );
+
       $hoteles[7] =
                     array(
                       'index'         => '7',
@@ -639,11 +639,11 @@ class ancamController implements ControllerProviderInterface
                           'pack' => 0,
                           'pp'        => 0,
                           'hagotada' => false
-                        )                                                                     
+                        )
                       ),
                       'all' => false,
                       'mensajes'          => array(
-                                              'es' => 
+                                              'es' =>
                                                 '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                                 '<ul>'.
                                                 '<li>Renta de habitación por noche con desayuno buffet, impuestos y propinas a camaristas.
@@ -657,13 +657,13 @@ class ancamController implements ControllerProviderInterface
                                                 </li>'.
                                                 '<li>Tarifas cotizadas en MN.
                                                 </li>'.
-                                                '</ul>'.                                    
+                                                '</ul>'.
                                                 '',
                                             'en' => ''.
                                                     '',
                               )
-                        );                    
-                    
+                        );
+
       $hoteles[8] =
                   array(
                     'index'         => '8',
@@ -712,11 +712,11 @@ class ancamController implements ControllerProviderInterface
                         'pack' => 0,
                         'pp'        => 0,
                         'hagotada' => false
-                      )                                                                     
+                      )
                     ),
                     'all' => false,
                     'mensajes'          => array(
-                                            'es' => 
+                                            'es' =>
                                               '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                               '<ul>'.
                                               '<li>Renta de habitación por noche con desayuno americano, impuestos y propinas a camaristas.
@@ -730,7 +730,7 @@ class ancamController implements ControllerProviderInterface
                                               </li>'.
                                               '<li>Tarifas cotizadas en MN.
                                               </li>'.
-                                              '</ul>'.                                    
+                                              '</ul>'.
                                               '',
                                           'en' => ''.
                                                   '',
@@ -785,11 +785,11 @@ class ancamController implements ControllerProviderInterface
                         'pack' => 0,
                         'pp'        => 0,
                         'hagotada' => false
-                      )                                                                     
+                      )
                     ),
                     'all' => false,
                     'mensajes'          => array(
-                                            'es' => 
+                                            'es' =>
                                               '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                               '<ul>'.
                                               '<li>Renta de habitación por noche con desayuno americano, impuestos y propinas a camaristas.
@@ -803,7 +803,7 @@ class ancamController implements ControllerProviderInterface
                                               </li>'.
                                               '<li>Tarifas cotizadas en MN.
                                               </li>'.
-                                              '</ul>'.                             
+                                              '</ul>'.
                                               '',
                                           'en' => ''.
                                                   '',
@@ -921,11 +921,11 @@ class ancamController implements ControllerProviderInterface
                           'pack' => 0,
                           'pp'        => 0,
                           'hagotada' => false
-                        )                        
+                        )
                       ),
                       'all' => false,
                       'mensajes'          => array(
-                                              'es' => 
+                                              'es' =>
                                                 '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
                                                 '<ul>'.
                                                 '<li>Renta de habitación por noche, impuestos y propinas a camaristas.
@@ -939,13 +939,13 @@ class ancamController implements ControllerProviderInterface
                                                 </li>'.
                                                 '<li>Tarifas cotizadas en MN.
                                                 </li>'.
-                                                '</ul>'.                             
+                                                '</ul>'.
                                                 '',
                                             'en' => ''.
                                                     '',
                               )
-                        );                      
-                      
+                        );
+
 
         if(empty($qry)){
           $vmode = 'live';
@@ -955,7 +955,7 @@ class ancamController implements ControllerProviderInterface
         }
         else{
           $vmode = 'live';
-        }                                                                                   
+        }
         return $app['twig']->render('pages/eventos17/'.$pages[$lang], array(
           'title'         => '',
           'evento'        => $this->evento,
@@ -1029,7 +1029,7 @@ class ancamController implements ControllerProviderInterface
           'first'           => 1
           ));
     }
- 
+
     public function setReservacion(Request $request, Application $app){
       $model      = $app["rsvModel"];
       $fn         = new Functions;
@@ -1134,7 +1134,7 @@ class ancamController implements ControllerProviderInterface
       }
       return $app->json($json);
     }
- 
+
     public function confirmacion(Request $request, Application $app, $lang){
       $pages = array(
                 ''      => 'es.confirmacion.twig.html',
@@ -1145,7 +1145,7 @@ class ancamController implements ControllerProviderInterface
                             'data' => $request->query
       ));
     }
- 
+
     public function politicas(Request $request, Application $app, $lang){
         $pages = array(
           ''      => 'ANCAM.politicas.twig.html',
@@ -1156,7 +1156,7 @@ class ancamController implements ControllerProviderInterface
             'data' => $request->query
         ));
     }
- 
+
     public function _checkOut_(Request $request, Application $app, $lang){
       $response = array();
       $pay      = new ppplus;
@@ -1174,7 +1174,7 @@ class ancamController implements ControllerProviderInterface
                   );
       return $app->json($pay->checkOut($request->query, $lang, $urls, $params));
     }
- 
+
     public function checkOut(Request $request, Application $app, $lang){
       $model  = $app["rsvModel"];
       $id     = $request->query->get('id');
@@ -1234,7 +1234,7 @@ class ancamController implements ControllerProviderInterface
       $ppPlus   = new ppPlus($settings);
       return $app->json($ppPlus->getApproval($payData, $urls, $lang));
     }
- 
+
     public function _execute_(Request $request, Application $app, $lang){
       $pay        = new ppplus;
       $exeUrl     = $request->query->get('exeUrl');
@@ -1242,8 +1242,8 @@ class ancamController implements ControllerProviderInterface
       $token      = $request->query->get('token');
       return $app->json($pay->execute($exeUrl, $token, $payerId));
     }
-     
-     
+
+
     public function execute(Request $request, Application $app, $lang){
       $ppPlus     = new ppPlus(array());
       $exeUrl     = $request->query->get('exeUrl');
@@ -1251,7 +1251,7 @@ class ancamController implements ControllerProviderInterface
       $token      = $request->query->get('token');
       return $app->json($ppPlus->execute($exeUrl, $token, $payerId));
     }
- 
+
     public function payReturn(Request $request, Application $app, $lang){
       $model  = $app["rsvModel"];
       $tx     = $request->request->get('tx');
@@ -1262,7 +1262,7 @@ class ancamController implements ControllerProviderInterface
                   'en'    => 'universal/en.return.en.twig.html'
       );
       $model->setValue('tx', $tx, $id);
-        
+
       $mailc  = \Swift_Message::newInstance();
       $mailc
         ->setTo('erubi@tycgroup.com', 'Edgar Rubi')
