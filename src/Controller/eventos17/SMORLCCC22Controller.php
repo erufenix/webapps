@@ -150,75 +150,289 @@ class SMORLCCC22Controller implements ControllerProviderInterface
             );
 
             $hoteles[2] =
-            array(
-              'index'         => '2',
-              'nombre'        => 'HOTEL HILTON',
-              'img'           => 'hilton.jpg',
-              'agotado'       => false,
-              'habitaciones'  => array(
-                array(
-                  'tipo'  => array(
-                    'es'    => 'HABITACION SENCILLA ',
-                    'en'    => '',
+              array(
+                'index'         => '2',
+                'nombre'        => 'HOTEL HILTON',
+                'img'           => 'hilton.jpg',
+                'agotado'       => false,
+                'habitaciones'  => array(
+                  array(
+                    'tipo'  => array(
+                      'es'    => 'HABITACION SENCILLA ',
+                      'en'    => '',
+                    ),
+                    'costo' => array(
+                      'mxn'   =>   '3,173.75',
+                      'usd'   =>   ''
+                    ),
+                    'costor'    => array(
+                      'mxn'   =>   '3,173.75',
+                      'usd'   =>   '0'
+                    ),
+                    'propinas'  =>   array(
+                      'mxn'   =>   '50.00',
+                      'usd'   =>   '0'
+                            ),
+                    'pack' => 0,
+                    'pp'        => 0,
+                    'hagotada' => false
                   ),
-                  'costo' => array(
-                    'mxn'   =>   '3,173.75',
-                    'usd'   =>   ''
-                  ),
-                  'costor'    => array(
-                    'mxn'   =>   '3,173.75',
-                    'usd'   =>   '0'
-                  ),
-                  'propinas'  =>   array(
-                    'mxn'   =>   '50.00',
-                    'usd'   =>   '0'
-                          ),
-                  'pack' => 0,
-                  'pp'        => 0,
-                  'hagotada' => false
+                  array(
+                    'tipo'  => array(
+                      'es'    => 'HABITACION DOBLE',
+                      'en'    => '',
+                    ),
+                    'costo' => array(
+                      'mxn'   =>   '3,173.75',
+                      'usd'   =>   ''
+                    ),
+                    'costor'    => array(
+                      'mxn'   =>   '3,173.75',
+                      'usd'   =>   '0'
+                    ),
+                    'propinas'  =>   array(
+                      'mxn'   =>   '100.00',
+                      'usd'   =>   '0'
+                            ),
+                    'pack' => 0,
+                    'pp'        => 0,
+                    'hagotada' => false
+                  )
                 ),
-                array(
-                  'tipo'  => array(
-                    'es'    => 'HABITACION DOBLE',
-                    'en'    => '',
+                'all' => true,
+                'mensajes'          => array(
+                                        'es' =>
+                                          '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
+                                          '<ul>'.
+                                          '<li>Renta de habitación por noche en Plan Europeo (sin alimentos), impuestos (16% IVA / 3% ISH) y propinas a camaristas.
+                                          </li>'.
+                                          '</ul>'.
+                                          '<h3 class="c-theme-font c-font-uppercase">Notas Importantes:</h3>'.
+                                          '<ul>'.
+                                          '<li>Se realizará un cargo único por concepto de propinas a bell boys (Sencilla $50.00 / Doble $100.00)
+                                          </li>'.
+                                          '<li>El check in es a las 12:00 h, y el check out a las 15:00 h.
+                                          </li>'.
+                                          '</ul>'.
+                                          '',
+                                      'en' => ''.
+                                              '',
+                        )
+              );
+
+              $hoteles[3] =
+              array(
+                'index'         => '3',
+                'nombre'        => 'HOTEL FIESTA AMERICANA',
+                'img'           => 'fiestaamericana.jpg',
+                'agotado'       => false,
+                'habitaciones'  => array(
+                  array(
+                    'tipo'  => array(
+                      'es'    => 'HABITACION SENCILLA ',
+                      'en'    => '',
+                    ),
+                    'costo' => array(
+                      'mxn'   =>   '1,932.10',
+                      'usd'   =>   ''
+                    ),
+                    'costor'    => array(
+                      'mxn'   =>   '1,932.10',
+                      'usd'   =>   '0'
+                    ),
+                    'propinas'  =>   array(
+                      'mxn'   =>   '50.00',
+                      'usd'   =>   '0'
+                            ),
+                    'pack' => 0,
+                    'pp'        => 0,
+                    'hagotada' => false
                   ),
-                  'costo' => array(
-                    'mxn'   =>   '3,173.75',
-                    'usd'   =>   ''
+                  array(
+                    'tipo'  => array(
+                      'es'    => 'HABITACION DOBLE',
+                      'en'    => '',
+                    ),
+                    'costo' => array(
+                      'mxn'   =>   '1,932.10',
+                      'usd'   =>   ''
+                    ),
+                    'costor'    => array(
+                      'mxn'   =>   '1,932.10',
+                      'usd'   =>   '0'
+                    ),
+                    'propinas'  =>   array(
+                      'mxn'   =>   '100.00',
+                      'usd'   =>   '0'
+                            ),
+                    'pack' => 0,
+                    'pp'        => 0,
+                    'hagotada' => false
+                  )
+                ),
+                'all' => true,
+                'mensajes'          => array(
+                                        'es' =>
+                                          '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
+                                          '<ul>'.
+                                          '<li>Renta de habitación por noche en Plan Europeo (sin alimentos), impuestos (16% IVA / 3% ISH) y propinas a camaristas.
+                                          </li>'.
+                                          '</ul>'.
+                                          '<h3 class="c-theme-font c-font-uppercase">Notas Importantes:</h3>'.
+                                          '<ul>'.
+                                          '<li>Se realizará un cargo único por concepto de propinas a bell boys (Sencilla $50.00 / Doble $100.00)
+                                          </li>'.
+                                          '<li>Ckeck in 15:00 hrs. / Check out 12:00 hrs.
+                                          </li>'.
+                                          '</ul>'.
+                                          '',
+                                      'en' => ''.
+                                              '',
+                        )
+              );
+
+              $hoteles[4] =
+              array(
+                'index'         => '4',
+                'nombre'        => 'HOTEL HAMPTON',
+                'img'           => 'hampton.jpg',
+                'agotado'       => false,
+                'habitaciones'  => array(
+                  array(
+                    'tipo'  => array(
+                      'es'    => 'HABITACION SENCILLA ',
+                      'en'    => '',
+                    ),
+                    'costo' => array(
+                      'mxn'   =>   '1,309.00',
+                      'usd'   =>   ''
+                    ),
+                    'costor'    => array(
+                      'mxn'   =>   '1,309.00',
+                      'usd'   =>   '0'
+                    ),
+                    'propinas'  =>   array(
+                      'mxn'   =>   '0.00',
+                      'usd'   =>   '0'
+                            ),
+                    'pack' => 0,
+                    'pp'        => 0,
+                    'hagotada' => false
                   ),
-                  'costor'    => array(
-                    'mxn'   =>   '3,173.75',
-                    'usd'   =>   '0'
+                  array(
+                    'tipo'  => array(
+                      'es'    => 'HABITACION DOBLE',
+                      'en'    => '',
+                    ),
+                    'costo' => array(
+                      'mxn'   =>   '1,309.00',
+                      'usd'   =>   ''
+                    ),
+                    'costor'    => array(
+                      'mxn'   =>   '1,309.00',
+                      'usd'   =>   '0'
+                    ),
+                    'propinas'  =>   array(
+                      'mxn'   =>   '0.00',
+                      'usd'   =>   '0'
+                            ),
+                    'pack' => 0,
+                    'pp'        => 0,
+                    'hagotada' => false
+                  )
+                ),
+                'all' => true,
+                'mensajes'          => array(
+                                        'es' =>
+                                          '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
+                                          '<ul>'.
+                                          '<li>Renta de habitación por noche en Plan Europeo (sin alimentos), impuestos (16% IVA / 3% ISH) y propinas a camaristas.
+                                          </li>'.
+                                          '</ul>'.
+                                          '<h3 class="c-theme-font c-font-uppercase">Notas Importantes:</h3>'.
+                                          '<ul>'.
+                                          '<li>Propinas a bell boys son a discreción del Huésped.
+                                          </li>'.
+                                          '<li>Ckeck in 15:00 hrs. / Check out 12:00 hrs.
+                                          </li>'.
+                                          '</ul>'.
+                                          '',
+                                      'en' => ''.
+                                              '',
+                        )
+              );
+
+              $hoteles[5] =
+              array(
+                'index'         => '5',
+                'nombre'        => 'HOTEL STAYBRIDGE SUITES',
+                'img'           => 'staybridge.jpg',
+                'agotado'       => false,
+                'habitaciones'  => array(
+                  array(
+                    'tipo'  => array(
+                      'es'    => 'HABITACION SENCILLA ',
+                      'en'    => '',
+                    ),
+                    'costo' => array(
+                      'mxn'   =>   '1,309.00',
+                      'usd'   =>   ''
+                    ),
+                    'costor'    => array(
+                      'mxn'   =>   '1,309.00',
+                      'usd'   =>   '0'
+                    ),
+                    'propinas'  =>   array(
+                      'mxn'   =>   '0.00',
+                      'usd'   =>   '0'
+                            ),
+                    'pack' => 0,
+                    'pp'        => 0,
+                    'hagotada' => false
                   ),
-                  'propinas'  =>   array(
-                    'mxn'   =>   '100.00',
-                    'usd'   =>   '0'
-                          ),
-                  'pack' => 0,
-                  'pp'        => 0,
-                  'hagotada' => false
-                )
-              ),
-              'all' => true,
-              'mensajes'          => array(
-                                      'es' =>
-                                        '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
-                                        '<ul>'.
-                                        '<li>Renta de habitación por noche en Plan Europeo (sin alimentos), impuestos (16% IVA / 3% ISH) y propinas a camaristas.
-                                        </li>'.
-                                        '</ul>'.
-                                        '<h3 class="c-theme-font c-font-uppercase">Notas Importantes:</h3>'.
-                                        '<ul>'.
-                                        '<li>Se realizará un cargo único por concepto de propinas a bell boys (Sencilla $50.00 / Doble $100.00)
-                                        </li>'.
-                                        '<li>El check in es a las 12:00 h, y el check out a las 15:00 h.
-                                        </li>'.
-                                        '</ul>'.
-                                        '',
-                                    'en' => ''.
-                                            '',
-                      )
-                );
+                  array(
+                    'tipo'  => array(
+                      'es'    => 'HABITACION DOBLE',
+                      'en'    => '',
+                    ),
+                    'costo' => array(
+                      'mxn'   =>   '1,309.00',
+                      'usd'   =>   ''
+                    ),
+                    'costor'    => array(
+                      'mxn'   =>   '1,309.00',
+                      'usd'   =>   '0'
+                    ),
+                    'propinas'  =>   array(
+                      'mxn'   =>   '0.00',
+                      'usd'   =>   '0'
+                            ),
+                    'pack' => 0,
+                    'pp'        => 0,
+                    'hagotada' => false
+                  )
+                ),
+                'all' => true,
+                'hidden' => true,
+                'mensajes'          => array(
+                                        'es' =>
+                                          '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.
+                                          '<ul>'.
+                                          '<li>Renta de habitación por noche en Plan Europeo (sin alimentos), impuestos (16% IVA / 3% ISH) y propinas a camaristas.
+                                          </li>'.
+                                          '</ul>'.
+                                          '<h3 class="c-theme-font c-font-uppercase">Notas Importantes:</h3>'.
+                                          '<ul>'.
+                                          '<li>Propinas a bell boys son a discreción del Huésped.
+                                          </li>'.
+                                          '<li>Ckeck in 15:00 hrs. / Check out 12:00 hrs.
+                                          </li>'.
+                                          '</ul>'.
+                                          '',
+                                      'en' => ''.
+                                              '',
+                        )
+              );
 
         if(empty($qry)){
           $vmode = 'live';
@@ -246,10 +460,10 @@ class SMORLCCC22Controller implements ControllerProviderInterface
           'fechas'        => $this->fechas,
           'sede'          => $this->sede,
           'claveEvento'   => 'SMORLCCC22',
-          'fechaLleMin'   => '2020-10-13',
-          'fechaLleMax'   => '2020-10-16',
-          'fechaSalMin'   => '2020-10-14',
-          'fechaSalMax'   => '2020-10-17',
+          'fechaLleMin'   => '2022-04-29',
+          'fechaLleMax'   => '2022-05-04',
+          'fechaSalMin'   => '2022-04-30',
+          'fechaSalMax'   => '2022-05-05',
           'disabledDates' => false,
           'noches'        => 2,
           'urlIndex'      => $app['url_generator']->generate(SMORLCCC22.".index"),
