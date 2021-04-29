@@ -128,7 +128,7 @@ class SMORLCCC22Controller implements ControllerProviderInterface
               'hagotada' => false
             )
           ),
-          'all' => true,
+          'all' => false,
           'mensajes'          => array(
                                   'es' =>
                                     '<h3 class="c-theme-font c-font-uppercase">La tarifa incluye:</h3>'.

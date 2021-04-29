@@ -54,7 +54,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
         'reservacion' => array(
             'driver'    	=> 'pdo_mysql',
             'host'      	=> 'localhost',
-            'dbname'    	=> 'tcevents_turycon_reservaciones',
+            'dbname'    	=> 'reservaciones',
             'user'      	=> 'apps17',
             'password'		=> 'cjJRDnchCSJebaGJ',
             'charset'   	=> 'utf8',
