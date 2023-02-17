@@ -32,7 +32,7 @@
         "skoziel/silex-paypal": "^1.0",
         "jdesrosiers/silex-cors-provider": "^1.5",
         "guzzlehttp/guzzle": "~6.0",
-        "firebase/php-jwt": "^5.0",
+        "firebase/php-jwt": "^6.0",
         "sonata-project/exporter": "^1.11",
         "bacon/bacon-qr-code": "^2.0"      
     },
